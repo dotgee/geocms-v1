@@ -36,3 +36,13 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem "unicorn", ">= 4.3.1", :group => :production
+gem "pg", ">= 0.14.0"
+gem "slim", ">= 1.2.2"
+gem "haml2slim", ">= 0.4.6", :group => :development
+gem "haml", ">= 3.1.6", :group => :development
+gem "haml-rails", ">= 0.3.4", :group => :development
+gem "hpricot", ">= 0.8.6", :group => :development
+gem "ruby_parser", ">= 2.3.1", :group => :development
+gem "bootstrap-sass", ">= 2.0.4.0"
