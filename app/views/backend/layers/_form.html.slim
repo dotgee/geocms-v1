@@ -1,0 +1,8 @@
+= simple_form_for([:backend, @layer], :html => {:class => 'form-horizontal' }) do |f|
+  
+  = f.input :name 
+  = f.association :data_source
+  = f.input :title
+  = f.input :description
+  = f.association :category, :collection => @categories
+  = f.submit

@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @layer.name
+p
+  strong Wms url:
+  = @layer.wms_url
+p
+  strong Title:
+  = @layer.title
+p
+  strong Description:
+  = @layer.description
+
+= link_to 'Edit', edit_backend_layer_path(@layer)
+'|
+= link_to 'Back', backend_layers_path

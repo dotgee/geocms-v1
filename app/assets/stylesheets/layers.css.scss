@@ -1,0 +1,70 @@
+body.fullscreen {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  max-width: none;
+  margin: 0px auto;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0 20px 10px;
+}
+
+.wrapper {
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  transition: top 100ms;
+  -webkit-transition: top 100ms;
+  @include box-sizing(border-box);
+  padding-bottom: 0px;
+}
+
+#map {
+  background: white;
+  position: absolute;
+  top: 0px;
+  left: 33.3333333%;
+  right: 0px;
+  bottom: 0px;
+  width: auto;
+  height: auto;
+  @include box-sizing(border-box);
+  transition: left 200ms;
+  -webkit-transition: left 200ms;
+}
+
+.hud {
+  z-index: 1000;
+  position: absolute;
+  left: 0%;
+  top: 0px;
+  bottom: 0px;
+  width: 33.3333%;
+  background: #F8F8F8;
+  border-right: 1px solid #DDD;
+  transition: left 200ms;
+  -moz-transition: left 200ms;
+  -webkit-transition: left 200ms;
+  @include box-sizing(border-box);
+}
+
+.leaflet-top, .leaflet-bottom {
+  z-index: 800;
+}
+
+.selector {
+  background: white;
+  position: fixed;
+  bottom: 0px;
+  left: 33.3333%;
+  right: 0px;
+  top: 40px;
+  overflow: hidden;
+  visibility: hidden;
+  &.active {
+    visibility: visible;
+    z-index: 1100;
+  }
+}

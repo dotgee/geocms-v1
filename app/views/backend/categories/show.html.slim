@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @category.name
+p
+  strong Position:
+  = @category.position
+
+= link_to 'Edit', edit_backend_category_path(@category)
+'|
+= link_to 'Back', backend_categories_path

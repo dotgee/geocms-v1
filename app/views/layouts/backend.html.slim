@@ -1,0 +1,32 @@
+doctype 5
+html(lang="en")
+  head
+    meta charset="utf-8"
+    meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"
+    title== yield :title
+    meta content="" name="description"
+    meta content="width=device-width" name="viewport"
+    = stylesheet_link_tag "http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.css"
+    = stylesheet_link_tag :application
+  body.fullscreen
+    .navbar
+      .navbar-inner
+        .container
+          a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand href="#"
+          .nav-collapse.collapse
+            ul.nav
+              li= link_to "GeoCMS", backend_root_path
+              li= link_to "Layers", backend_layers_path
+              li= link_to "Categories", backend_categories_path
+              li= link_to "Data sources", backend_data_sources_path
+            ul.nav.pull-right
+              li= link_to "Logout", logout_path
+    .container-fluid
+      == yield
+    = javascript_include_tag "http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.js"
+    = javascript_include_tag :application
+    == yield :javascripts

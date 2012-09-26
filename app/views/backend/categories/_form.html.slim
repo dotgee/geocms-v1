@@ -1,0 +1,8 @@
+= simple_form_for([:backend, @category]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :parent_id, :as => :select, :collection => @categories
+  .form-actions
+    = f.button :submit

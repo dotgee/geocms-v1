@@ -1,0 +1,25 @@
+h1 Listing layers
+
+table
+  tr
+    th Name
+    th Wms url
+    th Title
+    th Description
+    th
+    th
+    th
+
+  - @layers.each do |layer|
+    tr
+      td = layer.name
+      td = layer.wms_url
+      td = layer.title
+      td = layer.description
+      td = link_to 'Show', layer
+      td = link_to 'Edit', edit_layer_path(layer)
+      td = link_to 'Destroy', layer, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Layer', new_layer_path
