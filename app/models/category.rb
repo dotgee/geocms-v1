@@ -1,7 +1,9 @@
 class Category < ActiveRecord::Base
-  has_many :layers
+  has_many :layers, dependent: :destroy
+  belongs_to :account
+
   has_ancestry
-  acts_as_list scope: [:ancestry]
+  acts_as_list scope: [:account_id, :ancestry]
   attr_accessible :name, :position, :parent_id
 
   before_save :cache_ancestry

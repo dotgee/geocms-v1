@@ -16,10 +16,10 @@ table
       td = layer.wms_url
       td = layer.title
       td = layer.description
-      td = link_to 'Show', [:backend, layer]
-      td = link_to 'Edit', edit_backend_layer_path(layer)
-      td = link_to 'Destroy', [:backend, layer], :confirm => 'Are you sure?', :method => :delete
+      td = link_to 'Show', [:backend, @category, layer]
+      td = link_to 'Edit', [:edit, :backend, @category, layer]
+      td = link_to 'Destroy', [:backend, @category, layer], :confirm => 'Are you sure?', :method => :delete
 
 br
 
-= link_to 'New Layer', new_backend_layer_path
+= link_to 'New Layer', [:new, :backend, @category, :layer]

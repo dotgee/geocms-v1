@@ -2,7 +2,7 @@ h1 Editing layer
 
 == render 'form'
 
-= link_to 'Show', [:backend, @layer]
+= link_to 'Show', [:backend, @category, @layer]
 '|
-= link_to 'Back', backend_layers_path
+= link_to 'Back', [:backend, @category, :layers]
 

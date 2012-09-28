@@ -12,7 +12,7 @@ table
     tr
       td = category.name
       td = category.position
-      td = link_to 'Show', [:backend, category]
+      td = link_to 'Show', [:backend, category, :layers]
       td = link_to 'Edit', edit_backend_category_path(category)
       td = link_to 'Destroy', [:backend, category], :confirm => 'Are you sure?', :method => :delete
 

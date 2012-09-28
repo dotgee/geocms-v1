@@ -2,11 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem "unicorn", ">= 4.3.1", :group => :production
+gem "pg", ">= 0.14.0"
 
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.5'
   gem 'coffee-rails', '~> 3.2.1'
@@ -14,7 +12,6 @@ group :assets do
   gem "compass", "~> 0.12.2"
   gem 'haml_coffee_assets'
   gem 'execjs'
-
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -28,26 +25,21 @@ end
 
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+# JSON Views
+gem 'rabl'
+gem 'yajl-ruby'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
-
-gem "unicorn", ">= 4.3.1", :group => :production
-gem "pg", ">= 0.14.0"
+# Templating engine
 gem "slim-rails"
 
+# Utilities
 gem 'bootstrap-sass', '~> 2.1.0.0'
 gem "simple_form"
 gem "responders"
 
+# Authentication
 gem "sorcery"
+
+# Ordering
 gem "ancestry"
 gem "acts_as_list"

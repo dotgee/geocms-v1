@@ -7,24 +7,18 @@ html(lang="en")
     meta content="" name="description"
     meta content="width=device-width" name="viewport"
     = stylesheet_link_tag "http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.css"
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans&subset=latin"
     = stylesheet_link_tag :application
   body.fullscreen
     .navbar
       .navbar-inner
         .container
-          a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.brand href="#"
-          .nav-collapse.collapse
-            ul.nav
-              li= link_to "GeoCMS", backend_root_path
-              li= link_to "Layers", backend_layers_path
-              li= link_to "Categories", backend_categories_path
-              li= link_to "Data sources", backend_data_sources_path
-            ul.nav.pull-right
-              li= link_to "Logout", logout_path
+          ul.nav
+            li= link_to "GeoCMS - #{@current_account.name}", backend_root_path, :class => "brand"
+            li= link_to "Categories", backend_categories_path
+            li= link_to "Data sources", backend_data_sources_path
+          ul.nav.pull-right
+            li= link_to "Logout", logout_path
     .container-fluid
       == yield
     = javascript_include_tag "http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.js"

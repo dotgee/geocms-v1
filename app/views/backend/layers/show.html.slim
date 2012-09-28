@@ -13,6 +13,6 @@ p
   strong Description:
   = @layer.description
 
-= link_to 'Edit', edit_backend_layer_path(@layer)
+= link_to 'Edit', [:edit, :backend, @category, @layer]
 '|
-= link_to 'Back', backend_layers_path
+= link_to 'Back', [:backend, @category, :layers]

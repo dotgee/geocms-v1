@@ -13,16 +13,7 @@ App.MapProviders.Leaflet = ->
                         transformation)
     crs.scale = @scale
     @map = new L.Map(elementId, {crs: crs, scale: @scale, continuousWorld: true})
-    @createLayer("http://geo.devel.dotgee.fr/geoserver/wms", "departements-bretagne_region_2154")
     map
-  createLayer: (wms, name) ->
-    layer = L.tileLayer.wms(wms, {
-      layers: name,
-      format: 'image/png',
-      transparent: true,
-      continuousWorld: true
-    })
-    @addLayerToMap(layer)
   addLayerToMap: (layer) ->
     @map.addLayer(layer)
   setViewForMap: (options) ->
