@@ -43,3 +43,6 @@ gem "sorcery"
 # Ordering
 gem "ancestry"
 gem "acts_as_list"
+
+# Geoserver
+gem "rgeoserver"

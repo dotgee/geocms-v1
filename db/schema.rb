@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120927100711) do
+ActiveRecord::Schema.define(:version => 20120928154110) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -40,11 +40,11 @@ ActiveRecord::Schema.define(:version => 20120927100711) do
     t.string   "ogc"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "rest"
   end
 
   create_table "layers", :force => true do |t|
     t.string   "name"
-    t.string   "wms_url"
     t.string   "title"
     t.text     "description"
     t.datetime "created_at",     :null => false

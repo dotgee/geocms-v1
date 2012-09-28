@@ -89,7 +89,7 @@ body.fullscreen {
   left: 33.3333%;
   right: 0px;
   top: 40px;
-  overflow: hidden;
+  overflow-y: scroll;
   visibility: hidden;
   opacity: 0;
   z-index: 1;

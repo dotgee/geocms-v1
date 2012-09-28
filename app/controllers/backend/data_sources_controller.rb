@@ -35,4 +35,15 @@ class Backend::DataSourcesController < Backend::ApplicationController
     @data_source.destroy
     respond_with([:backend, @data_source])
   end
+
+  def import
+    @data_source = DataSource.find(params[:id])
+    respond_with([:backend, @data_source])
+  end
+
+  def do_import
+    @data_source = DataSource.find(params[:id])
+    @datas = @data_source.import(params[:user])
+    respond_with([:backend, @data_source])
+  end
 end

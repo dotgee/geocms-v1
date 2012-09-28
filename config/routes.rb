@@ -17,11 +17,21 @@ Geocms2::Application.routes.draw do
 
     # Backend
     namespace :backend do
+
       root :to => "categories#index"
+      
       resources :categories do
         resources :layers
       end
-      resources :data_sources
+
+      resources :data_sources do 
+        member do
+          get "import"
+          post "import", :to => "data_sources#do_import"
+        end
+      end
+
     end
+
   end
 end

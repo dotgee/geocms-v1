@@ -1,0 +1,12 @@
+.page-header
+  h1 Import from geoserver
+
+h3
+  = @data_source.name
+  small= "     (#{@data_source.rest})"
+  
+= simple_form_for :user do |f|
+  = f.input :login
+  = f.input :password, :as => :password, :hint => "This won't be stored"
+
+  = f.button :submit, :value => "Import datas"
