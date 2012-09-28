@@ -12,6 +12,7 @@ class App.Router extends Backbone.Router
     @catalogView = new App.CatalogView({
       model: @catalog
       mapProvider: @mapProvider
+      router: router
     })
     @cartView = new App.CartView({
       mapProvider: @mapProvider

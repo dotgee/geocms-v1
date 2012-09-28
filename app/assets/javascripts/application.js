@@ -11,23 +11,3 @@
 //= require_tree ./collections
 //= require_tree ./views
 //= require_tree ./templates
-
-//= require hud_panel
-
-var hud = new $.hudPanel($('.hud'));
-
-// $(".toggle-hud").click(function(e){
-//   hud.toggle();
-// });
-
-// $(".layer a").click(function(e){
-//   var _self = $(this);
-//   e.preventDefault();
-//   addLayer(_self.parent());
-// });
-
-// $(".add-layer").click(function(e){
-//   var _self = $(this);
-//   e.preventDefault();
-//   $(".selector").toggleClass("active");
-// });

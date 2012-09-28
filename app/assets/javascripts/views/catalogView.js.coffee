@@ -7,10 +7,11 @@ class App.CatalogView extends Backbone.View
   }
   initialize: ->
     @mapProvider = this.options.mapProvider
+    @router = @options.router
   toggle: ->
     $(@el).toggleClass("active")
   render: ->
     _.each @model.models, ((layer) ->
-      $(@el).find("ul.nav-list").append new App.CatalogItemView({model: layer, mapProvider: @mapProvider}).render().el
+      $(@el).find("ul.nav-list").append new App.CatalogItemView({model: layer, mapProvider: @mapProvider, router: @router}).render().el
     ), this
     return this

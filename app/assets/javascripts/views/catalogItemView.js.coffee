@@ -6,12 +6,10 @@ class App.CatalogItemView extends Backbone.View
   }
   initialize: ->
     @mapProvider = this.options.mapProvider
+    @router = @options.router
   addToMap: (e) ->
     e.preventDefault()
-    unless @model.attributes.onMap
-      layer = @model.attributes.leaflet or= @model.toLeaflet()
-      @mapProvider.addLayerToMap(layer)
-      @model.attributes.onMap = true
+    @router.cart.add(@model)
   render: ->
     attributes = @model.toJSON()
     this.$el.html(@template(attributes))
