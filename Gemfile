@@ -21,6 +21,7 @@ group :development do
   gem "haml-rails", ">= 0.3.4"
   gem "hpricot", ">= 0.8.6"
   gem "ruby_parser", ">= 2.3.1"
+  gem "awesome_print"
 end
 
 gem 'jquery-rails'

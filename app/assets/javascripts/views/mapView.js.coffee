@@ -8,7 +8,7 @@ class App.MapView extends Backbone.View
     @mapProvider.setViewForMap
       latitude: @initialCenter.latitude,
       longitude: @initialCenter.longitude
-      zoomLevel: 1
+      zoomLevel: 4
   addLegend: ->
     watermark = L.control({position: "bottomright"})
     watermark.onAdd =  (map) ->

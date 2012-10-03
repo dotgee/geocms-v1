@@ -1,21 +1,17 @@
-h1 Listing categories
+.page-header
+  h1= "#{@current_account.name} - Categories"
+= link_to 'New Category', new_backend_category_path, :class => "btn pull-right"
 
-table
-  tr
-    th Name
-    th Position
-    th
-    th
-    th
-
-  - @categories.each do |category|
+table.table.table-striped
+  thead
     tr
-      td = category.name
-      td = category.position
-      td = link_to 'Show', [:backend, category, :layers]
-      td = link_to 'Edit', edit_backend_category_path(category)
-      td = link_to 'Destroy', [:backend, category], :confirm => 'Are you sure?', :method => :delete
+      th Name
+      th Position
+      th
+      th
+      th
+  tbody
+    = nested_categories(@categories)
 
 br
 
-= link_to 'New Category', new_backend_category_path

@@ -1,6 +1,6 @@
 class Backend::CategoriesController < Backend::ApplicationController
   def index
-    @categories = @current_account.categories.all
+    @categories = @current_account.categories.arrange(:order => :position)
     respond_with([:backend, @categories])
   end
 

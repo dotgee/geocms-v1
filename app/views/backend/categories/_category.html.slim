@@ -1,0 +1,9 @@
+tr
+  td
+    - category.depth.times do |hey|
+      .icon-arrow-right
+      ' 
+    = category.name
+  td = link_to 'Show', [:backend, category, :layers]
+  td = link_to 'Edit', edit_backend_category_path(category)
+  td = link_to 'Destroy', [:backend, category], :confirm => 'Are you sure?', :method => :delete

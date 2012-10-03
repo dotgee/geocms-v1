@@ -1,25 +1,23 @@
-h1 Listing layers
+.page-header
+  h1= "#{@current_account.name} #{@category.name} - Layers"
 
-table
-  tr
-    th Name
-    th Wms url
-    th Title
-    th Description
-    th
-    th
-    th
-
-  - @layers.each do |layer|
+= link_to 'New Layer', [:new, :backend, @category, :layer], :class => "btn pull-right"
+table.table.table-striped
+  thead
     tr
-      td = layer.name
-      td = layer.wms_url
-      td = layer.title
-      td = layer.description
-      td = link_to 'Show', [:backend, @category, layer]
-      td = link_to 'Edit', [:edit, :backend, @category, layer]
-      td = link_to 'Destroy', [:backend, @category, layer], :confirm => 'Are you sure?', :method => :delete
+      th Name
+      th Title
+      th
+      th
+      th
+  tbody
+    - @layers.each do |layer|
+      tr
+        td = layer.name
+        td = layer.title
+        td = link_to 'Show', [:backend, @category, layer]
+        td = link_to 'Edit', [:edit, :backend, @category, layer]
+        td = link_to 'Destroy', [:backend, @category, layer], :confirm => 'Are you sure?', :method => :delete
 
 br
 
-= link_to 'New Layer', [:new, :backend, @category, :layer]
