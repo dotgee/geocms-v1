@@ -1,5 +1,5 @@
 .page-header
-  h1= "#{@current_account.name} #{@category.name} - Layers"
+  h1= "#{ActsAsTenant.current_tenant.name} #{@category.name} - Layers"
 
 = link_to 'New Layer', [:new, :backend, @category, :layer], :class => "btn pull-right"
 table.table.table-striped

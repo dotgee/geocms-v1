@@ -2,7 +2,7 @@ class LayersController < ApplicationController
   # GET /layers
   # GET /layers.json
   def index
-    @layers = @current_account.layers.all
+    @layers = Layer.all
     respond_with(@layers)
   end
 
@@ -12,7 +12,7 @@ class LayersController < ApplicationController
   # GET /layers/1
   # GET /layers/1.json
   def show
-    @layer = @current_account.layers.find(params[:id])
+    @layer = Layer.find(params[:id])
 
     respond_with(@layer)
   end

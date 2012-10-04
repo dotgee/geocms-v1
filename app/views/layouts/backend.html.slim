@@ -14,7 +14,7 @@ html(lang="en")
       .navbar-inner
         .container
           ul.nav
-            li= link_to "GeoCMS - #{@current_account.name}", backend_root_path, :class => "brand"
+            li= link_to "GeoCMS - #{ActsAsTenant.current_tenant.name}", backend_root_path, :class => "brand"
             li= link_to "Categories", backend_categories_path
             li= link_to "Data sources", backend_data_sources_path
           ul.nav.pull-right

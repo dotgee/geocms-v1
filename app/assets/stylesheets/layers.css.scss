@@ -108,3 +108,17 @@ body.fullscreen {
     margin-left: 20px;
   }
 }
+
+.navbar .nav > li {
+  & > .share {
+    margin: 10px 0 0 6px;
+    padding: 3px 8px;
+    background-color: #131723;
+    @include border-radius(10px);
+    font: bold 11px Arial;
+    &:hover {
+      background-color: white;
+      color: #131313;
+    }
+  }
+}

@@ -5,10 +5,6 @@ class ApplicationController < ActionController::Base
   respond_to :html, :json
   protect_from_forgery
 
-  before_filter :require_account!
-
-  def require_account!
-    @current_account = Account.find_by_subdomain!(request.subdomain)
-  end
+  set_current_tenant_by_subdomain(:account, :subdomain)
 
 end

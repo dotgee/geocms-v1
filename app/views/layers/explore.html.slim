@@ -2,7 +2,9 @@
   .navbar-inner
     .container
       ul.nav
-        li= link_to "GeoCMS - #{@current_account.name}", "#", :class => "brand"
+        li= link_to "GeoCMS - #{ActsAsTenant.current_tenant.name}", "#", :class => "brand"
+      ul.nav.pull-right
+        li= link_to "SHARE THIS MAP", "#", :class => "share"
 .wrapper
   .hud
     ul.nav.nav-list.head

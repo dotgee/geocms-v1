@@ -44,6 +44,6 @@ class Backend::LayersController < Backend::ApplicationController
 
   private
   def require_category
-    @category = @current_account.categories.find(params[:category_id])
+    @category = Category.find(params[:category_id])
   end
 end

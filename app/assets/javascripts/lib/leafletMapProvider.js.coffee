@@ -20,7 +20,6 @@ App.MapProviders.Leaflet = ->
       transparent: true,
       continuousWorld: true
     })
-    console.log(osm)
     @addLayerToMap(osm)
     map
   addLayerToMap: (layer) ->

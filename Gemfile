@@ -47,3 +47,6 @@ gem "acts_as_list"
 
 # Geoserver
 gem "rgeoserver"
+
+# To scope results by subdomain
+gem "acts_as_tenant"
