@@ -10,16 +10,16 @@ class App.CartView extends Backbone.View
     @mapProvider = @options.mapProvider
     @catalogView = @options.catalogView
     @model.on('add', @addOne, this)
+    @model.on('removeFromMap', @removeOne, this)
   addOne: (layer) ->
-    cartViewItem = new App.CartItemView({model: layer})
+    layer.addToMap()
+    cartViewItem = new App.CartItemView({model: layer, mapProvider: @mapProvider})
     @$el.find(".layer-list").append(cartViewItem.render().el)
-
-    unless layer.attributes.onMap
-      leaflet = layer.attributes.leaflet
-      @mapProvider.addLayerToMap(leaflet)
-      layer.attributes.onMap = true
+    @mapProvider.addLayerToMap(layer.attributes.leaflet)
+  removeOne: (layer) ->
+    @model.remove(layer)
   render: ->
     _.each @model.models, ((layer) ->
-      $(@el).find(".layer-list").html new App.CartItemView({model: layer}).render().el
+      $(@el).find(".layer-list").html new App.CartItemView({model: layer, mapProvider: @mapProvider}).render().el
     ), this
     return this

@@ -54,6 +54,11 @@ body.fullscreen {
   li.nav-header {
     height: 30px;
   }
+  .layer-list {
+    a {
+      @include unstyled-link;
+    }
+  }
 }
 
 .add-layer {

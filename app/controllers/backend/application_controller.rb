@@ -8,8 +8,8 @@ class Backend::ApplicationController < ActionController::Base
 
   protect_from_forgery
   
-  #before_filter :require_login
   set_current_tenant_by_subdomain(:account, :subdomain)
+  before_filter :require_login
 
   private
   def not_authenticated

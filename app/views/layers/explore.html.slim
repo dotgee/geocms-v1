@@ -4,7 +4,18 @@
       ul.nav
         li= link_to "GeoCMS - #{ActsAsTenant.current_tenant.name}", "#", :class => "brand"
       ul.nav.pull-right
-        li= link_to "SHARE THIS MAP", "#", :class => "share"
+        li
+          .btn-group.map-toolbar
+            button.btn.disabled title="Panier"
+              i.icon-wrench
+            button.btn.disabled title="Catalogue"
+              i.icon-shopping-cart
+            button.btn.disabled title="Légende"
+              i.icon-tint
+            button.btn.disabled title="Vue initiale"
+              i.icon-globe
+            button.btn.disabled title="Partager"
+              i.icon-share-alt
 .wrapper
   .hud
     ul.nav.nav-list.head

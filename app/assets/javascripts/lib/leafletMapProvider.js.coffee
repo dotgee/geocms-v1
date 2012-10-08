@@ -14,16 +14,11 @@ App.MapProviders.Leaflet = ->
                         transformation)
     crs.scale = @scale
     @map = new L.Map(elementId, {crs: crs, continuousWorld: true})
-    osm = L.tileLayer.wms("http://osm.geobretagne.fr/gwc01/service/wms", {
-      layers: "osm:google",
-      format: 'image/png',
-      transparent: true,
-      continuousWorld: true
-    })
-    @addLayerToMap(osm)
     map
   addLayerToMap: (layer) ->
     @map.addLayer(layer)
+  removeLayerFromMap: (layer) ->
+    @map.removeLayer(layer)
   setViewForMap: (options) ->
     point = new L.LatLng(options.latitude, options.longitude)
     @map.setView(point, options.zoomLevel)

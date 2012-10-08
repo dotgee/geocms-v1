@@ -11,3 +11,7 @@
 //= require_tree ./collections
 //= require_tree ./views
 //= require_tree ./templates
+
+$(".navbar-inner").find(".btn").tooltip({
+  placement: "bottom"
+})

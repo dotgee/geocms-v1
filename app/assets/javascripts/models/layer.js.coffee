@@ -10,5 +10,11 @@ class App.Layer extends Backbone.Model
       transparent: true,
       continuousWorld: true
     })
+  removeFromMap: ->
+    @attributes.onMap = false
+    @trigger('removeFromMap', this)
+  addToMap: ->
+    @attributes.onMap = true
+    @trigger('addOnMap')
   initialize: ->
     @toLeaflet()

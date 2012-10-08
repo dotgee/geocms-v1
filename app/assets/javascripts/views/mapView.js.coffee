@@ -9,7 +9,15 @@ class App.MapView extends Backbone.View
       latitude: @initialCenter.latitude,
       longitude: @initialCenter.longitude
       zoomLevel: 4
-  addLegend: ->
+  addBaseLayer: ->
+    osm = L.tileLayer.wms("http://osm.geobretagne.fr/gwc01/service/wms", {
+      layers: "osm:google",
+      format: 'image/png',
+      transparent: true,
+      continuousWorld: true
+    })
+    @mapProvider.addLayerToMap(osm)
+  addWatermark: ->
     watermark = L.control({position: "bottomright"})
     watermark.onAdd =  (map) ->
       this._div = L.DomUtil.create('div', 'watermark');
@@ -18,5 +26,6 @@ class App.MapView extends Backbone.View
     watermark.addTo(@mapProvider.map)
   render: ->
     @mapProvider.createMap(@el.id)
-    @addLegend()
+    @addBaseLayer()
+    @addWatermark()
     @setInitialView()
