@@ -1,4 +1,5 @@
 //= require ./underscore
 //= require ./backbone
-//= require ./proj4js
+//= require ./masonry.min
+//= require ./proj4js-combined
 //= require ./proj4leaflet

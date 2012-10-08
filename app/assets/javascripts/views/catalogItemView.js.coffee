@@ -1,6 +1,13 @@
 class App.CatalogItemView extends Backbone.View
   tagName: "li"
-  template: _.template("<a href='#' class='catalog-layer'><%= title %></a>")
+  className: "span4"
+  template: _.template("<a href='#' class='catalog-layer'>
+                          <div class='thumbnail'>
+                            <img src='http://placehold.it/300x200 alt=''>
+                            <h4><%= title %></h4>
+                            <p><%= description %></p>
+                          </div>
+                        </a>")
   events: {
     "click .catalog-layer": "addToMap"
   }

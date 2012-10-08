@@ -19,6 +19,10 @@ class App.Router extends Backbone.Router
       catalogView: @catalogView
       model: @cart
     })
+    @mapToolbarView = new App.MapToolbarView({
+      mapProvider: @mapProvider
+      cartView: @cartView
+    })
     @catalog.fetch({
       success: (model, response) ->
         router.catalogView.render()

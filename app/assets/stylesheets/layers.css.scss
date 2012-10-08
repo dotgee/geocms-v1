@@ -31,8 +31,9 @@ body.fullscreen {
   width: auto;
   height: auto;
   @include box-sizing(border-box);
-  transition: left 200ms;
-  -webkit-transition: left 200ms;
+  transition: left 300ms;
+  -webkit-transition: left 300ms;
+  -moz-transition: left 300ms;
 }
 
 .hud {
@@ -44,9 +45,9 @@ body.fullscreen {
   width: 33.3333%;
   background: #F8F8F8;
   border-right: 1px solid #DDD;
-  transition: left 200ms;
-  -moz-transition: left 200ms;
-  -webkit-transition: left 200ms;
+  transition: left 300ms;
+  -moz-transition: left 300ms;
+  -webkit-transition: left 300ms;
   @include box-sizing(border-box);
   li {
     position: relative;
@@ -112,6 +113,14 @@ body.fullscreen {
   h3 {
     margin-left: 20px;
   }
+  .catalog-layer {
+    h4 {
+      word-wrap: break-word;
+    }
+  }
+  .thumbnails {
+    margin-left: 20px;
+  }
 }
 
 .navbar .nav > li {
@@ -125,5 +134,17 @@ body.fullscreen {
       background-color: white;
       color: #131313;
     }
+  }
+}
+
+.leaflet-bottom.leaflet-left {
+  right: 0;
+  .features-infos {
+    width: 100%;
+    height: auto;
+    display: none;
+    background: white;
+    margin-left: 0;
+    margin-bottom: 0;
   }
 }

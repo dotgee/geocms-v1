@@ -6,11 +6,9 @@
       ul.nav.pull-right
         li
           .btn-group.map-toolbar
-            button.btn.disabled title="Panier"
-              i.icon-wrench
-            button.btn.disabled title="Catalogue"
+            button.btn.cart.active data-toggle="button" title="Panier"
               i.icon-shopping-cart
-            button.btn.disabled title="Légende"
+            button.btn.disabled data-toggle="button" title="Légende"
               i.icon-tint
             button.btn.disabled title="Vue initiale"
               i.icon-globe
@@ -30,7 +28,7 @@
       button class="close" &times;
       .page-header
         h3 Layers catalog
-      ul.nav.nav-list
+      ul.thumbnails
   #map
 
 / = content_for :javascripts do

@@ -6,6 +6,12 @@ class App.CartView extends Backbone.View
   toggleCatalog: (e) ->
     e.preventDefault()
     @catalogView.toggle()
+  open: ->
+    @$el.css("left", "0")
+    $("#map").css("left", "33.33333333%")
+  close: ->
+    @$el.css("left", "-33.33333333%")
+    $("#map").css("left", 0)
   initialize: ->
     @mapProvider = @options.mapProvider
     @catalogView = @options.catalogView

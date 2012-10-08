@@ -14,7 +14,8 @@ class App.MapView extends Backbone.View
       layers: "osm:google",
       format: 'image/png',
       transparent: true,
-      continuousWorld: true
+      continuousWorld: true,
+      unloadInvisibleTiles: false
     })
     @mapProvider.addLayerToMap(osm)
   addWatermark: ->
@@ -24,8 +25,15 @@ class App.MapView extends Backbone.View
       this._div.innerHTML = "<img src='/assets/dotgee.png'/>"
       return this._div;
     watermark.addTo(@mapProvider.map)
+  addGetFeatures: ->
+    features = L.control({position: "bottomleft"})
+    features.onAdd= ->
+      @_div = L.DomUtil.create('div', 'features-infos');
+      @_div
+    @mapProvider.map.addControl(features)
   render: ->
     @mapProvider.createMap(@el.id)
     @addBaseLayer()
     @addWatermark()
+    @addGetFeatures()
     @setInitialView()
