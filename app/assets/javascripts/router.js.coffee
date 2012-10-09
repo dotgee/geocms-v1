@@ -26,4 +26,5 @@ class App.Router extends Backbone.Router
     @catalog.fetch({
       success: (model, response) ->
         router.catalogView.render()
+        $(".thumbnails").masonry({item: "li"})
     })

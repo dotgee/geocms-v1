@@ -5,6 +5,7 @@ class App.CartView extends Backbone.View
   }
   toggleCatalog: (e) ->
     e.preventDefault()
+    $(".thumbnails").masonry("reload")
     @catalogView.toggle()
   open: ->
     @$el.css("left", "0")

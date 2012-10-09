@@ -2,7 +2,7 @@ class LayersController < ApplicationController
   # GET /layers
   # GET /layers.json
   def index
-    @layers = Layer.all
+    @layers = Layer.order(:title)
     respond_with(@layers)
   end
 

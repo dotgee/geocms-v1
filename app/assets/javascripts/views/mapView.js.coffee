@@ -29,6 +29,7 @@ class App.MapView extends Backbone.View
     features = L.control({position: "bottomleft"})
     features.onAdd= ->
       @_div = L.DomUtil.create('div', 'features-infos');
+      @_div.innerHTML = "<div class='table-results'></div>"
       @_div
     @mapProvider.map.addControl(features)
   render: ->

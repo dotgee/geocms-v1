@@ -105,6 +105,7 @@ body.fullscreen {
   &.active {
     visibility: visible;
     z-index: 1100;
+    background: rgba(248, 248, 248, .85);
     opacity: 1;
   }
   .close {
@@ -120,6 +121,9 @@ body.fullscreen {
   }
   .thumbnails {
     margin-left: 20px;
+  }
+  .thumbnail {
+    background-color: white;
   }
 }
 
@@ -139,12 +143,16 @@ body.fullscreen {
 
 .leaflet-bottom.leaflet-left {
   right: 0;
+  z-index: 999;
   .features-infos {
+    max-height: 150px;
+    overflow: scroll;
     width: 100%;
     height: auto;
     display: none;
     background: white;
     margin-left: 0;
     margin-bottom: 0;
+    border-top: 1px solid #E6E6E6;
   }
 }

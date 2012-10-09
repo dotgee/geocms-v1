@@ -69,6 +69,7 @@ App.MapProviders.Leaflet = ->
       type: "GET"
       success: (data) ->
         $featuresInfos = $(".features-infos")
-        $featuresInfos.html(data)
+        $(".table-results").html(data)
+        $featuresInfos.find("table").addClass("table")
         unless $featuresInfos.css("display") == "block"
           $featuresInfos.slideToggle()
