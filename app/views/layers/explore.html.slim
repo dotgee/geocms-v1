@@ -1,8 +1,9 @@
+- account = ActsAsTenant.current_tenant
 .navbar
   .navbar-inner
     .container
       ul.nav
-        li= link_to "GeoCMS - #{ActsAsTenant.current_tenant.name}", "#", :class => "brand"
+        li= link_to "GeoCMS - #{account.name}", "#", :class => "brand"
       ul.nav.pull-right
         li
           .btn-group.map-toolbar
@@ -29,7 +30,7 @@
       .page-header
         h3 Layers catalog
       ul.thumbnails
-  #map
+  #map data-longitude=account.longitude.value data-latitude=account.latitude.value data-zoom=account.zoom.value
 
 / = content_for :javascripts do
   / coffee:

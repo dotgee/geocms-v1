@@ -1,5 +1,5 @@
 Geocms2::Application.routes.draw do
-  
+
   constraints(lambda { |r| r.subdomain.present? && r.subdomain != 'www' }) do
     
     # Authentication
@@ -31,6 +31,12 @@ Geocms2::Application.routes.draw do
         end
       end
 
+      resources :preferences, :only => [:edit, :update] do
+        collection do
+          get "edit"
+          put "update"
+        end
+      end
     end
 
   end
