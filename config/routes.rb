@@ -13,7 +13,8 @@ Geocms2::Application.routes.draw do
     # Layers
     match "explore" => "layers#explore"
     resources :layers, :only => [:index, :show]
-
+    resources :categories, :only => [:index, :show]
+    
     root :to => "layers#explore"
 
     # Backend

@@ -37,6 +37,7 @@ gem "slim-rails"
 gem 'bootstrap-sass', '~> 2.1.0.0'
 gem "simple_form"
 gem "responders"
+gem 'turbo-sprockets-rails3'
 
 # Authentication
 gem "sorcery"

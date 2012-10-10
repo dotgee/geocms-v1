@@ -18,6 +18,8 @@
     .span4.well
       h4 Create an account now !
       = simple_form_for(@account) do |f|
+        = f.error_notification
+
         h5 Account
         = f.input :name
         = f.input :subdomain, :input_html => { :placeholder => ".geocms.com" }
