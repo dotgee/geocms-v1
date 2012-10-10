@@ -1,6 +1,8 @@
 require "application_responder"
 
 class ApplicationController < ActionController::Base
+  include UrlHelper
+  
   self.responder = ApplicationResponder
   respond_to :html, :json
   protect_from_forgery

@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20121009092320) do
     t.float    "maxx"
     t.float    "miny"
     t.float    "maxy"
+    t.integer  "account_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -1,0 +1,30 @@
+.container-fluid
+  .page-header
+    h1 Welcome to GeoCMS :)
+  .row-fluid
+    .span8
+      p Lorem ipsum occaecat cupidatat sit nostrud consectetur labore sunt laborum sit do fugiat aliquip dolore amet nisi pariatur eiusmod dolor dolore velit ad cupidatat in dolor officia sed tempor laboris in commodo occaecat dolore ex voluptate pariatur cillum. Lorem ipsum occaecat cupidatat sit nostrud consectetur labore sunt laborum sit do fugiat aliquip dolore amet nisi pariatur eiusmod dolor dolore velit ad cupidatat in dolor officia sed tempor laboris in commodo occaecat dolore ex voluptate pariatur cillum.
+      p Lorem ipsum occaecat cupidatat sit nostrud consectetur labore sunt laborum sit do fugiat aliquip dolore amet nisi pariatur eiusmod dolor dolore velit ad cupidatat in dolor officia sed tempor laboris in commodo occaecat dolore ex voluptate pariatur cillum.
+      p Lorem ipsum occaecat cupidatat sit nostrud consectetur labore sunt laborum sit do fugiat aliquip dolore amet nisi pariatur eiusmod dolor dolore velit ad cupidatat in dolor officia sed tempor laboris in commodo occaecat dolore ex voluptate pariatur cillum. Lorem ipsum occaecat cupidatat sit nostrud consectetur labore sunt laborum sit do fugiat aliquip dolore amet nisi pariatur eiusmod dolor dolore velit ad cupidatat in dolor officia sed tempor laboris in commodo occaecat dolore ex voluptate pariatur cillum.
+      p Lorem ipsum occaecat cupidatat sit nostrud consectetur labore sunt laborum sit do fugiat aliquip dolore amet nisi pariatur eiusmod dolor dolore velit ad cupidatat in dolor officia sed tempor laboris in commodo occaecat dolore ex voluptate pariatur cillum.
+      .row-fluid
+        .span4
+          = image_tag "screen1.png"
+        .span4
+          = image_tag "screen1.png"
+        .span4
+          = image_tag "screen1.png"
+
+    .span4.well
+      h4 Create an account now !
+      = simple_form_for(@account) do |f|
+        h5 Account
+        = f.input :name
+        = f.input :subdomain, :input_html => { :placeholder => ".geocms.com" }
+        h5 User
+        = f.simple_fields_for :users, instance_or_new(f.object.users, User) do |u|
+          = u.input :username
+          = u.input :email
+          = u.input :password
+          = u.input :password_confirmation
+        = f.submit :class => "btn btn-primary"

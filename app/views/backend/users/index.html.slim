@@ -1,0 +1,15 @@
+.page-header
+  h1 Listing Users
+
+table.table.table-striped
+  thead
+    tr
+      th Username
+      th Email
+      th Joined on
+  tbody
+    - @users.each do |u|
+      tr
+        td= u.username
+        td= u.email
+        td= u.created_at.strftime("%d/%m/%Y")

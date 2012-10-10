@@ -50,3 +50,6 @@ gem "rgeoserver"
 
 # To scope results by subdomain
 gem "acts_as_tenant"
+
+# Slugging 
+gem "friendly_id"

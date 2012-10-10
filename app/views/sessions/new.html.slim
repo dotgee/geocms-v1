@@ -1,16 +1,23 @@
-h1 Log in
+.container-fluid
+  .row-fluid
+    .span4.offset4.thumbnail
 
-= form_tag sessions_path do
+      = form_tag sessions_path, :class => "form-horizontal" do
+        legend Sign in
+        .control-group
+          = label_tag :username, nil, :class => "control-label"
+          .controls
+            = text_field_tag :username, params[:username]
 
-  = label_tag :username
-  = text_field_tag :username, params[:username]
+        .control-group
+          = label_tag :password, nil, :class => "control-label"
+          .controls
+            = password_field_tag :password
 
-  .field
-    = label_tag :password
-    = password_field_tag :password
-
-  .field
-    = check_box_tag :remember_me, 1, params[:remember_me]
-    = label_tag :remember_me
-    
-  = submit_tag "Log in"
+        .control-group
+          .controls
+            = label_tag :remember_me, nil, :class => "checkbox" do
+              |Remember me
+              = check_box_tag :remember_me, 1, params[:remember_me]
+          
+            = submit_tag "Sign in", :class => "btn"

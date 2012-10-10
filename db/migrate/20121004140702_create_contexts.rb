@@ -7,7 +7,7 @@ class CreateContexts < ActiveRecord::Migration
       t.float :maxx
       t.float :miny
       t.float :maxy
-
+      t.integer :account_id
       t.timestamps
     end
   end
