@@ -14,7 +14,7 @@ Geocms2::Application.routes.draw do
     match "explore" => "layers#explore"
     resources :layers, :only => [:index, :show]
     resources :categories, :only => [:index, :show]
-    
+    resources :contexts
     root :to => "layers#explore"
 
     # Backend
@@ -41,6 +41,7 @@ Geocms2::Application.routes.draw do
       end
 
       resources :users
+      resources :contexts
     end
 
   end

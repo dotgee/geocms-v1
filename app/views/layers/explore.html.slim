@@ -1,55 +1,49 @@
-- account = ActsAsTenant.current_tenant
 .navbar
   .navbar-inner
     .container
       ul.nav
-        li= link_to "GeoCMS - #{account.name}", "#", :class => "brand"
+        li= link_to "GeoCMS - #{@current_account.name}", "#", :class => "brand"
       ul.nav.pull-right
         li
-          .btn-group.map-toolbar
-            button.btn.cart.active data-toggle="button" title="Panier"
+          .m-btn-group.map-toolbar
+            button.m-btn.btn.icn-only.cart.active data-toggle="button" title="Panier"
               i.icon-shopping-cart
-            button.btn.disabled data-toggle="button" title="Légende"
+            button.m-btn.btn.icn-only.disabled data-toggle="button" title="Légende"
               i.icon-tint
-            button.btn.disabled title="Vue initiale"
+            button.m-btn.btn.icn-only.globe title="Vue initiale"
               i.icon-globe
-            button.btn.disabled title="Partager"
-              i.icon-share-alt
 .wrapper
   .hud
-    ul.nav.nav-list.head
-      li.nav-header
-        |Layers
-        .add-layer
-          = link_to "#", :class => "layer-button" do
-            i.icon-plus.icon-white
-            i.icon-layer
-    ul.nav.nav-list.layer-list
-    .catalog.popup
-      button class="close" &times;
-      .page-header
-        h3 Layers catalog
-      ul.thumbnails
-  #map data-longitude=account.longitude.value data-latitude=account.latitude.value data-zoom=account.zoom.value
-
-/ = content_for :javascripts do
-  / coffee:
-  /   mapProvider = new App.MapProviders.Leaflet()
-  /   mapView = new App.MapView(
-  /     mapProvider: mapProvider
-  /   )
-  /   catalog = new App.CatalogCollection()
-  /   cart = new App.CartCollection()
-  /   catalogView = new App.CatalogView({
-  /     model: catalog
-  /     mapProvider: mapProvider
-  /   })
-  /   cartView = new App.CartView({
-  /     mapProvider: mapProvider
-  /     catalogView: catalogView
-  /     model: cart
-  /   })
-  /   catalog.fetch({
-  /     success: (model, response) ->
-  /       catalogView.render()
-  /   })
+    .map-controls
+      .m-btn-group
+        button.save.btn.m-btn.blue.disabled disabled="disabled" SAVE
+        button.share.btn.m-btn SHARE
+    ul.nav.nav-tabs.row-fluid id="hud-tab"
+      li.span4.active
+        = link_to "#layers", "data-toggle" => "tab" do
+          |Layers
+      li.span4
+        = link_to "#infos", "data-toggle" => "tab" do
+          |Infos
+      li.span4
+        = link_to "#other", "data-toggle" => "tab" do
+          |Other
+    .tab-content
+      .tab-pane id="infos"
+        a.m-btn.mini.blue.from-map From Map
+      .tab-pane id="other"
+      .tab-pane.active id="layers"
+        ul.nav.nav-list.head
+          li.nav-header
+            |Layers
+            .add-layer
+              = link_to "#", :class => "m-btn mini blue icn-only" do
+                i.icon-plus.icon-white
+                i.icon-layer
+        ul.nav.nav-list.layer-list
+        #catalog.popup
+          button class="close" &times;
+          .page-header
+            h3 Layers catalog
+          ul.thumbnails
+  #map data-longitude=@current_account.longitude.value data-latitude=@current_account.latitude.value data-zoom=@current_account.zoom.value

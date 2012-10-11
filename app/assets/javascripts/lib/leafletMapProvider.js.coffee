@@ -1,6 +1,4 @@
-# App or= {}
-
-App.MapProviders or= {}
+window.App.MapProviders or= {}
 map = undefined
 Proj4js.defs["EPSG:2154"] = '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs'
 
@@ -19,8 +17,8 @@ App.MapProviders.Leaflet = ->
                         '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
                         transformation)
     crs.scale = @scale
-    #
     @map = new L.Map(elementId, {crs: crs, continuousWorld: true})
+    @map.attributionControl.addAttribution("Developed by <a href='http://www.dotgee.fr' target='_blank'>Dotgee</a>")
     map = @map
   addLayerToMap: (layer) ->
     @map.addLayer(layer)

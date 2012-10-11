@@ -1,15 +1,19 @@
 class App.MapToolbarView extends Backbone.View
   el: ".map-toolbar"
   events: {
-    "click .cart" : "toggleCart"
+    "click .cart" : "toggleHud"
+    "click .globe": "setInitialView"
   }
   initialize: ->
     @mapProvider = @options.mapProvider
-    @cartView = @options.cartView
-  toggleCart: (e) ->
+    @hudView = @options.hudView
+    @mapView  = @options.mapView
+  toggleHud: (e) ->
     $self = $(e.currentTarget)
     if $self.hasClass("active")
-      @cartView.close()
+      @hudView.close()
     else 
-      @cartView.open()
+      @hudView.open()
     @mapProvider.invalidateSize()
+  setInitialView: (e) ->
+    @mapView.setInitialView()

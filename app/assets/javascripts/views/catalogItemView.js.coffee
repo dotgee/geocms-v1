@@ -10,11 +10,11 @@ class App.CatalogItemView extends Backbone.View
     "click .catalog-layer": "addToMap"
   }
   initialize: ->
-    @mapProvider = this.options.mapProvider
-    @router = @options.router
+    @parent = @options.parentView
+    @cartCollection   = @parent.parent.cartCollection
   addToMap: (e) ->
     e.preventDefault()
-    @router.cart.add(@model)
+    @cartCollection.add(@model)
   render: ->
     attributes = @model.toJSON()
     this.$el.html(@template(attributes))

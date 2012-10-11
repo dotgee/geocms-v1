@@ -15,15 +15,18 @@ class App.MapView extends Backbone.View
       format: 'image/png',
       transparent: true,
       continuousWorld: true,
-      unloadInvisibleTiles: false
+      unloadInvisibleTiles: false,
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="http://geobretagne.fr/accueil/">GeoBretagne</a>'
     })
     @mapProvider.addLayerToMap(osm)
   addWatermark: ->
     watermark = L.control({position: "bottomright"})
     watermark.onAdd =  (map) ->
-      this._div = L.DomUtil.create('div', 'watermark');
-      this._div.innerHTML = "<img src='/assets/dotgee.png'/>"
-      return this._div;
+      @_div = L.DomUtil.create('div', 'watermark');
+      @_div.innerHTML = "<img src='/assets/dotgee.png'/>"
+      @_div;
     watermark.addTo(@mapProvider.map)
   addGetFeatures: ->
     features = L.control({position: "bottomleft"})
@@ -32,9 +35,18 @@ class App.MapView extends Backbone.View
       @_div.innerHTML = "<div class='table-results'></div>"
       @_div
     @mapProvider.map.addControl(features)
+  addLegend: ->
+    @legend = L.control({position: "bottomright"})
+    @legend.onAdd = (map) ->
+      @_div = L.DomUtil.create("div", "legend")
+      @_div
+    @legend.onUpdate = (layer) ->
+      $(@_div).append("<h5>"+layer.attributes.name+"</h5>")
+    @mapProvider.map.addControl(@legend)
   render: ->
     @mapProvider.createMap(@el.id)
     @addBaseLayer()
     @addWatermark()
+    @addLegend()
     @addGetFeatures()
     @setInitialView()

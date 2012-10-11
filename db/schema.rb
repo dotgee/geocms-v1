@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009092320) do
+ActiveRecord::Schema.define(:version => 20121011124138) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -33,16 +33,27 @@ ActiveRecord::Schema.define(:version => 20121009092320) do
   add_index "categories", ["ancestry"], :name => "index_categories_on_ancestry"
 
   create_table "contexts", :force => true do |t|
-    t.string   "name"
-    t.integer  "zoom"
+    t.string   "name",        :default => "Untitled map"
+    t.text     "description"
+    t.boolean  "public",      :default => false
+    t.integer  "zoom",        :default => 10
     t.float    "minx"
     t.float    "maxx"
     t.float    "miny"
     t.float    "maxy"
-    t.integer  "account_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.float    "center_lng",  :default => -1.676235
+    t.float    "center_lat",  :default => 48.118454
+    t.integer  "account_id",                              :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
+
+  create_table "contexts_layers", :id => false, :force => true do |t|
+    t.integer "context_id"
+    t.integer "layer_id"
+  end
+
+  add_index "contexts_layers", ["context_id", "layer_id"], :name => "index_contexts_layers_on_context_id_and_layer_id"
 
   create_table "data_sources", :force => true do |t|
     t.string   "name"

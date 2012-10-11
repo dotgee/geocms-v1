@@ -11,7 +11,7 @@ body.fullscreen {
 
 .wrapper {
   position: absolute;
-  top: 40px;
+  top: 50px;
   left: 0px;
   right: 0px;
   bottom: 0px;
@@ -53,11 +53,52 @@ body.fullscreen {
     position: relative;
   }
   li.nav-header {
-    height: 30px;
+    height: 40px;
   }
   .layer-list {
     a {
       @include unstyled-link;
+    }
+  }
+  .map-controls {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .nav-tabs {
+    li {
+      margin-left: 0;
+      width: 33.3333333333%;
+      a {
+        border-right: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+        @include border-radius(0px);
+        margin-right: 0;
+        text-align: center;
+        @include unstyled-link;
+      }
+    }
+  }
+  .tab-content {
+    position: absolute;
+    top: 110px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: scroll;
+  }
+  #infos {
+    form {
+      margin: 20px 10px;
+    }
+    label {
+      width: auto;
+    }
+    .controls {
+      margin-left: 100px;
+    }
+    .from-map {
+      margin-left: 110px;
     }
   }
 }
@@ -71,12 +112,12 @@ body.fullscreen {
     height: 20px;
     background: #B4C2CC;
     @include border-radius(3px);
+    [class^="icon-"] {
+      margin-top: 2px;
+    }
     .icon-layer {
-      background: url("layers.png") no-repeat;
-      width: 12px;
-      height: 10px;
-      margin-top: 3px;
       background-position: bottom;
+      margin-top: 4px;
     }
     &:hover {
       background: #3C4E5A;
@@ -84,17 +125,28 @@ body.fullscreen {
   }
 }
 
+.icon-layer {
+  background: url("layers.png") no-repeat;
+  width: 12px;
+  height: 10px;
+  margin-top: 3px;
+  background-position: bottom;
+  &:hover {
+    background-position: top;
+  }
+}
+
 .leaflet-top, .leaflet-bottom {
   z-index: 800;
 }
 
-.catalog {
+#catalog {
   background: white;
   position: fixed;
   bottom: 0px;
   left: 33.3333%;
   right: 0px;
-  top: 40px;
+  top: 50px;
   overflow-y: scroll;
   visibility: hidden;
   opacity: 0;
@@ -126,19 +178,8 @@ body.fullscreen {
     background-color: white;
   }
 }
-
-.navbar .nav > li {
-  & > .share {
-    margin: 10px 0 0 6px;
-    padding: 3px 8px;
-    background-color: #131723;
-    @include border-radius(10px);
-    font: bold 11px Arial;
-    &:hover {
-      background-color: white;
-      color: #131313;
-    }
-  }
+.navbar-inner {
+  min-height: 50px;
 }
 
 .leaflet-bottom.leaflet-left {

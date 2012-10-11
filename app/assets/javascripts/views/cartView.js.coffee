@@ -1,5 +1,4 @@
 class App.CartView extends Backbone.View
-  el: ".hud"
   events: {
     "click .add-layer": "toggleCatalog"
   }
@@ -7,15 +6,11 @@ class App.CartView extends Backbone.View
     e.preventDefault()
     $(".thumbnails").masonry("reload")
     @catalogView.toggle()
-  open: ->
-    @$el.css("left", "0")
-    $("#map").css("left", "33.33333333%")
-  close: ->
-    @$el.css("left", "-33.33333333%")
-    $("#map").css("left", 0)
   initialize: ->
-    @mapProvider = @options.mapProvider
-    @catalogView = @options.catalogView
+    @parent       = @options.parentView
+    @mapProvider  = @parent.mapProvider
+    @catalogView  = @parent.catalog
+    # Listeners
     @model.on('add', @addOne, this)
     @model.on('removeFromMap', @removeOne, this)
   addOne: (layer) ->
@@ -23,8 +18,10 @@ class App.CartView extends Backbone.View
     cartViewItem = new App.CartItemView({model: layer, mapProvider: @mapProvider})
     @$el.find(".layer-list").append(cartViewItem.render().el)
     @mapProvider.addLayerToMap(layer.attributes.leaflet)
+    @parent.switchControls(true)
   removeOne: (layer) ->
     @model.remove(layer)
+    @parent.switchControls(true)
   render: ->
     _.each @model.models, ((layer) ->
       $(@el).find(".layer-list").html new App.CartItemView({model: layer, mapProvider: @mapProvider}).render().el

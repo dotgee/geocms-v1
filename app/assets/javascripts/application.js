@@ -12,6 +12,6 @@
 //= require_tree ./views
 //= require_tree ./templates
 
-$(".navbar-inner").find(".btn").tooltip({
+$(".navbar-inner").find(".m-btn").tooltip({
   placement: "bottom"
 })
