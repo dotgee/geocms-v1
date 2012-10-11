@@ -16,8 +16,11 @@
   .hud
     .map-controls
       .m-btn-group
-        button.save.btn.m-btn.blue.disabled disabled="disabled" SAVE
-        button.share.btn.m-btn SHARE
+        button.save.m-btn.blue.disabled disabled="disabled"
+          |SAVE
+        button.share.m-btn
+          |SHARE 
+          i.m-icon-swapright
     ul.nav.nav-tabs.row-fluid id="hud-tab"
       li.span4.active
         = link_to "#layers", "data-toggle" => "tab" do
@@ -47,3 +50,12 @@
             h3 Layers catalog
           ul.thumbnails
   #map data-longitude=@current_account.longitude.value data-latitude=@current_account.latitude.value data-zoom=@current_account.zoom.value
+  .modal.hide.fade#share-modal
+    .modal-header
+      button.close aria-hidden="true" data-dismiss="modal" type="button"
+      h3 Share your map
+    .modal-body
+      pre
+        |iframe ... iframe
+      pre
+        |http://bkaobkaobka

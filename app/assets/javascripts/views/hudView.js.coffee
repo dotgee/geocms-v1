@@ -2,6 +2,7 @@ class App.HudView extends Backbone.View
   el: ".hud",
   events: {
     "click .save": "saveMap"
+    "click .share": "openSharePopup"
   }
   initialize: ->
     @cartCollection     = @options.cartCollection
@@ -34,4 +35,6 @@ class App.HudView extends Backbone.View
       @$el.find(".share").attr("disabled", "disabled").addClass("disabled")   
     else
       @$el.find(".share").removeAttr("disabled").removeClass("disabled")
-      @$el.find(".save").attr("disabled", "disabled").addClass("disabled")   
+      @$el.find(".save").attr("disabled", "disabled").addClass("disabled")
+  openSharePopup: (e) ->
+    $("#share-modal").modal()
