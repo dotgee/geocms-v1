@@ -15,6 +15,7 @@ Geocms2::Application.routes.draw do
     resources :layers, :only => [:index, :show]
     resources :categories, :only => [:index, :show]
     resources :contexts
+    match "/:id", :to => "contexts#show"
     root :to => "layers#explore"
 
     # Backend

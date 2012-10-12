@@ -25,7 +25,7 @@ body.fullscreen {
   background: white;
   position: absolute;
   top: 0px;
-  left: 33.3333333%;
+  left: 25%;
   right: 0px;
   bottom: 0px;
   width: auto;
@@ -37,13 +37,13 @@ body.fullscreen {
 }
 
 .hud {
-  z-index: 1000;
   min-width: 350px;
+  z-index: 1000;
   position: absolute;
   left: 0%;
   top: 0px;
   bottom: 0px;
-  width: 33.3333%;
+  width: 25%;
   background: #F8F8F8;
   border-right: 1px solid #DDD;
   transition: left 300ms;
@@ -152,7 +152,7 @@ body.fullscreen {
   background: white;
   position: fixed;
   bottom: 0px;
-  left: 33.3333%;
+  left: 25%;
   right: 0px;
   top: 50px;
   overflow-y: scroll;

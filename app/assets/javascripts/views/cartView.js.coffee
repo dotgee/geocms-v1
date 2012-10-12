@@ -4,6 +4,7 @@ class App.CartView extends Backbone.View
   }
   toggleCatalog: (e) ->
     e.preventDefault()
+    @catalogView.$el.css("left", @parent.$el.width())
     $(".thumbnails").masonry("reload")
     @catalogView.toggle()
   initialize: ->
@@ -11,8 +12,8 @@ class App.CartView extends Backbone.View
     @mapProvider  = @parent.mapProvider
     @catalogView  = @parent.catalog
     # Listeners
-    @model.on('add', @addOne, this)
-    @model.on('removeFromMap', @removeOne, this)
+    @collection.on('add', @addOne, this)
+    @collection.on('removeFromMap', @removeOne, this)
   addOne: (layer) ->
     layer.addToMap()
     cartViewItem = new App.CartItemView({model: layer, mapProvider: @mapProvider})
@@ -20,10 +21,7 @@ class App.CartView extends Backbone.View
     @mapProvider.addLayerToMap(layer.get("leaflet"))
     @parent.switchControls(true)
   removeOne: (layer) ->
-    @model.remove(layer)
+    @collection.remove(layer)
     @parent.switchControls(true)
   render: ->
-    _.each @model.models, ((layer) ->
-      $(@el).find(".layer-list").html new App.CartItemView({model: layer, mapProvider: @mapProvider}).render().el
-    ), this
-    return this
+    @collection.forEach(@addOne, this);

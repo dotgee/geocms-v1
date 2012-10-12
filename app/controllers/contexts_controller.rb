@@ -5,6 +5,13 @@ class ContextsController < ApplicationController
     respond_with(@context)
   end
 
+  def show
+    @context = Context.find(params[:id])
+    respond_with(@context) do |format|
+      format.html { render "layers/explore", :layout => "explore" }
+    end
+  end
+
   def create
     @context = Context.new(params[:context])
     @context.save

@@ -1,28 +1,34 @@
 class App.Router extends Backbone.Router
   routes:
     "" : "index"
-  index: ->
+    ":id" : "show"
+  initialize: ->
     @mapProvider = new App.MapProviders.Leaflet()
-    @mapView = new App.MapView(
-      mapProvider: @mapProvider
-    )
     @catalogCollection = new App.CatalogCollection()
+    @catalogCollection.fetch()
     @cartCollection = new App.CartCollection()
+  index: ->
+    @context = new App.Context()
     @hudView = new App.HudView({
+      model : @context
       cartCollection: @cartCollection
       catalogCollection: @catalogCollection
       mapProvider: @mapProvider
+      router: this
     })
-    @mapToolbarView = new App.MapToolbarView({
-      mapProvider: @mapProvider
-      hudView: @hudView
-      mapView: @mapView
-    })
-
-    # quick and dirty (?)
-    hudView = @hudView
-    @catalogCollection.fetch({
+  show: (id) ->
+    @context = new App.Context({id: id})
+    # Could probably be improved
+    that = this
+    @context.fetch
       success: (model, response) ->
-        hudView.catalog.render()
-        $(".thumbnails").masonry({item: "li"})
-    })
+        that.hudView = new App.HudView({
+          model: model
+          cartCollection: that.cartCollection
+          catalogCollection: that.catalogCollection
+          mapProvider: that.mapProvider
+          router: that
+        })
+        _.each response.layers, (l) ->
+          layer = new App.Layer(l.layer)
+          that.cartCollection.add(layer)

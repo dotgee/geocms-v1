@@ -1,4 +1,5 @@
 class App.Layer extends Backbone.Model
+  urlRoot: "/layers"
   defaults: {
     leaflet: false
     onMap: false
@@ -15,7 +16,7 @@ class App.Layer extends Backbone.Model
     @set({onMap : false})
     @trigger('removeFromMap', this)
   addToMap: ->
+    @toLeaflet()
     @set({onMap : true})
     @trigger('addOnMap')
   initialize: ->
-    @toLeaflet()

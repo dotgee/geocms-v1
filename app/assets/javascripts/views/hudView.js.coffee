@@ -1,35 +1,44 @@
 class App.HudView extends Backbone.View
   el: ".hud",
   events: {
-    "click .save": "saveMap"
+    "click .save": "saveContext"
     "click .share": "openSharePopup"
   }
   initialize: ->
+    @model.on("afterSave", @afterSave, this)
     @cartCollection     = @options.cartCollection
     @catalogCollection  = @options.catalogCollection
     @mapProvider        = @options.mapProvider
-    @context            = new App.Context()
-    @form               = new Backbone.Form({ model: @context, idPrefix: "context_" })
+    @router             = @options.router
+    @form               = new Backbone.Form({ model: @model, idPrefix: "context_" })
     @render()
   render: ->
-    @catalog = new App.CatalogView({ el: this.$("#catalog"), model: @catalogCollection, parentView: this })
-    @cart = new App.CartView({ el: this.$("#layers"), model: @cartCollection, parentView: this })
+    @mapView = new App.MapView({mapProvider: @mapProvider, parentView: this})
+    @catalog = new App.CatalogView({ el: this.$("#catalog"), collection: @catalogCollection, parentView: this })
+    @cart = new App.CartView({ el: this.$("#layers"), collection: @cartCollection, parentView: this })
     @infos = new App.InfosView({ el: this.$("#infos"), parentView: this })
+    @toolbar = new App.MapToolbarView({ parentView: this })
   open: ->
     @$el.css("left", "0")
-    $("#map").css("left", "33.33333333%")
+    $("#map").css("left", @$el.width())
   close: ->
-    @$el.css("left", "-33.33333333%")
+    @$el.css("left", -@$el.width())
     $("#map").css("left", 0)
-  saveMap: (e) ->
+  saveContext: (e) ->
+    e.preventDefault()
     errors = @form.commit()
     unless errors
       layer_ids = _.map(@cartCollection.models, (layer) ->
         layer.get("id")
       )
-      @context.set({layer_ids: layer_ids})
-      @context.save()
-      @switchControls(false)
+      @model.save {layer_ids: layer_ids},
+        success: (model, response) ->
+          if model.isNew()
+            model.set({slug: response.slug})
+          model.trigger("afterSave")
+  afterSave: ->
+    @switchControls(false)
+    @router.navigate @model.get("slug")
   switchControls: (unsaved) ->
     if unsaved
       @$el.find(".save").removeAttr("disabled").removeClass("disabled")

@@ -1,14 +1,17 @@
 class App.MapView extends Backbone.View
   el: "div#map",
   initialize: ->
-    @mapProvider = this.options.mapProvider
-    @initialCenter = this.options.initialCenter || { latitude: @$el.data("latitude"), longitude: @$el.data("longitude") }
+    @mapProvider = @options.mapProvider
+    @parent = @options.parentView
+    unless @parent.model.isNew()
+      initialCenter = @parent.model.getInitialCenter()
+    @initialCenter = initialCenter || { latitude: @$el.data("latitude"), longitude: @$el.data("longitude"), zoom: @$el.data("zoom") }
     @render()
   setInitialView: ->
     @mapProvider.setViewForMap
-      latitude: @initialCenter.latitude,
+      latitude:  @initialCenter.latitude,
       longitude: @initialCenter.longitude
-      zoomLevel: @$el.data("zoom")
+      zoomLevel: @initialCenter.zoom
   addBaseLayer: ->
     osm = L.tileLayer.wms("http://osm.geobretagne.fr/gwc01/service/wms", {
       layers: "osm:google",

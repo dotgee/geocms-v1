@@ -8,3 +8,9 @@ class App.Context extends Backbone.Model
     center_lat:     {title: "Latitude", type: 'Text', editorClass: "m-wrap", validators: ['required']}
     zoom:           {type: 'Text', editorClass: "m-wrap", validators: ['required']}
   }
+  getInitialCenter: ->
+    {
+      latitude: @get("center_lat")
+      longitude: @get("center_lng")
+      zoom: @get("zoom")
+    }

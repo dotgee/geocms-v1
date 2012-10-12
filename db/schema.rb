@@ -37,16 +37,15 @@ ActiveRecord::Schema.define(:version => 20121011124138) do
     t.text     "description"
     t.boolean  "public",      :default => false
     t.integer  "zoom",        :default => 10
-    t.float    "minx"
-    t.float    "maxx"
-    t.float    "miny"
-    t.float    "maxy"
+    t.string   "slug"
     t.float    "center_lng",  :default => -1.676235
     t.float    "center_lat",  :default => 48.118454
     t.integer  "account_id",                              :null => false
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
   end
+
+  add_index "contexts", ["slug"], :name => "index_contexts_on_slug", :unique => true
 
   create_table "contexts_layers", :id => false, :force => true do |t|
     t.integer "context_id"
