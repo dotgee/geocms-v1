@@ -41,7 +41,7 @@ class App.MapView extends Backbone.View
       @_div = L.DomUtil.create("div", "legend")
       @_div
     @legend.onUpdate = (layer) ->
-      $(@_div).append("<h5>"+layer.attributes.name+"</h5>")
+      $(@_div).append("<h5>"+layer.get("name")+"</h5>")
     @mapProvider.map.addControl(@legend)
   render: ->
     @mapProvider.createMap(@el.id)

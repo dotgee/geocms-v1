@@ -2,10 +2,10 @@ class App.CartItemView extends Backbone.View
   tagName: "li"
   template: _.template("<a href='#'>
             <%= title %>
-            <div class='btn-group'>
-              <button class='btn btn-mini query' data-toggle='button'><i class='icon-info-sign'></i>Interrogate</button>
-              <button class='btn btn-mini disabled'><i class='icon-download-alt'></i>Save</button>
-              <button class='btn btn-mini remove'><i class='icon-remove'></i>Remove</button>
+            <div class='m-btn-group control-buttons'>
+              <a class='m-btn mini query' data-toggle='button'><i class='icon-info-sign'></i>Interrogate</a>
+              <a class='m-btn mini disabled'><i class='icon-download-alt'></i>Save</a>
+              <a class='m-btn mini remove'><i class='icon-remove'></i>Remove</a>
             </div>
             </a>")
   events: {
@@ -14,7 +14,7 @@ class App.CartItemView extends Backbone.View
   }
   removeLayer: ->
     @model.removeFromMap()
-    @mapProvider.removeLayerFromMap(@model.attributes.leaflet)
+    @mapProvider.removeLayerFromMap(@model.get("leaflet"))
     @$el.remove()
   toggleClicListener: (e) ->
     $self = $(e.currentTarget)

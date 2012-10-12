@@ -17,7 +17,7 @@ class App.CartView extends Backbone.View
     layer.addToMap()
     cartViewItem = new App.CartItemView({model: layer, mapProvider: @mapProvider})
     @$el.find(".layer-list").append(cartViewItem.render().el)
-    @mapProvider.addLayerToMap(layer.attributes.leaflet)
+    @mapProvider.addLayerToMap(layer.get("leaflet"))
     @parent.switchControls(true)
   removeOne: (layer) ->
     @model.remove(layer)

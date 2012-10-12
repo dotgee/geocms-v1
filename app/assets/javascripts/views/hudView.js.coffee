@@ -22,13 +22,14 @@ class App.HudView extends Backbone.View
     @$el.css("left", "-33.33333333%")
     $("#map").css("left", 0)
   saveMap: (e) ->
-    @form.commit()
-    layer_ids = 
-    @context.attributes.layer_ids = _.map(@cartCollection.models, (layer) ->
-      layer.attributes.id
-    )
-    @context.save()
-    @switchControls(false)
+    errors = @form.commit()
+    unless errors
+      layer_ids = _.map(@cartCollection.models, (layer) ->
+        layer.get("id")
+      )
+      @context.set({layer_ids: layer_ids})
+      @context.save()
+      @switchControls(false)
   switchControls: (unsaved) ->
     if unsaved
       @$el.find(".save").removeAttr("disabled").removeClass("disabled")

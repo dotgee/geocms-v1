@@ -38,6 +38,7 @@ body.fullscreen {
 
 .hud {
   z-index: 1000;
+  min-width: 350px;
   position: absolute;
   left: 0%;
   top: 0px;
@@ -99,6 +100,13 @@ body.fullscreen {
     }
     .from-map {
       margin-left: 110px;
+    }
+  }
+  #layers {
+    .control-buttons {
+      a {
+        cursor: pointer;
+      }
     }
   }
 }

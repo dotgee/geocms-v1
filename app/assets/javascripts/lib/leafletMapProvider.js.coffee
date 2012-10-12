@@ -45,6 +45,7 @@ App.MapProviders.Leaflet = ->
   getFeatureWMS: (e) ->
     # EPSG:2154
     bounds = map.getBounds()
+    console.log(this)
     ne = new Proj4js.Point(bounds._northEast.lng, bounds._northEast.lat)
     Proj4js.transform(source, dest, ne)
     sw = new Proj4js.Point(bounds._southWest.lng, bounds._southWest.lat)

@@ -6,43 +6,40 @@
       ul.nav.pull-right
         li
           .m-btn-group.map-toolbar
-            button.m-btn.btn.icn-only.cart.active data-toggle="button" title="Panier"
+            button.m-btn.icn-only.cart.active data-toggle="button" title="Panier"
               i.icon-shopping-cart
-            button.m-btn.btn.icn-only.disabled data-toggle="button" title="Légende"
+            button.m-btn.icn-only.disabled data-toggle="button" title="Légende"
               i.icon-tint
-            button.m-btn.btn.icn-only.globe title="Vue initiale"
+            button.m-btn.icn-only.globe title="Vue initiale"
               i.icon-globe
 .wrapper
   .hud
     .map-controls
       .m-btn-group
-        button.save.m-btn.blue.disabled disabled="disabled"
+        button.save.m-btn.blue
           |SAVE
-        button.share.m-btn
+        button.share.m-btn.disabled disabled="disabled"
           |SHARE 
           i.m-icon-swapright
     ul.nav.nav-tabs.row-fluid id="hud-tab"
       li.span4.active
-        = link_to "#layers", "data-toggle" => "tab" do
-          |Layers
-      li.span4
         = link_to "#infos", "data-toggle" => "tab" do
           |Infos
+      li.span4
+        = link_to "#layers", "data-toggle" => "tab" do
+          |Layers
       li.span4
         = link_to "#other", "data-toggle" => "tab" do
           |Other
     .tab-content
-      .tab-pane id="infos"
+      .tab-pane.active id="infos"
         a.m-btn.mini.blue.from-map From Map
       .tab-pane id="other"
-      .tab-pane.active id="layers"
-        ul.nav.nav-list.head
-          li.nav-header
-            |Layers
-            .add-layer
-              = link_to "#", :class => "m-btn mini blue icn-only" do
-                i.icon-plus.icon-white
-                i.icon-layer
+      .tab-pane id="layers"
+        .add-layer
+          = link_to "#", :class => "m-btn mini blue icn-only" do
+            i.icon-plus.icon-white
+            i.icon-layer
         ul.nav.nav-list.layer-list
         #catalog.popup
           button class="close" &times;

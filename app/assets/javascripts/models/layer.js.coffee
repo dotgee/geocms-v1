@@ -4,17 +4,18 @@ class App.Layer extends Backbone.Model
     onMap: false
   }
   toLeaflet: ->
-    @attributes.leaflet =  L.tileLayer.wms(@attributes.data_source.wms, {
-      layers: @attributes.name,
+    tileLayer = L.tileLayer.wms(@get("data_source").wms, {
+      layers: @get("name"),
       format: 'image/png',
       transparent: true,
       continuousWorld: true
     })
+    @set({leaflet : tileLayer})
   removeFromMap: ->
-    @attributes.onMap = false
+    @set({onMap : false})
     @trigger('removeFromMap', this)
   addToMap: ->
-    @attributes.onMap = true
+    @set({onMap : true})
     @trigger('addOnMap')
   initialize: ->
     @toLeaflet()
