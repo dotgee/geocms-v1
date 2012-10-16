@@ -11,17 +11,30 @@ class App.CartView extends Backbone.View
     @parent       = @options.parentView
     @mapProvider  = @parent.mapProvider
     @catalogView  = @parent.catalog
+    @cartViewItems = []
     # Listeners
     @collection.on('add', @addOne, this)
     @collection.on('removeFromMap', @removeOne, this)
+    @collection.on('reindex', @reindex, this)
+
+    that = this
+    $(".layer-list").sortable(
+      handler: ".grippy"
+      update: ->
+        that.collection.trigger("reindex")
+    )
   addOne: (layer) ->
     layer.addToMap()
     cartViewItem = new App.CartItemView({model: layer, mapProvider: @mapProvider})
     @$el.find(".layer-list").append(cartViewItem.render().el)
     @mapProvider.addLayerToMap(layer.get("leaflet"))
     @parent.switchControls(true)
+    @cartViewItems.push(cartViewItem)
   removeOne: (layer) ->
     @collection.remove(layer)
     @parent.switchControls(true)
+  reindex: ->
+    _.each @cartViewItems, (view) ->
+      view.model.get("leaflet").setZIndex(1000 - view.$el.index())
   render: ->
-    @collection.forEach(@addOne, this);
+    @collection.forEach(@addOne, this)

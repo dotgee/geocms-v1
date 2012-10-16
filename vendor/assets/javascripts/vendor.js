@@ -5,3 +5,5 @@
 //= require ./masonry.min
 //= require ./proj4js-combined
 //= require ./proj4leaflet
+//= require ./jquery.sortable.min
+//= require ./jquery.zclip

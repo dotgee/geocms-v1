@@ -1,6 +1,6 @@
 object @context
-attributes :name, :description, :public, :zoom, :center_lng, :center_lat, :slug
+attributes :name, :description, :public, :zoom, :center_lng, :center_lat, :uuid
 
-child :layers do
+child(:layers, :unless => lambda { |m| m.layers.empty? }) do
  extends "layers/index"
 end

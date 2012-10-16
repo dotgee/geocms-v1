@@ -10,14 +10,7 @@ Geocms2::Application.routes.draw do
     resources :users
     resources :sessions
 
-    # Layers
-    match "explore" => "layers#explore"
-    resources :layers, :only => [:index, :show]
-    resources :categories, :only => [:index, :show]
-    resources :contexts
-    match "/:id", :to => "contexts#show"
-    root :to => "layers#explore"
-
+    
     # Backend
     namespace :backend do
 
@@ -43,10 +36,22 @@ Geocms2::Application.routes.draw do
 
       resources :users
       resources :contexts
+
     end
 
+    # Layers
+    resources :layers, :only => [:index, :show]
+    resources :categories, :only => [:index, :show]
+    resources :contexts
+
+    # Explore
+    match "/:id/share", :to => "contexts#share"
+    match "/:id", :to => "contexts#show"
+
+    root :to => "layers#explore"
   end
 
   root :to => "home#index"
   resources :accounts, :only => [:new, :create]
+
 end

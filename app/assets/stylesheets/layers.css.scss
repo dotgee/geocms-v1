@@ -25,7 +25,7 @@ body.fullscreen {
   background: white;
   position: absolute;
   top: 0px;
-  left: 25%;
+  left: 0;
   right: 0px;
   bottom: 0px;
   width: auto;
@@ -34,16 +34,24 @@ body.fullscreen {
   transition: left 300ms;
   -webkit-transition: left 300ms;
   -moz-transition: left 300ms;
+  .leaflet-control-zoom {
+    left: 350px;
+  }
+  &.no-hud {
+    .leaflet-control-zoom {
+      left: 10px;
+    }
+  }
 }
 
 .hud {
-  min-width: 350px;
+  color: #3C4E5A;
   z-index: 1000;
   position: absolute;
-  left: 0%;
+  left: 0;
   top: 0px;
   bottom: 0px;
-  width: 25%;
+  width: 350px;
   background: #F8F8F8;
   border-right: 1px solid #DDD;
   transition: left 300ms;
@@ -56,11 +64,7 @@ body.fullscreen {
   li.nav-header {
     height: 40px;
   }
-  .layer-list {
-    a {
-      @include unstyled-link;
-    }
-  }
+
   .map-controls {
     text-align: center;
     margin-top: 10px;
@@ -69,7 +73,7 @@ body.fullscreen {
   .nav-tabs {
     li {
       margin-left: 0;
-      width: 33.3333333333%;
+      width: 33.333333333%;
       a {
         border-right: 1px solid #ddd;
         border-top: 1px solid #ddd;
@@ -82,7 +86,7 @@ body.fullscreen {
   }
   .tab-content {
     position: absolute;
-    top: 110px;
+    top: 105px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -103,18 +107,67 @@ body.fullscreen {
     }
   }
   #layers {
+    a {
+      @include unstyled-link;
+    }
+    label {
+      margin-bottom: 2px;
+    }
+    .layer-visibility {
+      margin-top: -1px;
+      margin-right: 5px;
+    }
+    .grippy {
+      display: inline-block;
+      background: url("grippy.png") repeat-y right;
+      height: 45px;
+      width: 10px;
+      vertical-align: top;
+      margin-right: 15px;
+      cursor: move;
+    }
+    .right-infos {
+      display: inline-block;
+    }
     .control-buttons {
       a {
         cursor: pointer;
+        margin-top: 0;
+        padding: 4px 0px;
+      }
+    }
+    .layer-list {
+      padding: {
+        left: 0;
+        right: 0;
+      }
+      li {
+        padding: {
+          top: 5px;
+          bottom: 5px;
+          left: 2px;
+        }
+        border-bottom: 1px solid #eee;
+        a:hover {
+          background: none;
+        }
+        &.sortable-placeholder {
+          border: 1px dashed #CCC;
+          background: none;
+          height: 45px;
+        }
       }
     }
   }
 }
 
 .add-layer {
-  position: absolute;
-  right: 10px;
-  top: 10px;
+  background: white;
+  height: 38px;
+  padding: 0 15px;
+  span {
+    line-height: 35px;
+  }
   .layer-button {
     padding: 5px 10px;
     height: 20px;
@@ -190,6 +243,10 @@ body.fullscreen {
   min-height: 50px;
 }
 
+.brand {
+  line-height: 25px;
+}
+
 .leaflet-bottom.leaflet-left {
   right: 0;
   z-index: 999;
@@ -203,5 +260,39 @@ body.fullscreen {
     margin-left: 0;
     margin-bottom: 0;
     border-top: 1px solid #E6E6E6;
+  }
+}
+
+#share-modal {
+  @include border-radius(0px);
+  background : #F8F8F8;
+  .modal-header {
+    border-bottom: 1px solid #E3E3E3;
+  }
+  #embed-link, #direct-link {
+    float: left;
+    width: 430px;
+    height: 17px;
+    margin: 6px 0 0 7px;
+    border: none;
+    font: normal 13px "Helvetica",Arial;
+    color: #333333;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .copy {
+    float: right;
+    margin: 3px;
+  }
+  .embed-code, .direct-code {
+    float: left;
+    width: 100%;
+  }
+  .copy-code {
+    display: block;
+    height: 28px;
+    border: 1px solid #CDCDCD;
+    background: white;
   }
 }

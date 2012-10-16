@@ -20,10 +20,10 @@ class App.HudView extends Backbone.View
     @toolbar = new App.MapToolbarView({ parentView: this })
   open: ->
     @$el.css("left", "0")
-    $("#map").css("left", @$el.width())
+    $(".leaflet-control-zoom ").animate({"left": @$el.width()}, 200)
   close: ->
     @$el.css("left", -@$el.width())
-    $("#map").css("left", 0)
+    $(".leaflet-control-zoom").animate({"left": 0}, 200)
   saveContext: (e) ->
     e.preventDefault()
     errors = @form.commit()
@@ -34,11 +34,11 @@ class App.HudView extends Backbone.View
       @model.save {layer_ids: layer_ids},
         success: (model, response) ->
           if model.isNew()
-            model.set({slug: response.slug})
+            model.set({uuid: response.uuid})
           model.trigger("afterSave")
   afterSave: ->
     @switchControls(false)
-    @router.navigate @model.get("slug")
+    @router.navigate @model.get("uuid")
   switchControls: (unsaved) ->
     if unsaved
       @$el.find(".save").removeAttr("disabled").removeClass("disabled")
@@ -46,5 +46,15 @@ class App.HudView extends Backbone.View
     else
       @$el.find(".share").removeAttr("disabled").removeClass("disabled")
       @$el.find(".save").attr("disabled", "disabled").addClass("disabled")
+  updateShareLinks: ->
+
   openSharePopup: (e) ->
+    unless $("#direct-link").text().indexOf("share") > 0
+      $("#share-modal")
+        .find("#direct-link")
+        .append("/"+@model.get("uuid")+"/share")
+        .end()
+        .find("#embed-link")
+        .append(_.escape("/"+@model.get("uuid")+"/share</iframe>"))
+
     $("#share-modal").modal()

@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(:version => 20121011124138) do
     t.text     "description"
     t.boolean  "public",      :default => false
     t.integer  "zoom",        :default => 10
-    t.string   "slug"
+    t.string   "uuid"
     t.float    "center_lng",  :default => -1.676235
     t.float    "center_lat",  :default => 48.118454
     t.integer  "account_id",                              :null => false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20121011124138) do
     t.datetime "updated_at",                              :null => false
   end
 
-  add_index "contexts", ["slug"], :name => "index_contexts_on_slug", :unique => true
+  add_index "contexts", ["uuid"], :name => "index_contexts_on_uuid", :unique => true
 
   create_table "contexts_layers", :id => false, :force => true do |t|
     t.integer "context_id"

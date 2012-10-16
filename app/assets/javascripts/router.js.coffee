@@ -2,6 +2,7 @@ class App.Router extends Backbone.Router
   routes:
     "" : "index"
     ":id" : "show"
+    ":id/share": "show"
   initialize: ->
     @mapProvider = new App.MapProviders.Leaflet()
     @catalogCollection = new App.CatalogCollection()

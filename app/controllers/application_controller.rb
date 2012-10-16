@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
     def load_account
       @current_account = ActsAsTenant.current_tenant
     end
+    
+    def not_authenticated
+      redirect_to login_url, :alert => "First log in to view this page."
+    end
 end

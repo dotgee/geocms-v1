@@ -13,6 +13,8 @@
 //= require bootstrap-tooltip
 
 //= require vendor
+
+
 //= require app
 //= require router
 //= require_tree ./lib

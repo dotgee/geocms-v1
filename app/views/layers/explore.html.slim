@@ -8,8 +8,8 @@
           .m-btn-group.map-toolbar
             button.m-btn.icn-only.cart.active data-toggle="button" title="Panier"
               i.icon-shopping-cart
-            button.m-btn.icn-only.disabled data-toggle="button" title="Légende"
-              i.icon-tint
+            / button.m-btn.icn-only.disabled data-toggle="button" title="Légende"
+            /   i.icon-tint
             button.m-btn.icn-only.globe title="Vue initiale"
               i.icon-globe
 .wrapper
@@ -29,15 +29,15 @@
         = link_to "#layers", "data-toggle" => "tab" do
           |Layers
       li.span4
-        = link_to "#other", "data-toggle" => "tab" do
-          |Other
+        = link_to "#style", "data-toggle" => "tab" do
+          |Style
     .tab-content
       .tab-pane.active id="infos"
         a.m-btn.mini.blue.from-map From Map
-      .tab-pane id="other"
       .tab-pane id="layers"
         .add-layer
-          = link_to "#", :class => "m-btn mini blue icn-only" do
+          span Add a new layer
+          = link_to "#", :class => "m-btn mini blue icn-only pull-right" do
             i.icon-plus.icon-white
             i.icon-layer
         ul.nav.nav-list.layer-list
@@ -46,13 +46,20 @@
           .page-header
             h3 Layers catalog
           ul.thumbnails
+      .tab-pane id="style"
   #map data-longitude=@current_account.longitude.value data-latitude=@current_account.latitude.value data-zoom=@current_account.zoom.value
   .modal.hide.fade#share-modal
     .modal-header
       button.close aria-hidden="true" data-dismiss="modal" type="button"
       h3 Share your map
     .modal-body
-      pre
-        |iframe ... iframe
-      pre
-        |http://bkaobkaobka
+      .direct-code
+        h5 Direct link
+        span.copy-code
+          p#direct-link= share_link
+          a.copy.m-btn.mini Copy
+      .embed-code
+        h5 Or HTML embed code
+        span.copy-code
+          p#embed-link= share_link(true)
+          a.copy.m-btn.mini#copy-link Copy

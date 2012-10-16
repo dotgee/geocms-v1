@@ -55,9 +55,7 @@
     $parent && $parent
       .find('.active')
       .removeClass('active')
-    console.log(this.$element)
     this.$element.toggleClass('active')
-    console.log(this.$element)
   }
 
 
@@ -87,7 +85,6 @@
 
   $(function () {
     $('body').on('click.button.data-api', '[data-toggle^=button]', function ( e ) {
-      console.log(e)
       var $btn = $(e.target)
       if (!$btn.hasClass('m-btn')) $btn = $btn.closest('.m-btn')
       $btn.button('toggle')

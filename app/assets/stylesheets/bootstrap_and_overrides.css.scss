@@ -12,6 +12,9 @@ body, html {
 .navbar .nav > li > a {
   text-shadow: none;
 }
+.navbar .nav > li {
+  line-height: 30px;
+}
 
 .input-xlarge {
   width: 220px;
