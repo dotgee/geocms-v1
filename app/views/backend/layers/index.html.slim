@@ -1,7 +1,7 @@
 .page-header
   h1= "#{ActsAsTenant.current_tenant.name} #{@category.name} - Layers"
 
-= link_to 'New Layer', [:new, :backend, @category, :layer], :class => "btn pull-right"
+= link_to 'New Layer', [:new, :backend, @category, :layer], :class => "m-btn blue pull-right"
 table.table.table-striped
   thead
     tr
@@ -15,9 +15,10 @@ table.table.table-striped
       tr
         td = layer.name
         td = layer.title
-        td = link_to 'Show', [:backend, @category, layer]
-        td = link_to 'Edit', [:edit, :backend, @category, layer]
-        td = link_to 'Destroy', [:backend, @category, layer], :confirm => 'Are you sure?', :method => :delete
+        td
+          = link_to 'Show', [:backend, @category, layer], :class => "m-btn mini"
+          = link_to 'Edit', [:edit, :backend, @category, layer], :class => "m-btn  blue-stripe  mini"
+          = link_to 'Destroy', [:backend, @category, layer], :confirm => 'Are you sure?', :method => :delete, :class => "m-btn red-stripe mini"
 
 br
 

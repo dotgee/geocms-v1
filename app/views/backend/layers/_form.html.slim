@@ -4,4 +4,7 @@
   = f.association :data_source
   = f.input :title
   = f.input :description
-  = f.submit
+
+  .m-btn-group
+    = f.submit :class => "m-btn blue"
+    = link_to 'Back', [:backend, @category, :layers], :class => "m-btn"

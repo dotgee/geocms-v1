@@ -1,12 +1,18 @@
-.page-header
-  h1 Import from geoserver
-
-h3
-  = @data_source.name
-  small= "     (#{@data_source.rest})"
-  
-= simple_form_for :user do |f|
-  = f.input :login
-  = f.input :password, :as => :password, :hint => "This won't be stored"
-
-  = f.button :submit, :value => "Import datas"
+table.table.table-striped
+  thead
+    tr
+      th Name
+      th Title
+      th CRS
+      th BBOX
+      th
+      th
+  tbody
+    - @layers.each do |layer|
+      tr
+        td= layer.name
+        td= layer.title
+        td= layer.crs
+        td= layer.bbox
+        td= layer.dimension_type
+        td= layer.dimension_values

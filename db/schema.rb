@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121011124138) do
+ActiveRecord::Schema.define(:version => 20121022124349) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20121011124138) do
     t.string   "ancestry"
     t.string   "names_depth_cache"
     t.integer  "account_id"
+    t.boolean  "default"
   end
 
   add_index "categories", ["ancestry"], :name => "index_categories_on_ancestry"
@@ -37,6 +38,10 @@ ActiveRecord::Schema.define(:version => 20121011124138) do
     t.text     "description"
     t.boolean  "public",      :default => false
     t.integer  "zoom",        :default => 10
+    t.float    "minx"
+    t.float    "maxx"
+    t.float    "miny"
+    t.float    "maxy"
     t.string   "uuid"
     t.float    "center_lng",  :default => -1.676235
     t.float    "center_lat",  :default => 48.118454
@@ -65,6 +70,13 @@ ActiveRecord::Schema.define(:version => 20121011124138) do
     t.string   "rest"
   end
 
+  create_table "dimensions", :force => true do |t|
+    t.string   "value"
+    t.integer  "layer_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "layers", :force => true do |t|
     t.string   "name"
     t.string   "title"
@@ -73,6 +85,9 @@ ActiveRecord::Schema.define(:version => 20121011124138) do
     t.datetime "updated_at",     :null => false
     t.integer  "category_id"
     t.integer  "data_source_id"
+    t.text     "bbox"
+    t.string   "crs"
+    t.string   "dimension"
   end
 
   create_table "preferences", :force => true do |t|

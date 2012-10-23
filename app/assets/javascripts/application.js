@@ -1,19 +1,6 @@
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-transition
-//= require bootstrap-alert
-
-// !! Bootstrap button overriden for compatibility with microsoft style buttons !!
-//= require bootstrap-button
-
-//= require bootstrap-collapse
-//= require bootstrap-dropdown
-//= require bootstrap-modal
-//= require bootstrap-tab
-//= require bootstrap-tooltip
-
 //= require vendor
-
 
 //= require app
 //= require router

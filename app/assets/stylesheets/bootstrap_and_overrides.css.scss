@@ -19,3 +19,14 @@ body, html {
 .input-xlarge {
   width: 220px;
 }
+
+textarea {
+  resize: none;
+}
+
+.close {
+  @include opacity(0.5);
+  &:hover {
+    @include opacity(0.7);
+  }
+}

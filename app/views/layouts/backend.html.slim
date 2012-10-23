@@ -8,7 +8,7 @@ html(lang="en")
     meta content="width=device-width" name="viewport"
     = stylesheet_link_tag "http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.css"
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans&subset=latin"
-    = stylesheet_link_tag :application
+    = stylesheet_link_tag :backend
   body.fullscreen
     .navbar
       .navbar-inner
@@ -24,5 +24,5 @@ html(lang="en")
     .container-fluid
       == yield
     = javascript_include_tag "http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.js"
-    = javascript_include_tag :application
+    = javascript_include_tag :backend
     == yield :javascripts

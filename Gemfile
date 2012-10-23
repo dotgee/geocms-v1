@@ -21,7 +21,7 @@ group :development do
   gem "haml-rails", ">= 0.3.4"
   gem "hpricot", ">= 0.8.6"
   gem "ruby_parser", ">= 2.3.1"
-  gem "awesome_print"
+  gem "bullet"
 end
 
 gem 'jquery-rails'
@@ -54,3 +54,6 @@ gem "acts_as_tenant"
 
 # Slugging 
 gem "friendly_id"
+
+# Custom gem to import layers
+gem "wms_getcapabilities", '~> 0.1.0.5'

@@ -8,5 +8,6 @@
     = f.input :csw
     = f.input :ogc
     = f.input :rest
-  .form-actions
-    = f.button :submit
+  .m-btn-group
+    = f.button :submit, :class => "m-btn blue"
+    = link_to "Cancel", backend_data_sources_path, :class => "m-btn"

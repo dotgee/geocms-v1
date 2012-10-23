@@ -5,7 +5,9 @@ class Category < ActiveRecord::Base
   has_ancestry
   acts_as_list scope: [:account_id, :ancestry]
 
-  attr_accessible :name, :position, :parent_id
+  scope :receiver, where(:default => true)
+
+  attr_accessible :name, :position, :parent_id, :default
 
   before_save :cache_ancestry
   def cache_ancestry

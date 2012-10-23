@@ -1,14 +1,11 @@
 .page-header
   h1= "#{ActsAsTenant.current_tenant.name} - Categories"
-= link_to 'New Category', new_backend_category_path, :class => "btn pull-right"
+= link_to 'New Category', new_backend_category_path, :class => "m-btn blue pull-right"
 
 table.table.table-striped
   thead
     tr
       th Name
-      th Position
-      th
-      th
       th
   tbody
     = nested_categories(@categories)

@@ -44,14 +44,9 @@ App.MapProviders.Leaflet = ->
     return 1 / (4891.96875 / Math.pow(2, zoom))
   getFeatureWMS: (e) ->
     # EPSG:2154
-    bounds = map.getBounds()
-    console.log(this)
-    ne = new Proj4js.Point(bounds._northEast.lng, bounds._northEast.lat)
-    Proj4js.transform(source, dest, ne)
-    sw = new Proj4js.Point(bounds._southWest.lng, bounds._southWest.lat)
-    Proj4js.transform(source, dest, sw)
-    BBOX = [sw.x, sw.y, ne.x, ne.y].join(',')
+    box =  new App.MapProviders.Leaflet().bboxTo2154(map.getBounds())
 
+    BBOX = box.join(",")
     EPSG = dest_string
     WIDTH = map.getSize().x
     HEIGHT = map.getSize().y
@@ -72,3 +67,9 @@ App.MapProviders.Leaflet = ->
         $featuresInfos.find("table").addClass("table")
         unless $featuresInfos.css("display") == "block"
           $featuresInfos.slideToggle()
+  bboxTo2154: (bounds) ->
+    ne = new Proj4js.Point(bounds._northEast.lng, bounds._northEast.lat)
+    Proj4js.transform(source, dest, ne)
+    sw = new Proj4js.Point(bounds._southWest.lng, bounds._southWest.lat)
+    Proj4js.transform(source, dest, sw)
+    [sw.x, sw.y, ne.x, ne.y]

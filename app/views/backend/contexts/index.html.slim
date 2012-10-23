@@ -1,0 +1,12 @@
+.page-header
+  h1 Maps
+
+ul.thumbnails
+  - @contexts.each do |c|
+    li.span4
+      .thumbnail
+        h4= c.name
+        p= c.description
+
+        .btn-group
+          = link_to "Show", [:backend, c], :class => "m-btn"

@@ -1,5 +1,14 @@
 class Backend::ContextsController < Backend::ApplicationController
 
+  def index
+    @contexts = Context.all
+  end
+
+  def show
+    @context = Context.find(params[:id])
+    respond_with([:backend, @context])
+  end
+
   def new
     @context = Context.new
     respond_with([:backend, @context])

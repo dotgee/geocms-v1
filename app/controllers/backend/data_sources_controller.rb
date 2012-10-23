@@ -38,6 +38,7 @@ class Backend::DataSourcesController < Backend::ApplicationController
 
   def import
     @data_source = DataSource.find(params[:id])
+    @layers = @data_source.import
     respond_with([:backend, @data_source])
   end
 

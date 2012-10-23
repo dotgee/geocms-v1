@@ -1,0 +1,11 @@
+- layers = @context.layers.map { |l| l.name }.join(",")
+= image_tag "http://geo.devel.dotgee.fr/geoserver/wms?request=GetMap&service=WMS&version=1.1.1&layers=#{layers}&bbox=#{@context.bbox}&srs=EPSG%3A2154&width=780&height=330&format=image%2Fpng"
+
+- @context.layers.each do |layer|
+  br
+  br
+  br
+  p= layer.name
+  = image_tag "#{layer.data_source.wms}?request=GetMap&service=WMS&version=1.1.1&layers=#{layer.name}&bbox=#{@context.bbox}&srs=EPSG%3A2154&width=780&height=330&format=image%2Fpng"
+  br
+  

@@ -2,7 +2,7 @@
   .navbar-inner
     .container
       ul.nav
-        li= link_to "GeoCMS - #{@current_account.name}", "#", :class => "brand"
+        li= link_to "dotGeoCMS - #{@current_account.name}", "#", :class => "brand"
       ul.nav.pull-right
         li
           .m-btn-group.map-toolbar
@@ -12,11 +12,15 @@
             /   i.icon-tint
             button.m-btn.icn-only.globe title="Vue initiale"
               i.icon-globe
+      - if logged_in?
+        ul.nav.pull-right
+          li= link_to "Admin", backend_root_path
+
 .wrapper
   .hud
     .map-controls
       .m-btn-group
-        button.save.m-btn.blue
+        button.save.m-btn.blue-stripe
           |SAVE
         button.share.m-btn.disabled disabled="disabled"
           |SHARE 
@@ -39,6 +43,7 @@
           span Add a new layer
           = link_to "#", :class => "m-btn mini blue icn-only pull-right" do
             i.icon-plus.icon-white
+            |&nbsp;
             i.icon-layer
         ul.nav.nav-list.layer-list
         #catalog.popup
@@ -47,6 +52,9 @@
             h3 Layers catalog
           ul.thumbnails
       .tab-pane id="style"
+        ul.nav.nav-list
+          li.nav-header
+            |Custom styles are not available yet
   #map data-longitude=@current_account.longitude.value data-latitude=@current_account.latitude.value data-zoom=@current_account.zoom.value
   .modal.hide.fade#share-modal
     .modal-header

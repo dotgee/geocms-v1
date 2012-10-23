@@ -19,3 +19,4 @@ class LayersController < ApplicationController
     respond_with(@layer)
   end
 end
+  

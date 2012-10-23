@@ -31,7 +31,14 @@ class App.HudView extends Backbone.View
       layer_ids = _.map(@cartCollection.models, (layer) ->
         layer.get("id")
       )
-      @model.save {layer_ids: layer_ids},
+      box = new App.MapProviders.Leaflet().bboxTo2154(@mapProvider.map.getBounds())
+      
+      console.log box
+      minx = box[0]
+      maxx = box[2]
+      miny = box[1]
+      maxy = box[3]
+      @model.save {layer_ids: layer_ids, minx: minx, maxx: maxx, miny: miny, maxy: maxy},
         success: (model, response) ->
           if model.isNew()
             model.set({uuid: response.uuid})

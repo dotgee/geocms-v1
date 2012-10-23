@@ -9,4 +9,8 @@ class Context < ActiveRecord::Base
   def generate_uuid
     self.uuid = self.account.subdomain.sub("-", "")+"-"+(0...8).map{65.+(rand(26)).chr.downcase}.join
   end
+
+  def bbox
+    [minx, miny, maxx, maxy].join(",")
+  end
 end

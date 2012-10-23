@@ -90,7 +90,7 @@ body.fullscreen {
     left: 0;
     right: 0;
     bottom: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
   #infos {
     form {
@@ -128,6 +128,7 @@ body.fullscreen {
     }
     .right-infos {
       display: inline-block;
+      width: 250px;
     }
     .control-buttons {
       a {
@@ -141,7 +142,7 @@ body.fullscreen {
         left: 0;
         right: 0;
       }
-      li {
+      > li {
         padding: {
           top: 5px;
           bottom: 5px;
@@ -156,6 +157,13 @@ body.fullscreen {
           background: none;
           height: 45px;
         }
+      }
+    }
+    .dimensions-list {
+      @include column-count(3);
+      li.active {
+        font-weight: bold;
+        font-size: 13px;
       }
     }
   }
@@ -208,7 +216,7 @@ body.fullscreen {
   left: 25%;
   right: 0px;
   top: 50px;
-  overflow-y: scroll;
+  overflow-y: auto;
   visibility: hidden;
   opacity: 0;
   z-index: 1;
@@ -252,7 +260,7 @@ body.fullscreen {
   z-index: 999;
   .features-infos {
     max-height: 150px;
-    overflow: scroll;
+    overflow: auto;
     width: 100%;
     height: auto;
     display: none;
