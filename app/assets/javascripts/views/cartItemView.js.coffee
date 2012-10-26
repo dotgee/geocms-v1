@@ -4,7 +4,7 @@ class App.CartItemView extends Backbone.View
     <div class='right-infos'>
       <a href='#'>
           <label for='<%= name %>' class='title'>
-            <input type='checkbox' class='layer-visibility' checked id='<%=name %>'>
+            <input type='checkbox' class='layer-visibility' <% if(visible) { %> checked <% } %> id='<%=name %>'>
             <span><%= title %></span>
           </label>
           <% if(dimension) { %>
@@ -49,9 +49,9 @@ class App.CartItemView extends Backbone.View
     @mapProvider.toggleClicListener(!$self.hasClass("active"), @model.attributes)
   toggleVisibility: (e) ->
     if (@$el.find(".layer-visibility").attr("checked") == "checked")
-      @model.get("leaflet").setOpacity(1)
+      @model.toggleVisibility(true, 1)
     else
-      @model.get("leaflet").setOpacity(0)
+      @model.toggleVisibility(false, 0)
   toggleTimeline: (e) ->
     $e = $(e.currentTarget)
     #@$el.find(".dimensions-list").slideToggle()

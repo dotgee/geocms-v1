@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121022124349) do
+ActiveRecord::Schema.define(:version => 20121025081021) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -29,9 +29,11 @@ ActiveRecord::Schema.define(:version => 20121022124349) do
     t.string   "names_depth_cache"
     t.integer  "account_id"
     t.boolean  "default"
+    t.string   "slug"
   end
 
   add_index "categories", ["ancestry"], :name => "index_categories_on_ancestry"
+  add_index "categories", ["slug"], :name => "index_categories_on_slug", :unique => true
 
   create_table "contexts", :force => true do |t|
     t.string   "name",        :default => "Untitled map"

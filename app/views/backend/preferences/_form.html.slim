@@ -1,8 +1,11 @@
-= form_tag [:backend, :preferences], {:method => :put} do |f|
+= form_tag [:backend, :preferences], {:method => :put, :class => "form-horizontal"} do |f|
 
   .form-inputs
     - Account.prefs.keys.each do |p|
-      = label_tag p
-      = text_field_tag "preferences[#{p}]", ActsAsTenant.current_tenant.read_preference(p).value
-  .form-actions
-    = submit_tag "Save", :class => "btn"
+      .control-group
+        = label_tag p, p.to_s.humanize, :class => "control-label"
+        .controls
+          = text_field_tag "preferences[#{p}]", ActsAsTenant.current_tenant.read_preference(p).value
+  .control-group
+    .controls
+      = submit_tag "Save", :class => "m-btn blue"

@@ -33,3 +33,4 @@ class App.Router extends Backbone.Router
         _.each response.layers, (l) ->
           layer = new App.Layer(l.layer)
           that.cartCollection.add(layer)
+          layer.playTimeline()

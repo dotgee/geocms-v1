@@ -33,7 +33,6 @@ class App.HudView extends Backbone.View
       )
       box = new App.MapProviders.Leaflet().bboxTo2154(@mapProvider.map.getBounds())
       
-      console.log box
       minx = box[0]
       maxx = box[2]
       miny = box[1]

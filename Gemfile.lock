@@ -34,7 +34,7 @@ GEM
       activerecord (>= 2.3.14)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.1.0.0)
+    bootstrap-sass (2.1.0.1)
     builder (3.0.3)
     bullet (4.2.0)
       uniform_notifier
@@ -60,22 +60,11 @@ GEM
       multipart-post (~> 1.1)
     friendly_id (4.0.8)
     fssm (0.2.9)
-    haml (3.1.7)
-    haml-rails (0.3.5)
-      actionpack (>= 3.1, < 4.1)
-      activesupport (>= 3.1, < 4.1)
-      haml (~> 3.1)
-      railties (>= 3.1, < 4.1)
-    haml2slim (0.4.6)
-      haml (>= 3.0)
-      nokogiri
-      ruby_parser
     haml_coffee_assets (1.5.1)
       coffee-script (>= 1.0.0)
       sprockets (>= 2.0.3)
       tilt (>= 1.3.3)
     hike (1.2.1)
-    hpricot (0.8.6)
     httpauth (0.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -91,12 +80,14 @@ GEM
     mime-types (1.19)
     multi_json (1.3.6)
     multipart-post (1.1.5)
+    newrelic_rpm (3.5.0.1)
     nokogiri (1.5.5)
     oauth (0.4.7)
     oauth2 (0.6.1)
       faraday (~> 0.7)
       httpauth (~> 0.1)
       multi_json (~> 1.3)
+    oj (1.4.3)
     pg (0.14.1)
     polyglot (0.3.3)
     rabl (0.7.2)
@@ -139,14 +130,11 @@ GEM
       mime-types
       nokogiri
       rest-client
-    ruby_parser (2.3.1)
-      sexp_processor (~> 3.0)
     sass (3.2.1)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    sexp_processor (3.2.0)
     simple_form (2.0.2)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -195,25 +183,22 @@ DEPENDENCIES
   acts_as_list
   acts_as_tenant
   ancestry
-  bootstrap-sass (~> 2.1.0.0)
+  bootstrap-sass (~> 2.1.0.1)
   bullet
   coffee-rails (~> 3.2.1)
   compass (~> 0.12.2)
   compass-rails (~> 1.0.3)
   execjs
   friendly_id
-  haml (>= 3.1.6)
-  haml-rails (>= 0.3.4)
-  haml2slim (>= 0.4.6)
   haml_coffee_assets
-  hpricot (>= 0.8.6)
   jquery-rails
+  newrelic_rpm
+  oj
   pg (>= 0.14.0)
   rabl
   rails (= 3.2.8)
   responders
   rgeoserver
-  ruby_parser (>= 2.3.1)
   sass-rails (~> 3.2.5)
   simple_form
   slim-rails

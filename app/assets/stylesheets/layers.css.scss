@@ -107,9 +107,6 @@ body.fullscreen {
     }
   }
   #layers {
-    a {
-      @include unstyled-link;
-    }
     label {
       margin-bottom: 2px;
     }
@@ -138,6 +135,9 @@ body.fullscreen {
       }
     }
     .layer-list {
+      a {
+        @include unstyled-link;
+      }
       padding: {
         left: 0;
         right: 0;
@@ -245,6 +245,20 @@ body.fullscreen {
   }
   .thumbnail {
     background-color: white;
+  }
+  #categories {
+    .back {
+      margin-bottom: 10px;
+    }
+    a.category {
+      width: 100%;
+      display: block;
+      background-color: white;
+      @include border-radius(5px);
+      margin-bottom: 5px;
+      height: 20px;
+      padding: 5px;
+    }
   }
 }
 .navbar-inner {

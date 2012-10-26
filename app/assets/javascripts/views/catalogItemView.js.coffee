@@ -2,19 +2,17 @@ class App.CatalogItemView extends Backbone.View
   tagName: "li"
   className: "span4"
   template: _.template("<div class='thumbnail'>
-                            
-                            <h4><%= title %></h4>
-                            <a href='#' class='pull-right m-btn blue catalog-layer icn-only mini'>
-                              <i class='icon-plus icon-white'></i>
-                            </a>
-                            <p><%= description %></p>
-                          </div>")
+                          <h4><%= title %></h4>
+                          <a href='#' class='pull-right m-btn blue catalog-layer icn-only mini'>
+                            <i class='icon-plus icon-white'></i>
+                          </a>
+                          <p><%= description %></p>
+                        </div>")
   events: {
     "click .catalog-layer": "addToMap"
   }
   initialize: ->
-    @parent = @options.parentView
-    @cartCollection   = @parent.parent.cartCollection
+    @cartCollection = @options.hud.cartCollection
   addToMap: (e) ->
     e.preventDefault()
     $e = $(e.currentTarget)

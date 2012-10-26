@@ -48,7 +48,7 @@ Geocms2::Application.routes.draw do
     match "/:id/share", :to => "contexts#share"
     match "/:id", :to => "contexts#show"
 
-    root :to => "layers#explore"
+    root :to => "contexts#new"
   end
 
   root :to => "home#index"

@@ -1,19 +1,25 @@
 class ContextsController < ApplicationController
+  layout "explore"
   
-  def new
-    @context = Context.new
-    respond_with(@context)
+  def index
+    @contexts = Context.all
+    respond_with(@contexts)
   end
 
-  def show
-    @context = Context.find_by_uuid(params[:id])
+  def new
+    @context = Context.new
     respond_with(@context) do |format|
-      format.html { render "layers/explore", :layout => "explore" }
+      format.html { render "show" }
     end
   end
 
+  def show
+    @context = Context.includes(:layers).find_by_uuid(params[:id])
+    respond_with(@context)
+  end
+
   def share
-    @context = Context.find_by_uuid(params[:id])
+    @context = Context.includes(:layers).find_by_uuid(params[:id])
     respond_with(@context) do |format|
       format.html { render :layout => "explore" }
     end

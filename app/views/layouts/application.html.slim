@@ -6,8 +6,6 @@ html(lang="en")
     title GeoCMS
     meta content="" name="description"
     meta content="width=device-width" name="viewport"
-    = stylesheet_link_tag "http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.css"
-    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans&subset=latin"
     = stylesheet_link_tag :application
   body.fullscreen
     .navbar
@@ -21,5 +19,4 @@ html(lang="en")
           .nav-collapse.collapse
             ul.nav
     == yield
-    = javascript_include_tag "http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.js"
     == yield :javascripts

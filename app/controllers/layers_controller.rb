@@ -8,6 +8,7 @@ class LayersController < ApplicationController
 
   def explore
     @context = Context.new
+    @categories = Category.roots
     render :layout =>  "explore"
   end
   

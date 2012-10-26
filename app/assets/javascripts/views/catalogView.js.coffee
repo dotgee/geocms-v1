@@ -1,15 +1,26 @@
 class App.CatalogView extends Backbone.View
+  template: _.template("<a class='m-btn blue mini back'><i class='m-icon-swapleft m-icon-white'></i>Back</a>")
   events: {
     "click .close" : "toggle"
+    "click .back"  : "back"
   }
   initialize: ->
-    @parent = @options.parentView
-    @mapProvider = @parent.mapProvider
+    @hud = @options.parentView
+    @mapProvider = @hud.mapProvider
     @collection.on("reset", @render, this)
+    @$categories = @$el.find("#categories")
   toggle: ->
-    $(@el).toggleClass("active")
-  addOne: (layer) ->
-    @$el.find("ul.thumbnails").append new App.CatalogItemView({ model: layer, parentView: this }).render().el
+    @$el.toggleClass("active")
+    @render()
+  back: ->
+    @collection = @collection.parent.collection
+    @render()
+  resetView: ->
+    @$categories.html("")
+  addOne: (category) ->
+    @$categories.append new App.CatalogCategoryView({ model: category, parentView: this }).render().el
   render: ->
-    @$el.find(".thumbnails").masonry({item: "li"})
+    @resetView()
+    if @collection.parent
+      @$categories.append(@template())
     @collection.forEach(@addOne, this)
