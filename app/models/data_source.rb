@@ -6,9 +6,10 @@ class DataSource < ActiveRecord::Base
     geoserver = WmsGetcapabilities::Geoserver.new(self.wms)
     geoserver.get_capabilities
     layers = geoserver.layers
+    category = Category.receiver.first
 
     layers.each do |l|
-      layer = Layer.as_layer(self, l)
+      layer = Layer.as_layer(self, category, l)
       if layer.dimension?
         Dimension.create_dimensions(layer, l.dimension_values)
       end
