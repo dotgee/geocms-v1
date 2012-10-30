@@ -8,13 +8,14 @@ class App.HudView extends Backbone.View
     @model.on("afterSave", @afterSave, this)
     @cartCollection     = @options.cartCollection
     @catalogCollection  = @options.catalogCollection
+    @layerCollection    = @options.layerCollection
     @mapProvider        = @options.mapProvider
     @router             = @options.router
     @form               = new Backbone.Form({ model: @model, idPrefix: "context_" })
     @render()
   render: ->
     @mapView = new App.MapView({mapProvider: @mapProvider, parentView: this})
-    @catalog = new App.CatalogView({ el: this.$("#catalog"), collection: @catalogCollection, parentView: this })
+    @catalog = new App.CatalogView({ el: this.$("#catalog"), collection: @catalogCollection, layers: @layerCollection, parentView: this })
     @cart = new App.CartView({ el: this.$("#layers"), collection: @cartCollection, parentView: this })
     @infos = new App.InfosView({ el: this.$("#infos"), parentView: this })
     @toolbar = new App.MapToolbarView({ parentView: this })

@@ -9,7 +9,7 @@ class Category < ActiveRecord::Base
   acts_as_list scope: [:account_id, :ancestry]
 
   scope :receiver, where(:default => true)
-  scope :with_layers, select([:name, :id, :ancestry]).includes(:layers).ordered_by_ancestry
+  scope :ordered, select([:name, :id, :slug, :ancestry]).ordered_by_ancestry
 
   attr_accessible :name, :position, :parent_id, :default
 
@@ -22,7 +22,7 @@ class Category < ActiveRecord::Base
     nodes.map do |node, sub_nodes|
       { "name" => node.name,
         "id" => node.id,
-        "layers" => node.layers.compact,
+        "slug" => node.slug,
         "children" => json_tree(sub_nodes).compact 
       } 
     end

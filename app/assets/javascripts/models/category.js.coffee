@@ -1,6 +1,9 @@
 App.Category = Backbone.RelationalModel.extend
   urlRoot: "/categories"
   idAttribute: "id"
+  defaults: {
+    model: "category"
+  }
   relations: [
     {
       type: Backbone.HasMany,

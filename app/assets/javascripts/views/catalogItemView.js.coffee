@@ -1,18 +1,21 @@
 class App.CatalogItemView extends Backbone.View
-  tagName: "li"
-  className: "span4"
-  template: _.template("<div class='thumbnail'>
-                          <h4><%= title %></h4>
-                          <a href='#' class='pull-right m-btn blue catalog-layer icn-only mini'>
-                            <i class='icon-plus icon-white'></i>
-                          </a>
-                          <p><%= description %></p>
-                        </div>")
+  className: "media"
+  template: _.template("
+    <a class='pull-left' href='#'>
+      <img class='media-object' src='http://placehold.it/64x64' width='64' height='64'  >
+    </a>
+    <div class='media-body'>
+      
+      <h4 class='media-heading'><%= title %></h4>
+      <% if(description) { %><p> <%= description %> </p><% } %>
+    </div>")
   events: {
-    "click .catalog-layer": "addToMap"
+    "click h4": "addToMap"
   }
   initialize: ->
     @cartCollection = @options.hud.cartCollection
+    @parent = @options.parent
+    @hud = @options.hud
   addToMap: (e) ->
     e.preventDefault()
     $e = $(e.currentTarget)
@@ -22,5 +25,3 @@ class App.CatalogItemView extends Backbone.View
     attributes = @model.toJSON()
     this.$el.html(@template(attributes))
     return this
-
-#<img src='<%= data_source.wms %>?LAYERS=<%= name %>&FORMAT=image%2Fpng&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&SRS=EPSG%3A2154&BBOX=314937.1221424626,6772829.587208792,388010.9053456147,6802831.114308483&WIDTH=300&HEIGHT=200' alt='' width='300' height='200'>

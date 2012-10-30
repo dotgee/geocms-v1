@@ -1,12 +1,13 @@
 App.Layer = Backbone.RelationalModel.extend
   urlRoot: "/layers"
-  idAttribute: "id"
+  idAttribute: "name"
   defaults: {
     leaflet: false
     onMap: false
     timelineCounter: 0
     playing: false
     visible: true
+    model: "layer"
   }
   toLeaflet: ( options = {} ) ->
     tileLayer = L.tileLayer.wms(@get("data_source").wms, {

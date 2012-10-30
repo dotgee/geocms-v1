@@ -174,7 +174,6 @@ GEM
     uniform_notifier (1.1.0)
     wms_getcapabilities (0.1.0.5)
       nokogiri
-    yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby
@@ -207,4 +206,3 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   unicorn (>= 4.3.1)
   wms_getcapabilities (~> 0.1.0.5)
-  yajl-ruby

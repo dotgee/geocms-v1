@@ -41,6 +41,7 @@ Geocms2::Application.routes.draw do
 
     # Layers
     resources :layers, :only => [:index, :show]
+    match "/categories/:category_id/layers/", :to => "categories#layers"
     resources :categories, :only => [:index, :show]
     resources :contexts
 

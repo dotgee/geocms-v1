@@ -1,4 +1,6 @@
 object @layer
+cache @layer
+
 attributes :id, :name, :description, :dimension, :category_id
 
 node :title do |t|

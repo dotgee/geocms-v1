@@ -25,7 +25,7 @@ gem 'jquery-rails'
 # JSON Views
 gem 'oj'
 gem 'rabl'
-gem 'yajl-ruby'
+#gem 'yajl-ruby'
 
 # Templating engine
 gem "slim-rails"

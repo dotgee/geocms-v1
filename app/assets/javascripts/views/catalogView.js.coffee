@@ -7,6 +7,7 @@ class App.CatalogView extends Backbone.View
   initialize: ->
     @hud = @options.parentView
     @mapProvider = @hud.mapProvider
+    @layers = @options.layers
     @collection.on("reset", @render, this)
     @$categories = @$el.find("#categories")
   toggle: ->
@@ -17,8 +18,11 @@ class App.CatalogView extends Backbone.View
     @render()
   resetView: ->
     @$categories.html("")
-  addOne: (category) ->
-    @$categories.append new App.CatalogCategoryView({ model: category, parentView: this }).render().el
+  addOne: (model) ->
+    if model.get("model") == "category"
+      @$categories.append new App.CatalogCategoryView({ model: model, parentView: this }).render().el
+    else
+      @$categories.append new App.CatalogItemView({ model: model, hud: @hud, parent: this }).render().el
   render: ->
     @resetView()
     if @collection.parent

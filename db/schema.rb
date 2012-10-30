@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(:version => 20121025081021) do
     t.string   "slug"
   end
 
+  add_index "categories", ["account_id", "slug"], :name => "index_categories_on_account_id_and_slug", :unique => true
   add_index "categories", ["ancestry"], :name => "index_categories_on_ancestry"
-  add_index "categories", ["slug"], :name => "index_categories_on_slug", :unique => true
 
   create_table "contexts", :force => true do |t|
     t.string   "name",        :default => "Untitled map"
