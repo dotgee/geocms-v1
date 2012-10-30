@@ -1,3 +1,3 @@
 class App.CatalogCollection extends Backbone.Collection
-  model: App.Layer
-  url: "/layers"
+  model: App.Category
+  url: "/categories"

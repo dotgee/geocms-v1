@@ -41,6 +41,7 @@ Geocms2::Application.routes.draw do
 
     # Layers
     resources :layers, :only => [:index, :show]
+    match "/categories/:category_id/layers/", :to => "categories#layers"
     resources :categories, :only => [:index, :show]
     resources :contexts
 
@@ -48,7 +49,7 @@ Geocms2::Application.routes.draw do
     match "/:id/share", :to => "contexts#share"
     match "/:id", :to => "contexts#show"
 
-    root :to => "layers#explore"
+    root :to => "contexts#new"
   end
 
   root :to => "home#index"

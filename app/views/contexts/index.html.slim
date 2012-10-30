@@ -1,0 +1,6 @@
+.container-fluid
+  ul.thumbnails
+    - @contexts.each do |context|
+      li.thumbnail.span4
+        h4= link_to context.name, "/#{context.uuid}"
+        p= context.description

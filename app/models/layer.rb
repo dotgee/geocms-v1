@@ -5,6 +5,14 @@ class Layer < ActiveRecord::Base
   has_many :dimensions
 
   store :bbox, accessors: [:minx, :maxx, :miny, :maxy]
+
+
+  scope :for_frontend, select(["layers.name", "layers.title", "layers.id", "layers.description",
+                       "layers.dimension", "layers.category_id", "data_sources.wms", "dimensions.value"])
+                       .includes(:data_source)
+                       .order(:title)
+
+
   attr_accessible :description, :name, :title, :wms_url, :data_source_id, :category_id, :category, :bbox,
                   :crs, :minx, :miny, :maxx, :maxy, :dimension
 

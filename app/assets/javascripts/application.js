@@ -11,4 +11,5 @@
 
 $(".navbar-inner").find(".m-btn").tooltip({
   placement: "bottom"
-})
+});
+

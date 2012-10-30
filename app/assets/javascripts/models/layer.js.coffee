@@ -1,10 +1,13 @@
-class App.Layer extends Backbone.Model
+App.Layer = Backbone.RelationalModel.extend
   urlRoot: "/layers"
+  idAttribute: "name"
   defaults: {
     leaflet: false
     onMap: false
     timelineCounter: 0
     playing: false
+    visible: true
+    model: "layer"
   }
   toLeaflet: ( options = {} ) ->
     tileLayer = L.tileLayer.wms(@get("data_source").wms, {
@@ -25,6 +28,9 @@ class App.Layer extends Backbone.Model
     @toLeaflet(options)
     @set({onMap : true})
     @trigger('addOnMap')
+  toggleVisibility: (visible, value) ->
+    @get("leaflet").setOpacity(value)
+    @set({visible: visible})
   playTimeline: ->
     count = @get("dimensions").length
     that = this

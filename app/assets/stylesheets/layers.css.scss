@@ -107,9 +107,6 @@ body.fullscreen {
     }
   }
   #layers {
-    a {
-      @include unstyled-link;
-    }
     label {
       margin-bottom: 2px;
     }
@@ -138,6 +135,9 @@ body.fullscreen {
       }
     }
     .layer-list {
+      a {
+        @include unstyled-link;
+      }
       padding: {
         left: 0;
         right: 0;
@@ -235,18 +235,35 @@ body.fullscreen {
   h3 {
     margin-left: 20px;
   }
-  .catalog-layer {
+  .media {
+    background: white;
+    padding: 5px;
     h4 {
-      word-wrap: break-word;
+      cursor: pointer;
+      font-weight: 500;
+      color: #3C4E5A;
+      [class^="icon-"] {
+        margin: 4px 0 3px;
+      }
     }
   }
-  .thumbnails {
-    margin-left: 20px;
+}
+
+#categories {
+  .back {
+    margin-bottom: 10px;
   }
-  .thumbnail {
+  a.category {
+    width: 100%;
+    display: block;
     background-color: white;
+    @include border-radius(5px);
+    margin-bottom: 5px;
+    height: 20px;
+    padding: 5px;
   }
 }
+
 .navbar-inner {
   min-height: 50px;
 }
@@ -303,4 +320,43 @@ body.fullscreen {
     border: 1px solid #CDCDCD;
     background: white;
   }
+}
+
+// Remove with update to bootstrap 2.2.0
+
+.media,
+.media-body {
+  overflow: hidden;
+  *overflow: visible;
+  zoom: 1;
+}
+
+.media,
+.media .media {
+  margin-top: 15px;
+}
+
+.media:first-child {
+  margin-top: 0;
+}
+
+.media-object {
+  display: block;
+}
+
+.media-heading {
+  margin: 0 0 5px;
+}
+
+.media .pull-left {
+  margin-right: 10px;
+}
+
+.media .pull-right {
+  margin-left: 10px;
+}
+
+.media-list {
+  margin-left: 0;
+  list-style: none;
 }

@@ -13,9 +13,11 @@
 //= require ./moment.min
 //= require ./underscore
 //= require ./backbone
+//= require ./backbone-relational
 //= require ./backbone-forms.min
 //= require ./backbone-forms-bootstrap
 //= require ./masonry.min
+//= require ./leaflet.js
 //= require ./proj4js-combined
 //= require ./proj4leaflet
 //= require ./jquery.sortable.min

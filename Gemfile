@@ -16,25 +16,22 @@ group :assets do
 end
 
 group :development do
-  gem "haml2slim", ">= 0.4.6"
-  gem "haml", ">= 3.1.6"
-  gem "haml-rails", ">= 0.3.4"
-  gem "hpricot", ">= 0.8.6"
-  gem "ruby_parser", ">= 2.3.1"
   gem "bullet"
+  gem 'newrelic_rpm'
 end
 
 gem 'jquery-rails'
 
 # JSON Views
+gem 'oj'
 gem 'rabl'
-gem 'yajl-ruby'
+#gem 'yajl-ruby'
 
 # Templating engine
 gem "slim-rails"
 
 # Utilities
-gem 'bootstrap-sass', '~> 2.1.0.0'
+gem 'bootstrap-sass', '~> 2.1.0.1'
 gem "simple_form"
 gem "responders"
 gem 'turbo-sprockets-rails3'

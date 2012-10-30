@@ -6,11 +6,8 @@ html(lang="en")
     title== yield :title
     meta content="" name="description"
     meta content="width=device-width" name="viewport"
-    = stylesheet_link_tag "http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.css"
-    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans&subset=latin"
     = stylesheet_link_tag :application
   body.fullscreen
     == yield
-    = javascript_include_tag "http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.js"
     = javascript_include_tag :application
     == yield :javascripts
