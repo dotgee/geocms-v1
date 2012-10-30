@@ -26,6 +26,7 @@ class App.Router extends Backbone.Router
     that = this
     @context.fetch
       success: (model, response) ->
+        console.log response
         that.hudView = new App.HudView({
           model: model
           cartCollection: that.cartCollection
@@ -35,6 +36,6 @@ class App.Router extends Backbone.Router
           router: that
         })
         _.each response.layers, (l) ->
-          layer = new App.Layer(l.layer)
+          console.log l
+          layer = that.layerCollection.where({id: l.layer.id})
           that.cartCollection.add(layer)
-          layer.playTimeline()

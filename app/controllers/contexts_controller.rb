@@ -1,5 +1,5 @@
 class ContextsController < ApplicationController
-  layout "explore"
+  layout "explore", :except => :index
   
   def index
     @contexts = Context.all
