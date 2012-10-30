@@ -1,3 +1,3 @@
 collection @layers
 
-extends "layers/show"
+extends "layers/show.json.rabl"

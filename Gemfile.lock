@@ -60,6 +60,9 @@ GEM
       multipart-post (~> 1.1)
     friendly_id (4.0.8)
     fssm (0.2.9)
+    gon (4.0.1)
+      actionpack (>= 2.3.0)
+      json
     haml_coffee_assets (1.5.1)
       coffee-script (>= 1.0.0)
       sprockets (>= 2.0.3)
@@ -189,6 +192,7 @@ DEPENDENCIES
   compass-rails (~> 1.0.3)
   execjs
   friendly_id
+  gon
   haml_coffee_assets
   jquery-rails
   newrelic_rpm

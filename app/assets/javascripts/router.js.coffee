@@ -8,7 +8,8 @@ class App.Router extends Backbone.Router
     @catalogCollection = new App.CatalogCollection()
     @catalogCollection.fetch()
     @layerCollection = new App.LayerCollection()
-    @layerCollection.fetch()
+    @layerCollection.reset(gon.layers)
+    #@layerCollection.fetch()
     @cartCollection = new App.CartCollection()
   index: ->
     @context = new App.Context()

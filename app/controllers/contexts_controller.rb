@@ -1,6 +1,7 @@
 class ContextsController < ApplicationController
   layout "explore", :except => :index
-  
+  before_filter :send_layers_to_front, :only => [:new, :show, :share]
+
   def index
     @contexts = Context.all
     respond_with(@contexts)
@@ -36,4 +37,10 @@ class ContextsController < ApplicationController
     @context.update_attributes(params[:context])
     respond_with(@context)
   end
+
+  private
+    def send_layers_to_front
+      @layers = @current_account.layers.for_frontend
+      gon.rabl "app/views/layers/index.json.rabl", :as => :layers
+    end
 end

@@ -26,6 +26,7 @@ gem 'jquery-rails'
 gem 'oj'
 gem 'rabl'
 #gem 'yajl-ruby'
+gem 'gon'
 
 # Templating engine
 gem "slim-rails"
