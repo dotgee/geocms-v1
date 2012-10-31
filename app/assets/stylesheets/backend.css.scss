@@ -3,6 +3,54 @@
 @import "bootstrap_and_overrides";
 
 @import "vendor";
-@import "app";
 
 @import "backend/categories";
+
+html, body {
+  height: 100%;
+  background: #F4F4F4;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -143px;
+}
+
+#push, footer {
+  height: 123px;
+}
+
+footer {
+  background: #222222;
+  padding-top: 20px;
+  color: #868686;
+  img {
+    margin-bottom: 20px;
+  }
+}
+
+.navbar {
+  .container {
+    width: 1000px;
+  }
+  .nav {
+    > li > a {
+      &:hover, &:focus {
+        color: #E6E6E6;
+      }
+    }
+  }
+  margin-bottom: 0px;
+}
+
+.navbar-inner {
+  background: #222222;
+}
+
+.main-container {
+  width: 1000px;
+  padding: 20px;
+  background: white;
+}

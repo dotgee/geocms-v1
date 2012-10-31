@@ -1,8 +1,12 @@
 tr
+  td.up-downs
+    - unless category.default
+      .m-btn-group
+        = down_link "#"
+        = up_link "#"
   td class=(category.default ? "default" : "")
     - category.depth.times do |hey|
-      .icon-arrow-right
-      ' 
+      span.left-space
     = category.name
   td 
     = link_to 'Show', [:backend, category, :layers], :class => "m-btn mini"

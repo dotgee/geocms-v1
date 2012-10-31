@@ -6,23 +6,33 @@ html(lang="en")
     title== yield :title
     meta content="" name="description"
     meta content="width=device-width" name="viewport"
-    = stylesheet_link_tag "http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.css"
-    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans&subset=latin"
     = stylesheet_link_tag :backend
-  body.fullscreen
-    .navbar
-      .navbar-inner
-        .container
-          ul.nav
-            li= link_to "GeoCMS - #{ActsAsTenant.current_tenant.name}", backend_root_path, :class => "brand"
-            li= link_to "Categories", backend_categories_path
-            li= link_to "Data sources", backend_data_sources_path
-            li= link_to "Users", backend_users_path
-            li= link_to "Preferences", edit_backend_preferences_path
-          ul.nav.pull-right
-            li= link_to "Logout", logout_path
-    .container-fluid
-      == yield
-    = javascript_include_tag "http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.js"
+  body
+
+    #wrap
+      .navbar
+        .navbar-inner
+          .container
+            ul.nav
+              li= link_to "GeoCMS - #{ActsAsTenant.current_tenant.name}", backend_root_path, :class => "brand"
+              li= link_to "Categories", backend_categories_path
+              li= link_to "Data sources", backend_data_sources_path
+              li= link_to "Users", backend_users_path
+              li= link_to "Preferences", edit_backend_preferences_path
+            ul.nav.pull-right
+              li= link_to "Logout", logout_path
+      .container.main-container
+        == yield
+        #push
+    footer
+      .container
+        = image_tag "dotgee-white.png", :width => "165", :height => "71" 
+        .row
+          .span6
+            p Copyright 2012 ©Dotgee. All rights reserved.
+          .span2.offset2
+            p Mentions légales
+          .span2
+            p Contact
     = javascript_include_tag :backend
     == yield :javascripts

@@ -1,4 +1,14 @@
-td.default {
-  color: #666;
-  font-style: italic;
+.table td {
+  vertical-align: middle;
+  &.default {
+    color: #666;
+    font-style: italic;
+  }
+  &.up-downs {
+    width: 80px;
+  }
+}
+
+span.left-space {
+  padding: 0 10px;
 }
