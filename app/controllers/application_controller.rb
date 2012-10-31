@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include UrlHelper
 
   self.responder = ApplicationResponder
-  respond_to :html, :json
+  respond_to :html, :json, :xml
   protect_from_forgery
 
   set_current_tenant_by_subdomain(:account, :subdomain)

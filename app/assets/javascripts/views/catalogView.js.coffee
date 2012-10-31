@@ -19,10 +19,7 @@ class App.CatalogView extends Backbone.View
   resetView: ->
     @$categories.html("")
   addOne: (model) ->
-    if model.get("model") == "category"
-      @$categories.append new App.CatalogCategoryView({ model: model, parentView: this }).render().el
-    else
-      @$categories.append new App.CatalogItemView({ model: model, hud: @hud, parent: this }).render().el
+    @$categories.append new App.CatalogItemView({ model: model, parentView: this }).render().el
   render: ->
     @resetView()
     if @collection.parent
