@@ -1,8 +1,9 @@
+xml.instruct!
 xml.ViewContext(:id => @context.uuid, :version => "1.1.0", "xmlns" => "http://www.opengis.net/context", "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", "xsi:schemaLocation" => "http://www.opengis.net/context http://schemas.opengis.net/context/1.1.0/context.xsd") do
   xml.General do
     xml.Window
     xml.BoundingBox(:SRS => "EPSG:2154", :maxx => @context.maxx, :maxy => @context.maxy, :minx => @context.minx, :miny => @context.miny)
-    xml.Title
+    xml.Title @context.name
     xml.Extension do
       # Incorrect
       xml.tag!("ol:maxExtent", :maxx => @context.maxx, :maxy => @context.maxy, :minx => @context.minx, :miny => @context.miny, "xmlns:ol" => "http://openlayers.org/context")
@@ -18,6 +19,12 @@ xml.ViewContext(:id => @context.uuid, :version => "1.1.0", "xmlns" => "http://ww
         xml.Title layer.title
         xml.Abstract layer.description
         # Missing metadata
+        xml.StyleList do
+          xml.Style do
+            xml.Name
+            xml.Title
+          end
+        end
         xml.FormatList do
           xml.Format("image/png", :current => 1)
         end

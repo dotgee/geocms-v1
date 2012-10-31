@@ -1,5 +1,8 @@
 class App.CatalogView extends Backbone.View
-  template: _.template("<a class='m-btn blue mini back'><i class='m-icon-swapleft m-icon-white'></i>Back</a>")
+  template: _.template("
+    <a class='m-btn blue pull-right back'><i class='m-icon-swapleft m-icon-white'></i> Back</a>
+    <div class='clearfix'></div>
+  ")
   events: {
     "click .close" : "toggle"
     "click .back"  : "back"
