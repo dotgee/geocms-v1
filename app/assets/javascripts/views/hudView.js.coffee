@@ -34,11 +34,7 @@ class App.HudView extends Backbone.View
       )
       box = new App.MapProviders.Leaflet().bboxTo2154(@mapProvider.map.getBounds())
       
-      minx = box[0]
-      maxx = box[2]
-      miny = box[1]
-      maxy = box[3]
-      @model.save {layer_ids: layer_ids, minx: minx, maxx: maxx, miny: miny, maxy: maxy},
+      @model.save {layer_ids: layer_ids, minx: box[0], maxx: box[2], miny: box[1], maxy: box[3]},
         success: (model, response) ->
           if model.isNew()
             model.set({uuid: response.uuid})

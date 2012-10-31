@@ -33,9 +33,9 @@
       li.span4
         = link_to "#layers", "data-toggle" => "tab" do
           |Layers
-      li.span4
-        = link_to "#style", "data-toggle" => "tab" do
-          |Style
+      / li.span4
+      /   = link_to "#style", "data-toggle" => "tab" do
+      /     |Style
     .tab-content
       .tab-pane.active id="infos"
         a.m-btn.mini.blue.from-map From Map
@@ -46,17 +46,17 @@
             i.icon-plus.icon-white
             |&nbsp;
             i.icon-layer
-        ul.nav.nav-list.layer-list
+        ul.nav.nav-list#layer-list
         #catalog.popup
           button class="close" &times;
           .page-header
             h3 Layers catalog
           .container-fluid
             #categories
-      .tab-pane id="style"
-        ul.nav.nav-list
-          li.nav-header
-            |Custom styles are not available yet
+      / .tab-pane id="style"
+      /   ul.nav.nav-list
+      /     li.nav-header
+      /       |Custom styles are not available yet
   #map data-latitude="48.118434" data-longitude="-1.676239" data-zoom="10"
   .modal.hide.fade#share-modal
     .modal-header

@@ -5,7 +5,6 @@ class App.CartView extends Backbone.View
   toggleCatalog: (e) ->
     e.preventDefault()
     @catalogView.$el.css("left", @parent.$el.width())
-    $(".thumbnails").masonry("reload")
     @catalogView.toggle()
   initialize: ->
     @parent       = @options.parentView
@@ -17,8 +16,9 @@ class App.CartView extends Backbone.View
     @collection.on('removeFromMap', @removeOne, this)
     @collection.on('reindex', @reindex, this)
 
+    @$layerList = $("#layer-list")
     that = this
-    $(".layer-list").sortable(
+    @$layerList.sortable(
       handler: ".grippy"
       update: ->
         that.collection.trigger("reindex")
@@ -26,7 +26,7 @@ class App.CartView extends Backbone.View
   addOne: (layer) ->
     layer.addToMap()
     cartViewItem = new App.CartItemView({model: layer, mapProvider: @mapProvider})
-    @$el.find(".layer-list").append(cartViewItem.render().el)
+    @$layerList.append(cartViewItem.render().el)
     @mapProvider.addLayerToMap(layer.get("leaflet"))
     @parent.switchControls(true)
     @cartViewItems.push(cartViewItem)

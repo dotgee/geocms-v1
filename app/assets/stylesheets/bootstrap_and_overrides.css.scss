@@ -30,3 +30,26 @@ textarea {
     @include opacity(0.7);
   }
 }
+
+[class^="icon-"] {
+  &.icon-layer {
+    background: url("layers.png") no-repeat;
+    width: 12px;
+    height: 10px;
+    margin-top: 3px;
+    background-position: bottom;
+    &:hover {
+      background-position: top;
+    }
+  }
+}
+.navbar-inner {
+  background: #1570a6;
+  @include border-radius(0px);
+  border: none;
+  min-height: 50px;
+}
+
+.brand {
+  line-height: 25px;
+}
