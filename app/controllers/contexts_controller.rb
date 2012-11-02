@@ -1,5 +1,4 @@
 class ContextsController < ApplicationController
-  layout "explore", :except => :index
   before_filter :send_layers_to_front, :only => [:new, :show, :share]
 
   def index

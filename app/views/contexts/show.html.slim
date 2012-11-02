@@ -1,22 +1,3 @@
-.navbar
-  .navbar-inner
-    .container
-      ul.nav
-        li= link_to "dotGeoCMS - #{@current_account.name}", "#", :class => "brand"
-        li= link_to "Maps", contexts_path
-      ul.nav.pull-right
-        li
-          .m-btn-group.map-toolbar
-            button.m-btn.icn-only.cart.active data-toggle="button" title="Panier"
-              i.icon-shopping-cart
-            / button.m-btn.icn-only.disabled data-toggle="button" title="Légende"
-            /   i.icon-tint
-            button.m-btn.icn-only.globe title="Vue initiale"
-              i.icon-globe
-      - if logged_in?
-        ul.nav.pull-right
-          li= link_to "Admin", backend_root_path
-
 .wrapper
   .hud
     .map-controls
@@ -27,15 +8,12 @@
           |SHARE 
           i.m-icon-swapright
     ul.nav.nav-tabs.row-fluid id="hud-tab"
-      li.span4.active
+      li.active
         = link_to "#infos", "data-toggle" => "tab" do
           |Infos
-      li.span4
+      li
         = link_to "#layers", "data-toggle" => "tab" do
           |Layers
-      / li.span4
-      /   = link_to "#style", "data-toggle" => "tab" do
-      /     |Style
     .tab-content
       .tab-pane.active id="infos"
         a.m-btn.mini.blue.from-map From Map
@@ -53,10 +31,17 @@
             h3 Layers catalog
           .container-fluid
             #categories
-      / .tab-pane id="style"
-      /   ul.nav.nav-list
-      /     li.nav-header
-      /       |Custom styles are not available yet
+    .m-btn-group#ctrls
+      button.m-btn.icn-only.legend.disabled
+        i.icon-tint
+      button.m-btn.icn-only.globe
+        i.icon-globe
+      button.m-btn.icn-only.geoloc
+        i.icon-screenshot
+      button.m-btn.icn-only.fullscreen.disabled
+        i.icon-fullscreen
+      button.m-btn.icn-only.swapleft
+        i.m-icon-swapleft
   #map data-latitude="48.118434" data-longitude="-1.676239" data-zoom="10"
   .modal.hide.fade#share-modal
     .modal-header

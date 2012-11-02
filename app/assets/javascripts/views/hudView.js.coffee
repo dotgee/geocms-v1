@@ -18,7 +18,7 @@ class App.HudView extends Backbone.View
     @catalog = new App.CatalogView({ el: this.$("#catalog"), collection: @catalogCollection, layers: @layerCollection, parentView: this })
     @cart = new App.CartView({ el: this.$("#layers"), collection: @cartCollection, parentView: this })
     @infos = new App.InfosView({ el: this.$("#infos"), parentView: this })
-    @toolbar = new App.MapToolbarView({ parentView: this })
+    @toolbar = new App.MapToolbarView({ el: this.$("#ctrls"), parentView: this })
   open: ->
     @$el.css("left", "0")
     $(".leaflet-control-zoom ").animate({"left": @$el.width()}, 200)

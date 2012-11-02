@@ -11,6 +11,9 @@ body, html {
 
 .navbar .nav > li > a {
   text-shadow: none;
+  &.brand {
+    padding-top: 8px;
+  }
 }
 .navbar .nav > li {
   line-height: 30px;

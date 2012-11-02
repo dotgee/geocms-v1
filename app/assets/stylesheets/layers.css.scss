@@ -68,7 +68,7 @@ body.fullscreen {
     top: 105px;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 50px;
     overflow-y: auto;
   }
 }
@@ -99,6 +99,21 @@ body.fullscreen {
       a {
         border-left: none;
       }
+    }
+  }
+}
+
+// LEFT NAVBAR - CONTROLS
+
+#ctrls {
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid #E6E6E6;
+  .m-btn {
+    margin-top: 0;
+    padding: 14px 28px;
+    &:last-child {
+      padding: 14px 29px;
     }
   }
 }

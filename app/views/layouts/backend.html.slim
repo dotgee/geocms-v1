@@ -14,7 +14,8 @@ html(lang="en")
         .navbar-inner
           .container
             ul.nav
-              li= link_to "GeoCMS - #{ActsAsTenant.current_tenant.name}", backend_root_path, :class => "brand"
+              li= link_to backend_root_path, :class => "brand" do
+                = image_tag "dotgeocms.png"
               - if logged_in?
                 li= link_to "Categories", backend_categories_path
                 li= link_to "Data sources", backend_data_sources_path

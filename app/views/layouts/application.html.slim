@@ -3,20 +3,24 @@ html(lang="en")
   head
     meta charset="utf-8"
     meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"
-    title GeoCMS
+    title== yield :title
     meta content="" name="description"
     meta content="width=device-width" name="viewport"
     = stylesheet_link_tag :application
-  body.fullscreen
+  body
     .navbar
       .navbar-inner
         .container
-          a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.brand href="#" GeoCMS
-          .nav-collapse.collapse
-            ul.nav
+          ul.nav
+            li= link_to root_path, :class => "brand" do
+              = image_tag "dotgeocms.png"
+            
+          ul.nav.pull-right
+              ul.nav.pull-right
+                li= link_to "Maps", contexts_path
+                - if logged_in?
+                  li= link_to "Admin", backend_root_path
     == yield
+    = include_gon
+    = javascript_include_tag :application
     == yield :javascripts
