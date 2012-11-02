@@ -1,12 +1,30 @@
-p#notice = notice
+.page-header
+  h1= @category.name
 
-p
-  strong Name:
-  = @category.name
-p
-  strong Position:
-  = @category.position
+= back_link @category
+.clearfix
+- if @category.has_children?
+  h5 Categories
+  table.table.table-striped
+    thead
+      tr
+        th
+        th
+        th
+    tbody
+      - @category.children.each do |category|
+        == render category
+- else
+  h5 Layers
+  table.table.table-striped
+    thead
+      tr
+        th
+        th
+        th
+    tbody
+      - @category.layers.each do |layer|
+        == render layer
+  = link_to "New layer", [:new, :backend, @category, :layer], :class => "m-btn"
 
-= link_to 'Edit', edit_backend_category_path(@category)
-'|
-= link_to 'Back', backend_categories_path
+= link_to "New child category", new_backend_category_path(:parent_id => @category.id), :class => "m-btn"

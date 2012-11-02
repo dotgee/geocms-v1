@@ -7,7 +7,9 @@ class Context < ActiveRecord::Base
   before_create :generate_uuid
 
   def generate_uuid
-    self.uuid = self.account.subdomain.sub("-", "")+"-"+(0...8).map{65.+(rand(26)).chr.downcase}.join
+    str = self.account.subdomain
+    str.gsub!("-", "")
+    self.uuid = str+"-"+(0...8).map{65.+(rand(26)).chr.downcase}.join
   end
 
   def bbox

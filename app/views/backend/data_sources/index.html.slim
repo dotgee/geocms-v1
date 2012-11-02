@@ -1,24 +1,20 @@
 .page-header
   h1 Listing Data Sources
 
-= link_to 'New Data source', new_backend_data_source_path, :class => "m-btn pull-right"
 
 table.table.table-striped
   thead
     tr
       th Name
-      th Wms
-      th Wfs
       th
   tbody
     - @data_sources.each do |data_source|
       tr
         td = data_source.name
-        td = data_source.wms
-        td = data_source.wfs
         td 
           = link_to 'Show', [:backend, data_source], :class => "m-btn mini"
           = link_to 'Edit', edit_backend_data_source_path(data_source), :class => "m-btn mini blue-stripe"
           = link_to 'Destroy', [:backend, data_source], :confirm => 'Are you sure?', :method => :delete, :class => "m-btn mini red-stripe"
 
 br
+= link_to 'New Data source', new_backend_data_source_path, :class => "m-btn green-stripe"

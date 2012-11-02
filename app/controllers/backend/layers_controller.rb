@@ -26,20 +26,20 @@ class Backend::LayersController < Backend::ApplicationController
   def create
     @layer = @category.layers.new(params[:layer])
     @layer.save
-    respond_with([:backend, @category, @layer])
+    respond_with([:backend, @category])
   end
 
   def update
     @layer = @category.layers.find(params[:id])
     @layer.update_attributes(params[:layer])
-    respond_with [:backend, @category, @layer]
+    respond_with [:backend, @category]
   end
 
   def destroy
     @layer = @category.layers.find(params[:id])
     @layer.destroy
 
-    respond_with([:backend, @category, @layer])
+    respond_with([:backend, @category])
   end
 
   private

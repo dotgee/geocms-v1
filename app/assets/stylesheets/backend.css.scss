@@ -3,7 +3,7 @@
 @import "bootstrap_and_overrides";
 
 @import "vendor";
-
+@import "backend/sessions";
 @import "backend/categories";
 
 html, body {
@@ -37,6 +37,7 @@ footer {
   }
   .nav {
     > li > a {
+      color: #868686;
       &:hover, &:focus {
         color: #E6E6E6;
       }

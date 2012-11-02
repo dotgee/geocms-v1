@@ -1,23 +1,20 @@
-.container-fluid
-  .row-fluid
-    .span4.offset4.thumbnail
+.container
+  = form_tag sessions_path, :class => "form-signin" do
+    legend Sign in
+    .control-group
+      = label_tag :username, "Username or email : ", :class => "control-label"
+      .controls
+        = text_field_tag :username, params[:username]
 
-      = form_tag sessions_path, :class => "form-horizontal" do
-        legend Sign in
-        .control-group
-          = label_tag :username, nil, :class => "control-label"
-          .controls
-            = text_field_tag :username, params[:username]
+    .control-group
+      = label_tag :password, "Password :", :class => "control-label"
+      .controls
+        = password_field_tag :password
 
-        .control-group
-          = label_tag :password, nil, :class => "control-label"
-          .controls
-            = password_field_tag :password
-
-        .control-group
-          .controls
-            = label_tag :remember_me, nil, :class => "checkbox" do
-              |Remember me
-              = check_box_tag :remember_me, 1, params[:remember_me]
-          
-            = submit_tag "Sign in", :class => "btn"
+    .control-group
+      .controls
+        = label_tag :remember_me, nil, :class => "checkbox" do
+          |Remember me
+          = check_box_tag :remember_me, 1, params[:remember_me]
+      
+        = submit_tag "Sign in", :class => "m-btn red-stripe"

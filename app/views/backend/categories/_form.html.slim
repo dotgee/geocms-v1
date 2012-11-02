@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :name
-    = f.input :parent_id, :as => :select, :collection => @categories
+    = f.input :parent_id, :as => :hidden, :input_html => { :value => @category.parent_id }
   .form-actions
     .m-btn-group
       = f.button :submit, :class => "m-btn blue"

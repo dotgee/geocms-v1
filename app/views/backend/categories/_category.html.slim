@@ -9,6 +9,6 @@ tr
       span.left-space
     = category.name
   td 
-    = link_to 'Show', [:backend, category, :layers], :class => "m-btn mini"
+    = link_to 'Browse', [:backend, category], :class => "m-btn mini"
     = link_to 'Edit', edit_backend_category_path(category) , :class => "m-btn blue-stripe mini" unless category.default
     = link_to 'Destroy', [:backend, category], :confirm => 'Are you sure?', :method => :delete , :class => "m-btn red-stripe mini" unless category.default

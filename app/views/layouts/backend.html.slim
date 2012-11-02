@@ -15,12 +15,14 @@ html(lang="en")
           .container
             ul.nav
               li= link_to "GeoCMS - #{ActsAsTenant.current_tenant.name}", backend_root_path, :class => "brand"
-              li= link_to "Categories", backend_categories_path
-              li= link_to "Data sources", backend_data_sources_path
-              li= link_to "Users", backend_users_path
-              li= link_to "Preferences", edit_backend_preferences_path
-            ul.nav.pull-right
-              li= link_to "Logout", logout_path
+              - if logged_in?
+                li= link_to "Categories", backend_categories_path
+                li= link_to "Data sources", backend_data_sources_path
+                li= link_to "Users", backend_users_path
+                li= link_to "Preferences", edit_backend_preferences_path
+            - if logged_in?
+              ul.nav.pull-right
+                li= link_to "Logout", logout_path
       .container.main-container
         == yield
         #push

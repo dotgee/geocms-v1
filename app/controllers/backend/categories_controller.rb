@@ -11,13 +11,14 @@ class Backend::CategoriesController < Backend::ApplicationController
 
   def new
     @category = Category.new
-    @categories = Category.order(:names_depth_cache).map { |c| ["-" * c.depth + c.name,c.id] }
+    if params[:parent_id]
+      @category.parent_id = params[:parent_id]
+    end
     respond_with([:backend, @category])
   end
 
   def edit
     @category = Category.find(params[:id])
-    @categories = Category.order(:names_depth_cache).map { |c| ["-" * c.depth + c.name,c.id] }
   end
 
   def create
