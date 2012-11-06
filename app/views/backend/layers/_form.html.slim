@@ -5,6 +5,8 @@
   = f.input :title
   = f.input :description
 
+  legend Move to
+  = f.association :category
   .m-btn-group
     = f.submit :class => "m-btn blue"
     = link_to 'Back', [:backend, @category, :layers], :class => "m-btn"

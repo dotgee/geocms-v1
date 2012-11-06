@@ -3,6 +3,7 @@ $navbarText: white;
 $navbarBrandColor: white;
 $navbarLinkColorHover: #D4EBFA;
 $sansFontFamily: 'Segoe UI', Helvetica, Arial, sans-serif;
+$linkColor: #3C4E5A;
 @import "bootstrap";
 
 body, html {
@@ -55,4 +56,23 @@ textarea {
 
 .brand {
   line-height: 25px;
+}
+
+.pagination {
+  li {
+    &:first-child, &:last-child {
+      a, span {
+        @include border-radius(0);
+      }
+    }
+    &.current {
+      a {
+        color: #777;
+        font-weight: bold;
+        -webkit-box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.25);
+           -moz-box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.25);
+                box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.25);
+      }
+    }
+  }
 }

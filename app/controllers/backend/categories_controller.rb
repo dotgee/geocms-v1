@@ -6,6 +6,7 @@ class Backend::CategoriesController < Backend::ApplicationController
 
   def show
     @category = Category.find(params[:id])
+    @layers = @category.layers.page(params[:page])
     respond_with([:backend, @category])
   end
 

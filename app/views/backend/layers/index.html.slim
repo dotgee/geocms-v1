@@ -2,10 +2,11 @@
   h1= "#{ActsAsTenant.current_tenant.name} #{@category.name} - Layers"
 
 = link_to 'New Layer', [:new, :backend, @category, :layer], :class => "m-btn pull-right"
+.clearfix
+= paginate @layers
 table.table.table-striped
   thead
     tr
-      th Name
       th Title
       th
       th

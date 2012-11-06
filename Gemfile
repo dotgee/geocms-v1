@@ -53,5 +53,8 @@ gem "acts_as_tenant"
 # Slugging 
 gem "friendly_id"
 
-# Custom gem to import layers
+# Import layers
 gem "wms_getcapabilities", '~> 0.1.0.5'
+
+# Pagination
+gem "kaminari"

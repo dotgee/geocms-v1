@@ -32,7 +32,7 @@
           .container-fluid
             #categories
     .m-btn-group#ctrls
-      button.m-btn.icn-only.legend.disabled
+      button.m-btn.icn-only.legend data-toggle="button"
         i.icon-tint
       button.m-btn.icn-only.globe
         i.icon-globe
@@ -58,3 +58,6 @@
         span.copy-code
           p#embed-link= share_link(true)
           a.copy.m-btn.mini#copy-link Copy
+  #legend-graphic.hide
+    h4 Legend
+    .inner-legend

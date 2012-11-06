@@ -15,7 +15,7 @@ html(lang="en")
           .container
             ul.nav
               li= link_to backend_root_path, :class => "brand" do
-                = image_tag "dotgeocms.png"
+                = image_tag "dotgeocms.png", :width => "128", :height => "33"
               - if logged_in?
                 li= link_to "Categories", backend_categories_path
                 li= link_to "Data sources", backend_data_sources_path

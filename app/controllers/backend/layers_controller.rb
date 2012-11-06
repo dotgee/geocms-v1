@@ -2,7 +2,7 @@ class Backend::LayersController < Backend::ApplicationController
   before_filter :require_category
 
   def index
-    @layers = @category.layers.all
+    @layers = @category.layers.page params[:page]
 
     respond_with([:backend, @layers])
   end

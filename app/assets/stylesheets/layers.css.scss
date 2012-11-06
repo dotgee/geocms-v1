@@ -323,6 +323,26 @@ body.fullscreen {
   white-space: nowrap;
 }
 
+// LEGENDE
+
+#legend-graphic {
+  padding: 6px 8px;
+  background: white;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: fixed;
+  bottom: 20px;
+  left: 400px;
+  height: 250px;
+  overflow: auto;
+  width: 250px;
+  line-height: 20px;
+  h4 {
+    margin: 0 0 5px;
+    color: #777;
+  }
+}
+
 // LEAFLET OVERRIDES
 
 .leaflet-top, .leaflet-bottom {

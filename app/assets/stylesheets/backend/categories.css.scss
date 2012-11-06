@@ -1,14 +1,17 @@
-.table td {
-  vertical-align: middle;
-  &.default {
-    color: #666;
-    font-style: italic;
+table {
+  td {
+    vertical-align: middle;
+    &.default {
+      color: #666;
+      font-style: italic;
+    }
+    .m-btn-group {
+      margin-right: 20px;
+    }
   }
-  .m-btn-group {
-    margin-right: 20px;
+  &.categories-index {
+    span.left-space {
+      padding: 0 10px;
+    }
   }
-}
-
-span.left-space {
-  padding: 0 10px;
 }

@@ -19,11 +19,12 @@ class App.HudView extends Backbone.View
     @cart = new App.CartView({ el: this.$("#layers"), collection: @cartCollection, parentView: this })
     @infos = new App.InfosView({ el: this.$("#infos"), parentView: this })
     @toolbar = new App.MapToolbarView({ el: this.$("#ctrls"), parentView: this })
+    @legend = new App.MapLegendView({ el: $("#legend-graphic"), parentView: this })
   open: ->
     @$el.css("left", "0")
     $(".leaflet-control-zoom ").animate({"left": @$el.width()}, 200)
   close: ->
-    @$el.css("left", -@$el.width())
+    @$el.css("left", -@$el.width()+10)
     $(".leaflet-control-zoom").animate({"left": 0}, 200)
   saveContext: (e) ->
     e.preventDefault()
