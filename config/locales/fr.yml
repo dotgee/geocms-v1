@@ -1,0 +1,16 @@
+fr:
+  context:
+    save: "Sauvegarder"
+    share: "Partager"
+    infos: "Infos"
+    from_map: "Depuis la carte"
+    sharable:
+      share_your_map: "Partagez votre carte"
+      direct_link: "Lien direct"
+      html_embed: "Ou par iframe"
+      copy: "Copier"
+  layers: "Couches"
+  add_a_new_layer: "Ajouter une nouvelle couche"
+  layers_catalog: "Catalogue de couches"
+  legend: "Légende"
+  maps: "Cartes"

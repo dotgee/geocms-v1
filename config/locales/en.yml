@@ -1,5 +1,16 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  context:
+    save: "SAVE"
+    share: "SHARE"
+    infos: "Infos"
+    from_map: "From map"
+    sharable:
+      share_your_map: "Share your map"
+      direct_link: "Direct link"
+      html_embed: "Or HTML embed code"
+      copy: "Copy"
+  layers: "Layers"
+  add_a_new_layer: "Add a new layer"
+  layers_catalog: "Catalog of layers"
+  legend: "Legend"
+  maps: "Maps"

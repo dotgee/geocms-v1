@@ -44,7 +44,7 @@
       button.m-btn.icn-only.togglehud
         i.m-icon-swapleft
   #map data-latitude="48.118434" data-longitude="-1.676239" data-zoom="10"
-  .modal.hide.fade#share-modal
+  .modal#share-modal.hide style="position: asbolute;display:block;z-index:-1"
     .modal-header
       button.close aria-hidden="true" data-dismiss="modal" type="button"
       h3 = t "context.sharable.share_your_map"
@@ -53,12 +53,28 @@
         h5  = t "context.sharable.direct_link"
         span.copy-code
           p#direct-link= share_link
-          a.copy.m-btn.mini  = t "context.sharable.copy"
+          a.copy.m-btn.mini#copy-direct  = t "context.sharable.copy"
       .embed-code
         h5  = t "context.sharable.html_embed"
         span.copy-code
           p#embed-link= share_link(true)
-          a.copy.m-btn.mini#copy-link  = t "context.sharable.copy"
+          a.copy.m-btn.mini#copy-embed  = t "context.sharable.copy"
   #legend-graphic.hide
     h4 = t "legend"
     .inner-legend
+
+= content_for :javascripts do
+  javascript:
+    $(document).ready(function(){
+      $(".share").click(function(e){
+        $("#share-modal").css("z-index", "9999");
+      });
+      $('a#copy-direct').zclip({
+          path:'/ZeroClipboard.swf',
+          copy: function() { return $("p#direct-link").text(); }
+      });
+      $('a#copy-embed').zclip({
+          path:'/ZeroClipboard.swf',
+          copy: function() { return $("p#embed-link").text(); }
+      });
+    });
