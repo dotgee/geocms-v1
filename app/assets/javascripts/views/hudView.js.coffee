@@ -24,7 +24,7 @@ class App.HudView extends Backbone.View
     @$el.css("left", "0")
     $(".leaflet-control-zoom ").animate({"left": @$el.width()}, 200)
   close: ->
-    @$el.css("left", -@$el.width()+10)
+    @$el.css("left", -@$el.width())
     $(".leaflet-control-zoom").animate({"left": 0}, 200)
   saveContext: (e) ->
     e.preventDefault()

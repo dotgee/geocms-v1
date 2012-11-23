@@ -106,8 +106,9 @@ body.fullscreen {
 // LEFT NAVBAR - CONTROLS
 
 #ctrls {
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  left: 0;
   border-top: 1px solid #E6E6E6;
   .m-btn {
     margin-top: 0;
