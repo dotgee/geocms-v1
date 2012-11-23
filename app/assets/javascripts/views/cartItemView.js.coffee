@@ -16,7 +16,7 @@ class App.CartItemView extends Backbone.View
           <% } %>
           <div class='m-btn-group control-buttons'>
             <a class='m-btn mini query' data-toggle='button'><i class='icon-info-sign'></i></a>
-            
+
             <a class='m-btn mini remove'><i class='icon-remove'></i></a>
           </div>
           <% if(dimension) { %>

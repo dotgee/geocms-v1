@@ -2,7 +2,7 @@ Geocms2::Application.routes.draw do
 
 
   constraints(lambda { |r| r.subdomain.present? && r.subdomain != 'www' }) do
-    
+
     # Authentication
     get "logout" => "sessions#destroy", :as => "logout"
     get "login" => "sessions#new", :as => "login"
@@ -10,17 +10,17 @@ Geocms2::Application.routes.draw do
     resources :users
     resources :sessions
 
-    
+
     # Backend
     namespace :backend do
 
       root :to => "categories#index"
-      
+
       resources :categories do
         resources :layers
       end
 
-      resources :data_sources do 
+      resources :data_sources do
         member do
           get "import"
           post "import", :to => "data_sources#do_import"

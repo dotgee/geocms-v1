@@ -17,7 +17,7 @@ class DataSource < ActiveRecord::Base
         end
       end
     end
-    
+
     layers
   end
 end

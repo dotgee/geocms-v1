@@ -18,7 +18,7 @@ class App.CatalogItemView extends Backbone.View
       <img class='media-object' src='http://placehold.it/64x64' width='64' height='64'  >
     </a>
     <div class='media-body'>
-      
+
       <h4 class='media-heading layer-heading'><%= title %></h4>
       <% if(description) { %><p> <%= description %> </p><% } %>
     </div>")
@@ -44,7 +44,7 @@ class App.CatalogItemView extends Backbone.View
       layerCollection.parent.collection = @model.collection
       @parentView.collection = layerCollection
       @parentView.render()
-    else      
+    else
       @parentView.collection = @model.get("children")
       @parentView.render()
   render: ->

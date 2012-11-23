@@ -11,7 +11,7 @@ table.table.table-striped
     - @data_sources.each do |data_source|
       tr
         td = data_source.name
-        td 
+        td
           = link_to 'Show', [:backend, data_source], :class => "m-btn mini"
           = link_to 'Edit', edit_backend_data_source_path(data_source), :class => "m-btn mini blue-stripe"
           = link_to 'Destroy', [:backend, data_source], :confirm => 'Are you sure?', :method => :delete, :class => "m-btn mini red-stripe"

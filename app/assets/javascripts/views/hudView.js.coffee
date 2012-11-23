@@ -34,7 +34,7 @@ class App.HudView extends Backbone.View
         layer.get("id")
       )
       box = new App.MapProviders.Leaflet().bboxTo2154(@mapProvider.map.getBounds())
-      
+
       @model.save {layer_ids: layer_ids, minx: box[0], maxx: box[2], miny: box[1], maxy: box[3]},
         success: (model, response) ->
           if model.isNew()
@@ -46,7 +46,7 @@ class App.HudView extends Backbone.View
   switchControls: (unsaved) ->
     if unsaved
       @$el.find(".save").removeAttr("disabled").removeClass("disabled")
-      @$el.find(".share").attr("disabled", "disabled").addClass("disabled")   
+      @$el.find(".share").attr("disabled", "disabled").addClass("disabled")
     else
       @$el.find(".share").removeAttr("disabled").removeClass("disabled")
       @$el.find(".save").attr("disabled", "disabled").addClass("disabled")

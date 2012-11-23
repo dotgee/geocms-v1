@@ -3,11 +3,11 @@ require "application_responder"
 class Backend::ApplicationController < ActionController::Base
   self.responder = ApplicationResponder
   respond_to :html
-  
+
   layout "backend"
 
   protect_from_forgery
-  
+
   set_current_tenant_by_subdomain(:account, :subdomain)
   before_filter :require_login
 

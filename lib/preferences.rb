@@ -12,7 +12,7 @@ module Preferences
       preferences[name] = default
       self.class_variable_set(:'@@preferences', preferences)
     end
-    
+
     def prefs
       self.class_variable_get(:'@@preferences')
     end

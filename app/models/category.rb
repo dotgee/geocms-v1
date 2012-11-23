@@ -23,8 +23,8 @@ class Category < ActiveRecord::Base
       { "name" => node.name,
         "id" => node.id,
         "slug" => node.slug,
-        "children" => json_tree(sub_nodes).compact 
-      } 
+        "children" => json_tree(sub_nodes).compact
+      }
     end
   end
 end

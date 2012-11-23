@@ -39,7 +39,7 @@ App.Layer = Backbone.RelationalModel.extend
       timelineCounter = that.get("timelineCounter")
       that.showtime(1)
       if timelineCounter == count-1
-        that.pauseTimeline() 
+        that.pauseTimeline()
     ), 2000
   pauseTimeline:  ->
     clearInterval @player
