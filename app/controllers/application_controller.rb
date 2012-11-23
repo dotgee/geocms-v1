@@ -7,14 +7,13 @@ class ApplicationController < ActionController::Base
   respond_to :html, :json, :xml
   protect_from_forgery
 
-  set_current_tenant_by_subdomain(:account, :subdomain)
-  before_filter :load_account
+  set_current_tenant_by_subdomain(:account, :subdomain, ENV["MONO_ACCOUNT"].to_bool)
+
+  def current_account
+    ActsAsTenant.current_tenant
+  end
 
   private
-    def load_account
-      @current_account = ActsAsTenant.current_tenant
-    end
-
     def not_authenticated
       redirect_to login_url, :alert => "First log in to view this page."
     end

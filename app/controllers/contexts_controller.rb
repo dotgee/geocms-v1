@@ -39,7 +39,7 @@ class ContextsController < ApplicationController
 
   private
     def send_layers_to_front
-      @layers = @current_account.layers.includes(:dimensions).for_frontend
+      @layers = @current_tenant_instance.layers.includes(:dimensions).for_frontend
       gon.rabl "app/views/layers/index.json.rabl", :as => :layers
     end
 end

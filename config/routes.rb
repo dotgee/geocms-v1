@@ -1,8 +1,6 @@
 Geocms2::Application.routes.draw do
 
-
-  constraints(lambda { |r| r.subdomain.present? && r.subdomain != 'www' }) do
-
+  constraints(lambda { |r| r.subdomain.present? && r.subdomain != 'www'  || ENV["MONO_ACCOUNT"].to_bool }) do
     # Authentication
     get "logout" => "sessions#destroy", :as => "logout"
     get "login" => "sessions#new", :as => "login"
