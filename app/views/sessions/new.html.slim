@@ -1,5 +1,5 @@
 .container
-  = form_tag sessions_path, :class => "form-signin" do
+  = form_tag sessions_path, :method => :post, :class => "form-signin" do
     legend Sign in
     .control-group
       = label_tag :username, "Username or email : ", :class => "control-label"

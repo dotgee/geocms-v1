@@ -3,23 +3,24 @@
     .map-controls
       .m-btn-group
         button.save.m-btn.blue-stripe
-          |SAVE
+          = t "context.save"
         button.share.m-btn.disabled disabled="disabled"
-          |SHARE
+          = t "context.share"
+          '
           i.m-icon-swapright
     ul.nav.nav-tabs.row-fluid id="hud-tab"
       li.active
         = link_to "#infos", "data-toggle" => "tab" do
-          |Infos
+          = t "context.infos"
       li
         = link_to "#layers", "data-toggle" => "tab" do
-          |Layers
+          = t "layers"
     .tab-content
       .tab-pane.active id="infos"
-        a.m-btn.mini.blue.from-map From Map
+        a.m-btn.mini.blue.from-map = t "context.from_map"
       .tab-pane id="layers"
         .add-layer
-          span Add a new layer
+          span = t "add_a_new_layer"
           = link_to "#", :class => "m-btn mini blue icn-only pull-right" do
             i.icon-plus.icon-white
             |&nbsp;
@@ -28,7 +29,7 @@
         #catalog.popup
           button class="close" &times;
           .page-header
-            h3 Layers catalog
+            h3 = t "layers_catalog"
           .container-fluid
             #categories
     .m-btn-group#ctrls
@@ -40,24 +41,24 @@
         i.icon-screenshot
       button.m-btn.icn-only.fullscreen data-toggle="button"
         i.icon-fullscreen
-      button.m-btn.icn-only.togglehud data-toggle="button"
+      button.m-btn.icn-only.togglehud
         i.m-icon-swapleft
   #map data-latitude="48.118434" data-longitude="-1.676239" data-zoom="10"
   .modal.hide.fade#share-modal
     .modal-header
       button.close aria-hidden="true" data-dismiss="modal" type="button"
-      h3 Share your map
+      h3 = t "context.sharable.share_your_map"
     .modal-body
       .direct-code
-        h5 Direct link
+        h5  = t "context.sharable.direct_link"
         span.copy-code
           p#direct-link= share_link
-          a.copy.m-btn.mini Copy
+          a.copy.m-btn.mini  = t "context.sharable.copy"
       .embed-code
-        h5 Or HTML embed code
+        h5  = t "context.sharable.html_embed"
         span.copy-code
           p#embed-link= share_link(true)
-          a.copy.m-btn.mini#copy-link Copy
+          a.copy.m-btn.mini#copy-link  = t "context.sharable.copy"
   #legend-graphic.hide
-    h4 Legend
+    h4 = t "legend"
     .inner-legend

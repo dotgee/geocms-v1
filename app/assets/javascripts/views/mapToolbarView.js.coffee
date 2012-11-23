@@ -10,18 +10,19 @@ class App.MapToolbarView extends Backbone.View
     @parent       = @options.parentView
     @mapProvider  = @parent.mapProvider
     @mapView      = @parent.mapView
+    @$togglehud   = @$el.find(".togglehud i")
   toggleHud: () ->
-    $e = @$el.find(".togglehud")
-    if $e.hasClass("active")
+    $e = @$togglehud
+    if $e.hasClass("m-icon-swapright")
       @openHud()
     else
       @closeHud()
   closeHud: ->
     @parent.close()
-    @$el.find(".togglehud i").removeClass("m-icon-swapleft").addClass("m-icon-swapright")
+    @$togglehud.removeClass("m-icon-swapleft").addClass("m-icon-swapright")
   openHud: ->
     @parent.open()
-    @$el.find(".togglehud i").removeClass("m-icon-swapright").addClass("m-icon-swapleft")
+    @$togglehud.removeClass("m-icon-swapright").addClass("m-icon-swapleft")
   toggleLegend: (e) ->
     @parent.legend.toggleShow()
   fullscreen: (e) ->

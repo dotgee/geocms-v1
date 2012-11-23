@@ -17,7 +17,7 @@ html(lang="en")
 
           ul.nav.pull-right
               ul.nav.pull-right
-                li= link_to "Maps", contexts_path
+                li= link_to (t "maps"), contexts_path
                 - if logged_in?
                   li= link_to "Admin", backend_root_path
     == yield

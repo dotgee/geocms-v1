@@ -15,6 +15,6 @@ table.table.table-striped
           = link_to 'Show', [:backend, data_source], :class => "m-btn mini"
           = link_to 'Edit', edit_backend_data_source_path(data_source), :class => "m-btn mini blue-stripe"
           = link_to 'Destroy', [:backend, data_source], :confirm => 'Are you sure?', :method => :delete, :class => "m-btn mini red-stripe"
-
+          = link_to "Import", [:import, :backend, data_source], :class => "m-btn mini"
 br
 = link_to 'New Data source', new_backend_data_source_path, :class => "m-btn green-stripe"
