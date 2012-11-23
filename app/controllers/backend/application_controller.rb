@@ -8,7 +8,7 @@ class Backend::ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  set_current_tenant_by_subdomain(:account, :subdomain, ENV["MONO_ACCOUNT"])
+  set_current_tenant_by_subdomain(:account, :subdomain, ENV["MONO_ACCOUNT"].to_bool)
   before_filter :require_login
 
   private
