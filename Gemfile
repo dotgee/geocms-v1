@@ -32,7 +32,7 @@ gem 'gon'
 gem "slim-rails"
 
 # Utilities
-gem 'bootstrap-sass', '~> 2.1.0.1'
+gem 'bootstrap-sass', '~> 2.2.1.1'
 gem "simple_form"
 gem "responders"
 gem 'turbo-sprockets-rails3'

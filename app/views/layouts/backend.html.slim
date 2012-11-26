@@ -27,15 +27,6 @@ html(lang="en")
       .container.main-container
         == yield
         #push
-    footer
-      .container
-        = image_tag "dotgee-white.png", :width => "165", :height => "71"
-        .row
-          .span6
-            p Copyright 2012 ©Dotgee. All rights reserved.
-          .span2.offset2
-            p Mentions légales
-          .span2
-            p Contact
+    == render "layouts/footer"
     = javascript_include_tag :backend
     == yield :javascripts

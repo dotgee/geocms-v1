@@ -1,8 +1,7 @@
-h1 Sign up
-
-= simple_form_for @user do |f|
+= simple_form_for @user, :html => { :class => "form-signin" } do |f|
+  legend = t("user.sign_up")
   = f.input :username
   = f.input :email
   = f.input :password
   = f.input :password_confirmation
-  = f.submit
+  = f.submit I18n.t("user.sign_up"), :class => "m-btn blue-stripe"

@@ -1,0 +1,23 @@
+html, body {
+  height: 100%;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -143px;
+}
+
+#push, footer {
+  height: 123px;
+}
+
+footer {
+  background: #222222;
+  padding-top: 20px;
+  color: #868686;
+  img {
+    margin-bottom: 20px;
+  }
+}

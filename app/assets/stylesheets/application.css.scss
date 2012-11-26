@@ -2,4 +2,9 @@
 @import "_blueprint";
 @import "bootstrap_and_overrides";
 @import "vendor";
+
 @import "layers";
+
+@import "components/footer";
+@import "components/forms";
+@import "home";

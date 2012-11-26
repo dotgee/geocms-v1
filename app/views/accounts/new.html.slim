@@ -1,0 +1,7 @@
+= simple_form_for(@account, :html => { :class => "form-signin" }) do |f|
+  = f.error_notification
+
+  legend= t "account.new"
+  = f.input :name
+  = f.input :subdomain, :input_html => { :placeholder => ".geocms.com" }
+  = f.submit :class => "m-btn red-stripe"

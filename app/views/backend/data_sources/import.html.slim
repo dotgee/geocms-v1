@@ -1,18 +1,15 @@
-table.table.table-striped
+.page-header
+  h1 Imported layers
+
+table.table.table-striped.table-backend
   thead
     tr
       th Name
       th Title
       th CRS
-      th BBOX
-      th
-      th
   tbody
     - @layers.each do |layer|
       tr
         td= layer.name
         td= layer.title
         td= layer.crs
-        td= layer.bbox
-        td= layer.dimension_type
-        td= layer.dimension_values

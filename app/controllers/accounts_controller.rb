@@ -1,4 +1,8 @@
 class AccountsController < ApplicationController
+  layout "home"
+  def new
+    @account = Account.new
+  end
 
   def create
     @account = Account.new(params[:account])

@@ -34,7 +34,8 @@ GEM
       activerecord (>= 2.3.14)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.1.0.1)
+    bootstrap-sass (2.2.1.1)
+      sass (~> 3.2)
     builder (3.0.3)
     bullet (4.2.0)
       uniform_notifier
@@ -188,7 +189,7 @@ DEPENDENCIES
   acts_as_list
   acts_as_tenant
   ancestry
-  bootstrap-sass (~> 2.1.0.1)
+  bootstrap-sass (~> 2.2.1.1)
   bullet
   coffee-rails (~> 3.2.1)
   compass (~> 0.12.2)

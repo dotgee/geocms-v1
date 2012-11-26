@@ -1,4 +1,4 @@
-table {
+.table-backend {
   td {
     vertical-align: middle;
     &.default {
@@ -7,6 +7,9 @@ table {
     }
     .m-btn-group {
       margin-right: 20px;
+    }
+    .m-btn {
+      margin-top: 0;
     }
   }
   &.categories-index {

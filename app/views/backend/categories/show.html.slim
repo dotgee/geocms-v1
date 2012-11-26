@@ -6,7 +6,7 @@
 - if !@layers.empty?
   h5 Layers
   = paginate @layers
-  table.table.table-striped
+  table.table.table-striped.table-backend
     thead
       tr
         th
@@ -19,7 +19,7 @@
   = paginate @layers
 - elsif !@category.is_childless?
   h5 Categories
-  table.table.table-striped
+  table.table.table-striped.table-backend
     thead
       tr
         th
