@@ -10,11 +10,7 @@ class DataSource < ActiveRecord::Base
 
     ActiveRecord::Base.transaction do
       layers.each do |l|
-
         layer = Layer.as_layer(self, category, l)
-        if layer.dimension?
-          Dimension.create_dimensions(layer, l.dimension_values)
-        end
       end
     end
     layers
