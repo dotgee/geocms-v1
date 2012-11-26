@@ -9,6 +9,10 @@ fr:
       direct_link: "Lien direct"
       html_embed: "Ou par iframe"
       copy: "Copier"
+  account:
+    new: "Créer un nouveau compte"
+  user:
+    sign_up: "Inscription"
   layers: "Couches"
   add_a_new_layer: "Ajouter une nouvelle couche"
   layers_catalog: "Catalogue de couches"

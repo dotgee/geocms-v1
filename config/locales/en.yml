@@ -9,6 +9,10 @@ en:
       direct_link: "Direct link"
       html_embed: "Or HTML embed code"
       copy: "Copy"
+  account:
+    new: "Create a new account"
+  user:
+    sign_up: "Sign up !"
   layers: "Layers"
   add_a_new_layer: "Add a new layer"
   layers_catalog: "Catalog of layers"
