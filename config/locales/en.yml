@@ -13,6 +13,19 @@ en:
     new: "Create a new account"
   user:
     sign_up: "Sign up !"
+  session:
+    invalid_credentials: "Wrong email or password !"
+    logged_in: "Logged in !"
+  menu:
+    categories: "Categories"
+    data_sources: "Data Sources"
+    users: "Users"
+    preferences: "Preferences"
+    logout: "Logout"
+  footer:
+    legal: "Legal"
+    copyright: "Copyright 2013 © Dotgee. All rights reserved."
+    contact: "Contact"
   layers: "Layers"
   add_a_new_layer: "Add a new layer"
   layers_catalog: "Catalog of layers"
