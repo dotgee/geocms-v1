@@ -6,6 +6,7 @@ html(lang="en")
     title== yield :title
     meta content="" name="description"
     meta content="width=device-width" name="viewport"
+    = csrf_meta_tags
     = stylesheet_link_tag :backend
   body
 
@@ -17,14 +18,15 @@ html(lang="en")
               li= link_to backend_root_path, :class => "brand" do
                 = image_tag "dotgeocms.png", :width => "128", :height => "33"
               - if logged_in?
-                li= link_to "Categories", backend_categories_path
-                li= link_to "Data sources", backend_data_sources_path
-                li= link_to "Users", backend_users_path
-                li= link_to "Preferences", edit_backend_preferences_path
+                li= link_to t("menu.categories"), backend_categories_path
+                li= link_to t("menu.data_sources"), backend_data_sources_path
+                li= link_to t("menu.users"), backend_users_path
+                li= link_to t("menu.preferences"), edit_backend_preferences_path
             - if logged_in?
               ul.nav.pull-right
-                li= link_to "Logout", logout_path
+                li= link_to t("menu.logout"), logout_path
       .container.main-container
+        == render "layouts/messages"
         == yield
         #push
     == render "layouts/footer"
