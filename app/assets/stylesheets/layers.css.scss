@@ -231,6 +231,7 @@ body.fullscreen {
 // CATALOG
 
 #catalog {
+  padding-bottom: 30px;
   background: white;
   position: fixed;
   bottom: 0px;
@@ -252,9 +253,17 @@ body.fullscreen {
   }
   .close {
     margin: 20px;
+    position: fixed;
+    top: 69px;
+    right: 10px;
   }
   h3 {
-    margin-left: 20px;
+    margin-left: 75px;
+    float: left;
+  }
+  .layers-search {
+    margin-top: 13px;
+    margin-right: 70px;
   }
   .media {
     background: white;
@@ -273,8 +282,13 @@ body.fullscreen {
 // CATALOG - CATEGORIES
 
 #categories {
+  margin: {
+    right: 50px;
+    left: 50px;
+  }
   .back {
     margin-bottom: 10px;
+    margin-top: 0;
   }
   a.category {
     width: 100%;
@@ -364,43 +378,4 @@ body.fullscreen {
     margin-bottom: 0;
     border-top: 1px solid #E6E6E6;
   }
-}
-
-// Remove with update to bootstrap 2.2.0
-
-.media,
-.media-body {
-  overflow: hidden;
-  *overflow: visible;
-  zoom: 1;
-}
-
-.media,
-.media .media {
-  margin-top: 15px;
-}
-
-.media:first-child {
-  margin-top: 0;
-}
-
-.media-object {
-  display: block;
-}
-
-.media-heading {
-  margin: 0 0 5px;
-}
-
-.media .pull-left {
-  margin-right: 10px;
-}
-
-.media .pull-right {
-  margin-left: 10px;
-}
-
-.media-list {
-  margin-left: 0;
-  list-style: none;
 }

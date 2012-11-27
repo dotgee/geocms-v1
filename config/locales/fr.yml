@@ -26,6 +26,8 @@ fr:
     legal: "Mentions légales"
     copyright: "Copyright 2013 © Dotgee. Tous droits réservés."
     contact: "Contact"
+  layer:
+    search: Rechercher
   layers: "Couches"
   add_a_new_layer: "Ajouter une nouvelle couche"
   layers_catalog: "Catalogue de couches"

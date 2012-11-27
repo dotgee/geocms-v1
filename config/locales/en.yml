@@ -22,6 +22,8 @@ en:
     users: "Users"
     preferences: "Preferences"
     logout: "Logout"
+  layer:
+    search: Search
   footer:
     legal: "Legal"
     copyright: "Copyright 2013 © Dotgee. All rights reserved."

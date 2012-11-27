@@ -30,6 +30,11 @@
           button class="close" &times;
           .page-header
             h3 = t "layers_catalog"
+            .m-input-append.layers-search.pull-right
+              input.m-wrap size="16" type="text" placeholder=t("layer.search")
+              button.m-btn.icn-only#search href="#"
+                i.icon-search
+            .clearfix
           .container-fluid
             #categories
     .m-btn-group#ctrls

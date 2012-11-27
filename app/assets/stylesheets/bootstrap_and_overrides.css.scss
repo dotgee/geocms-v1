@@ -29,9 +29,9 @@ textarea {
 }
 
 .close {
-  @include opacity(0.5);
+  @include opacity(50);
   &:hover {
-    @include opacity(0.7);
+    @include opacity(70);
   }
 }
 
