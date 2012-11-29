@@ -41,8 +41,6 @@ class App.CartItemView extends Backbone.View
   }
   removeLayer: ->
     @model.removeFromMap()
-    @mapProvider.removeLayerFromMap(@model.get("leaflet"))
-    @$el.remove()
   toggleClicListener: (e) ->
     $self = $(e.currentTarget)
     $(".query").not($self).removeClass("active")
@@ -71,7 +69,10 @@ class App.CartItemView extends Backbone.View
   initialize: ->
     @model.on("change:playing", @render, this)
     @model.on("change:timelineCounter", @render, this)
+    @model.on("removeFromMap", @destroy, this)
     @mapProvider = @options.mapProvider
+  destroy: ->
+    @$el.remove()
   render: ->
     attributes = @model.toJSON()
     this.$el.html(@template(attributes))

@@ -267,7 +267,6 @@ body.fullscreen {
   }
   .media {
     background: white;
-    padding: 5px;
     @include not-selectable;
     h4 {
       cursor: pointer;
@@ -276,6 +275,15 @@ body.fullscreen {
       [class^="icon-"] {
         margin: 4px 0 3px;
       }
+    }
+    .media-wrapper {
+      padding: 5px;
+      overflow: hidden;
+      zoom: 1;
+    }
+    .added {
+      @include box-shadow(inset 0 1px 6px rgba(0, 0, 0, 0.25));
+      @include background-image(linear-gradient(top, #EEE, #DDD));
     }
   }
 }

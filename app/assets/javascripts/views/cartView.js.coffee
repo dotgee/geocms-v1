@@ -31,6 +31,8 @@ class App.CartView extends Backbone.View
     @parent.switchControls(true)
     @cartViewItems.push(cartViewItem)
   removeOne: (layer) ->
+    console.log "removed"
+    @mapProvider.removeLayerFromMap(layer.get("leaflet"))
     @collection.remove(layer)
     @parent.switchControls(true)
   reindex: ->

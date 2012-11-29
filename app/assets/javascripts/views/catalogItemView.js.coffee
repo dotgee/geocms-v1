@@ -1,10 +1,12 @@
 #
 # Common view for categories and layers items
 #
+##############################################
 
 class App.CatalogItemView extends Backbone.View
   className: "media"
   categoryTemplate: _.template("
+  <div class='media-wrapper'>
     <div class='media-body'>
       <h4 class='media-heading category'>
         <i class='icon-folder-open'></i>
@@ -12,8 +14,9 @@ class App.CatalogItemView extends Backbone.View
         <%= name %>
       </h4>
     </div>
-  ")
+  </div>")
   layerTemplate: _.template("
+  <div class='media-wrapper <% if(onMap) { %>added<% } %>'>
     <a class='pull-left' href='#'>
       <img class='media-object' src='http://placehold.it/64x64' width='64' height='64'  >
     </a>
@@ -21,10 +24,11 @@ class App.CatalogItemView extends Backbone.View
 
       <h4 class='media-heading layer-heading'><%= title %></h4>
       <% if(description) { %><p> <%= description %> </p><% } %>
-    </div>")
+    </div>
+  </div>")
 
   events: {
-    "click .layer-heading": "addToMap"
+    "click .layer-heading": "toggleOnMap"
     "click .category" : "displayChildren"
   }
   initialize: ->
@@ -32,13 +36,12 @@ class App.CatalogItemView extends Backbone.View
     @layers = @parentView.layers
     @hud = @parentView.hud
     @cartCollection = @hud.cartCollection
-
-  addToMap: (e) ->
-    e.preventDefault()
-    $e = $(e.currentTarget)
-    @cartCollection.add(@model)
-    $e.addClass("active")
-
+    @model.on("change:onMap", @render, this)
+  toggleOnMap: (e) ->
+    if @cartCollection.get(@model)
+      @model.removeFromMap()
+    else
+      @cartCollection.add(@model)
   displayChildren: (e) ->
     if @model.get("children").length == 0
       layers = @layers.where({category_id: @model.get("id")})
