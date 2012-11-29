@@ -22,6 +22,7 @@ class App.CatalogItemView extends Backbone.View
       <h4 class='media-heading layer-heading'><%= title %></h4>
       <% if(description) { %><p> <%= description %> </p><% } %>
     </div>")
+
   events: {
     "click .layer-heading": "addToMap"
     "click .category" : "displayChildren"
@@ -31,11 +32,13 @@ class App.CatalogItemView extends Backbone.View
     @layers = @parentView.layers
     @hud = @parentView.hud
     @cartCollection = @hud.cartCollection
+
   addToMap: (e) ->
     e.preventDefault()
     $e = $(e.currentTarget)
     @cartCollection.add(@model)
     $e.addClass("active")
+
   displayChildren: (e) ->
     if @model.get("children").length == 0
       layers = @layers.where({category_id: @model.get("id")})
@@ -47,6 +50,7 @@ class App.CatalogItemView extends Backbone.View
     else
       @parentView.collection = @model.get("children")
       @parentView.render()
+
   render: ->
     attributes = @model.toJSON()
     if @model.get("model") == "category"

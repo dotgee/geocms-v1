@@ -4,7 +4,6 @@ Geocms2::Application.routes.draw do
     # Authentication
     get "logout" => "sessions#destroy", :as => "logout"
     get "login" => "sessions#new", :as => "login"
-    get "signup" => "users#new", :as => "signup"
     resources :users
     resources :sessions
 
@@ -38,7 +37,11 @@ Geocms2::Application.routes.draw do
     end
 
     # Layers
-    resources :layers, :only => [:index, :show]
+    resources :layers, :only => [:index, :show] do
+      collection do
+        get "search"
+      end
+    end
     match "/categories/:category_id/layers/", :to => "categories#layers"
     resources :categories, :only => [:index, :show]
     resources :contexts
@@ -50,7 +53,9 @@ Geocms2::Application.routes.draw do
     root :to => "contexts#new"
   end
 
-  root :to => "home#index"
+  get "signup" => "users#new", :as => "signup"
+  resources :users, :only => [:create]
   resources :accounts, :only => [:new, :create]
+  root :to => "home#index"
 
 end

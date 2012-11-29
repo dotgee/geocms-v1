@@ -58,3 +58,6 @@ gem "wms_getcapabilities", '~> 0.1.0.5'
 
 # Pagination
 gem "kaminari"
+
+# Search
+gem "tire"
