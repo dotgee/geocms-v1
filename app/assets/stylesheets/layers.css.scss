@@ -325,7 +325,7 @@ body.fullscreen {
     float: right;
     margin: 3px;
   }
-  .embed-code, .direct-code {
+  .sharable {
     float: left;
     width: 100%;
   }
@@ -337,7 +337,7 @@ body.fullscreen {
   }
 }
 
-#embed-link, #direct-link {
+.share-link {
   float: left;
   width: 430px;
   height: 17px;

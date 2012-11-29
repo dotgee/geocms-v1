@@ -8,7 +8,14 @@ fr:
       share_your_map: "Partagez votre carte"
       direct_link: "Lien direct"
       html_embed: "Ou par iframe"
+      geobretagne_show: "Voir sur GeoBretagne"
       copy: "Copier"
+    controls:
+      legend: "Légende"
+      position: "Retour à la position initiale"
+      locate: "Me situer"
+      fullscreen: "Plein écran"
+      hud: "Masquer"
   account:
     new: "Créer un nouveau compte"
   user:

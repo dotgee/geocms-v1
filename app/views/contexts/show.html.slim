@@ -38,15 +38,15 @@
           .container-fluid
             #categories
     .m-btn-group#ctrls
-      button.m-btn.icn-only.legend data-toggle="button"
+      button.m-btn.icn-only.legend data-toggle="button" rel="tooltip" data-original-title=t("context.controls.legend")
         i.icon-tint
-      button.m-btn.icn-only.globe
+      button.m-btn.icn-only.globe rel="tooltip" data-original-title=t("context.controls.position")
         i.icon-globe
-      button.m-btn.icn-only.geoloc
+      button.m-btn.icn-only.geoloc rel="tooltip" data-original-title=t("context.controls.locate")
         i.icon-screenshot
-      button.m-btn.icn-only.fullscreen data-toggle="button"
+      button.m-btn.icn-only.fullscreen data-toggle="button" rel="tooltip" data-original-title=t("context.controls.fullscreen")
         i.icon-fullscreen
-      button.m-btn.icn-only.togglehud
+      button.m-btn.icn-only.togglehud rel="tooltip" data-original-title=t("context.controls.hud")
         i.m-icon-swapleft
   #map data-latitude="48.118434" data-longitude="-1.676239" data-zoom="10"
   .modal#share-modal.hide style="position: asbolute;display:block;z-index:-1"
@@ -54,16 +54,21 @@
       button.close aria-hidden="true" data-dismiss="modal" type="button"
       h3 = t "context.sharable.share_your_map"
     .modal-body
-      .direct-code
+      .direct-code.sharable
         h5  = t "context.sharable.direct_link"
         span.copy-code
-          p#direct-link= share_link
+          p#direct-link.share-link= share_link
           a.copy.m-btn.mini#copy-direct  = t "context.sharable.copy"
-      .embed-code
+      .embed-code.sharable
         h5  = t "context.sharable.html_embed"
         span.copy-code
-          p#embed-link= share_link(true)
+          p#embed-link.share-link= share_link(true)
           a.copy.m-btn.mini#copy-embed  = t "context.sharable.copy"
+      .geobretagne-code.sharable
+        h5= t "context.sharable.geobretagne_show"
+        span.copy-code
+          p#geobretagne-link.share-link= "http://geobretagne.fr/mapfishapp/?wmc=#{share_link}.xml"
+          a.copy.m-btn.mini#copy-geobretagne  = t "context.sharable.copy"
   #legend-graphic.hide
     h4 = t "legend"
     .inner-legend
@@ -81,5 +86,9 @@
       $('a#copy-embed').zclip({
           path:'/ZeroClipboard.swf',
           copy: function() { return $("p#embed-link").text(); }
+      });
+      $('a#copy-geobretagne').zclip({
+          path:'/ZeroClipboard.swf',
+          copy: function() { return $("p#geobretagne-link").text(); }
       });
     });

@@ -9,6 +9,13 @@ en:
       direct_link: "Direct link"
       html_embed: "Or HTML embed code"
       copy: "Copy"
+      geobretagne_show: "See on GeoBretagne"
+    controls:
+      legend: Legend
+      position: Back to initial position
+      locate: Locate me !
+      fullscreen: Fullscreen
+      hud: Hide
   account:
     new: "Create a new account"
   user:
