@@ -267,6 +267,8 @@ body.fullscreen {
   }
   .media {
     background: white;
+    cursor: pointer;
+    border: 1px solid #EEE;
     @include not-selectable;
     h4 {
       cursor: pointer;

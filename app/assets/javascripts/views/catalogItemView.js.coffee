@@ -16,7 +16,7 @@ class App.CatalogItemView extends Backbone.View
     </div>
   </div>")
   layerTemplate: _.template("
-  <div class='media-wrapper <% if(onMap) { %>added<% } %>'>
+  <div class='media-wrapper media-layer <% if(onMap) { %>added<% } %>'>
     <a class='pull-left' href='#'>
       <img class='media-object' src='http://placehold.it/64x64' width='64' height='64'  >
     </a>
@@ -28,7 +28,7 @@ class App.CatalogItemView extends Backbone.View
   </div>")
 
   events: {
-    "click .layer-heading": "toggleOnMap"
+    "click .media-layer": "toggleOnMap"
     "click .category" : "displayChildren"
   }
   initialize: ->
