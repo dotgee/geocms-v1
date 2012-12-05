@@ -1,15 +1,23 @@
 .page-header
-  h1 Imported layers
+  h1= "#{t("backend.layers_imported_from").html_safe} #{@data_source.name}"
 
-table.table.table-striped.table-backend
+table.table.table-striped.table-import
   thead
     tr
-      th Name
-      th Title
-      th CRS
-  tbody
-    - @layers.each do |layer|
-      tr
-        td= layer.name
-        td= layer.title
-        td= layer.crs
+      th
+      th
+  tbody#import-layers
+
+#modal-form.modal.hide.fade
+  .modal-header
+    button.close aria-hidden="true" data-dismiss="modal" type="button"
+    h3 Create a new layer
+  .modal-body
+    / = simple_form_for :layer, :url => "/backend/layers" do |f|
+    /   = f.input :title, :as => :string, :input_html => { :id => "title" }
+    /   = f.input :name, :as => :string, :input_html => { :id => "name" }
+    /   = f.input :description, :as => :text, :input_html => { :id => "description", :rows => "5" }
+    /   = f.input :category, :as => :select, :collection => Category.all
+  .modal-footer
+    a.m-btn data-dismiss="modal" aria-hidden="true" = t("cancel")
+    a.m-btn.blue#save href="#" = t("confirm")

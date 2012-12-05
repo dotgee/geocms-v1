@@ -30,5 +30,6 @@ html(lang="en")
         == yield
         #push
     == render "layouts/footer"
+    = include_gon
     = javascript_include_tag :backend
     == yield :javascripts

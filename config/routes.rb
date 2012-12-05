@@ -17,6 +17,8 @@ Geocms2::Application.routes.draw do
         resources :layers
       end
 
+      resources :layers, :only => [:create]
+
       resources :data_sources do
         member do
           get "import"

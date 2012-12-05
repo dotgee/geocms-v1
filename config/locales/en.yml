@@ -29,6 +29,9 @@ en:
     users: "Users"
     preferences: "Preferences"
     logout: "Logout"
+  backend:
+    import: " Import"
+    layers_imported_from: "Layers imported from"
   layer:
     search: Search
   footer:

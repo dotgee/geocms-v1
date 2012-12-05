@@ -29,6 +29,9 @@ fr:
     users: "Utilisateurs"
     preferences: "Préferences"
     logout: "Déconnexion"
+  backend:
+    import: "Importer"
+    layers_imported_from: "Couches r&eacute;cup&eacute;re&eacute;s depuis"
   footer:
     legal: "Mentions légales"
     copyright: "Copyright 2013 © Dotgee. Tous droits réservés."

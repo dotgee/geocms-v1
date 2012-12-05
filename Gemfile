@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 
-gem "unicorn", ">= 4.3.1", :group => :production
+gem "unicorn", ">= 4.3.1"
 gem "pg", ">= 0.14.0"
 
 group :assets do
