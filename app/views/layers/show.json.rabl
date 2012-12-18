@@ -7,7 +7,7 @@ node :title do |t|
   t.title.humanize
 end
 
-child :data_source, :if => lambda { |l| l.respond_to?(:data_source) } do
+child :data_source, :if => lambda { |l| l.respond_to?(:data_source) && l.data_source } do
   attributes :wms
 end
 
