@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 
-gem "unicorn", ">= 4.3.1", :group => :production
+gem "unicorn", ">= 4.3.1"
 gem "pg", ">= 0.14.0"
 
 group :assets do
@@ -58,3 +58,6 @@ gem "wms_getcapabilities", '~> 0.1.0.5'
 
 # Pagination
 gem "kaminari"
+
+# Search
+gem "tire"

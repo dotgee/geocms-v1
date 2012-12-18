@@ -18,3 +18,21 @@
     }
   }
 }
+
+.table-import {
+  h3 {
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    line-height: 25px;
+  }
+  small {
+    color: #888;
+  }
+  .infos {
+    margin-top: 10px;
+  }
+  .import {
+    vertical-align: middle;
+  }
+}

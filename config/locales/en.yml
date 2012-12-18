@@ -9,10 +9,35 @@ en:
       direct_link: "Direct link"
       html_embed: "Or HTML embed code"
       copy: "Copy"
+      geobretagne_show: "See on GeoBretagne"
+    controls:
+      legend: Legend
+      position: Back to initial position
+      locate: Locate me !
+      fullscreen: Fullscreen
+      hud: Hide
   account:
     new: "Create a new account"
   user:
     sign_up: "Sign up !"
+  session:
+    invalid_credentials: "Wrong email or password !"
+    logged_in: "Logged in !"
+  menu:
+    categories: "Categories"
+    data_sources: "Data Sources"
+    users: "Users"
+    preferences: "Preferences"
+    logout: "Logout"
+  backend:
+    import: " Import"
+    layers_imported_from: "Layers imported from"
+  layer:
+    search: Search
+  footer:
+    legal: "Legal"
+    copyright: "Copyright 2013 © Dotgee. All rights reserved."
+    contact: "Contact"
   layers: "Layers"
   add_a_new_layer: "Add a new layer"
   layers_catalog: "Catalog of layers"

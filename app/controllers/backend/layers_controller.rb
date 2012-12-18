@@ -44,6 +44,10 @@ class Backend::LayersController < Backend::ApplicationController
 
   private
   def require_category
-    @category = Category.find(params[:category_id])
+    if params[:category_id].present?
+      @category = Category.find(params[:category_id])
+    else
+      @category = Category.find(params[:layer][:category_id])
+    end
   end
 end

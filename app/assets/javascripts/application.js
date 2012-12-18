@@ -9,7 +9,7 @@
 //= require_tree ./collections
 //= require_tree ./views
 
-$(".navbar-inner").find(".m-btn").tooltip({
-  placement: "bottom"
+$("#ctrls").find(".m-btn").tooltip({
+  placement: "top"
 });
 

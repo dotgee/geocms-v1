@@ -5,18 +5,14 @@ class DataSource < ActiveRecord::Base
   def import
     geoserver = WmsGetcapabilities::Geoserver.new(self.wms)
     geoserver.get_capabilities
-    layers = geoserver.layers
-    category = Category.receiver.first
+    geoserver.layers
+    # category = Category.receiver.first
 
-    ActiveRecord::Base.transaction do
-      layers.each do |l|
-
-        layer = Layer.as_layer(self, category, l)
-        if layer.dimension?
-          Dimension.create_dimensions(layer, l.dimension_values)
-        end
-      end
-    end
-    layers
+    # ActiveRecord::Base.transaction do
+    #   layers.each do |l|
+    #     layer = Layer.as_layer(self, category, l)
+    #   end
+    # end
+    #layers
   end
 end

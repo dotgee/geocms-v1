@@ -5,6 +5,11 @@ class LayersController < ApplicationController
     respond_with @layers
   end
 
+  def search
+    @layers = Layer.search(params)
+    respond_with @layers
+  end
+
   def show
     @layer = @current_tenant_instance.layers.find(params[:id])
     respond_with(@layer)
