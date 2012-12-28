@@ -31,13 +31,15 @@ fr:
     logout: "Déconnexion"
   backend:
     import: "Importer"
-    layers_imported_from: "Couches r&eacute;cup&eacute;re&eacute;s depuis"
+    layers_imported_from: "Couches récupérées depuis"
   footer:
     legal: "Mentions légales"
     copyright: "Copyright 2013 © Dotgee. Tous droits réservés."
     contact: "Contact"
   layer:
     search: Rechercher
+    create: "Créer une nouvelle couche"
+    imported_successfully: "Couche importée avec succès"
   layers: "Couches"
   add_a_new_layer: "Ajouter une nouvelle couche"
   layers_catalog: "Catalogue de couches"

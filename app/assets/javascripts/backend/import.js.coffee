@@ -6,6 +6,8 @@ class Layer extends Backbone.Model
     name: { type: "Text", validators: ['required'] }
     description: "TextArea"
     category_id: { type: "Select", options:  gon.categories, validators: ['required'] }
+  defaults:
+    imported: false
 
 # Collection of imported layers
 class ImportCollection extends Backbone.Collection
@@ -21,8 +23,14 @@ class LayerModalView extends Backbone.View
   save: ->
     errors = @form.commit()
     unless errors
-      console.log @model
-      @model.save()
+      that = this
+      @model.save @model.toJSON(),
+        success: (model, response) ->
+          that.$el.modal("hide")
+          that.model.set({imported: true})
+          $("#layer-import").show()
+          that.undelegateEvents()
+
   render: ->
     @$el.modal()
     @$el.find(".modal-body").html(@form.el)
@@ -38,7 +46,7 @@ class LayerItemView extends Backbone.View
       </div>
     </td>
     <td class='import'>
-      <a href='#' class='m-btn blue import-btn'>
+      <a href='#' class='m-btn blue import-btn  <% if(imported) { %> disabled <% } %>'>
         <i class='icon-download icon-white'></i> Import
       </a>
     </td>
@@ -46,10 +54,14 @@ class LayerItemView extends Backbone.View
   events: 
     "click .import-btn": "openModal"
   initialize: ->
+    @model.on("change:imported", @render, this)
   openModal: (e) ->
-    unless @modal
-      @modal = new LayerModalView({model: @model})
-    @modal.render()
+    unless @model.get("imported")
+      $("#layer-import").hide()
+      unless @modal
+        @modal = new LayerModalView({model: @model})
+
+      @modal.render()
   render: ->
     attributes = @model.toJSON()
     @$el.html(@template(attributes))

@@ -34,6 +34,8 @@ en:
     layers_imported_from: "Layers imported from"
   layer:
     search: Search
+    create: Create a new layer
+    imported_successfully: Layer successfully imported
   footer:
     legal: "Legal"
     copyright: "Copyright 2013 © Dotgee. All rights reserved."

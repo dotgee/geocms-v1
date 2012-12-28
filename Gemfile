@@ -18,6 +18,7 @@ end
 group :development do
   gem "bullet"
   gem 'newrelic_rpm'
+  gem 'meta_request', '0.2.0'
 end
 
 gem 'jquery-rails'

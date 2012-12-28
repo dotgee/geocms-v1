@@ -26,7 +26,10 @@ class Backend::LayersController < Backend::ApplicationController
   def create
     @layer = @category.layers.new(params[:layer])
     @layer.save
-    respond_with([:backend, @category])
+    respond_with(@layer) do |format|
+      format.json if request.xhr?
+      format.html { redirect_to [:backend, @category] }
+    end
   end
 
   def update

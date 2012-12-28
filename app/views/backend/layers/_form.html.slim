@@ -5,8 +5,9 @@
   = f.input :title
   = f.input :description
 
-  legend Move to
-  = f.association :category
+  - unless @layer.new_record?
+    legend Move to
+    = f.association :category, :collection => Category.leafs
   .m-btn-group
     = f.submit :class => "m-btn blue"
     = link_to 'Back', [:backend, @category, :layers], :class => "m-btn"
