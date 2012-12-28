@@ -19,10 +19,4 @@ class Account < ActiveRecord::Base
 
   attr_accessible :name, :subdomain, :users_attributes
 
-  after_create :create_default_category
-
-  private
-    def create_default_category
-      categories.create!(name: "Uncategorized", :default => true)
-    end
 end

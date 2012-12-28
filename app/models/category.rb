@@ -11,7 +11,7 @@ class Category < ActiveRecord::Base
   scope :receiver, where(:default => true)
   scope :ordered, select([:name, :id, :slug, :ancestry]).ordered_by_ancestry
   scope :leafs, all.reject! { |c| c.has_children? }
-  attr_accessible :name, :position, :parent_id, :default
+  attr_accessible :name, :position, :parent_id
 
   before_save :cache_ancestry
   def cache_ancestry
