@@ -34,10 +34,8 @@ class App.CatalogView extends Backbone.View
       success: (data) ->
         layers = []
         layer_ids = _.each(data, (layer) ->
-          console.log that.layers.get(layer.id)
           layers.push(that.layers.get(layer.id))
         )
-        console.log(layers)
         layerCollection = new App.LayerCollection(layers)
   resetView: ->
     @$categories.html("")

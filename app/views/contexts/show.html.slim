@@ -10,15 +10,15 @@
           i.m-icon-swapright
     ul.nav.nav-tabs.row-fluid id="hud-tab"
       li.active
-        = link_to "#infos", "data-toggle" => "tab" do
-          = t "context.infos"
-      li
         = link_to "#layers", "data-toggle" => "tab" do
           = t "layers"
+      li
+        = link_to "#infos", "data-toggle" => "tab" do
+          = t "context.infos"
     .tab-content
-      .tab-pane.active id="infos"
+      .tab-pane id="infos"
         a.m-btn.mini.blue.from-map = t "context.from_map"
-      .tab-pane id="layers"
+      .tab-pane.active id="layers"
         .add-layer
           span = t "add_a_new_layer"
           = link_to "#", :class => "m-btn mini blue icn-only pull-right" do

@@ -9,7 +9,7 @@ class Category < ActiveRecord::Base
   acts_as_list scope: [:account_id, :ancestry]
 
   scope :receiver, where(:default => true)
-  scope :ordered, select([:name, :id, :slug, :ancestry]).ordered_by_ancestry
+  scope :ordered, select([:name, :id, :slug, :ancestry]).ordered_by_ancestry.order("position asc")
   scope :leafs, all.reject! { |c| c.has_children? }
   attr_accessible :name, :position, :parent_id
 
