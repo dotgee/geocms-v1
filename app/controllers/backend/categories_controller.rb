@@ -39,4 +39,14 @@ class Backend::CategoriesController < Backend::ApplicationController
     @category.destroy
     respond_with([:backend, @category])
   end
+
+  def move
+    @category = Category.find(params[:id])
+    if(params[:direction] == "up")
+      @category.move_higher
+    else 
+      @category.move_lower
+    end
+    redirect_to [:backend, :categories]
+  end
 end

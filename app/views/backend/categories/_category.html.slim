@@ -3,8 +3,8 @@ tr
     - category.depth.times do |hey|
       span.left-space
     .m-btn-group
-      = down_link "#"
-      = up_link "#"
+      = move_link move_backend_category_path(category, :direction => "down"), "down", category.last?
+      = move_link move_backend_category_path(category, :direction => "up"), "up", category.first?
     span.name= category.name
   td
     = link_to 'Browse', [:backend, category], :class => "m-btn mini"

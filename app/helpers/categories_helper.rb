@@ -19,15 +19,9 @@ module CategoriesHelper
     end
   end
 
-  def up_link(path)
-    link_to path, :class => "m-btn mini icn-only disabled" do
-      content_tag('i', :class => "icon-arrow-up"){}
-    end
-  end
-
-  def down_link(path)
-    link_to path, :class => "m-btn mini icn-only disabled" do
-      content_tag('i', :class => "icon-arrow-down"){}
+  def move_link(path, direction, disabled = false)
+    link_to path, :class => "m-btn mini icn-only #{"disabled" if disabled}" do
+      content_tag('i', :class => (direction == "up") ? "icon-arrow-up" : "icon-arrow-down"){}
     end
   end
 

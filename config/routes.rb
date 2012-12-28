@@ -14,6 +14,9 @@ Geocms2::Application.routes.draw do
       root :to => "categories#index"
 
       resources :categories do
+        member do
+          get "move", :to => "categories#move"
+        end
         resources :layers
       end
 
