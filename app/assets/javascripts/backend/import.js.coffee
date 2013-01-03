@@ -8,6 +8,8 @@ class Layer extends Backbone.Model
     category_id: { type: "Select", options:  gon.categories, validators: ['required'] }
   defaults:
     imported: false
+  initialize: ->
+    @set({data_source_id: data_source_id})
 
 # Collection of imported layers
 class ImportCollection extends Backbone.Collection
@@ -78,6 +80,7 @@ class LayerView extends Backbone.View
 
 
 # Initialization
+data_source_id = $("#data-source-id").data("id");
 imported = new ImportCollection()
 imported.reset(gon.layers)
 view = new LayerView({collection: imported})
