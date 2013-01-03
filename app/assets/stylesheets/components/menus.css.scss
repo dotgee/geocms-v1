@@ -1,0 +1,28 @@
+.top-menu {
+  position: absolute;
+  z-index: 1000;
+  right: 0;
+  top: 0;
+  a {
+    @include unstyled-link;
+    float: left;
+    text-align: center;
+    overflow: hidden;
+    min-width: 110px;
+    line-height: 28px;
+    padding: 0 10px 0 5px;
+    height: 30px;
+    background: #f8f8f8;
+    color: #3c4e5a;
+    border-right: #3c4e5a 1px solid;
+    &:first-child {
+      border-radius: 0 0 0 4px;
+    }
+    &:last-child {
+      border-right: none;
+    }
+    &:hover {
+      background: #E2E2E2;
+    }
+  }
+}

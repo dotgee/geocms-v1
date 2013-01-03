@@ -4,6 +4,7 @@ en:
     share: "SHARE"
     infos: "Infos"
     from_map: "From map"
+    new: "New map"
     sharable:
       share_your_map: "Share your map"
       direct_link: "Direct link"
@@ -36,6 +37,8 @@ en:
     search: Search
     create: Create a new layer
     imported_successfully: Layer successfully imported
+  data_source:
+    wait: "Please wait while we find the layers. This shouldn't be too long."
   footer:
     legal: "Legal"
     copyright: "Copyright 2013 © Dotgee. All rights reserved."

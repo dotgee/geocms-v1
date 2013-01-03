@@ -29,7 +29,9 @@ class App.HudView extends Backbone.View
   saveContext: (e) ->
     e.preventDefault()
     errors = @form.commit()
-    unless errors
+    if errors
+      $("#hud-tab a:last").tab("show")
+    else
       layer_ids = _.map(@cartCollection.models, (layer) ->
         layer.get("id")
       )

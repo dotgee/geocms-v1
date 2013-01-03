@@ -1,10 +1,15 @@
-.container-fluid
-  .page-header
-    h1= "#{@current_tenant_instance.name} - Maps"
-  - @contexts.each do |context|
-    .media
-      a.pull-left href="#"
-        img.media-object src="http://placehold.it/64x64"
-      .media-body
-        h4.media-heading = link_to context.name, "/#{context.uuid}"
-        p= context.description
+.container-fluid.container-infos
+  h2= @current_tenant_instance.name
+.row-fluid.row-thumbnails
+  ul.thumbnails
+    li.span3
+      .thumbnail.unbordered.new
+        = link_to t("context.new"), root_path, :class => "m-btn blue big"
+    - @contexts.each do |context|
+      li.span3
+        = link_to "/#{context.uuid}", :class => "thumbnail-link" do
+          .thumbnail.unbordered
+            .placeholder
+            .caption
+              h4 = context.name
+              p= context.description

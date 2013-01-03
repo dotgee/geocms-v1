@@ -8,7 +8,7 @@ html(lang="en")
     meta content="width=device-width" name="viewport"
     = stylesheet_link_tag :application
     = csrf_meta_tags
-  body
+  body class=(yield :body_class)
     .navbar
       .navbar-inner
         .container
@@ -16,11 +16,10 @@ html(lang="en")
             li= link_to root_path, :class => "brand" do
               = image_tag "dotgeocms.png"
 
-          ul.nav.pull-right
-              ul.nav.pull-right
-                li= link_to (t "maps"), contexts_path
-                - if logged_in?
-                  li= link_to "Admin", backend_root_path
+          .top-menu
+            = link_to (t "maps"), contexts_path
+            - if logged_in?
+              = link_to "Admin", backend_root_path
     == yield
     = include_gon
     = javascript_include_tag :application

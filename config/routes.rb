@@ -41,7 +41,7 @@ Geocms2::Application.routes.draw do
 
     end
 
-    # Layers
+    # Frontend
     resources :layers, :only => [:index, :show] do
       collection do
         get "search"

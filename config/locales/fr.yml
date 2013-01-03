@@ -40,6 +40,8 @@ fr:
     search: Rechercher
     create: "Créer une nouvelle couche"
     imported_successfully: "Couche importée avec succès"
+  data_source:
+    wait: "Please wait while we find the layers. This shouldn't be too long."
   layers: "Couches"
   add_a_new_layer: "Ajouter une nouvelle couche"
   layers_catalog: "Catalogue de couches"

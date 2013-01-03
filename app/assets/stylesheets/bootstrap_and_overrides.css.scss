@@ -46,6 +46,11 @@ textarea {
       background-position: top;
     }
   }
+  &.icon-throbber {
+    background: url("throbber.svg") no-repeat;
+    width: 16px;
+    height: 16px;
+  }
 }
 .navbar-inner {
   background: #1570a6;
