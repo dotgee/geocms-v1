@@ -169,6 +169,18 @@ body.fullscreen {
       font-size: 13px;
     }
   }
+  .opacity-controler {
+    margin-left: 20px;
+    margin-top: 5px;
+    i {
+      float: left;
+      cursor: pointer;
+      margin-top: -2px;
+    }
+    .icon-plus {
+      margin-left: 2px;
+    }
+  }
 }
 
 #layer-list {

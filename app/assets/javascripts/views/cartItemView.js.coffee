@@ -15,7 +15,7 @@ class App.CartItemView extends Backbone.View
       <% } %>
       <div class='m-btn-group control-buttons'>
         <a class='m-btn mini query' data-toggle='button'><i class='icon-info-sign'></i></a>
-        <a class='m-btn mini opacity' data-toggle='button'><i class='icon-adjust'></i></a>
+        <a class='m-btn mini opacity <% if(controllingOpacity) { %> active <% } %>' data-toggle='button'><i class='icon-adjust'></i></a>
         <a class='m-btn mini center'><i class='icon-screenshot'></i></a>
         <a class='m-btn mini remove'><i class='icon-remove'></i></a>
       </div>
@@ -26,7 +26,16 @@ class App.CartItemView extends Backbone.View
             <% }) %>
           </ul>
       <% } %>
-      <div class='opacity-controler'></div>
+      <div class='opacity-controler <% if(!controllingOpacity) { %> hide <% } %>'>
+        <i class='icon-minus change-opacity'></i>
+        <% _.times(opacity/10, function(i) { %>
+          <div class='box box-filled'></div>
+        <% }) %>
+        <% _.times((100-opacity)/10, function(i) { %>
+          <div class='box'></div>
+        <% }) %>
+        <i class='icon-plus change-opacity'></i>
+      </div>
     </div>"
   )
   events: {
@@ -38,6 +47,8 @@ class App.CartItemView extends Backbone.View
     "click  .dimension"        : "gotoTime"
     "change .layer-visibility" : "toggleVisibility"
     "click  .center"           : "panToLayer"
+    "click  .opacity"          : "toggleOpacity"
+    "click  .change-opacity"   : "changeOpacity"
   }
   removeLayer: ->
     @model.removeFromMap()
@@ -50,6 +61,22 @@ class App.CartItemView extends Backbone.View
       @model.toggleVisibility(true, 1)
     else
       @model.toggleVisibility(false, 0)
+  toggleOpacity: (e) ->
+    $e = $(e.currentTarget)
+    if $e.hasClass("active")
+      $(".opacity-controler").hide()
+      @model.set controllingOpacity: false
+    else
+      $(".opacity-controler").show()
+      @model.set controllingOpacity: true
+  changeOpacity: (e) ->
+    $e = $(e.currentTarget)
+    if $e.hasClass "icon-plus"
+      i = 10
+    else
+      i = -10
+    opacity = @model.changeOpacity(i)
+    @model.get("leaflet").setOpacity(opacity/100)
   toggleTimeline: (e) ->
     $e = $(e.currentTarget)
     #@$el.find(".dimensions-list").slideToggle()
@@ -72,6 +99,7 @@ class App.CartItemView extends Backbone.View
   initialize: ->
     @model.on("change:playing", @render, this)
     @model.on("change:timelineCounter", @render, this)
+    @model.on("change:opacity", @render, this)
     @model.on("removeFromMap", @destroy, this)
     @mapProvider = @options.mapProvider
   destroy: ->

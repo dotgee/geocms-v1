@@ -4,9 +4,11 @@ App.Layer = Backbone.RelationalModel.extend
   defaults: {
     leaflet: false
     onMap: false
+    opacity: 90
     timelineCounter: 0
     playing: false
     visible: true
+    controllingOpacity: false
     model: "layer"
   }
   toLeaflet: ( options = {} ) ->
@@ -17,9 +19,15 @@ App.Layer = Backbone.RelationalModel.extend
       continuousWorld: true
     })
     tileLayer.setParams(options)
-    @set({leaflet : tileLayer})
+    @set leaflet: tileLayer
+  changeOpacity: (i) ->
+    opacity = @get("opacity")+i
+    if opacity > 100 or opacity < 0
+      opacity = @get("opacity")
+    @set opacity: opacity
+    opacity
   removeFromMap: ->
-    @set({onMap : false})
+    @set onMap: false
     @trigger('removeFromMap', this)
   addToMap: ->
     options = {}
