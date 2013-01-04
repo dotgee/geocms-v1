@@ -13,7 +13,7 @@ fr:
     controls:
       legend: "Légende"
       position: "Retour à la position initiale"
-      locate: "Me situer"
+      tools: "Outils"
       fullscreen: "Plein écran"
       hud: "Masquer"
   account:

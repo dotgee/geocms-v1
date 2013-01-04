@@ -55,7 +55,7 @@ gem "acts_as_tenant"
 gem "friendly_id"
 
 # Import layers
-gem "wms_getcapabilities", '~> 0.1.0.5'
+gem "wms_getcapabilities", '~> 0.1.0.6'
 
 # Pagination
 gem "kaminari"

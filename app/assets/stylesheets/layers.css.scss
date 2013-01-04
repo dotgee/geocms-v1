@@ -160,11 +160,7 @@ body.fullscreen {
     width: 250px;
   }
   .control-buttons {
-    a {
-      cursor: pointer;
-      margin-top: 0;
-      padding: 4px 0px;
-    }
+    margin-left: 21px;
   }
   .dimensions-list {
     @include column-count(3);
@@ -176,9 +172,6 @@ body.fullscreen {
 }
 
 #layer-list {
-  a {
-    @include unstyled-link;
-  }
   padding: {
     left: 0;
     right: 0;
@@ -293,10 +286,10 @@ body.fullscreen {
 // CATALOG - CATEGORIES
 
 #categories {
-  margin: {
-    right: 50px;
-    left: 50px;
-  }
+  // margin: {
+  //   right: 50px;
+  //   left: 50px;
+  // }
   .back {
     margin-bottom: 10px;
     margin-top: 0;

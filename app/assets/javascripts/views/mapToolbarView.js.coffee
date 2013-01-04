@@ -3,7 +3,7 @@ class App.MapToolbarView extends Backbone.View
     "click .legend" : "toggleLegend"
     "click .togglehud" : "toggleHud"
     "click .globe": "setInitialView"
-    "click .geoloc": "localize"
+    # "click .tools": "localize"
     "click .fullscreen": "fullscreen"
   }
   initialize: ->
@@ -33,7 +33,5 @@ class App.MapToolbarView extends Backbone.View
     else
       $(".wrapper").css("top", 0)
       @closeHud()
-  localize: (e) ->
-    @mapProvider.map.locate({ setView: true, enableHighAccuracy: true, maxZoom: 10 })
   setInitialView: (e) ->
     @mapView.setInitialView()

@@ -54,3 +54,4 @@ App.Layer = Backbone.RelationalModel.extend
       time = moment(dim.dimension.value).format('YYYY-MM-DD')
       @get("leaflet").setParams({time: time}).redraw()
   initialize: ->
+   

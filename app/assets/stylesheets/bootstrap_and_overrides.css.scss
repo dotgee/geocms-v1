@@ -51,6 +51,13 @@ textarea {
     width: 16px;
     height: 16px;
   }
+  &.icon-luminosity {
+    background: url("luminosity.png") no-repeat;
+    background-position: top;
+    &.icon-white {
+      background-position: bottom;
+    }
+  }
 }
 .navbar-inner {
   background: #1570a6;

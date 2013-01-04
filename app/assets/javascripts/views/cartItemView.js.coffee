@@ -2,32 +2,31 @@ class App.CartItemView extends Backbone.View
   tagName: "li"
   template: _.template("<div class='grippy'></div>
     <div class='right-infos'>
-      <a href='#'>
-          <label for='<%= name %>' class='title'>
-            <input type='checkbox' class='layer-visibility' <% if(visible) { %> checked <% } %> id='<%=name %>'>
-            <span><%= title %></span>
-          </label>
-          <% if(dimension) { %>
-            <div class='m-btn-group control-buttons'>
-              <a class='m-btn mini backward'><i class='icon-step-backward'></i></a>
-              <a class='m-btn mini play <% if(playing) { %> active <% } %>'><i class=<% if(playing) { %>'icon-pause' <% } else { %> 'icon-play' <% } %>></i></a>
-              <a class='m-btn mini forward'><i class=' icon-step-forward'></i></a>
-            </div>
-          <% } %>
-          <div class='m-btn-group control-buttons'>
-            <a class='m-btn mini query' data-toggle='button'><i class='icon-info-sign'></i></a>
-
-            <a class='m-btn mini remove'><i class='icon-remove'></i></a>
-          </div>
-          <% if(dimension) { %>
-              <ul class='unstyled dimensions-list'>
-                <% _.each(dimensions, function(dim, i) { %>
-                  <li class='dimension<% if (i == timelineCounter) { %> active <% } %>'><%= moment(dim.dimension.value).calendar() %></li>
-                <% }) %>
-              </ul>
-          <% } %>
-        <div class='opacity-controler'></div>
-      </a>
+      <label for='<%= name %>' class='title ellipsis'>
+        <input type='checkbox' class='layer-visibility' <% if(visible) { %> checked <% } %> id='<%=name %>'>
+        <span><%= title %></span>
+      </label>
+      <% if(dimension) { %>
+        <div class='m-btn-group control-buttons'>
+          <a class='m-btn mini backward'><i class='icon-step-backward'></i></a>
+          <a class='m-btn mini play <% if(playing) { %> active <% } %>'><i class=<% if(playing) { %>'icon-pause' <% } else { %> 'icon-play' <% } %>></i></a>
+          <a class='m-btn mini forward'><i class=' icon-step-forward'></i></a>
+        </div>
+      <% } %>
+      <div class='m-btn-group control-buttons'>
+        <a class='m-btn mini query' data-toggle='button'><i class='icon-info-sign'></i></a>
+        <a class='m-btn mini opacity' data-toggle='button'><i class='icon-adjust'></i></a>
+        <a class='m-btn mini center'><i class='icon-screenshot'></i></a>
+        <a class='m-btn mini remove'><i class='icon-remove'></i></a>
+      </div>
+      <% if(dimension) { %>
+          <ul class='unstyled dimensions-list'>
+            <% _.each(dimensions, function(dim, i) { %>
+              <li class='dimension<% if (i == timelineCounter) { %> active <% } %>'><%= moment(dim.dimension.value).calendar() %></li>
+            <% }) %>
+          </ul>
+      <% } %>
+      <div class='opacity-controler'></div>
     </div>"
   )
   events: {
@@ -38,6 +37,7 @@ class App.CartItemView extends Backbone.View
     "click  .play"             : "toggleTimeline"
     "click  .dimension"        : "gotoTime"
     "change .layer-visibility" : "toggleVisibility"
+    "click  .center"           : "panToLayer"
   }
   removeLayer: ->
     @model.removeFromMap()
@@ -66,6 +66,9 @@ class App.CartItemView extends Backbone.View
   gotoTime: (e) ->
     $e = $(e.currentTarget)
     @model.showtime(0, $e.index())
+  panToLayer: (e) ->
+    projBox = @mapProvider.bboxTo4326(@model.get("bbox"))
+    @mapProvider.fitBounds(projBox)
   initialize: ->
     @model.on("change:playing", @render, this)
     @model.on("change:timelineCounter", @render, this)

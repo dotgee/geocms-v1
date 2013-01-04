@@ -78,3 +78,4 @@ pickle-email-*.html
 
 zeus.json
 .powder
+/config/application.yml

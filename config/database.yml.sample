@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: geocms_dev
+  pool: 5
+  username: [username]
+  password: [password]
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: geocms
+  pool: 5
+  username: [username]
+  password: [password]
+  host: localhost

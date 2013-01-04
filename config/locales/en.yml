@@ -14,7 +14,7 @@ en:
     controls:
       legend: Legend
       position: Back to initial position
-      locate: Locate me !
+      tools: Tools
       fullscreen: Fullscreen
       hud: Hide
   account:
@@ -38,7 +38,7 @@ en:
     create: Create a new layer
     imported_successfully: Layer successfully imported
   data_source:
-    wait: "Please wait while we find the layers. This shouldn't be too long."
+    wait: "Please wait while we find the layers. This shouldn't take too long."
   footer:
     legal: "Legal"
     copyright: "Copyright 2013 © Dotgee. All rights reserved."

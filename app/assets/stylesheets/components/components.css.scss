@@ -4,3 +4,10 @@
 @import "tables";
 @import "menus";
 @import "layouts";
+@import "buttons";
+
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
