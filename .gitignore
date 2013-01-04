@@ -79,3 +79,4 @@ pickle-email-*.html
 zeus.json
 .powder
 /config/application.yml
+/config/newrelic.yml
