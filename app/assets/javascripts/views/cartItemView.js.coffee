@@ -64,10 +64,10 @@ class App.CartItemView extends Backbone.View
   toggleOpacity: (e) ->
     $e = $(e.currentTarget)
     if $e.hasClass("active")
-      $(".opacity-controler").hide()
+      @$el.find(".opacity-controler").hide()
       @model.set controllingOpacity: false
     else
-      $(".opacity-controler").show()
+      @$el.find(".opacity-controler").show()
       @model.set controllingOpacity: true
   changeOpacity: (e) ->
     $e = $(e.currentTarget)
