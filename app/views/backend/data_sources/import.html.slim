@@ -22,3 +22,6 @@ table.table.table-striped.table-import
     a.m-btn.blue#save href="#" = t("confirm")
 
 #data-source-id.hide data-id=@data_source.id
+
+= content_for :javascripts do
+  = javascript_include_tag "backend/import"

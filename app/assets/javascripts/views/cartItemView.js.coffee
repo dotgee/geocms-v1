@@ -2,7 +2,7 @@ class App.CartItemView extends Backbone.View
   tagName: "li"
   template: _.template("<div class='grippy'></div>
     <div class='right-infos'>
-      <label for='<%= name %>' class='title ellipsis'>
+      <label for='<%= name %>' class='title'>
         <input type='checkbox' class='layer-visibility' <% if(visible) { %> checked <% } %> id='<%=name %>'>
         <span><%= title %></span>
       </label>

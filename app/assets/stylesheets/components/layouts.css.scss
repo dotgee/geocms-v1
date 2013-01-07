@@ -1,9 +1,18 @@
+body, html {
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
 body {
-  max-width: 1300px;
+  max-width: 1600px;
   @include box-shadow(rgba(0, 0, 0, 0.1) 0px 0 20px 10px);
   margin: 0 auto;
   position: relative;
 }
+
+body.backend{
+  background-color: #F4F4F4;
+}
+// EXPLORE LAYOUT
 
 body.fullscreen{
   position: absolute;
@@ -14,6 +23,18 @@ body.fullscreen{
   max-width: none;
   margin: 0px auto;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0 20px 10px;
+}
+
+.wrapper {
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  transition: top 100ms;
+  -webkit-transition: top 100ms;
+  @include box-sizing(border-box);
+  padding-bottom: 0px;
 }
 
 .container-infos {
@@ -60,4 +81,10 @@ body.fullscreen{
   width: 100%;
   background: #E3E3E3;
   height: 170px;
+}
+
+.main-container {
+  width: 1000px;
+  padding: 20px;
+  background: white;
 }

@@ -35,13 +35,16 @@ class App.HudView extends Backbone.View
       layer_ids = _.map(@cartCollection.models, (layer) ->
         layer.get("id")
       )
-      box = new App.MapProviders.Leaflet().bboxTo2154(@mapProvider.map.getBounds())
+      box = new App.MapProviders.Leaflet().bboxToProj(@mapProvider.map.getBounds())
 
       @model.save {layer_ids: layer_ids, minx: box[0], maxx: box[2], miny: box[1], maxy: box[3]},
         success: (model, response) ->
           if model.isNew()
             model.set({uuid: response.uuid})
           model.trigger("afterSave")
+          toastr.success("Your map has been correctly saved !", "Map saved")
+        error: (model, response) ->
+          toastr.success("There was an error while saving your map", "Error !")
   afterSave: ->
     @switchControls(false)
     @router.navigate @model.get("uuid")

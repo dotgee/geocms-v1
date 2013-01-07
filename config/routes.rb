@@ -25,7 +25,6 @@ Geocms2::Application.routes.draw do
       resources :data_sources do
         member do
           get "import"
-          post "import", :to => "data_sources#do_import"
         end
       end
 

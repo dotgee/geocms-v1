@@ -1,0 +1,65 @@
+#map {
+  background: white;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0px;
+  bottom: 0px;
+  width: auto;
+  height: auto;
+  @include box-sizing(border-box);
+  transition: left 300ms;
+  -webkit-transition: left 300ms;
+  -moz-transition: left 300ms;
+  .leaflet-control-zoom {
+    left: 310px;
+  }
+  &.no-hud {
+    .leaflet-control-zoom {
+      left: 10px;
+    }
+  }
+}
+
+// LEAFLET OVERRIDES
+
+.leaflet-top, .leaflet-bottom {
+  z-index: 800;
+}
+
+.leaflet-bottom.leaflet-left {
+  right: 0;
+  z-index: 999;
+  .features-infos {
+    max-height: 150px;
+    overflow: auto;
+    width: 100%;
+    height: auto;
+    display: none;
+    background: white;
+    margin-left: 0;
+    margin-bottom: 0;
+    border-top: 1px solid #E6E6E6;
+  }
+}
+
+
+// LEGENDE
+
+.leaflet-legend {
+  padding: 6px 8px;
+  background: white;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: fixed;
+  bottom: 20px;
+  left: 400px;
+  height: 250px;
+  overflow: auto;
+  width: 250px;
+  line-height: 20px;
+  h4 {
+    margin: 0 0 5px;
+    color: #777;
+  }
+}

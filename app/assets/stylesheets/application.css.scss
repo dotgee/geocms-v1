@@ -1,8 +1,6 @@
 @import "compass";
-@import "bootstrap_and_overrides";
-@import "vendor";
-
-@import "layers";
-
+@import "bootstrap_overrides";
 @import "components/components";
+@import "vendor";
+@import "explore";
 @import "home";

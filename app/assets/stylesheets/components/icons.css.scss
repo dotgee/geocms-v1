@@ -1,0 +1,24 @@
+[class^="icon-"] {
+  &.icon-layer {
+    background: url("layers.png") no-repeat;
+    width: 12px;
+    height: 10px;
+    margin-top: 3px;
+    background-position: bottom;
+    &:hover {
+      background-position: top;
+    }
+  }
+  &.icon-throbber {
+    background: url("throbber.svg") no-repeat;
+    width: 16px;
+    height: 16px;
+  }
+  &.icon-luminosity {
+    background: url("luminosity.png") no-repeat;
+    background-position: top;
+    &.icon-white {
+      background-position: bottom;
+    }
+  }
+}
