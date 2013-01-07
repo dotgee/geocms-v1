@@ -1,23 +1,24 @@
 window.App.MapProviders or= {}
 map = undefined
-Proj4js.defs["EPSG:2154"] = '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs'
+# Proj4js.defs["EPSG:2154"] = '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs'
 
-dest = new Proj4js.Proj('EPSG:2154')
+dest = new Proj4js.Proj('EPSG:4326')
 source = new Proj4js.Proj('EPSG:4326')
-dest_string = "EPSG:2154"
+dest_string = "EPSG:4326"
 
 App.MapProviders.Leaflet = ->
   # Create new map
   createMap: (elementId) ->
     # Specific to EPSG:2154
-    bbox = [-357823.236499999999, 6037008.69390000030,
-            894521.034699999960, 7289352.96509999968]
-    transformation = new L.Transformation(1, -bbox[0], -1, bbox[1])
-    crs = L.CRS.proj4js('EPSG:2154',
-                        '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
-                        transformation)
-    crs.scale = @scale
-    @map = new L.Map(elementId, {crs: crs, continuousWorld: true})
+    # bbox = [-357823.236499999999, 6037008.69390000030,
+    #         894521.034699999960, 7289352.96509999968]
+    # transformation = new L.Transformation(1, -bbox[0], -1, bbox[1])
+    # crs = L.CRS.proj4js('EPSG:2154',
+    #                     '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
+    #                     transformation)
+    # crs.scale = @scale
+    #@map = new L.Map(elementId, {crs: crs, continuousWorld: true})
+    @map = new L.Map(elementId)
     @map.attributionControl.addAttribution("Developed by <a href='http://www.dotgee.fr' target='_blank'>Dotgee</a>")
     map = @map
   addLayerToMap: (layer) ->
@@ -40,10 +41,9 @@ App.MapProviders.Leaflet = ->
       unless $featuresInfos.css("display") == "none"
         $featuresInfos.slideToggle()
   # Specific to EPSG:2154
-  scale: (zoom) ->
-    return 1 / (4891.96875 / Math.pow(2, zoom))
+  # scale: (zoom) ->
+  #   return 1 / (4891.96875 / Math.pow(2, zoom))
   getFeatureWMS: (e) ->
-    # EPSG:2154
     box =  new App.MapProviders.Leaflet().bboxToProj(map.getBounds())
 
     BBOX = box.join(",")
@@ -75,9 +75,9 @@ App.MapProviders.Leaflet = ->
     [sw.x, sw.y, ne.x, ne.y]
   bboxTo4326: (bounds) ->
     ne = new Proj4js.Point(bounds.maxx, bounds.maxy)
-    Proj4js.transform(dest, source, ne)
+    Proj4js.transform(dest, source, ne) unless dest_string == "EPSG:4326"
     sw = new Proj4js.Point(bounds.minx, bounds.miny)
-    Proj4js.transform(dest, source, sw)
+    Proj4js.transform(dest, source, sw) unless dest_string == "EPSG:4326"
     new L.LatLngBounds(new L.LatLng(sw.y, sw.x) , new L.LatLng(ne.y, ne.x))
   fitBounds: (bounds) ->
     @map.fitBounds(bounds)
