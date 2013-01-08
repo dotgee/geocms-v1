@@ -3,7 +3,7 @@ html(lang="en")
   head
     meta charset="utf-8"
     meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"
-    title== yield :title
+    title== content_for?(:title) ? yield(:title) : "DotGeoCMS"
     meta content="" name="description"
     meta content="width=device-width" name="viewport"
     = stylesheet_link_tag :application

@@ -1,11 +1,3 @@
-.input-xlarge {
-  width: 220px;
-}
-
-textarea {
-  resize: none;
-}
-
 .form-signin {
   max-width: 400px;
   padding: 19px 29px 29px;
@@ -42,4 +34,26 @@ textarea {
       max-height: 600px;
     }
   }
+}
+
+// LEFT NAVBAR - INFOS
+
+#infos {
+  form {
+    margin: 20px 10px;
+  }
+  label {
+    width: auto;
+  }
+  .from-map {
+    margin-left: 110px;
+  }
+}
+
+.input-xlarge {
+  width: 220px;
+}
+
+textarea {
+  resize: none;
 }

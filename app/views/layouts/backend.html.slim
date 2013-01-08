@@ -19,6 +19,7 @@ html(lang="en")
                 = image_tag "dotgeocms.png", :width => "128", :height => "33"
               - if logged_in?
                 li= link_to t("menu.categories"), backend_categories_path
+                li= link_to t("maps"), backend_contexts_path
                 li= link_to t("menu.data_sources"), backend_data_sources_path
                 li= link_to t("menu.users"), backend_users_path
                 li= link_to t("menu.preferences"), edit_backend_preferences_path
