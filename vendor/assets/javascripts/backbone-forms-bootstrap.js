@@ -17,7 +17,7 @@
 
     //HTML
     form: '\
-      <form class="form-horizontal">{{fieldsets}}</form>\
+      <form>{{fieldsets}}</form>\
     ',
 
     fieldset: '\
