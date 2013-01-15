@@ -47,6 +47,7 @@ fr:
   layers_catalog: "Catalogue de couches"
   legend: "Légende"
   maps: "Cartes"
+  back: "Retour"
   #####
   # Rails i18n
   #####

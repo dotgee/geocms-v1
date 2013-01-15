@@ -12,10 +12,12 @@ html(lang="en")
     .navbar
       .navbar-inner
         .container
-          ul.nav
+          ul.nav.nav-branding
             li= link_to root_path, :class => "brand" do
               = image_tag "dotgeocms.png"
-
+            - if content_for?(:context_name)
+              li= link_to "#", :class => "brand brand-context" do
+                = "| #{yield(:context_name)}"
           .top-menu
             = link_to (t "maps"), contexts_path
             - if logged_in?

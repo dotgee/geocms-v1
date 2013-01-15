@@ -1,15 +1,15 @@
 .container-fluid.container-infos
-  h2= @current_tenant_instance.name
+  h2= t("maps")
 .row-fluid.row-thumbnails
   ul.thumbnails
-    li.span3
-      .thumbnail.unbordered.new
-        = link_to t("context.new"), root_path, :class => "m-btn blue big"
     - @contexts.each do |context|
-      li.span3
-        = link_to "/#{context.uuid}", :class => "thumbnail-link" do
-          .thumbnail.unbordered
-            .placeholder
+      li.span3.fixed-layout
+        .thumbnail.unbordered
+          .placeholder
+          = link_to [:edit, :backend, context], :class => "thumbnail-link" do
             .caption
               h4 = context.name
               p= context.description
+          .m-btn-group.thumbnails-control
+            = link_to [:backend, context], :confirm => "Are you sure ?", :method => :delete, :class => "m-btn icn-only mini" do
+              i.icon-trash.icon-white

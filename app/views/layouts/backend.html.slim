@@ -3,7 +3,7 @@ html(lang="en")
   head
     meta charset="utf-8"
     meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"
-    title== yield :title
+    title== content_for?(:title) ? yield(:title) : "DotGeoCMS - Backend"
     meta content="" name="description"
     meta content="width=device-width" name="viewport"
     = csrf_meta_tags
@@ -26,7 +26,7 @@ html(lang="en")
             - if logged_in?
               ul.nav.pull-right
                 li= link_to t("menu.logout"), logout_path
-      .container.main-container
+      .container.main-container class=(content_for?(:container_class) ? yield(:container_class) : "")
         == render "layouts/messages"
         == yield
         #push
