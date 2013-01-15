@@ -56,12 +56,6 @@ input[type="color"].m-wrap,
 	border-radius: 0;
 }
 
-input.m-wrap,
-textarea.m-wrap,
-.m-uneditable-input {
-  width: 206px;
-}
-
 textarea.m-wrap {
   height: auto;
 }

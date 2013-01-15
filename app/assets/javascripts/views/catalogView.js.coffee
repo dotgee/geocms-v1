@@ -7,7 +7,7 @@ class App.CatalogView extends Backbone.View
   events: {
     "click .close" : "toggle"
     "click .back"  : "back"
-    "click #search": "search"
+    "keyup .layers-search input": "search"
   }
 
   initialize: ->
@@ -16,7 +16,7 @@ class App.CatalogView extends Backbone.View
     @layers = @options.layers
     @collection.on("reset", @render, this)
     @$categories = @$el.find("#categories")
-
+    @$query = $(".layers-search").find("input")
   toggle: ->
     @$el.toggleClass("active")
     @render()
@@ -30,13 +30,16 @@ class App.CatalogView extends Backbone.View
     $.ajax
       url: "/layers/search",
       dataType: 'json',
-      data: {query: "Mer"},
+      data: {query: that.$query.val()},
       success: (data) ->
         layers = []
         layer_ids = _.each(data, (layer) ->
-          layers.push(that.layers.get(layer.id))
+          console.log(layer)
+          layers.push(that.layers.get(layer.name))
         )
         layerCollection = new App.LayerCollection(layers)
+        that.collection = layerCollection
+        that.render()
   resetView: ->
     @$categories.html("")
 

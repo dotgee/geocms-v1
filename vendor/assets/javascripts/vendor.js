@@ -11,12 +11,11 @@
 //= require bootstrap-tooltip
 
 //= require moment.min
-//= require underscore
+//= require lodash.underscore.min
 //= require backbone
 //= require backbone-relational
 //= require backbone-forms.min
 //= require backbone-forms-bootstrap
-//= require masonry.min
 //= require leaflet.js
 //= require proj4js-combined
 //= require proj4leaflet

@@ -31,7 +31,7 @@
       <div class="control-group field-{{key}}">\
         <label class="control-label" for="{{id}}">{{title}}</label>\
         <div class="controls">\
-          <div class="input-xlarge">{{editor}}</div>\
+          {{editor}}\
           <div class="help-block">{{help}}</div>\
         </div>\
       </div>\
