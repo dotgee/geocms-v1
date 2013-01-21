@@ -15,7 +15,7 @@ table.table.table-striped.table-backend
           = link_to 'Show', [:backend, data_source], :class => "m-btn mini"
           = link_to 'Edit', edit_backend_data_source_path(data_source), :class => "m-btn mini blue-stripe"
           = link_to 'Destroy', [:backend, data_source], :confirm => 'Are you sure?', :method => :delete, :class => "m-btn mini red-stripe"
-          = link_to "Import", [:import, :backend, data_source], :class => "m-btn mini", :id => "import-btn"
+          = link_to "Import", [:import, :backend, data_source], :class => "m-btn mini import-btn"
 br
 = link_to 'New Data source', new_backend_data_source_path, :class => "m-btn green-stripe"
 
@@ -27,6 +27,6 @@ br
 
 = content_for :javascripts do
   javascript:
-    $("#import-btn").click(function(e) {
+    $(".import-btn").click(function(e) {
       $(".wait-modal").modal();
     })
