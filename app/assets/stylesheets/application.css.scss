@@ -1,6 +1,4 @@
-@import "compass";
-@import "bootstrap_overrides";
+@import "config/mixins";
+@import "base/base";
 @import "components/components";
-@import "vendor";
-@import "explore";
-@import "home";
+@import "modules/modules";
