@@ -21,7 +21,7 @@ group :development do
   gem 'meta_request', '0.2.0'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', "~> 2.1.4"
 
 # JSON Views
 gem 'oj'
