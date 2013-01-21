@@ -18,8 +18,8 @@ class Layer < ActiveRecord::Base
 
 
   scope :for_frontend, select(["layers.name", "layers.title", "layers.id", "layers.description",
-                       "layers.dimension", "layers.category_id", "data_sources.wms", "dimensions.value"])
-                       .includes(:data_source)
+                       "layers.dimension", "layers.category_id", "data_sources.wms", "dimensions.value", "category_ids"])
+                       .includes(:data_source).includes(:categories)
                        .order(:title)
 
 

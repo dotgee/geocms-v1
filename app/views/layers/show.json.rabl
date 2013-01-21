@@ -1,7 +1,7 @@
 object @layer
 cache @layer
 
-attributes :id, :name, :description, :dimension, :category_id, :bbox
+attributes :id, :name, :description, :dimension, :category_ids, :bbox
 
 node :title do |t|
   t.title.humanize
