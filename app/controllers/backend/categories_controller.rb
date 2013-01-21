@@ -5,7 +5,7 @@ class Backend::CategoriesController < Backend::ApplicationController
   end
 
   def show
-    @category = Category.find_by_slug(params[:id])
+    @category = Category.find(params[:id])
     @layers = @category.layers.page(params[:page])
     respond_with([:backend, @category])
   end
@@ -19,7 +19,7 @@ class Backend::CategoriesController < Backend::ApplicationController
   end
 
   def edit
-    @category = Category.find_by_slug(params[:id])
+    @category = Category.find(params[:id])
   end
 
   def create
@@ -29,7 +29,7 @@ class Backend::CategoriesController < Backend::ApplicationController
   end
 
   def update
-    @category = Category.find_by_slug(params[:id])
+    @category = Category.find(params[:id])
     @category.update_attributes(params[:category])
     respond_with([:backend, @category])
   end
@@ -41,7 +41,7 @@ class Backend::CategoriesController < Backend::ApplicationController
   end
 
   def move
-    @category = Category.find_by_slug(params[:id])
+    @category = Category.find(params[:id])
     if(params[:direction] == "up")
       @category.move_higher
     else 

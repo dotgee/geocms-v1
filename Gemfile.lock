@@ -59,7 +59,7 @@ GEM
       multi_json (~> 1.0)
     faraday (0.8.4)
       multipart-post (~> 1.1)
-    friendly_id (4.0.8)
+    friendly_id (4.0.9)
     fssm (0.2.9)
     gon (4.0.1)
       actionpack (>= 2.3.0)

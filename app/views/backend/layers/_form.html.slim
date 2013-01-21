@@ -1,5 +1,4 @@
 = simple_form_for([:backend, @category, @layer], :html => {:class => 'form-horizontal' }) do |f|
-
   = f.input :name
   = f.association :data_source
   = f.input :title
@@ -7,7 +6,7 @@
 
   - unless @layer.new_record?
     legend Move to
-    = f.association :category, :collection => Category.leafs
+    = f.association :categories, :collection => Category.leafs
   .m-btn-group
     = f.submit :class => "m-btn blue"
     = link_to 'Back', [:backend, @category, :layers], :class => "m-btn"

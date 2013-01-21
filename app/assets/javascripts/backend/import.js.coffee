@@ -5,7 +5,7 @@ class Layer extends Backbone.Model
     title: { type: "Text", validators: ['required'] }
     name: { type: "Text", validators: ['required'] }
     description: "TextArea"
-    category_id: { type: "Select", options:  gon.categories, validators: ['required'] }
+    category_ids: { type: "Select", options:  gon.categories, validators: ['required'], editorAttrs: { multiple: "multiple" } }
   defaults:
     imported: false
   initialize: ->

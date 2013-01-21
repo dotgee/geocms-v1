@@ -9,7 +9,7 @@ class Layer < ActiveRecord::Base
     indexes :description,  :analyzer => 'snowball'
   end
 
-  belongs_to :category
+  has_and_belongs_to_many :categories
   belongs_to :data_source
   has_and_belongs_to_many :contexts
   has_many :dimensions
@@ -23,7 +23,7 @@ class Layer < ActiveRecord::Base
                        .order(:title)
 
 
-  attr_accessible :description, :name, :title, :wms_url, :data_source_id, :category_id, :category, :bbox,
+  attr_accessible :description, :name, :title, :wms_url, :data_source_id, :category_ids, :category, :bbox,
                   :crs, :minx, :miny, :maxx, :maxy, :dimension
 
   def self.as_layer(data_source, category, l)

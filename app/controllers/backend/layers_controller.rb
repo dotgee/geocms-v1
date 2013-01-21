@@ -1,9 +1,8 @@
 class Backend::LayersController < Backend::ApplicationController
-  before_filter :require_category
+  before_filter :require_category, :except => [:create]
 
   def index
     @layers = @category.layers.page params[:page]
-
     respond_with([:backend, @layers])
   end
 
@@ -24,7 +23,7 @@ class Backend::LayersController < Backend::ApplicationController
   end
 
   def create
-    @layer = @category.layers.new(params[:layer])
+    @layer = Layer.new(params[:layer].reject{ |p| p == "category_id" })
     @layer.save
     respond_with(@layer) do |format|
       format.json if request.xhr?
