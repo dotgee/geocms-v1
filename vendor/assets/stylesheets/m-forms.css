@@ -149,7 +149,6 @@ input[type="file"].m-wrap {
 }
 
 select.m-wrap {
-  width: 220px;
   background-color: #ffffff;
   border: 1px solid #aaaaaa;
 }

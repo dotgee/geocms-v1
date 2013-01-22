@@ -2,10 +2,10 @@
 class Layer extends Backbone.Model
   urlRoot: "/backend/layers"
   schema:   
-    title: { type: "Text", validators: ['required'] }
-    name: { type: "Text", validators: ['required'] }
-    description: "TextArea"
-    category_ids: { type: "Select", options:  gon.categories, validators: ['required'], editorAttrs: { multiple: "multiple" } }
+    title: { type: "Text", validators: ['required'], editorClass: "m-wrap input-block-level" }
+    name: { type: "Text", validators: ['required'], editorClass: "m-wrap input-block-level" }
+    description: {type: "TextArea", editorClass: "m-wrap input-block-level"}
+    category_ids: { type: "Select", options:  gon.categories, validators: ['required'], editorAttrs: { multiple: "multiple" }, editorClass: "m-wrap input-block-level" }
   defaults:
     imported: false
   initialize: ->
@@ -58,6 +58,7 @@ class LayerItemView extends Backbone.View
   initialize: ->
     @model.on("change:imported", @render, this)
   openModal: (e) ->
+    e.preventDefault()
     unless @model.get("imported")
       $("#layer-import").hide()
       unless @modal
