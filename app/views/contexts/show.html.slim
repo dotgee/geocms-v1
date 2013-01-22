@@ -50,7 +50,7 @@
         i.icon-fullscreen
       button.m-btn.icn-only.togglehud rel="tooltip" data-original-title=t("context.controls.hud")
         i.m-icon-swapleft
-  #map data-latitude="48.118434" data-longitude="-1.676239" data-zoom="10"
+  #map data-latitude=current_tenant.latitude.value data-longitude=current_tenant.longitude.value data-zoom=current_tenant.zoom.value
   .modal#share-modal.hide style="position: asbolute;display:block;z-index:-1"
     .modal-header
       button.close aria-hidden="true" data-dismiss="modal" type="button"
