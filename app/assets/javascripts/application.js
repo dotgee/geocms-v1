@@ -9,7 +9,8 @@
 //= require_tree ./collections
 //= require_tree ./views
 
-$("#ctrls").find(".m-btn").tooltip({
-  placement: "top"
+$('body').tooltip({
+    selector: '[rel=tooltip]',
+    placement: "top"
 });
 
