@@ -4,7 +4,7 @@ class App.CartItemView extends Backbone.View
     <div class='right-infos'>
       <label for='<%= name %>' class='title'>
         <input type='checkbox' class='layer-visibility' <% if(visible) { %> checked <% } %> id='<%=name %>'>
-        <span><%= title %></span>
+        <a title='<%= title %>' class='unstyled'><%= title %></a>
       </label>
       <% if(dimension) { %>
         <div class='m-btn-group control-buttons'>

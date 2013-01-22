@@ -1,3 +1,7 @@
 .lightweight{
   font-weight: 100;
 }
+
+a.unstyled {
+  @include unstyled-link;
+}
