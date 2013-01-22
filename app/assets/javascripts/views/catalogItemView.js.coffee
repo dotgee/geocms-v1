@@ -63,5 +63,6 @@ class App.CatalogItemView extends Backbone.View
     if @model.get("model") == "category"
       @$el.html(@categoryTemplate(attributes))
     else
+      @$el.addClass("layer")
       @$el.html(@layerTemplate(attributes))
     return this
