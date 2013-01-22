@@ -62,3 +62,6 @@ gem "kaminari"
 
 # Search
 gem "tire"
+
+# WYSIWYG
+gem "ckeditor", :git => "git://github.com/galetahub/ckeditor.git"

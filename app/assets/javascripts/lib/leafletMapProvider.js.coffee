@@ -6,6 +6,19 @@ dest = new Proj4js.Proj('EPSG:2154')
 source = new Proj4js.Proj('EPSG:4326')
 dest_string = "EPSG:2154"
 
+tableToJSON = (data) ->
+  p = {}
+  headers = $(data).find("th")
+  row = $(data).find("tr:last-child").find("td")
+  i = 0
+  _.each(headers, (header) ->
+    key = header.textContent
+    value = row[i].textContent
+    p[key] = value
+    i++
+  )
+  p
+
 App.MapProviders.Leaflet = ->
   # Create new map
   createMap: (elementId) ->
@@ -31,9 +44,11 @@ App.MapProviders.Leaflet = ->
     @map.invalidateSize()
   toggleClicListener: (status, layer) ->
     if status
+      $("#map").css("cursor", "crosshair")
       @map.addEventListener('click', @getFeatureWMS)
       @map.queryable_layer = layer
     else
+      $("#map").css("cursor", "")
       @map.removeEventListener('click', @getFeatureWMS)
       @map.queryable_layer = undefined
       $featuresInfos = $(".features-infos")
@@ -45,7 +60,6 @@ App.MapProviders.Leaflet = ->
   getFeatureWMS: (e) ->
     # EPSG:2154
     box =  new App.MapProviders.Leaflet().bboxToProj(map.getBounds())
-
     BBOX = box.join(",")
     EPSG = dest_string
     WIDTH = map.getSize().x
@@ -62,11 +76,16 @@ App.MapProviders.Leaflet = ->
       dataType: "html"
       type: "GET"
       success: (data) ->
-        $featuresInfos = $(".features-infos")
-        $(".table-results").html(data)
-        $featuresInfos.find("table").addClass("table")
-        unless $featuresInfos.css("display") == "block"
-          $featuresInfos.slideToggle()
+        if(data.indexOf("<table") > -1)
+          data = tableToJSON(data)
+          template = map.queryable_layer.template
+          content = Mustache.render(template, data)
+        else
+          content = "Pas d'informations disponibles sur ce point."
+        popup = L.popup()
+            .setLatLng(e.latlng)
+            .setContent(content)
+            .openOn(map)
   bboxToProj: (bounds) ->
     ne = new Proj4js.Point(bounds._northEast.lng, bounds._northEast.lat)
     Proj4js.transform(source, dest, ne)

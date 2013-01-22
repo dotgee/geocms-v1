@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130121083808) do
+ActiveRecord::Schema.define(:version => 20130122101824) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(:version => 20130121083808) do
     t.text     "bbox"
     t.string   "crs"
     t.string   "dimension"
+    t.text     "template"
   end
 
   create_table "preferences", :force => true do |t|

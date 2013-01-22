@@ -31,13 +31,6 @@ class App.MapView extends Backbone.View
       @_div.innerHTML = "<img src='/assets/dotgee.png'/>"
       @_div;
     watermark.addTo(@mapProvider.map)
-  addGetFeatures: ->
-    features = L.control({position: "bottomleft"})
-    features.onAdd= ->
-      @_div = L.DomUtil.create('div', 'features-infos');
-      @_div.innerHTML = "<div class='table-results'></div>"
-      @_div
-    @mapProvider.map.addControl(features)
   addLegend: ->
     @legend = L.control({position: "bottomright"})
     @legend.onAdd = (map) ->
@@ -51,5 +44,4 @@ class App.MapView extends Backbone.View
     @addBaseLayer()
     @addWatermark()
     @addLegend()
-    @addGetFeatures()
     @setInitialView()

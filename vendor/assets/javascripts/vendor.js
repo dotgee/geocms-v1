@@ -11,6 +11,7 @@
 //= require bootstrap-tooltip
 
 //= require moment.min
+//= require mustache
 //= require lodash.underscore.min
 //= require backbone
 //= require backbone-relational
@@ -23,3 +24,4 @@
 //= require jquery.zclip
 
 //= require toastr
+//= require ckeditor/init

@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/galetahub/ckeditor.git
+  revision: 88009df833de349e4aa82815e588dd40d2869748
+  specs:
+    ckeditor (4.0.0.rc2)
+      mime-types
+      orm_adapter
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -99,6 +107,7 @@ GEM
       httpauth (~> 0.1)
       multi_json (~> 1.3)
     oj (1.4.3)
+    orm_adapter (0.4.0)
     pg (0.14.1)
     polyglot (0.3.3)
     rabl (0.7.2)
@@ -204,6 +213,7 @@ DEPENDENCIES
   ancestry
   bootstrap-sass (~> 2.2.1.1)
   bullet
+  ckeditor!
   coffee-rails (~> 3.2.1)
   compass (~> 0.12.2)
   compass-rails (~> 1.0.3)

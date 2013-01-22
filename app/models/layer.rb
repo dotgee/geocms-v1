@@ -24,7 +24,7 @@ class Layer < ActiveRecord::Base
 
 
   attr_accessible :description, :name, :title, :wms_url, :data_source_id, :category_ids, :category, :bbox,
-                  :crs, :minx, :miny, :maxx, :maxy, :dimension
+                  :crs, :minx, :miny, :maxx, :maxy, :dimension, :template
 
   def self.as_layer(data_source, category, l)
     layer = Layer.find_or_initialize_by_name(name: l.name, title: l.title, crs: l.crs, minx: l.bbox[0], \
