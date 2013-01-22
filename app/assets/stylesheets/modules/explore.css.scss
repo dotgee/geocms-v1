@@ -260,4 +260,7 @@
   width: 48%;
   margin-left: 1%;
   margin-top: 15px;
+  .description {
+    @include ellipsis;
+  }
 }
