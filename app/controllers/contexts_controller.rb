@@ -20,9 +20,7 @@ class ContextsController < ApplicationController
 
   def share
     @context = Context.includes(:layers).find_by_uuid(params[:id])
-    respond_with(@context) do |format|
-      format.html { render :layout => "explore" }
-    end
+    respond_with(@context)
   end
 
   def create
