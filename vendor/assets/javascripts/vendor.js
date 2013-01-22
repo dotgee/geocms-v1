@@ -9,19 +9,20 @@
 //= require bootstrap-modal
 //= require bootstrap-tab
 //= require bootstrap-tooltip
-
-//= require moment.min
-//= require mustache
-//= require lodash.underscore.min
-//= require backbone
-//= require backbone-relational
-//= require backbone-forms.min
-//= require backbone-forms-bootstrap
-//= require leaflet.js
-//= require proj4js-combined
-//= require proj4leaflet
-//= require jquery.sortable.min
-//= require jquery.zclip
-
-//= require toastr
 //= require ckeditor/init
+
+// = require moment.min
+//= require mustache
+//= require backbone/lodash.underscore.min
+//= require backbone/backbone
+//= require backbone/backbone-relational
+//= require backbone/backbone-forms.min
+//= require backbone/backbone-forms-bootstrap
+//= require leaflet/leaflet.js
+//= require leaflet/proj4js-combined
+//= require leaflet/proj4leaflet
+//= require jquery/jquery-ui-1.10.0.custom.min
+//= require jquery/jquery.sortable.min
+//= require jquery/jquery.zclip
+
+// = require toastr
