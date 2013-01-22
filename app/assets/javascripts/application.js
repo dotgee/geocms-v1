@@ -14,3 +14,5 @@ $('body').tooltip({
     placement: "top"
 });
 
+$( ".draggable" ).draggable();
+
