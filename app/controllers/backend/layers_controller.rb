@@ -2,8 +2,7 @@ class Backend::LayersController < Backend::ApplicationController
   before_filter :require_category, :except => [:create]
 
   def index
-    @layers = @category.layers.page params[:page]
-    respond_with([:backend, @layers])
+    redirect_to [:backend, @category]
   end
 
   def show
