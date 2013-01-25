@@ -19,7 +19,7 @@ class Backend::ApplicationController < ActionController::Base
 
   def set_locale
       session[:locale] = params[:locale] if params[:locale]
-      session[:locale] ||= :en
+      session[:locale] ||= :fr
       I18n.locale = session[:locale]
   end
 
