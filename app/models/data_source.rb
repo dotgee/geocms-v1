@@ -3,9 +3,13 @@ class DataSource < ActiveRecord::Base
   attr_accessible :csw, :name, :ogc, :wfs, :wms, :rest
 
   def import
-    geoserver = WmsGetcapabilities::Geoserver.new(self.wms)
-    geoserver.get_capabilities
-    geoserver.layers
+    @wms_client = ROGC::WMSClient.new(self.wms)
+    @capabilities = @wms_client.capabilities
+    @layers = @capabilities.capability.layers
+    ### geoserver = WmsGetcapabilities::Geoserver.new(self.wms)
+    ### geoserver.get_capabilities
+    ### geoserver.layers
+    
     # category = Category.receiver.first
 
     # ActiveRecord::Base.transaction do

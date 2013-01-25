@@ -17,6 +17,7 @@ class App.CatalogView extends Backbone.View
     @collection.on("reset", @render, this)
     @$categories = @$el.find("#categories")
     @$query = $(".layers-search").find("input")
+
   toggle: ->
     @$el.toggleClass("active")
     @render()
@@ -34,7 +35,6 @@ class App.CatalogView extends Backbone.View
       success: (data) ->
         layers = []
         layer_ids = _.each(data, (layer) ->
-          console.log(layer)
           layers.push(that.layers.get(layer.name))
         )
         layerCollection = new App.LayerCollection(layers)

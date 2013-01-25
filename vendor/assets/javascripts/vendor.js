@@ -24,5 +24,6 @@
 //= require jquery/jquery-ui-1.10.0.custom.min
 //= require jquery/jquery.sortable.min
 //= require jquery/jquery.zclip
+//= require select2.min
 
 // = require toastr

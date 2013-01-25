@@ -5,15 +5,21 @@ class Category < ActiveRecord::Base
   has_and_belongs_to_many :layers
   acts_as_tenant(:account)
 
-  has_ancestry
+  has_ancestry :cache_depth => true
   acts_as_list scope: [:account_id, :ancestry]
 
   scope :receiver, where(:default => true)
   scope :ordered, select([:name, :id, :slug, :ancestry]).ordered_by_ancestry.order("position asc")
   scope :leafs, all.reject! { |c| c.has_children? }
   attr_accessible :name, :position, :parent_id
-
+      
   before_save :cache_ancestry
+
+  class << self
+    def for_select
+      Category.sort_by_ancestry(Category.all)
+    end
+  end
   def cache_ancestry
     self.names_depth_cache = path.map(&:name).join('/')
   end
@@ -26,5 +32,9 @@ class Category < ActiveRecord::Base
         "children" => json_tree(sub_nodes).compact
       }
     end
+  end
+
+  def depth_name
+    ("-" * depth) + name
   end
 end

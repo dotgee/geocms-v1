@@ -9,6 +9,8 @@ class Layer < ActiveRecord::Base
     indexes :description,  :analyzer => 'snowball'
   end
 
+  acts_as_taggable_on :keywords
+
   has_and_belongs_to_many :categories
   belongs_to :data_source
   has_and_belongs_to_many :contexts

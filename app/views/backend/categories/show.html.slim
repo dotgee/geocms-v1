@@ -15,7 +15,7 @@
     tbody
       - @layers.page(params[:page]).each do |layer|
         == render layer
-  = link_to "New layer", [:new, :backend, @category, :layer], :class => "m-btn"
+  = link_to t([:actions, :layers, :new]), [:new, :backend, @category, :layer], :class => "m-btn"
   = paginate @layers
 - elsif !@category.is_childless?
   h5 Categories
@@ -28,7 +28,6 @@
     tbody
       - @category.children.each do |category|
         == render category
-  = link_to "New child category", new_backend_category_path(:parent_id => @category.id), :class => "m-btn"
 - else
-  = link_to "New layer", [:new, :backend, @category, :layer], :class => "m-btn"
-  = link_to "New child category", new_backend_category_path(:parent_id => @category.id), :class => "m-btn"
+  = link_to t([:actions, :layers, :new]), [:new, :backend, @category, :layer], :class => "m-btn"
+= link_to t(:add_child), new_backend_category_path(:parent_id => @category.id), :class => "m-btn"

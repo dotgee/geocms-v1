@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-    #@categories = Category.includes(:layers).roots
+    @categories = Category.includes(:layers).all
     #respond_with(@categories)
     respond_to do |format|
       format.json { render json: Oj.dump(Category.json_tree(Category.arrange_nodes(Category.ordered))) }
@@ -9,9 +9,12 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find_by_slug(params[:id])
-    respond_with(@category) do |format|
-      format.html { render :partial => @category}
-    end
+    @category ||= Category.find_by_id(params[:id])
+    @context = Context.new
+    render :template => "contexts/show"
+    #respond_with(@category) do |format|
+    #  format.html { render :partial => @category}
+    #end
   end
 
   def layers

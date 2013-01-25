@@ -7,6 +7,7 @@ tr
       = move_link move_backend_category_path(category, :direction => "up"), "up", category.first?
     span.name= category.name
   td
-    = link_to 'Browse', [:backend, category], :class => "m-btn mini"
-    = link_to 'Edit', edit_backend_category_path(category) , :class => "m-btn blue-stripe mini"
-    = link_to 'Destroy', [:backend, category], :confirm => 'Are you sure?', :method => :delete , :class => "m-btn red-stripe mini"
+    = link_to t(:add_child), new_backend_category_path(:parent_id => category.id), :class => "m-btn mini green-stripe" 
+    = link_to t(:browse), [:backend, category], :class => "m-btn mini"
+    = link_to t(:edit), edit_backend_category_path(category) , :class => "m-btn blue-stripe mini"
+    = link_to t(:destroy), [:backend, category], :confirm => 'Are you sure?', :method => :delete , :class => "m-btn red-stripe mini"

@@ -1,8 +1,9 @@
 require "application_responder"
 
 class Backend::ApplicationController < ActionController::Base
+  before_filter :set_locale
   self.responder = ApplicationResponder
-  respond_to :html
+  respond_to :html, :json
 
   layout "backend"
 
@@ -14,6 +15,12 @@ class Backend::ApplicationController < ActionController::Base
   private
   def not_authenticated
     redirect_to login_url, :alert => "First log in to view this page."
+  end
+
+  def set_locale
+      session[:locale] = params[:locale] if params[:locale]
+      session[:locale] ||= :en
+      I18n.locale = session[:locale]
   end
 
 end

@@ -45,7 +45,6 @@ class App.CatalogItemView extends Backbone.View
   displayChildren: (e) ->
     if @model.get("children").length == 0
       that = this
-      console.log @layers
       layers = @layers.filter( (layer) ->
         _.contains(layer.get("category_ids"), that.model.get("id"))
       )

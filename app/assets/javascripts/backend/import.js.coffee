@@ -1,11 +1,27 @@
 # Base class Layer
 class Layer extends Backbone.Model
   urlRoot: "/backend/layers"
-  schema:   
-    title: { type: "Text", validators: ['required'], editorClass: "m-wrap input-block-level" }
-    name: { type: "Text", validators: ['required'], editorClass: "m-wrap input-block-level" }
-    description: {type: "TextArea", editorClass: "m-wrap input-block-level"}
-    category_ids: { type: "Select", options:  gon.categories, validators: ['required'], editorAttrs: { multiple: "multiple" }, editorClass: "m-wrap input-block-level" }
+  schema:
+    title:
+      type: "Text"
+      validators: ['required']
+      editorClass: "m-wrap input-block-level" 
+
+    name:  
+      type: "Text"
+      validators: ['required']
+      editorClass: "m-wrap input-block-level"
+
+    description: 
+      type: "TextArea"
+      editorClass: "m-wrap input-block-level"
+
+    category_ids: 
+      type: "Select"
+      options:  gon.categories 
+      validators: ['required'] 
+      editorAttrs: { multiple: "multiple" }
+      editorClass: "m-wrap input-block-level" 
   defaults:
     imported: false
   initialize: ->

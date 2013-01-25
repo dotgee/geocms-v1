@@ -1,4 +1,10 @@
 fr:
+  actions:
+    layers: 
+      new: "Ajouter couche"
+  browse: "Naviguer"
+  edit: "Modifier"
+  add_child: Ajouter enfant
   context:
     save: "Sauvegarder"
     share: "Partager"

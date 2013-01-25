@@ -15,6 +15,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'libv8', "~> 3.11.8.0"
+gem 'therubyracer'
+
 group :development do
   gem "bullet"
   gem 'newrelic_rpm'
@@ -55,7 +58,9 @@ gem "acts_as_tenant"
 gem "friendly_id"
 
 # Import layers
-gem "wms_getcapabilities", '~> 0.1.0.6'
+# gem "wms_getcapabilities", '~> 0.1.0.6'
+
+gem 'ruby-ogc'
 
 # Pagination
 gem "kaminari"
@@ -64,4 +69,9 @@ gem "kaminari"
 gem "tire"
 
 # WYSIWYG
-gem "ckeditor", :git => "git://github.com/galetahub/ckeditor.git"
+gem "ckeditor"#, :git => "git://github.com/galetahub/ckeditor.git"
+
+#
+# tag layer (manage keywords)
+#
+gem 'acts-as-taggable-on', '~> 2.3.1'
