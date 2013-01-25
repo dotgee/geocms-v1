@@ -9,6 +9,7 @@ html(lang="en")
     = csrf_meta_tags
     = stylesheet_link_tag :application
     = stylesheet_link_tag :backend
+    = yield(:js_header)
   body.fullscreen.backend
 
     #wrap
