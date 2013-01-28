@@ -13,7 +13,7 @@ class Layer < ActiveRecord::Base
 
   has_and_belongs_to_many :categories
   belongs_to :data_source
-  has_many :contexts_layers
+  has_many :contexts_layers, :dependent => :destroy, :uniq => true
   has_many :contexts, :through => :contexts_layers
   has_many :dimensions
 
