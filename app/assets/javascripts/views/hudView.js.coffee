@@ -36,20 +36,18 @@ class App.HudView extends Backbone.View
     if errors
       $("#hud-tab a:last").tab("show")
     else
-      layer_ids = _.map(@cartCollection.models, (layer) ->
-        layer.get("id")
+      layers = _.map(@cartCollection.models, (layer) ->
+        { layer_id: layer.get("id"), opacity: layer.get('opacity') }
       )
       box = new App.MapProviders.Leaflet().bboxToProj(@mapProvider.map.getBounds())
 
-      @model.save {layer_ids: layer_ids, minx: box[0], maxx: box[2], miny: box[1], maxy: box[3]},
+      @model.save { minx: box[0], maxx: box[2], miny: box[1], maxy: box[3], contexts_layers_attributes: layers },
         success: (model, response) ->
-          if model.isNew()
-            model.set({uuid: response.uuid})
+          model.set({uuid: response.uuid}) if model.isNew()
           model.trigger("afterSave")
           toastr.success("Your map has been correctly saved !", "Map saved")
         error: (model, response) ->
           toastr.success("There was an error while saving your map", "Error !")
-
   afterSave: ->
     @switchControls(false)
     @router.navigate @model.get("uuid")
