@@ -98,6 +98,9 @@
   }
   .control-buttons {
     margin-left: 21px;
+    a:hover {
+      background: none;
+    }
   }
   .dimensions-list {
     @include column-count(3);
@@ -132,9 +135,6 @@
       left: 2px;
     }
     border-bottom: 1px solid #eee;
-    a:hover {
-      background: none;
-    }
     &.sortable-placeholder {
       border: 1px dashed #CCC;
       background: none;

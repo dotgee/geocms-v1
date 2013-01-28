@@ -109,6 +109,7 @@ class App.CartItemView extends Backbone.View
     @$el.html(@template(attributes))
     @$el.find('.opacity-slider').slider 
       value: attributes.opacity
+      range: "min"
       change: (e, ui) ->
         that.changeOpacity(e, ui)
 
