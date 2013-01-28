@@ -20,10 +20,7 @@ App.Layer = Backbone.RelationalModel.extend
     })
     tileLayer.setParams(options)
     @set leaflet: tileLayer
-  changeOpacity: (i) ->
-    opacity = @get("opacity")+i
-    if opacity > 100 or opacity < 0
-      opacity = @get("opacity")
+  changeOpacity: (opacity) ->
     @set opacity: opacity
     opacity
   removeFromMap: ->
