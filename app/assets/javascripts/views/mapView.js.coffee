@@ -7,11 +7,13 @@ class App.MapView extends Backbone.View
       initialCenter = @parent.model.getInitialCenter()
     @initialCenter = initialCenter || { latitude: @$el.data("latitude"), longitude: @$el.data("longitude"), zoom: @$el.data("zoom") }
     @render()
+
   setInitialView: ->
     @mapProvider.setViewForMap
       latitude:  @initialCenter.latitude,
       longitude: @initialCenter.longitude
       zoomLevel: @initialCenter.zoom
+
   addBaseLayer: ->
     osm = L.tileLayer.wms("http://osm.geobretagne.fr/gwc01/service/wms", {
       layers: "osm:google",
@@ -24,6 +26,7 @@ class App.MapView extends Backbone.View
         'Imagery © <a href="http://geobretagne.fr/accueil/">GeoBretagne</a>'
     })
     @mapProvider.addLayerToMap(osm)
+
   addWatermark: ->
     watermark = L.control({position: "bottomright"})
     watermark.onAdd =  (map) ->
@@ -31,6 +34,7 @@ class App.MapView extends Backbone.View
       @_div.innerHTML = "<img src='/assets/dotgee.png'/>"
       @_div;
     watermark.addTo(@mapProvider.map)
+
   addLegend: ->
     @legend = L.control({position: "bottomright"})
     @legend.onAdd = (map) ->
@@ -39,6 +43,7 @@ class App.MapView extends Backbone.View
     @legend.onUpdate = (layer) ->
       $(@_div).append("<h5>"+layer.get("name")+"</h5>")
     @mapProvider.map.addControl(@legend)
+
   render: ->
     @mapProvider.createMap(@el.id)
     @addBaseLayer()

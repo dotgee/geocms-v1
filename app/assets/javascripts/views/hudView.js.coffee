@@ -26,10 +26,12 @@ class App.HudView extends Backbone.View
     @$el.css("left", "0")
     $("#map").css("left", "300px")
     @mapProvider.invalidateSize()
+
   close: ->
     @$el.css("left", -@$el.width())
     $("#map").css("left", "0")
     @mapProvider.invalidateSize()
+
   saveContext: (e) ->
     e.preventDefault()
     errors = @form.commit()
@@ -48,6 +50,7 @@ class App.HudView extends Backbone.View
           toastr.success("Your map has been correctly saved !", "Map saved")
         error: (model, response) ->
           toastr.success("There was an error while saving your map", "Error !")
+
   afterSave: ->
     @switchControls(false)
     @router.navigate @model.get("uuid")

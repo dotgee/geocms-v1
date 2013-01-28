@@ -1,13 +1,14 @@
 class App.InfosView extends Backbone.View
-  events: {
+  events: 
     "click .from-map" : "importCenter"
     "change input"  : "triggerChange"
-  }
+  
   initialize: ->
     @parent = @options.parentView
     @mapProvider = @parent.mapProvider
     @form = @parent.form
     @render()
+
   importCenter: (e) ->
     e.preventDefault()
     center = @mapProvider.map.getCenter()
@@ -16,7 +17,9 @@ class App.InfosView extends Backbone.View
     @$el.find("#context_center_lat").val(center.lat.toFixed(6))
     @$el.find("#context_zoom").val(zoom)
     @parent.switchControls(true)
+
   triggerChange: (e) ->
     @parent.switchControls(true)
+
   render: ->
     @$el.prepend(@form.render().el)

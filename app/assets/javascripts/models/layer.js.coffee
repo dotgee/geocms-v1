@@ -1,7 +1,7 @@
 App.Layer = Backbone.RelationalModel.extend
   urlRoot: "/layers"
   idAttribute: "name"
-  defaults: {
+  defaults: 
     leaflet: false
     onMap: false
     opacity: 90
@@ -10,7 +10,7 @@ App.Layer = Backbone.RelationalModel.extend
     visible: true
     controllingOpacity: false
     model: "layer"
-  }
+
   toLeaflet: ( options = {} ) ->
     tileLayer = L.tileLayer.wms(@get("data_source").wms, {
       layers: @get("name"),
@@ -20,12 +20,15 @@ App.Layer = Backbone.RelationalModel.extend
     })
     tileLayer.setParams(options)
     @set leaflet: tileLayer
+
   changeOpacity: (opacity) ->
     @set opacity: opacity
     opacity
+
   removeFromMap: ->
     @set onMap: false
     @trigger('removeFromMap', this)
+
   addToMap: ->
     options = {}
     if @get("dimensions")
@@ -33,9 +36,11 @@ App.Layer = Backbone.RelationalModel.extend
     @toLeaflet(options)
     @set({onMap : true})
     @trigger('addOnMap')
+
   toggleVisibility: (visible, value) ->
     @get("leaflet").setOpacity(value)
     @set({visible: visible})
+
   playTimeline: ->
     count = @get("dimensions").length
     that = this
@@ -46,9 +51,11 @@ App.Layer = Backbone.RelationalModel.extend
       if timelineCounter == count-1
         that.pauseTimeline()
     ), 2000
+
   pauseTimeline:  ->
     clearInterval @player
     @set({playing: false})
+
   showtime: (step, timelineCounter = @get("timelineCounter")) ->
     if (timelineCounter + step) >= @get("dimensions").length || (timelineCounter + step) < 0
       @set({playing: false})
@@ -58,5 +65,6 @@ App.Layer = Backbone.RelationalModel.extend
     if dim
       time = moment(dim.dimension.value).format('YYYY-MM-DD')
       @get("leaflet").setParams({time: time}).redraw()
-  initialize: ->
-   
+
+  initialize: (opts)->
+
