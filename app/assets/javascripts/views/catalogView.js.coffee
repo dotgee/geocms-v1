@@ -4,14 +4,14 @@ class App.CatalogView extends Backbone.View
       <% if(categories.length) {%><span class='divider'>/</span> <% } %>
    </li>
    <% _.each( categories, function( cat, i ){ %>
-      <li>
         <% if(categories.length != i +1 ) {%>
+        <li>
           <a class='category-link' href='/category/<%= cat.attributes.id %>'><%= cat.attributes.name %></a>
           <span class='divider'>/</span> 
+        </li>
         <% }else { %>
           <li class='active'><%= cat.attributes.name %></li>
         <% } %>
-      </li>
    <%}) %>
   ")
 
