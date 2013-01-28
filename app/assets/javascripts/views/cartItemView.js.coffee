@@ -67,6 +67,7 @@ class App.CartItemView extends Backbone.View
       @model.set controllingOpacity: true
 
   changeOpacity: (e, ui) ->
+    console.log 'change'
     opacity = @model.changeOpacity(ui.value)
     @model.get("leaflet").setOpacity(opacity/100)
 
@@ -110,8 +111,6 @@ class App.CartItemView extends Backbone.View
     @$el.find('.opacity-slider').slider 
       value: attributes.opacity
       range: "min"
-      slide: (e, ui) ->
-        console.log e, ui
       change: (e, ui) ->
         that.changeOpacity(e, ui)
         true
