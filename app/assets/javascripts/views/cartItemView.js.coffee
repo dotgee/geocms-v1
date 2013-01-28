@@ -16,7 +16,7 @@ class App.CartItemView extends Backbone.View
       <div class='m-btn-group control-buttons'>
         <a class='m-btn mini query' data-toggle='button' rel='tooltip' data-original-title='Informations sur la couche'><i class='icon-info-sign'></i></a>
         <a class='m-btn mini opacity <% if(controllingOpacity) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Opacité'><i class='icon-adjust'></i></a>
-        <a class='m-btn mini center' rel='tooltip' data-original-title='Centrer sur la couche'><i class='icon-screenshot'></i></a>
+        <a class='m-btn mini center' rel='tooltip' data-original-title='Centrer'><i class='icon-screenshot'></i></a>
         <a class='m-btn mini remove' rel='tooltip' data-original-title='Supprimer'><i class='icon-remove'></i></a>
       </div>
       <% if(dimension) { %>
