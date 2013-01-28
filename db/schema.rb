@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128110938) do
+ActiveRecord::Schema.define(:version => 20130128151519) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -61,10 +61,10 @@ ActiveRecord::Schema.define(:version => 20130128110938) do
 
   add_index "contexts", ["uuid"], :name => "index_contexts_on_uuid", :unique => true
 
-  create_table "contexts_layers", :id => false, :force => true do |t|
+  create_table "contexts_layers", :force => true do |t|
     t.integer "context_id"
     t.integer "layer_id"
-    t.integer "order"
+    t.integer "position"
     t.integer "opacity"
   end
 

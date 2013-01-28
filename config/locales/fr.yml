@@ -9,7 +9,7 @@ fr:
     save: "Sauvegarder"
     share: "Partager"
     infos: "Infos"
-    from_map: "Importer depuis la carte"
+    from_map: "Importer"
     sharable:
       share_your_map: "Partagez votre carte"
       direct_link: "Lien direct"

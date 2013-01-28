@@ -2,7 +2,7 @@ object @context
 attributes :name, :description, :public, :zoom, :center_lng, :center_lat, :uuid
 
 child(:contexts_layers => :layers) do 
-  attribute :opacity
+  attributes :opacity, :position
   glue :layer do
     extends "layers/index"
   end

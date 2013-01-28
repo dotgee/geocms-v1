@@ -66,9 +66,8 @@ class App.CartItemView extends Backbone.View
       @$el.find(".opacity-controler").show()
       @model.set controllingOpacity: true
 
-  changeOpacity: (e, ui) ->
-    opacity = @model.changeOpacity(ui.value)
-    @model.get("leaflet").setOpacity(opacity/100)
+  changeOpacity: ->
+    @model.get("leaflet").setOpacity(@model.get("opacity")/100)
 
   toggleTimeline: (e) ->
     $e = $(e.currentTarget)
@@ -94,9 +93,10 @@ class App.CartItemView extends Backbone.View
     @mapProvider.fitBounds(projBox)
 
   initialize: ->
+    @changeOpacity()
     @model.on("change:playing", @render, this)
     @model.on("change:timelineCounter", @render, this)
-    @model.on("change:opacity", @render, this)
+    @model.on("change:opacity", @changeOpacity, this)
     @model.on("removeFromMap", @destroy, this)
     @mapProvider = @options.mapProvider
 
@@ -110,10 +110,8 @@ class App.CartItemView extends Backbone.View
     @$el.find('.opacity-slider').slider 
       value: attributes.opacity
       range: "min"
-      slide: (e, ui) ->
-        console.log e, ui
       change: (e, ui) ->
-        that.changeOpacity(e, ui)
+        that.changeOpacity(e, ui.value)
         true
 
     return this

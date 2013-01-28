@@ -41,7 +41,7 @@ class App.Router extends Backbone.Router
         })
         _.each response.layers, (l) ->
           layer = that.layerCollection.where({id: l.layer.id})
-          # car l'opacté est propre à un context
           layer[0].set  
             opacity: l.layer.opacity 
+            position: l.layer.position
           that.cartCollection.add(layer)
