@@ -8,4 +8,12 @@
           = text_field_tag "preferences[#{p}]", ActsAsTenant.current_tenant.read_preference(p).value
   .control-group
     .controls
-      = submit_tag "Save", :class => "m-btn blue"
+      = submit_tag t(:edit), :class => "m-btn blue"
+
+= simple_form_for ActsAsTenant.current_tenant, { :url => backend_preferences_path, :method => :put, :html => { :class => "form-horizontal" } } do |f|
+  = image_tag f.object.logo if f.object.logo?
+  = f.input :logo
+  = f.input :name
+  .control-group
+    .controls
+      = f.submit t(:edit), :class => "m-btn blue"

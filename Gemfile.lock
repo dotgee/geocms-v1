@@ -42,6 +42,9 @@ GEM
     builder (3.0.4)
     bullet (4.3.0)
       uniform_notifier
+    carrierwave (0.8.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
     chunky_png (1.2.7)
     ckeditor (3.7.3)
       mime-types
@@ -157,6 +160,7 @@ GEM
       mime-types
       nokogiri
       rest-client
+    rmagick (2.13.1)
     ruby-ogc (0.0.1)
       libxml-ruby
     sass (3.2.5)
@@ -222,6 +226,7 @@ DEPENDENCIES
   ancestry
   bootstrap-sass (~> 2.2.2.0)
   bullet
+  carrierwave
   ckeditor
   coffee-rails (~> 3.2.1)
   compass (~> 0.12.2)
@@ -241,6 +246,7 @@ DEPENDENCIES
   rails (= 3.2.11)
   responders
   rgeoserver
+  rmagick
   ruby-ogc
   sass-rails (~> 3.2.5)
   simple_form

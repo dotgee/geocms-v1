@@ -14,7 +14,7 @@ html(lang="en")
         .container
           ul.nav.nav-branding
             li= link_to root_path, :class => "brand" do
-              = image_tag "dotgeocms.png"
+              = logo_for_tenant
             - if content_for?(:context_name)
               li= link_to "#", :class => "brand brand-context" do
                 = "| #{yield(:context_name)}"
