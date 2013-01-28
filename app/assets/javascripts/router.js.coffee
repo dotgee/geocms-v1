@@ -40,7 +40,6 @@ class App.Router extends Backbone.Router
           router: that
         })
         _.each response.layers, (l) ->
-          console.log l
           layer = that.layerCollection.where({id: l.layer.id})
           # car l'opacté est propre à un context
           layer[0].set  
