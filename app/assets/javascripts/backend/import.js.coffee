@@ -38,7 +38,8 @@ class LayerModalView extends Backbone.View
     "click #save" : "save"
   initialize: ->
     @form = new Backbone.Form({ model: @model }).render()
-  save: ->
+  save: (e)-> 
+    e.preventDefault()
     errors = @form.commit()
     unless errors
       that = this
