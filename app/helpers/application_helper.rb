@@ -7,4 +7,9 @@ module ApplicationHelper
   def share_link(iframe = false)
     (iframe ? "<iframe src='" : "") + "#{request.protocol}#{request.host_with_port}"
   end
+
+  def breadcrumb_for_category(category = nil, admin = false)
+    tpl = admin ? "parts/backend_breadcrumb" : "parts/breadcrumb"
+    render tpl, :category => category
+  end
 end

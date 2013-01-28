@@ -1,14 +1,26 @@
 class App.CatalogView extends Backbone.View
-  template: _.template("
-    <a class='m-btn blue pull-right back'><i class='m-icon-swapleft m-icon-white'></i> Back</a>
-    <div class='clearfix'></div>
+  breadcrumbCategoryTemplate: _.template("
+   <li> <a href='/'><i class='icon-home'></i></a> 
+      <% if(categories.length) {%><span class='divider'>/</span> <% } %>
+   </li>
+   <% _.each( categories, function( cat, i ){ %>
+      <li>
+        <% if(categories.length != i +1 ) {%>
+          <a class='category-link' href='/category/<%= cat.attributes.id %>'><%= cat.attributes.name %></a>
+          <span class='divider'>/</span> 
+        <% }else { %>
+          <li class='active'><%= cat.attributes.name %></li>
+        <% } %>
+      </li>
+   <%}) %>
   ")
 
-  events: {
+  events: 
     "click .close" : "toggle"
-    "click .back"  : "back"
     "keyup .layers-search input": "search"
-  }
+    "click .category-link" : "show"
+    "click .icon-home" : "toRoot"
+ 
 
   initialize: ->
     @hud = @options.parentView
@@ -17,13 +29,10 @@ class App.CatalogView extends Backbone.View
     @collection.on("reset", @render, this)
     @$categories = @$el.find("#categories")
     @$query = $(".layers-search").find("input")
+    @currentCategories = []
 
   toggle: ->
     @$el.toggleClass("active")
-    @render()
-
-  back: ->
-    @collection = @collection.parent.collection
     @render()
 
   search: ->
@@ -40,14 +49,37 @@ class App.CatalogView extends Backbone.View
         layerCollection = new App.LayerCollection(layers)
         that.collection = layerCollection
         that.render()
+
   resetView: ->
     @$categories.html("")
 
   addOne: (model) ->
     @$categories.append new App.CatalogItemView({ model: model, parentView: this }).render().el
+  
+  toRoot: (e)-> 
+    e.preventDefault()
+    return false unless @currentCategories.length
+    @collection = @currentCategories[0].collection 
+    @currentCategories = []
+    @render()
+
+  appendCategory: (category) -> 
+    @currentCategories.push(category)
+    @render()
+
+  show: (e)->
+    e.preventDefault()
+    idx = @$el.find('.breadcrumb a.category-link').index(e.currentTarget)
+
+    if idx > -1
+      @collection = @currentCategories[idx].get("children")
+      @currentCategories = @currentCategories.slice(0, idx + 1)
+      @render()
+    true 
 
   render: ->
     @resetView()
-    if @collection.parent
-      @$categories.append(@template())
+    @$el.find('.breadcrumb').html(@breadcrumbCategoryTemplate
+                                      categories: @currentCategories
+                                  )
     @collection.forEach(@addOne, this)

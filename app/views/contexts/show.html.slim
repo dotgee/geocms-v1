@@ -38,6 +38,7 @@
                 i.icon-search
             .clearfix
           .container-fluid
+            = breadcrumb_for_category(@category)
             #categories.row-fluid
     .m-btn-group#ctrls
       button.m-btn.icn-only.legend data-toggle="button" rel="tooltip" data-original-title=t("context.controls.legend")

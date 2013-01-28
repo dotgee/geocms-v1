@@ -5,3 +5,13 @@ $navbarLinkColorHover: #D4EBFA;
 $sansFontFamily: 'Segoe UI', Helvetica, Arial, sans-serif;
 $linkColor: #3C4E5A;
 @import "bootstrap";
+.breadcrumb {
+  li {
+    line-height: 14px;
+  }
+
+  .divider {
+    padding: 0 5px;
+    color: #CCC;  
+  }
+}

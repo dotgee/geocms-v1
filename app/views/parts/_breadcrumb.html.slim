@@ -1,0 +1,15 @@
+ul.breadcrumb
+  li
+    = link_to root_path do 
+      i.icon-home
+      - if category
+        span.divider >
+
+  - if category
+    - category.ancestors.each do |cat|
+      li
+        = link_to cat.name, [:backend, cat]
+        span.divider
+          '>
+    li.active= category.name
+

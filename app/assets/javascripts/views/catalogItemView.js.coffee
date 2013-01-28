@@ -27,21 +27,23 @@ class App.CatalogItemView extends Backbone.View
     </div>
   </div>")
 
-  events: {
+  events: 
     "click .media-layer": "toggleOnMap"
     "click .category" : "displayChildren"
-  }
+  
   initialize: ->
     @parentView = @options.parentView
     @layers = @parentView.layers
     @hud = @parentView.hud
     @cartCollection = @hud.cartCollection
     @model.on("change:onMap", @render, this)
+
   toggleOnMap: (e) ->
     if @cartCollection.get(@model)
       @model.removeFromMap()
     else
       @cartCollection.add(@model)
+
   displayChildren: (e) ->
     if @model.get("children").length == 0
       that = this
@@ -52,11 +54,10 @@ class App.CatalogItemView extends Backbone.View
       layerCollection.parent = {}
       layerCollection.parent.collection = @model.collection
       @parentView.collection = layerCollection
-      @parentView.render()
     else
       @parentView.collection = @model.get("children")
-      @parentView.render()
-
+    @parentView.appendCategory(@model)
+    @parentView.render()
   render: ->
     attributes = @model.toJSON()
     if @model.get("model") == "category"

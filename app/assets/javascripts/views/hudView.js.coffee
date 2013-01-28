@@ -1,9 +1,9 @@
 class App.HudView extends Backbone.View
   el: ".hud",
-  events: {
+  events: 
     "click .save": "saveContext"
     "click .share": "openSharePopup"
-  }
+  
   initialize: ->
     @model.on("afterSave", @afterSave, this)
     @cartCollection     = @options.cartCollection
@@ -13,6 +13,7 @@ class App.HudView extends Backbone.View
     @router             = @options.router
     @form               = new Backbone.Form({ model: @model, idPrefix: "context_" })
     @render()
+
   render: ->
     @mapView = new App.MapView({mapProvider: @mapProvider, parentView: this})
     @catalog = new App.CatalogView({ el: this.$("#catalog"), collection: @catalogCollection, layers: @layerCollection, parentView: this })
@@ -20,12 +21,15 @@ class App.HudView extends Backbone.View
     @infos = new App.InfosView({ el: this.$("#infos"), parentView: this })
     @toolbar = new App.MapToolbarView({ el: this.$("#ctrls"), parentView: this })
     @legend = new App.MapLegendView({ el: $("#legend-graphic"), parentView: this })
+
   open: ->
     @$el.css("left", "0")
     $(".leaflet-control-zoom ").animate({"left": @$el.width()}, 200)
+
   close: ->
     @$el.css("left", -@$el.width())
     $(".leaflet-control-zoom").animate({"left": 0}, 200)
+
   saveContext: (e) ->
     e.preventDefault()
     errors = @form.commit()
@@ -45,9 +49,11 @@ class App.HudView extends Backbone.View
           toastr.success("Your map has been correctly saved !", "Map saved")
         error: (model, response) ->
           toastr.success("There was an error while saving your map", "Error !")
+
   afterSave: ->
     @switchControls(false)
     @router.navigate @model.get("uuid")
+
   switchControls: (unsaved) ->
     if unsaved
       @$el.find(".save").removeAttr("disabled").removeClass("disabled")
@@ -55,6 +61,7 @@ class App.HudView extends Backbone.View
     else
       @$el.find(".share").removeAttr("disabled").removeClass("disabled")
       @$el.find(".save").attr("disabled", "disabled").addClass("disabled")
+
   updateShareLinks: ->
 
   openSharePopup: (e) ->
