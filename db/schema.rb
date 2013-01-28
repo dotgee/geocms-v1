@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122101824) do
+ActiveRecord::Schema.define(:version => 20130128110938) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -23,12 +23,13 @@ ActiveRecord::Schema.define(:version => 20130122101824) do
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.integer  "position"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.string   "ancestry"
     t.string   "names_depth_cache"
     t.integer  "account_id"
     t.string   "slug"
+    t.integer  "ancestry_depth",    :default => 0
   end
 
   add_index "categories", ["account_id", "slug"], :name => "index_categories_on_account_id_and_slug", :unique => true
@@ -63,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20130122101824) do
   create_table "contexts_layers", :id => false, :force => true do |t|
     t.integer "context_id"
     t.integer "layer_id"
+    t.integer "order"
+    t.integer "opacity"
   end
 
   add_index "contexts_layers", ["context_id", "layer_id"], :name => "index_contexts_layers_on_context_id_and_layer_id"
@@ -104,6 +107,23 @@ ActiveRecord::Schema.define(:version => 20130122101824) do
     t.string   "value"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       :limit => 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
   end
 
   create_table "users", :force => true do |t|
