@@ -100,3 +100,5 @@ App.MapProviders.Leaflet = ->
     new L.LatLngBounds(new L.LatLng(sw.y, sw.x) , new L.LatLng(ne.y, ne.x))
   fitBounds: (bounds) ->
     @map.fitBounds(bounds)
+  invalidateSize: ->
+    @map.invalidateSize()

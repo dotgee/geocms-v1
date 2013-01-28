@@ -24,12 +24,12 @@ class App.HudView extends Backbone.View
 
   open: ->
     @$el.css("left", "0")
-    $(".leaflet-control-zoom ").animate({"left": @$el.width()}, 200)
-
+    $("#map").css("left", "300px")
+    @mapProvider.invalidateSize()
   close: ->
     @$el.css("left", -@$el.width())
-    $(".leaflet-control-zoom").animate({"left": 0}, 200)
-
+    $("#map").css("left", "0")
+    @mapProvider.invalidateSize()
   saveContext: (e) ->
     e.preventDefault()
     errors = @form.commit()

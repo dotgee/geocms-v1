@@ -2,7 +2,7 @@
   background: white;
   position: absolute;
   top: 0px;
-  left: 0;
+  left: 300px;
   right: 0px;
   bottom: 0px;
   width: auto;
@@ -11,9 +11,7 @@
   transition: left 300ms;
   -webkit-transition: left 300ms;
   -moz-transition: left 300ms;
-  .leaflet-control-zoom {
-    left: 310px;
-  }
+
   &.no-hud {
     .leaflet-control-zoom {
       left: 10px;
