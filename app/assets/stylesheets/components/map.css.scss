@@ -13,6 +13,7 @@
   -moz-transition: left 300ms;
 
   &.no-hud {
+    left: 0;
     .leaflet-control-zoom {
       left: 10px;
     }
