@@ -1,3 +1,5 @@
+- content_for :stylesheets do
+  = stylesheet_link_tag "DT/DT"
 .page-header
   h1= "#{t("backend.layers_imported_from").html_safe} #{@data_source.name}"
 
@@ -8,7 +10,7 @@
 table.table.table-striped.table-import
   thead
     tr
-      th
+      th= t(:name)
       th
   tbody#import-layers
 

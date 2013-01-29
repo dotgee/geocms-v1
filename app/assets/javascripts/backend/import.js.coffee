@@ -1,4 +1,6 @@
+#= require DT/DT
 # Base class Layer
+
 class Layer extends Backbone.Model
   urlRoot: "/backend/layers"
   schema:
@@ -103,3 +105,12 @@ imported = new ImportCollection()
 imported.reset(gon.layers)
 view = new LayerView({collection: imported})
 view.render()
+
+$("#import-layers").closest('table').dataTable
+  "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
+  "aoClumns": [
+     "asSorting": [ "asc" ] 
+     null
+  ]
+  "sPaginationType": "bootstrap"
+  "oLanguage": DT_internationalisation
