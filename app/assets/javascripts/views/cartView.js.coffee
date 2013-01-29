@@ -41,7 +41,6 @@ class App.CartView extends Backbone.View
     _.each @cartViewItems, (view) ->
       zindex = 1000 - view.$el.index()
       view.model.set position: zindex
-      console.log view.model.attributes.position
       view.model.get("leaflet").setZIndex(zindex)
 
   render: ->

@@ -111,7 +111,7 @@ class App.CartItemView extends Backbone.View
       value: attributes.opacity
       range: "min"
       change: (e, ui) ->
-        that.changeOpacity(e, ui.value)
+        that.model.set opacity: ui.value
         true
 
     return this
