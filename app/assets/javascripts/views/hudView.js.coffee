@@ -39,7 +39,7 @@ class App.HudView extends Backbone.View
       $("#hud-tab a:last").tab("show")
     else
       layers = _.map(@cartCollection.models, (layer) ->
-        { layer_id: layer.get("id"), opacity: layer.get('opacity') }
+        { layer_id: layer.get("id"), opacity: layer.get('opacity'), position: layer.get("position") }
       )
       box = new App.MapProviders.Leaflet().bboxToProj(@mapProvider.map.getBounds())
 

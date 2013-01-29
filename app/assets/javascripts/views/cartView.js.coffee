@@ -27,6 +27,7 @@ class App.CartView extends Backbone.View
     layer.addToMap()
     cartViewItem = new App.CartItemView({model: layer, mapProvider: @mapProvider})
     @$layerList.prepend(cartViewItem.render().el)
+    cartViewItem.model.set position: 1000 - cartViewItem.$el.index()
     @mapProvider.addLayerToMap(layer.get("leaflet"))
     @parent.switchControls(true)
     @cartViewItems.push(cartViewItem)
@@ -38,7 +39,9 @@ class App.CartView extends Backbone.View
 
   reindex: ->
     _.each @cartViewItems, (view) ->
-      view.model.get("leaflet").setZIndex(1000 - view.$el.index())
+      zindex = 1000 - view.$el.index()
+      view.model.set position: zindex
+      view.model.get("leaflet").setZIndex(zindex)
 
   render: ->
     @collection.forEach(@addOne, this)
