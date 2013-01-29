@@ -23,7 +23,6 @@ class App.Router extends Backbone.Router
       mapProvider: @mapProvider
       router: this
     })
-    $("#catalog").toggleClass("active")
 
   show: (id) ->
     @context = new App.Context({id: id})
