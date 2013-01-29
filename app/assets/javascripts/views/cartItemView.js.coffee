@@ -91,6 +91,8 @@ class App.CartItemView extends Backbone.View
   panToLayer: (e) ->
     if @model.get("bbox")["CRS:84"]
       projBox = @mapProvider.arrayToLatLngBounds(@model.get("bbox")["CRS:84"].table.bbox)
+    else if @model.get("bbox")["EPSG:4326"]
+      projBox = @mapProvider.arrayToLatLngBounds(@model.get("bbox")["CRS:4326"].table.bbox)
     else
       projBox = @mapProvider.bboxTo4326(@model.get("bbox")["EPSG:2154"].table.bbox)
     console.log projBox
