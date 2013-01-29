@@ -93,11 +93,15 @@ App.MapProviders.Leaflet = ->
     Proj4js.transform(source, dest, sw)
     [sw.x, sw.y, ne.x, ne.y]
   bboxTo4326: (bounds) ->
-    ne = new Proj4js.Point(bounds.maxx, bounds.maxy)
+    ne = new Proj4js.Point(bounds[3], bounds[2])
     Proj4js.transform(dest, source, ne)
-    sw = new Proj4js.Point(bounds.minx, bounds.miny)
+    sw = new Proj4js.Point(bounds[1], bounds[0])
     Proj4js.transform(dest, source, sw)
     new L.LatLngBounds(new L.LatLng(sw.y, sw.x) , new L.LatLng(ne.y, ne.x))
+  arrayToLatLngBounds: (array) ->
+    ne = new L.LatLng(array[3], array[2])
+    sw = new L.LatLng(array[1], array[0])
+    new L.LatLngBounds(sw, ne)
   fitBounds: (bounds) ->
     @map.fitBounds(bounds)
   invalidateSize: ->
