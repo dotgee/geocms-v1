@@ -4,6 +4,8 @@ class App.MapLegendView extends Backbone.View
     <img src='<%=data_source.wms %>?request=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=<%= name %>'/></i>
     <br/>
   ")
+  events: 
+    "click .close": "toggle"
   initialize: ->
     @parent = @options.parentView
     @collection = @parent.cartCollection
@@ -15,6 +17,9 @@ class App.MapLegendView extends Backbone.View
     @$legend.append(@template(attributes))
   toggleShow: ->
     @$el.toggleClass("hide")
+  toggle: ->
+    @toggleShow()
+    $(".legend").toggleClass("active")
   render: ->
     @$legend.html("")
     @collection.forEach(@addOne, this)
