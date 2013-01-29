@@ -106,6 +106,8 @@ class App.CartItemView extends Backbone.View
   render: ->
     that = @
     attributes = @model.toJSON()
+    # escape quotes
+    attributes.title = attributes.title.replace(/'/g, "&#39;")
     @$el.html(@template(attributes))
     @$el.find('.opacity-slider').slider 
       value: attributes.opacity
