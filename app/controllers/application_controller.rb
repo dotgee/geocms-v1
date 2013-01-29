@@ -3,7 +3,7 @@ require "application_responder"
 class ApplicationController < ActionController::Base
   include UrlHelper
 
-  before_filter :set_locale
+  #before_filter :set_locale
 
   self.responder = ApplicationResponder
   respond_to :html, :json, :xml
