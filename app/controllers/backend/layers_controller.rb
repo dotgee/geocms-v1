@@ -18,6 +18,7 @@ class Backend::LayersController < Backend::ApplicationController
 
   def edit
     @layer = @category.layers.find(params[:id])
+    @categories = Category.leafs
     respond_with([:backend, @category, @layer])
   end
 

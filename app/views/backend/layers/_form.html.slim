@@ -9,7 +9,7 @@
 
   - unless @layer.new_record?
     legend Move to
-    = f.association :categories, :collection => Category.leafs
+    = f.association :categories, :collection => @categories
   .m-btn-group
     = f.submit :class => "m-btn blue"
     = link_to 'Back', [:backend, @category], :class => "m-btn"
