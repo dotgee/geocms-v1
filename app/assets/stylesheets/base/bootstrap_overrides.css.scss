@@ -15,3 +15,15 @@ $linkColor: #3C4E5A;
     color: #CCC;  
   }
 }
+
+
+.m-btn-group .m-btn.first {
+  margin-left: 0;
+}
+.control-buttons .m-btn.first {
+  margin-left: 0;
+  -webkit-border-radius: 4px 0 0 4px;
+  -moz-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
+}
+
