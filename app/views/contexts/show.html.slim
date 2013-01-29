@@ -41,7 +41,7 @@
             = breadcrumb_for_category(@category)
             #categories.row-fluid
     .m-btn-group#ctrls
-      button.m-btn.icn-only.legend data-toggle="button" rel="tooltip" data-original-title=t("context.controls.legend")
+      button.m-btn.first.icn-only.legend data-toggle="button" rel="tooltip" data-original-title=t("context.controls.legend")
         i.icon-list
       button.m-btn.icn-only.globe rel="tooltip" data-original-title=t("context.controls.position")
         i.icon-globe
@@ -49,7 +49,7 @@
         i.icon-cog
       button.m-btn.icn-only.fullscreen data-toggle="button" rel="tooltip" data-original-title=t("context.controls.fullscreen")
         i.icon-fullscreen
-      button.m-btn.icn-only.togglehud rel="tooltip" data-original-title=t("context.controls.hud")
+      button.m-btn.last.icn-only.togglehud rel="tooltip" data-original-title=t("context.controls.hud")
         i.m-icon-swapleft
   #map data-latitude=current_tenant.latitude.value data-longitude=current_tenant.longitude.value data-zoom=current_tenant.zoom.value
   .modal#share-modal.hide style="position: asbolute;display:block;z-index:-1"

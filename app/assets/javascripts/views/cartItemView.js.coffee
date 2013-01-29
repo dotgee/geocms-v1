@@ -8,13 +8,13 @@ class App.CartItemView extends Backbone.View
       </label>
       <% if(dimension) { %>
         <div class='m-btn-group control-buttons'>
-          <a class='m-btn mini backward' ><i class='icon-step-backward'></i></a>
+          <a class='m-btn first mini backward' ><i class='icon-step-backward'></i></a>
           <a class='m-btn mini play <% if(playing) { %> active <% } %>'><i class=<% if(playing) { %>'icon-pause' <% } else { %> 'icon-play' <% } %>></i></a>
           <a class='m-btn mini forward'><i class=' icon-step-forward'></i></a>
         </div>
       <% } %>
       <div class='m-btn-group control-buttons'>
-        <a class='m-btn mini query' data-toggle='button' rel='tooltip' data-original-title='Informations sur la couche'><i class='icon-info-sign'></i></a>
+        <a class='m-btn mini first query' data-toggle='button' rel='tooltip' data-original-title='Informations sur la couche'><i class='icon-info-sign'></i></a>
         <a class='m-btn mini opacity <% if(controllingOpacity) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Opacité'><i class='icon-adjust'></i></a>
         <a class='m-btn mini center' rel='tooltip' data-original-title='Centrer'><i class='icon-screenshot'></i></a>
         <a class='m-btn mini remove' rel='tooltip' data-original-title='Supprimer'><i class='icon-remove'></i></a>
