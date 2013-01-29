@@ -77,3 +77,4 @@ gem "ckeditor"#, :git => "git://github.com/galetahub/ckeditor.git"
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'carrierwave'
 gem "rmagick"
+gem "nokogiri", "1.4.7"
