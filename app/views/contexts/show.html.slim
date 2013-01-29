@@ -73,7 +73,8 @@
           p#geobretagne-link.share-link= "http://geobretagne.fr/mapfishapp/?wmc=#{share_link}.xml"
           a.copy.m-btn.mini#copy-geobretagne  = t "context.sharable.copy"
   #legend-graphic.leaflet-legend.hide.draggable
-    h4 = t "legend"
+    .modal-header
+      h4= t "legend"
     .inner-legend
 
 = content_for :javascripts do

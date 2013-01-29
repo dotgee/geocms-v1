@@ -14,5 +14,7 @@ $('body').tooltip({
     placement: "top"
 });
 
-$( ".draggable" ).draggable();
+$( ".draggable" ).draggable({
+  handle: '.modal-header'
+});
 

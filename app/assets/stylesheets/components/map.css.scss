@@ -50,10 +50,16 @@
   position: fixed;
   bottom: 20px;
   left: 400px;
-  height: 250px;
-  overflow: auto;
   width: 250px;
+  height: 250px;
   line-height: 20px;
+  .inner-legend {
+    height: 200px;
+    overflow: auto;
+  }
+  .modal-header {
+    cursor: pointer;
+  }
   h4 {
     margin: 0 0 5px;
     color: #777;
