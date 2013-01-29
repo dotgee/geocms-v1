@@ -15,6 +15,8 @@
 .navbar-inner {
   background: #1570a6;
   @include border-radius(0px);
+  @include background-image(none);
+  filter: none;
   border: none;
   min-height: 50px;
 }
