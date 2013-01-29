@@ -114,3 +114,4 @@ $("#import-layers").closest('table').dataTable
   ]
   "sPaginationType": "bootstrap"
   "oLanguage": DT_internationalisation
+  "iDisplayLength": 25
