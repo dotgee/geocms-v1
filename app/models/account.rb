@@ -1,6 +1,7 @@
 class Account < ActiveRecord::Base
   include Preferences
-
+  
+  mount_uploader :logo, LogoUploader
   has_many :users, dependent: :destroy
   accepts_nested_attributes_for :users
 
@@ -16,6 +17,6 @@ class Account < ActiveRecord::Base
   validates_uniqueness_of :name
   validates :subdomain, presence: true, uniqueness: true, subdomain: { :reserved => %w(www test) }
 
-  attr_accessible :name, :subdomain, :users_attributes
+  attr_accessible :name, :subdomain, :users_attributes, :logo
 
 end

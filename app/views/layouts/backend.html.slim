@@ -9,6 +9,7 @@ html(lang="en")
     = csrf_meta_tags
     = stylesheet_link_tag :application
     = stylesheet_link_tag :backend
+    = yield :stylesheets
     = yield(:js_header)
   body.fullscreen.backend
 
@@ -18,7 +19,7 @@ html(lang="en")
           .container
             ul.nav
               li= link_to backend_root_path, :class => "brand" do
-                = image_tag "dotgeocms.png", :width => "128", :height => "33"
+                = logo_for_tenant
               - if logged_in?
                 li= link_to t("menu.categories"), backend_categories_path
                 li= link_to t("maps"), backend_contexts_path

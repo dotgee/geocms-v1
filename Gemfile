@@ -75,3 +75,5 @@ gem "ckeditor"#, :git => "git://github.com/galetahub/ckeditor.git"
 # tag layer (manage keywords)
 #
 gem 'acts-as-taggable-on', '~> 2.3.1'
+gem 'carrierwave'
+gem "rmagick"

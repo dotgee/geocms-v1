@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def logo_for_tenant(tenant = current_tenant)
+    url = (tenant && tenant.logo?) ? tenant.logo : "dotgeocms.png"
+    image_tag url
+  end
   def instance_or_new(instance, klass)
     return instance if instance.is_a?(klass)
     return klass.new
