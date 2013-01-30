@@ -26,4 +26,6 @@
 //= require jquery/jquery.zclip
 //= require select2.min
 
+// plugin leaflet
+//= require ./leaflet/plugins/tools/tools.js
 // = require toastr
