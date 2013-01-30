@@ -31,9 +31,9 @@ class Layer < ActiveRecord::Base
 
   def self.as_layer(data_source, category, l)
     layer = Layer.find_or_initialize_by_name(name: l.name, title: l.title, crs: l.crs, minx: l.bbox[0], \
-            miny: l.bbox[1], maxx: l.bbox[2], maxy: l.bbox[3], category: category, data_source_id: data_source.id, dimension: l.dimension_type)
+            miny: l.bbox[1], maxx: l.bbox[2], maxy: l.bbox[3], category: category, data_source_id: data_source.id, dimension: 'time') # l.dimension_type)
     if layer.dimension? && layer.is_new?
-      Dimension.create_dimensions(layer, l.dimension_values)
+      Dimension.create_dimensions(layer, l.time_dimension_values)
     end
     layer.save
   end

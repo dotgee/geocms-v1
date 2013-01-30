@@ -6,6 +6,11 @@ class DataSource < ActiveRecord::Base
     @wms_client = ROGC::WMSClient.new(self.wms)
     @capabilities = @wms_client.capabilities
     @layers = @capabilities.capability.layers
+
+    @layers = @layers.map do |layer|
+      ROGC::LayerPresenter.new(layer)
+    end
+    @layers
     ### geoserver = WmsGetcapabilities::Geoserver.new(self.wms)
     ### geoserver.get_capabilities
     ### geoserver.layers

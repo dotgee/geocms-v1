@@ -60,7 +60,7 @@ gem "friendly_id"
 # Import layers
 # gem "wms_getcapabilities", '~> 0.1.0.6'
 
-gem 'ruby-ogc'
+gem 'ruby-ogc', :git => 'git://github.com/dotgee/ruby-ogc.git'
 
 # Pagination
 gem "kaminari"

@@ -1,6 +1,15 @@
 object @layer
 
-attributes :id, :name, :description, :dimension, :category_ids, :bbox, :template
+attributes :id, :name, :description, :time_dimension, :time_dimension_values, :category_ids, :template
+
+node :bbox do |o|
+  {
+    minx: o.bounding_box[1],
+    miny: o.bounding_box[0],
+    maxx: o.bounding_box[3],
+    maxy: o.bounding_box[2]
+  }
+end
 
 node :title do |t|
   t.title.humanize
