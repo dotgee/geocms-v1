@@ -89,7 +89,13 @@ class App.CartItemView extends Backbone.View
     @model.showtime(0, $e.index())
 
   panToLayer: (e) ->
-    projBox = @mapProvider.bboxTo4326(@model.get("bbox"))
+    if @model.get("bbox")["CRS:84"]
+      projBox = @mapProvider.arrayToLatLngBounds(@model.get("bbox")["CRS:84"].table.bbox, "CRS:84")
+    else if @model.get("bbox")["EPSG:4326"]
+      projBox = @mapProvider.arrayToLatLngBounds(@model.get("bbox")["EPSG:4326"].table.bbox, "EPSG:4236")
+    else
+      projBox = @mapProvider.bboxTo4326(@model.get("bbox")["EPSG:2154"].table.bbox)
+    console.log projBox
     @mapProvider.fitBounds(projBox)
 
   initialize: ->
@@ -106,6 +112,9 @@ class App.CartItemView extends Backbone.View
   render: ->
     that = @
     attributes = @model.toJSON()
+    # escape quotes
+    attributes.title = attributes.title.replace(/'/g, "&#39;")
+    console.log attributes
     @$el.html(@template(attributes))
     @$el.find('.opacity-slider').slider 
       value: attributes.opacity

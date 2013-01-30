@@ -14,7 +14,7 @@ fr:
       share_your_map: "Partagez votre carte"
       direct_link: "Lien direct"
       html_embed: "Ou par iframe"
-      geobretagne_show: "Voir sur GeoBretagne"
+      geovisu_show: "Voir sur Geovisu"
       copy: "Copier"
     controls:
       legend: "Légende"
