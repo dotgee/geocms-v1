@@ -10,7 +10,6 @@ class Category < ActiveRecord::Base
 
   scope :receiver, where(:default => true)
   scope :ordered, select([:name, :id, :slug, :ancestry]).ordered_by_ancestry.order("position asc")
-  scope :leafs, all.reject! { |c| c.has_children? }
   attr_accessible :name, :position, :parent_id
       
   before_save :cache_ancestry
@@ -19,7 +18,12 @@ class Category < ActiveRecord::Base
     def for_select
       Category.sort_by_ancestry(Category.all)
     end
+
+    def leafs
+      all.reject! { |c| c.has_children? }
+    end
   end
+
   def cache_ancestry
     self.names_depth_cache = path.map(&:name).join('/')
   end
