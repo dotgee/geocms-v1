@@ -48,6 +48,7 @@ class App.MapView extends Backbone.View
     drawControl = new L.Control.Draw(
       position: "topleft"
       marker: false
+      rectangle: false
       polygon:
         title: "Dessiner un polygon"
         allowIntersection: false
