@@ -16,6 +16,8 @@ App.Layer = Backbone.RelationalModel.extend
       layers: @get("name"),
       format: 'image/png',
       transparent: true,
+      version: @get("data_source").wms_version,
+      styles: @get("default_style") || '',
       continuousWorld: true
     })
     tileLayer.setParams(options)

@@ -18,8 +18,12 @@ node :title do |t|
   t.title.humanize
 end
 
+node :default_style, :if => lambda { |o| o.respond_to?(:default_style) } do |l|
+  l.default_style
+end
+
 child :data_source, :if => lambda { |l| l.respond_to?(:data_source) && l.data_source } do
-  attributes :wms
+  attributes :wms, :wms_version
 end
 
 child :dimensions, :if => lambda { |l| l.respond_to?(:dimension) && l.dimension?  } do
