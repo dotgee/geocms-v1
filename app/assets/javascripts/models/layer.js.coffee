@@ -31,7 +31,7 @@ App.Layer = Backbone.RelationalModel.extend
 
   addToMap: ->
     options = {}
-    if @get("dimensions")
+    if @get("dimensions") && @get("dimensions")[0]
       options = {time: @get("dimensions")[0].dimension.value}
     @toLeaflet(options)
     @set({onMap : true})

@@ -3,7 +3,7 @@ object @layer
 attributes :id, :name, :description, :category_ids, :template
 
 node :dimension do |o|
-  o.respond_to?(:dimension) ? o.dimension : ( o.respond_to?(:time_dimension) ? 'time' :  nil )
+  o.respond_to?(:dimension) ? o.dimension : ( o.respond_to?(:time_dimension) && o.time_dimension ? 'time' :  nil )
 end
 
 node :dimension_values do |o|
