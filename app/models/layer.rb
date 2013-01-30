@@ -19,6 +19,8 @@ class Layer < ActiveRecord::Base
 
   store :bbox, accessors: [:minx, :maxx, :miny, :maxy]
 
+  alias_attribute :bounding_box, :bbox
+
 
   scope :for_frontend, select(["layers.name", "layers.title", "layers.id", "layers.description",
                        "layers.dimension", "layers.category_id", "data_sources.wms", "dimensions.value", "category_ids"])
@@ -33,11 +35,20 @@ class Layer < ActiveRecord::Base
     layer = Layer.find_or_initialize_by_name(name: l.name, title: l.title, crs: l.crs, minx: l.bbox[0], \
             miny: l.bbox[1], maxx: l.bbox[2], maxy: l.bbox[3], category: category, data_source_id: data_source.id, dimension: 'time') # l.dimension_type)
     if layer.dimension? && layer.is_new?
-      Dimension.create_dimensions(layer, l.time_dimension_values)
+      Dimension.create_dimensions(layer, l.dimension_values)
     end
     layer.save
   end
 
+  def create_dimension_values(values)
+    values = values.split(',') unless values.is_a?(Array)
+
+    values.each do |val|
+      self.dimensions.create(value: val)
+    end
+    # self.save
+  end
+      
 
   def self.search(params)
     tire.search do

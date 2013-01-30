@@ -23,8 +23,16 @@ class Backend::LayersController < Backend::ApplicationController
   end
 
   def create
+    dimension_values = params.delete(:dimension_values)
+
     @layer = Layer.new(params[:layer].reject{ |p| p == "category_id" })
-    @layer.save
+
+    if @layer.save
+      if dimension_values && dimension_values.any?
+        @layer.create_dimension_values(dimension_values)
+      end
+    end
+
     respond_with(@layer) do |format|
       format.json if request.xhr?
       format.html { redirect_to [:backend, @category] }

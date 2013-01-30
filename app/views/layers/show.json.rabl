@@ -1,14 +1,17 @@
 object @layer
 
-attributes :id, :name, :description, :time_dimension, :time_dimension_values, :category_ids, :template
+attributes :id, :name, :description, :category_ids, :template
+
+node :dimension do |o|
+  o.respond_to?(:dimension) ? o.dimension : ( o.respond_to?(:time_dimension) ? 'time' :  nil )
+end
+
+node :dimension_values do |o|
+  o.respond_to?(:time_dimension_values) ? o.time_dimension_values : ( o.respond_to?(:dimension_values) ? o.dimension_values :  nil )
+end
 
 node :bbox do |o|
-  {
-    minx: o.bounding_box[1],
-    miny: o.bounding_box[0],
-    maxx: o.bounding_box[3],
-    maxy: o.bounding_box[2]
-  }
+  o.bbox
 end
 
 node :title do |t|
