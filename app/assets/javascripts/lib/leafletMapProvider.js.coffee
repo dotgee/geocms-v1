@@ -68,11 +68,11 @@ App.MapProviders.Leaflet = ->
     y = map.layerPointToContainerPoint(e.layerPoint).y
 
     URL = map.queryable_layer.data_source.wms+'?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&LAYERS='+map.queryable_layer.name+'&QUERY_LAYERS='+map.queryable_layer.name+'&STYLES=&'+
-          'BBOX='+BBOX+'&HEIGHT='+HEIGHT+'&WIDTH='+WIDTH+'&FORMAT=image%2Fpng&INFO_FORMAT=text%2Fhtml&'+
+          'BBOX='+BBOX+'&HEIGHT='+HEIGHT+'&WIDTH='+WIDTH+'&FORMAT=image/png&INFO_FORMAT=text/html&'+
           'SRS='+EPSG+'&X='+x+'&Y='+y
     $.ajax
       # Todo:  add proxy
-      url: URL
+      url: '/proxy.php?url=' + encodeURIComponent(URL)
       dataType: "html"
       type: "GET"
       success: (data) ->
@@ -82,7 +82,7 @@ App.MapProviders.Leaflet = ->
           content = Mustache.render(template, data)
         else
           content = "Pas d'informations disponibles sur ce point."
-        popup = L.popup()
+        popup = L.popup({ maxWidth: 800, maxHeight: 600 })
             .setLatLng(e.latlng)
             .setContent(content)
             .openOn(map)
