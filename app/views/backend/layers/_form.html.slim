@@ -1,5 +1,3 @@
-- content_for :js_header do 
-  = javascript_include_tag "ckeditor/init"
 = simple_form_for([:backend, @category, @layer], :defaults => { :input_html => { :class => 'input-block-level' } }, :html => {:class => 'form-horizontal' }) do |f|
   = f.input :name
   = f.association :data_source
@@ -10,6 +8,7 @@
   - unless @layer.new_record?
     legend Move to
     = f.association :categories, :collection => @categories
+    #layer data-id=@layer.id
   .m-btn-group
     = f.submit :class => "m-btn blue"
     = link_to 'Back', [:backend, @category], :class => "m-btn"

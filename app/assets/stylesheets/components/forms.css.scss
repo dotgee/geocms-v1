@@ -81,10 +81,6 @@ input:-webkit-autofill:focus {
   label {
     width: auto;
   }
-  .from-map {
-    margin-left: 106px;
-    margin-top: 0;
-  }
 }
 
 textarea {
@@ -92,9 +88,21 @@ textarea {
 }
 
 .input-position {
-  margin-left: 20px;
+  margin-left: 15px;
   margin-bottom: 0px;
   &.first {
     margin-left: 0px;
   }
+}
+
+#context_zoom {
+  width: 20px;
+}
+
+.input-mini {
+  width: 53px;
+}
+
+select.cke_dialog_ui_input_select {
+  height: auto !important;
 }

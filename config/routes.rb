@@ -20,7 +20,11 @@ Geocms2::Application.routes.draw do
         resources :layers
       end
 
-      resources :layers, :only => [:create]
+      resources :layers, :only => [:create] do
+        member do
+          get "getfeatures", :to => "layers#getfeatures"
+        end
+      end
 
       resources :data_sources do
         member do

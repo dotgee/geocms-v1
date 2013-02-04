@@ -7,7 +7,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 CKEDITOR.editorConfig = function( config )
 {
   // Define changes to default configuration here. For example:
-  // config.language = 'fr';
+  config.language = 'fr';
   // config.uiColor = '#AADC6E';
   
   /* Filebrowser routes */
@@ -90,19 +90,17 @@ CKEDITOR.editorConfig = function( config )
       }
     }
   });
-  
+  config.extraPlugins = 'features';
   /* Toolbars */
   config.toolbar = 'Easy';
   
   config.toolbar_Easy =
     [
-        ['Source','-','Cut','Copy','Paste','PasteText','PasteFromWord'],
-        ['Undo','Redo'], ['Link','Unlink','Anchor'],
-        ['Image', 'Table','HorizontalRule','SpecialChar'],
-        ['Maximize','-','About'], '/',
+        ['Source','-','PasteFromWord'],
+        ['Undo','Redo'], ['Link','Unlink'],
         ['Bold','Italic','Underline','Strike', 'RemoveFormat'], 
         ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
-        ['Styles','Format'], ['Subscript', 'Superscript'], ['Features']
+        ['Styles','Format'], ['Features']
     ];
 };
 

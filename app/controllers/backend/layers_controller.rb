@@ -1,5 +1,5 @@
 class Backend::LayersController < Backend::ApplicationController
-  before_filter :require_category, :except => [:create]
+  before_filter :require_category, :except => [:create, :getfeatures]
 
   def index
     redirect_to [:backend, @category]
@@ -9,6 +9,14 @@ class Backend::LayersController < Backend::ApplicationController
     @layer = @category.layers.find(params[:id])
 
     respond_with([:backend, @category, @layer])
+  end
+
+  def getfeatures
+    layer = Layer.find(params[:id])
+    @features = WMS::Client.new(layer.data_source.wms, {:layer_name => layer.name}).features_list
+    respond_to do |format|
+      format.json { render json: @features }
+    end
   end
 
   def new

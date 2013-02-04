@@ -3,9 +3,9 @@ CKEDITOR.plugins.add( 'features',
   init: function( editor )
   {
     var items;
-    var layer = $("#layer").val();
+    var layer = $("#layer").data("id");
     if(layer) {
-      $.get("/layers/"+layer+"/getfeatures.json",
+      $.get("/backend/layers/"+layer+"/getfeatures.json",
         function(data) {
           items = data;
       });
