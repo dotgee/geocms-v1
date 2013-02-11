@@ -22,7 +22,7 @@ node :default_style, :if => lambda { |o| o.respond_to?(:default_style) } do |l|
   l.default_style
 end
 
-node :thumbnail do |l|
+node :thumbnail, :if => lambda { |l| l.respond_to?(:thumbnail) } do |l|
   l.thumbnail.url
 end
 
