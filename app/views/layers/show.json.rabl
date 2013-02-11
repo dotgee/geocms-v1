@@ -22,6 +22,10 @@ node :default_style, :if => lambda { |o| o.respond_to?(:default_style) } do |l|
   l.default_style
 end
 
+node :thumbnail do |l|
+  l.thumbnail.url
+end
+
 child :data_source, :if => lambda { |l| l.respond_to?(:data_source) && l.data_source } do
   attributes :wms, :wms_version
 end

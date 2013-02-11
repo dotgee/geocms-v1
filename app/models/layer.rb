@@ -29,15 +29,20 @@ class Layer < ActiveRecord::Base
 
 
   attr_accessible :description, :name, :title, :wms_url, :data_source_id, :category_ids, :category, :bbox,
-                  :crs, :minx, :miny, :maxx, :maxy, :dimension, :template
+                  :crs, :minx, :miny, :maxx, :maxy, :dimension, :template, :remote_thumbnail_url
 
-  def self.as_layer(data_source, category, l)
-    layer = Layer.find_or_initialize_by_name(name: l.name, title: l.title, crs: l.crs, minx: l.bbox[0], \
-            miny: l.bbox[1], maxx: l.bbox[2], maxy: l.bbox[3], category: category, data_source_id: data_source.id, dimension: 'time') # l.dimension_type)
-    if layer.dimension? && layer.is_new?
-      Dimension.create_dimensions(layer, l.dimension_values)
-    end
-    layer.save
+  mount_uploader :thumbnail, LayerUploader
+  after_save :do_thumbnail
+
+
+  def can_thumbnail?
+    !self.thumb_url.nil?
+  end
+
+  def thumb_url(width = 64, height = 64, native_srs="CRS:84")
+    box = bbox[native_srs]["table"]["bbox"]
+    return '/images/defaultmap.png' if box.nil?
+    ROGC::WMSClient.get_map(data_source.wms, name, box, width, height, native_srs)
   end
 
   def create_dimension_values(values)
@@ -48,7 +53,15 @@ class Layer < ActiveRecord::Base
     end
     # self.save
   end
-      
+
+  def self.as_layer(data_source, category, l)
+    layer = Layer.find_or_initialize_by_name(name: l.name, title: l.title, crs: l.crs, minx: l.bbox[0], \
+            miny: l.bbox[1], maxx: l.bbox[2], maxy: l.bbox[3], category: category, data_source_id: data_source.id, dimension: 'time') # l.dimension_type)
+    if layer.dimension? && layer.is_new?
+      Dimension.create_dimensions(layer, l.dimension_values)
+    end
+    layer.save
+  end
 
   def self.search(params)
     tire.search do
@@ -57,4 +70,22 @@ class Layer < ActiveRecord::Base
     end
   end
 
+  private
+    def do_thumbnail
+      if self.thumbnail.url.nil?
+        self.remote_thumbnail_url = self.thumb_url(64, 64)
+        self.save
+      end
+    end
+    # def do_thumbnail
+    #   if self.thumbnail.nil?
+    #     begin
+    #       self.thumbnail = open(self.thumb_url(64, 64)).read
+    #       self.save
+    #     rescue => e
+    #       $stderr.puts "Can't open #{self.thumb_url(1024,1024)}"
+    #       $stderr.puts e.inspect
+    #     end
+    #   end
+    # end
 end

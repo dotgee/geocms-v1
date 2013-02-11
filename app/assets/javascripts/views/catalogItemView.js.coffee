@@ -17,8 +17,8 @@ class App.CatalogItemView extends Backbone.View
   </div>")
   layerTemplate: _.template("
   <div class='media-wrapper media-layer <% if(onMap) { %>added<% } %>'>
-    <a class='pull-left' href='#'>
-      <img class='media-object' src='http://placehold.it/64x64' width='64' height='64'  >
+    <a class='pull-left image-link' href='#'>
+      <% if(thumbnail) { %><img class='media-object' src='<%= thumbnail %>' width='64' height='64'/><% } %>
     </a>
     <div class='media-body'>
 

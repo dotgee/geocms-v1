@@ -53,7 +53,7 @@ class App.CartItemView extends Backbone.View
 
   toggleVisibility: (e) ->
     if (@$el.find(".layer-visibility").attr("checked") == "checked")
-      @model.toggleVisibility(true, 1)
+      @model.toggleVisibility(true, @model.get("opacity")/100)
     else
       @model.toggleVisibility(false, 0)
 
@@ -95,7 +95,6 @@ class App.CartItemView extends Backbone.View
       projBox = @mapProvider.arrayToLatLngBounds(@model.get("bbox")["EPSG:4326"].table.bbox, "EPSG:4236")
     else
       projBox = @mapProvider.bboxTo4326(@model.get("bbox")["EPSG:2154"].table.bbox)
-    console.log projBox
     @mapProvider.fitBounds(projBox)
 
   initialize: ->

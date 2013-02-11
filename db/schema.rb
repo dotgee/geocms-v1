@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130131755) do
+ActiveRecord::Schema.define(:version => 20130211105753) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(:version => 20130130131755) do
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.integer  "position"
-    t.boolean  "visible"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.string   "ancestry"
@@ -103,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20130130131755) do
     t.string   "dimension"
     t.text     "template"
     t.string   "default_style"
+    t.string   "thumbnail"
   end
 
   create_table "preferences", :force => true do |t|
@@ -111,14 +111,6 @@ ActiveRecord::Schema.define(:version => 20130130131755) do
     t.string   "value"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "spatial_ref_sys", :id => false, :force => true do |t|
-    t.integer "srid",                      :null => false
-    t.string  "auth_name", :limit => 256
-    t.integer "auth_srid"
-    t.string  "srtext",    :limit => 2048
-    t.string  "proj4text", :limit => 2048
   end
 
   create_table "taggings", :force => true do |t|
