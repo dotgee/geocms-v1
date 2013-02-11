@@ -40,7 +40,7 @@ class Layer < ActiveRecord::Base
   end
 
   def thumb_url(width = 64, height = 64, native_srs="CRS:84")
-    box = bbox[native_srs]["table"]["bbox"]
+    box = bbox[native_srs]["table"]["bbox"] unless bbox[native_srs].empty?
     return '/images/defaultmap.png' if box.nil?
     ROGC::WMSClient.get_map(data_source.wms, name, box, width, height, native_srs)
   end
