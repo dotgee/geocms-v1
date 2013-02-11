@@ -55,8 +55,13 @@ class Backend::LayersController < Backend::ApplicationController
 
   def destroy
     @layer = @category.layers.find(params[:id])
-    @layer.destroy
-
+    @layer.categories.delete(@category)
+    # Destroy the relationship between category and layer, if layer doesn't have any categories left, destroy the layer
+    if @layer.categories.empty?
+      @layer.destroy
+    else
+      @layer.save
+    end
     respond_with([:backend, @category])
   end
 
