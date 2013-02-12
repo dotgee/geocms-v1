@@ -4,8 +4,8 @@ class Layer < ActiveRecord::Base
 
   mapping do
     indexes :id,           :index    => :not_analyzed
-    indexes :title,        :analyzer => 'snowball', :boost => 100
-    indexes :name,         :analyzer => 'snowball'
+    indexes :title,        :analyzer => 'keyword'
+    indexes :name,         :analyzer => 'keyword'
     indexes :description,  :analyzer => 'snowball'
   end
 
