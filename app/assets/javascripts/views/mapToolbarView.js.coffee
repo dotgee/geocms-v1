@@ -3,7 +3,7 @@ class App.MapToolbarView extends Backbone.View
     "click .legend" : "toggleLegend"
     "click .togglehud" : "toggleHud"
     "click .globe": "setInitialView"
-    # "click .tools": "localize"
+    # "click .geovisu": "geovisu"
     "click .fullscreen": "fullscreen"
   }
   initialize: ->

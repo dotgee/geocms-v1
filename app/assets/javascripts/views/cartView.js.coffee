@@ -30,6 +30,7 @@ class App.CartView extends Backbone.View
     cartViewItem.model.set position: 1000 - cartViewItem.$el.index()
     @mapProvider.addLayerToMap(layer.get("leaflet"))
     @parent.switchControls(true)
+    layer.get("leaflet").setOpacity(0) unless layer.get("visible")
     @cartViewItems.push(cartViewItem)
 
   removeOne: (layer) ->
