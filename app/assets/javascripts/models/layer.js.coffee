@@ -10,6 +10,7 @@ App.Layer = Backbone.RelationalModel.extend
     visible: true
     controllingOpacity: false
     controllingDimension: false
+    currentTime: false
     model: "layer"
 
   toLeaflet: ( options = {} ) ->
@@ -68,6 +69,7 @@ App.Layer = Backbone.RelationalModel.extend
     if dim
       time = moment(dim.dimension.value).format('YYYY-MM-DD')
       @get("leaflet").setParams({time: time}).redraw()
+      @set currentTime: dim.dimension.value
 
   initialize: (opts)->
 
