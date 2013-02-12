@@ -9,6 +9,7 @@ App.Layer = Backbone.RelationalModel.extend
     playing: false
     visible: true
     controllingOpacity: false
+    controllingDimension: false
     model: "layer"
 
   toLeaflet: ( options = {} ) ->

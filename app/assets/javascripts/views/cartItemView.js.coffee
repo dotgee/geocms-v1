@@ -10,11 +10,11 @@ class App.CartItemView extends Backbone.View
         <a class='m-btn mini first query' data-toggle='button' rel='tooltip' data-original-title='Informations sur la couche'><i class='icon-info-sign'></i></a>
         <a class='m-btn mini opacity <% if(controllingOpacity) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Opacité'><i class='icon-adjust'></i></a>
         <a class='m-btn mini center' rel='tooltip' data-original-title='Centrer'><i class='icon-screenshot'></i></a>
-        <% if(dimension) %><a class='m-btn mini toggle-dimension <% if(playing) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Dimension'><i class='icon-play-circle'></i></a>
+        <% if(dimension) %><a class='m-btn mini toggle-dimension <% if(controllingDimension) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Dimension'><i class='icon-play-circle'></i></a>
         <a class='m-btn mini remove' rel='tooltip' data-original-title='Supprimer'><i class='icon-remove'></i></a>
       </div>      
       <% if(dimension) { %>
-        <div class='dimensionable <% if(!playing) { %> hide <% } %>'>
+        <div class='dimensionable <% if(!controllingDimension) { %> hide <% } %>'>
           <div class='m-btn-group control-buttons'>
             <a class='m-btn first mini backward' ><i class='icon-step-backward'></i></a>
             <a class='m-btn mini play <% if(playing) { %> active <% } %>'><i class=<% if(playing) { %>'icon-pause' <% } else { %> 'icon-play' <% } %>></i></a>
@@ -22,7 +22,7 @@ class App.CartItemView extends Backbone.View
           </div>
           <ul class='unstyled dimensions-list'>
             <% _.each(dimensions, function(dim, i) { %>
-              <li class='dimension<% if (i == timelineCounter) { %> active <% } %>'><%= moment(dim.dimension.value).calendar() %></li>
+              <li class='dimension<% if (i == timelineCounter) { %> active <% } %>'><%= moment(dim.dimension.value).format('DD/MM/YYYY') %></li>
             <% }) %>
           </ul>
         </div>
@@ -75,8 +75,10 @@ class App.CartItemView extends Backbone.View
     $e = $(e.currentTarget)
     if $e.hasClass("active")
       @$el.find(".dimensionable").hide()
+      @model.set controllingDimension: false
     else
       @$el.find(".dimensionable").show()
+      @model.set controllingDimension: true
   toggleTimeline: (e) ->
     $e = $(e.currentTarget)
     if $e.hasClass("active")
