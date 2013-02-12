@@ -37,9 +37,11 @@ class App.Router extends Backbone.Router
           mapProvider: that.mapProvider
           router: that
         })
+        console.log response
         _.each response.layers, (l) ->
           layer = that.layerCollection.where({id: l.layer.id})
-          layer[0].set  
+          layer[0].set
             opacity: l.layer.opacity 
             position: l.layer.position
+            visible: l.layer.visibility
           that.cartCollection.add(layer)

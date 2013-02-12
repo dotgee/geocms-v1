@@ -5,6 +5,6 @@ class ContextsLayer < ActiveRecord::Base
 
   default_scope order("position asc")
 
-  attr_accessible :position, :opacity, :layer_id, :context_id
+  attr_accessible :position, :opacity, :layer_id, :context_id, :visibility
 
 end
