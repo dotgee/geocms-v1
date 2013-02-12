@@ -37,7 +37,6 @@ class App.Router extends Backbone.Router
           mapProvider: that.mapProvider
           router: that
         })
-        console.log response
         _.each response.layers, (l) ->
           layer = that.layerCollection.where({id: l.layer.id})
           layer[0].set
