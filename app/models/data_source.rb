@@ -1,6 +1,6 @@
 class DataSource < ActiveRecord::Base
   has_many :layers
-  attr_accessible :csw, :name, :ogc, :wfs, :wms, :rest
+  attr_accessible :csw, :name, :ogc, :wfs, :wms, :rest, :external
 
   def import
     @wms_client = ROGC::WMSClient.new(self.wms)

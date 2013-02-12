@@ -23,13 +23,13 @@ class Layer < ActiveRecord::Base
 
 
   scope :for_frontend, select(["layers.name", "layers.title", "layers.id", "layers.description",
-                       "layers.dimension", "layers.category_id", "data_sources.wms", "dimensions.value", "category_ids"])
+                       "layers.dimension", "layers.category_id", "data_sources.wms", "layers.metadata_url", "dimensions.value", "category_ids"])
                        .includes(:data_source).includes(:categories)
                        .order(:title)
 
 
   attr_accessible :description, :name, :title, :wms_url, :data_source_id, :category_ids, :category, :bbox,
-                  :crs, :minx, :miny, :maxx, :maxy, :dimension, :template, :remote_thumbnail_url
+                  :crs, :minx, :miny, :maxx, :maxy, :dimension, :template, :remote_thumbnail_url, :metadata_url
 
   mount_uploader :thumbnail, LayerUploader
   after_save :do_thumbnail
