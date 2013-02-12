@@ -23,3 +23,4 @@ class App.InfosView extends Backbone.View
 
   render: ->
     @$el.prepend(@form.render().el)
+    @$el.find(".from-map").detach().appendTo(@$el.find("fieldset"))
