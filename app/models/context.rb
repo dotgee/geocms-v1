@@ -8,14 +8,20 @@ class Context < ActiveRecord::Base
   before_create :generate_uuid
   
   def contexts_layers_attributes=(attrs)
-    
-    attrs.each do |attr|
-      context_layer = contexts_layers.detect{|cl| cl.layer_id == attr["layer_id"]}
-      puts context_layer.inspect
-      context_layer ||= contexts_layers.build
-      context_layer.update_attributes(attr)
+    layers = []
+    unless attrs.nil?
+      attrs.each do |attr|
+        layers << attr["layer_id"]
+        context_layer = contexts_layers.detect{|cl| cl.layer_id == attr["layer_id"]}
+        context_layer ||= contexts_layers.build
+        context_layer.update_attributes(attr)
+      end
     end
-
+    to_delete = (contexts_layers.map{ |l| l.layer_id } - layers)
+    to_delete.each do |layer|
+      context_layer = contexts_layers.detect{|cl| cl.layer_id == layer}
+      context_layer.destroy
+    end
   end
 
   def generate_uuid
