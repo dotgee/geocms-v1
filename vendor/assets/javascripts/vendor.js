@@ -11,7 +11,7 @@
 //= require bootstrap-tooltip
 //= require ckeditor/init
 
-// = require moment.min
+//= require moment.min
 //= require mustache
 //= require backbone/lodash.underscore.min
 //= require backbone/backbone
