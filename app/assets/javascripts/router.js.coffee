@@ -26,7 +26,6 @@ class App.Router extends Backbone.Router
 
   show: (id) ->
     @context = new App.Context({id: id})
-    # Could probably be improved
     that = this
     @context.fetch
       success: (model, response) ->
