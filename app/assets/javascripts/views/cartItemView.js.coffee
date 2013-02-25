@@ -3,7 +3,7 @@ class App.CartItemView extends Backbone.View
   template: _.template("<div class='grippy'></div>
     <div class='right-infos'>
       <label for='<%= name %>' class='title'>
-        <input type='checkbox' class='layer-visibility' <% if(visible) { %> checked <% } %> id='<%=name %>'>
+        <input type='checkbox' class='layer-visibility' <% if(opacity > 0) { %> checked <% } %> id='<%=name %>'>
         <a title='<%= title %>' class='unstyled'><%= title %></a>
       </label>
       <div class='m-btn-group control-buttons'>
@@ -71,6 +71,7 @@ class App.CartItemView extends Backbone.View
 
   changeOpacity: ->
     @model.get("leaflet").setOpacity(@model.get("opacity")/100)
+    @render()
 
   toggleDimension: (e) ->
     $e = $(e.currentTarget)
@@ -122,7 +123,6 @@ class App.CartItemView extends Backbone.View
   render: ->
     that = @
     attributes = @model.toJSON()
-    console.log attributes
     # escape quotes
     attributes.title = attributes.title.replace(/'/g, "&#39;")
     @$el.html(@template(attributes))
