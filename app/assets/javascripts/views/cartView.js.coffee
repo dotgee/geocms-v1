@@ -24,7 +24,7 @@ class App.CartView extends Backbone.View
       update: ->
         that.collection.trigger("reindex")
 
-    
+
     @addBaseLayer()
 
   addOne: (layer) ->
@@ -65,6 +65,7 @@ class App.CartView extends Backbone.View
       base: true
       dimension: false
       metadata_url: false
+      data_source: false
       opacity: 100
       bbox:
         "EPSG:2154":
