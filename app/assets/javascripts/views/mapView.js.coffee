@@ -14,19 +14,6 @@ class App.MapView extends Backbone.View
       longitude: @initialCenter.longitude
       zoomLevel: @initialCenter.zoom
 
-  addBaseLayer: ->
-    osm = L.tileLayer.wms("http://osm.geobretagne.fr/gwc01/service/wms", {
-      layers: "osm:google",
-      format: 'image/png',
-      transparent: true,
-      continuousWorld: true,
-      unloadInvisibleTiles: false,
-      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-        'Imagery © <a href="http://geobretagne.fr/accueil/">GeoBretagne</a>'
-    })
-    @mapProvider.addLayerToMap(osm)
-
   addWatermark: ->
     watermark = L.control({position: "bottomright"})
     watermark.onAdd =  (map) ->
@@ -89,7 +76,6 @@ class App.MapView extends Backbone.View
 
   render: ->
     @mapProvider.createMap(@el.id)
-    @addBaseLayer()
     @addWatermark()
     @addLegend()
     @setInitialView()

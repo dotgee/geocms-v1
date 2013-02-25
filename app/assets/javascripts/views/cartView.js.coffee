@@ -11,6 +11,7 @@ class App.CartView extends Backbone.View
     @mapProvider  = @parent.mapProvider
     @catalogView  = @parent.catalog
     @cartViewItems = []
+
     # Listeners
     @collection.on('add', @addOne, this)
     @collection.on('removeFromMap', @removeOne, this)
@@ -22,6 +23,9 @@ class App.CartView extends Backbone.View
       handler: ".grippy"
       update: ->
         that.collection.trigger("reindex")
+
+    
+    @addBaseLayer()
 
   addOne: (layer) ->
     layer.addToMap()
@@ -43,6 +47,31 @@ class App.CartView extends Backbone.View
       zindex = 1000 - view.$el.index()
       view.model.set position: zindex
       view.model.get("leaflet").setZIndex(zindex)
+
+  addBaseLayer: ->
+    osm = L.tileLayer.wms("http://osm.geobretagne.fr/gwc01/service/wms", {
+      layers: "osm:google",
+      format: 'image/png',
+      transparent: true,
+      continuousWorld: true,
+      unloadInvisibleTiles: false,
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="http://geobretagne.fr/accueil/">GeoBretagne</a>'
+    })
+    base_layer = new App.Layer
+      leaflet: osm
+      title: "OpenStreetMap"
+      base: true
+      dimension: false
+      metadata_url: false
+      opacity: 100
+      bbox:
+        "EPSG:2154":
+          table:
+            bbox: [-357823.236499999999, 6037008.69390000030, 894521.034699999960, 7289352.96509999968]
+
+    @collection.add(base_layer)
 
   render: ->
     @collection.forEach(@addOne, this)

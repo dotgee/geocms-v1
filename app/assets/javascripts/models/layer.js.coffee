@@ -14,16 +14,17 @@ App.Layer = Backbone.RelationalModel.extend
     model: "layer"
 
   toLeaflet: ( options = {} ) ->
-    tileLayer = L.tileLayer.wms(@get("data_source").wms, {
-      layers: @get("name"),
-      format: 'image/png',
-      transparent: true,
-      version: @get("data_source").wms_version,
-      styles: @get("default_style") || '',
-      continuousWorld: true
-    })
-    tileLayer.setParams(options)
-    @set leaflet: tileLayer
+    unless @get "base"
+      tileLayer = L.tileLayer.wms(@get("data_source").wms, {
+        layers: @get("name"),
+        format: 'image/png',
+        transparent: true,
+        version: @get("data_source").wms_version,
+        styles: @get("default_style") || '',
+        continuousWorld: true
+      })
+      tileLayer.setParams(options)
+      @set leaflet: tileLayer
 
   changeOpacity: (opacity) ->
     @set opacity: opacity
