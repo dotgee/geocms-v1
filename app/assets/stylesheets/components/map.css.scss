@@ -54,12 +54,16 @@
   width: 250px;
   height: 250px;
   line-height: 20px;
+  resize: horizontal;
+  overflow: auto;
   .inner-legend {
-    height: 200px;
     overflow: auto;
+    resize: none;
   }
   .modal-header {
     cursor: pointer;
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
     padding: 5px 9px;
   }
   h4 {
