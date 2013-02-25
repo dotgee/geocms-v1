@@ -48,7 +48,6 @@ class LayerModalView extends Backbone.View
     unless errors && !@$save.hasClass("disabled")
       that = this
       @$save.addClass("disabled")
-      console.log @$save.hasClass("disabled")
       @model.save @model.toJSON(),
         success: (model, response) ->
           that.$el.modal("hide")
