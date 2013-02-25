@@ -40,17 +40,23 @@ class LayerModalView extends Backbone.View
     "click #save" : "save"
   initialize: ->
     @form = new Backbone.Form({ model: @model }).render()
+    @$save = @$el.find("#save")
+    @$save.removeClass("disabled")
   save: (e)-> 
     e.preventDefault()
     errors = @form.commit()
-    unless errors
+    unless errors && !@$save.hasClass("disabled")
       that = this
+      @$save.addClass("disabled")
+      console.log @$save.hasClass("disabled")
       @model.save @model.toJSON(),
         success: (model, response) ->
           that.$el.modal("hide")
           that.model.set({imported: true})
           $("#layer-import").show()
           that.undelegateEvents()
+        error:
+          that.$save.removeClass("disabled")
 
   render: ->
     @$el.modal()
