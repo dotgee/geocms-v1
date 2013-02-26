@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 
 gem "unicorn", ">= 4.3.1"
 gem "pg", ">= 0.14.0"
@@ -27,8 +27,9 @@ end
 gem 'jquery-rails', "~> 2.1.4"
 
 # JSON Views
-gem 'oj'
-gem 'rabl'
+gem "multi_json", "1.5.0"
+gem 'oj', "2.0.2"
+gem 'rabl', "0.7.9"
 #gem 'yajl-ruby'
 gem 'gon'
 
