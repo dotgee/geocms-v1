@@ -91,15 +91,15 @@
         $("#share-modal").css("z-index", "9999");
       });
       $('a#copy-direct').zclip({
-          path: function() { return GEOCMS_PREFIX+'/ZeroClipboard.swf' },
+          path: GEOCMS_PREFIX+'/ZeroClipboard.swf',
           copy: function() { return $("p#direct-link").text(); }
       });
       $('a#copy-embed').zclip({
-          path:'/ZeroClipboard.swf',
+          path: GEOCMS_PREFIX+'/ZeroClipboard.swf',
           copy: function() { return $("p#embed-link").text(); }
       });
       $('a#copy-geobretagne').zclip({
-          path: function() { return GEOCMS_PREFIX+'/ZeroClipboard.swf' },
+          path: GEOCMS_PREFIX+'/ZeroClipboard.swf',
           copy: function() { return $("p#geobretagne-link").text(); }
       });
     });
