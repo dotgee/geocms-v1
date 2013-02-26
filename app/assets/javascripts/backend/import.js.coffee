@@ -59,8 +59,7 @@ class LayerModalView extends Backbone.View
           $("#layer-import").show()
           that.undelegateEvents()
         error:
-          that.$save.removeClass("disabled")
-
+          alert("Il y a eu une erreur lors de l'import. Merci de verifier si la couche a été créée.")
   render: ->
     @$el.modal()
     @$el.find(".modal-body").html(@form.el)
