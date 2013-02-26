@@ -57,7 +57,7 @@ class App.CartItemView extends Backbone.View
 
   toggleVisibility: (e) ->
     if (@$el.find(".layer-visibility").attr("checked") == "checked")
-      @model.toggleVisibility(true, @model.get("opacity")/100)
+      @model.toggleVisibility(true, 90)
     else
       @model.toggleVisibility(false, 0)
 
