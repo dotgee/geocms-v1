@@ -14,7 +14,7 @@ class App.CartItemView extends Backbone.View
           <a class='m-btn mini toggle-dimension <% if(controllingDimension) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Dimension'><i class='icon-play-circle'></i></a>
         <% } %>
         <% if(metadata_url) { %>
-          <a class='m-btn mini metadata-iframe' rel='tooltip' data-original-title='Metadata' href='#'><i class='icon-list-alt'></i></a>
+          <a class='m-btn mini metadata-iframe' rel='tooltip' data-original-title='Metadata' href='<%= metadata_url %>' target = 'geonetwork' ><i class='icon-list-alt'></i></a>
           <% if(!data_source.external) { %>
             <a class='m-btn mini' rel='tooltip' data-original-title='Metadata' href='<%= data_source.wms %>?REQUEST=getFeature&service=wfs&outputFormat=shape-zip&typename=<%= name %>'><i class='icon-download-alt'></i></a>
           <% } %>
@@ -52,7 +52,6 @@ class App.CartItemView extends Backbone.View
     "click  .center"           : "panToLayer"
     "click  .opacity"          : "toggleOpacity"
     "click  .toggle-dimension" : "toggleDimension"
-    "click  .metadata-iframe"  : "showMetadata"
 
   removeLayer: ->
     @model.removeFromMap()
@@ -116,16 +115,6 @@ class App.CartItemView extends Backbone.View
     else
       projBox = @mapProvider.bboxTo4326(@model.get("bbox")["EPSG:2154"].table.bbox)
     @mapProvider.fitBounds(projBox)
-
-  showMetadata: (e) ->
-    e.preventDefault()
-    metadata_url = @model.get("metadata_url")
-    $("#metadata-modal")
-      .find("h3").text(@model.get("title"))
-      .end()
-      .find("iframe").attr("src", metadata_url)
-      .end()
-      .modal("show")
 
   initialize: ->
     @changeOpacity()
