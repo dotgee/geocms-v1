@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130211105753) do
+ActiveRecord::Schema.define(:version => 20130225151735) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20130211105753) do
     t.integer "layer_id"
     t.integer "position"
     t.integer "opacity"
+    t.boolean "visibility", :default => true
   end
 
   add_index "contexts_layers", ["context_id", "layer_id"], :name => "index_contexts_layers_on_context_id_and_layer_id"
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20130211105753) do
     t.datetime "updated_at",                       :null => false
     t.string   "rest"
     t.string   "wms_version", :default => "1.1.1"
+    t.boolean  "external",    :default => true
   end
 
   create_table "dimensions", :force => true do |t|
@@ -94,8 +96,8 @@ ActiveRecord::Schema.define(:version => 20130211105753) do
     t.string   "name"
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.integer  "data_source_id"
     t.text     "bbox"
     t.string   "crs"
@@ -103,6 +105,8 @@ ActiveRecord::Schema.define(:version => 20130211105753) do
     t.text     "template"
     t.string   "default_style"
     t.string   "thumbnail"
+    t.string   "metadata_url"
+    t.string   "metadata_identifier"
   end
 
   create_table "preferences", :force => true do |t|

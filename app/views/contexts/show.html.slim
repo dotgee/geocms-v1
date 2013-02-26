@@ -52,7 +52,7 @@
       button.m-btn.last.icn-only.togglehud rel="tooltip" data-original-title=t("context.controls.hud")
         i.m-icon-swapleft
   #map data-latitude=current_tenant.latitude.value data-longitude=current_tenant.longitude.value data-zoom=current_tenant.zoom.value
-  .modal#share-modal.hide style="position: asbolute;display:block;z-index:-1"
+  .modal#share-modal.hide style="position: absolute;display:block;z-index:-1"
     .modal-header
       button.close aria-hidden="true" data-dismiss="modal" type="button"
       h3 = t "context.sharable.share_your_map"
@@ -72,6 +72,12 @@
         span.copy-code
           p#geobretagne-link.share-link= geovisu_link
           a.copy.m-btn.mini#copy-geobretagne  = t "context.sharable.copy"
+  .modal#metadata-modal.hide
+    .modal-header      
+      button type="button" class="close" data-dismiss="modal" aria-hidden="true" ×
+      h3
+    .modal-body
+      iframe src="" width="700" height="350"
   #legend-graphic.leaflet-legend.hide.draggable
     .modal-header      
       button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
@@ -85,7 +91,7 @@
         $("#share-modal").css("z-index", "9999");
       });
       $('a#copy-direct').zclip({
-          path:'/ZeroClipboard.swf',
+          path: GEOCMS_PREFIX+'/ZeroClipboard.swf',
           copy: function() { return $("p#direct-link").text(); }
       });
       $('a#copy-embed').zclip({

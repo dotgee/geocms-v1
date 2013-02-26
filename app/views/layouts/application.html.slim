@@ -23,6 +23,8 @@ html(lang="en")
             - if logged_in?
               = link_to "Admin", backend_root_path
     == yield
+    javascript:
+      var GEOCMS_PREFIX = "#{ENV["PREFIX"]}"
     = include_gon
     = javascript_include_tag :application
     == yield :javascripts

@@ -1,5 +1,5 @@
 App.Category = Backbone.RelationalModel.extend
-  urlRoot: "/categories"
+  urlRoot: GEOCMS_PREFIX+"/categories"
   idAttribute: "id"
   defaults: {
     model: "category"

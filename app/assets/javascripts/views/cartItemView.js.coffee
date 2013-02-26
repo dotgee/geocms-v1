@@ -10,8 +10,15 @@ class App.CartItemView extends Backbone.View
         <a class='m-btn mini first query' data-toggle='button' rel='tooltip' data-original-title='Informations sur la couche'><i class='icon-info-sign'></i></a>
         <a class='m-btn mini opacity <% if(controllingOpacity) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Opacité'><i class='icon-adjust'></i></a>
         <a class='m-btn mini center' rel='tooltip' data-original-title='Centrer'><i class='icon-screenshot'></i></a>
-        <% if(dimension) { %><a class='m-btn mini toggle-dimension <% if(controllingDimension) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Dimension'><i class='icon-play-circle'></i></a><% } %>
-        <% if(metadata_url) { %><a class='m-btn mini' rel='tooltip' data-original-title='Metadata'><i class='icon-list-alt'></i></a><% } %>
+        <% if(dimension) { %>
+          <a class='m-btn mini toggle-dimension <% if(controllingDimension) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Dimension'><i class='icon-play-circle'></i></a>
+        <% } %>
+        <% if(metadata_url) { %>
+          <a class='m-btn mini metadata-iframe' rel='tooltip' data-original-title='Metadata' href='#'><i class='icon-list-alt'></i></a>
+          <% if(!data_source.external) { %>
+            <a class='m-btn mini' rel='tooltip' data-original-title='Metadata' href='<%= metadata_url %>'><i class='icon-download-alt'></i></a>
+          <% } %>
+        <% } %>
         <a class='m-btn mini remove' rel='tooltip' data-original-title='Supprimer'><i class='icon-remove'></i></a>
       </div>      
       <% if(dimension) { %>
@@ -45,6 +52,7 @@ class App.CartItemView extends Backbone.View
     "click  .center"           : "panToLayer"
     "click  .opacity"          : "toggleOpacity"
     "click  .toggle-dimension" : "toggleDimension"
+    "click  .metadata-iframe"  : "showMetadata"
 
   removeLayer: ->
     @model.removeFromMap()
@@ -108,6 +116,17 @@ class App.CartItemView extends Backbone.View
     else
       projBox = @mapProvider.bboxTo4326(@model.get("bbox")["EPSG:2154"].table.bbox)
     @mapProvider.fitBounds(projBox)
+
+  showMetadata: (e) ->
+    e.preventDefault()
+    metadata_url = @model.get("data_source").ogc + "/metadata.show.embedded?uuid=" + @model.get("metadata_identifier")
+    console.log metadata_url
+    $("#metadata-modal")
+      .find("h3").text(@model.get("title"))
+      .end()
+      .find("iframe").attr("src", metadata_url)
+      .end()
+      .modal("show")
 
   initialize: ->
     @changeOpacity()

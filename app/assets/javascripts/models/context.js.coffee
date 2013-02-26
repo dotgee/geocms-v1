@@ -1,5 +1,5 @@
 class App.Context extends Backbone.Model
-  urlRoot: "/contexts"
+  urlRoot: GEOCMS_PREFIX+"/contexts"
   schema:
     name:           {type: 'Text', editorClass: "m-wrap input-block-level", validators: ['required']}
     description:    {type: 'TextArea', editorClass: "m-wrap input-block-level"}

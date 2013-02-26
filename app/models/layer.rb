@@ -29,7 +29,8 @@ class Layer < ActiveRecord::Base
 
 
   attr_accessible :description, :name, :title, :wms_url, :data_source_id, :category_ids, :category, :bbox,
-                  :crs, :minx, :miny, :maxx, :maxy, :dimension, :template, :remote_thumbnail_url, :metadata_url
+                  :crs, :minx, :miny, :maxx, :maxy, :dimension, :template, :remote_thumbnail_url, :metadata_url,
+                  :metadata_identifier
 
   mount_uploader :thumbnail, LayerUploader
   after_save :do_thumbnail
