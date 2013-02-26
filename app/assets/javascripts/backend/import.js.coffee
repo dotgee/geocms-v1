@@ -2,7 +2,7 @@
 # Base class Layer
 
 class Layer extends Backbone.Model
-  urlRoot: "/backend/layers"
+  urlRoot: GEOCMS_PREFIX+"/backend/layers"
   schema:
     title:
       type: "Text"
@@ -16,6 +16,10 @@ class Layer extends Backbone.Model
 
     description: 
       type: "TextArea"
+      editorClass: "m-wrap input-block-level"
+
+    metadata_url:
+      type: "Text"
       editorClass: "m-wrap input-block-level"
 
     category_ids: 

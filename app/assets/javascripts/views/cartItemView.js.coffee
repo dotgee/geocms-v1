@@ -16,7 +16,7 @@ class App.CartItemView extends Backbone.View
         <% if(metadata_url) { %>
           <a class='m-btn mini metadata-iframe' rel='tooltip' data-original-title='Metadata' href='#'><i class='icon-list-alt'></i></a>
           <% if(!data_source.external) { %>
-            <a class='m-btn mini' rel='tooltip' data-original-title='Metadata' href='<%= metadata_url %>'><i class='icon-download-alt'></i></a>
+            <a class='m-btn mini' rel='tooltip' data-original-title='Metadata' href='<%= data_source.wms %>?REQUEST=getFeature&service=wfs&outputFormat=shape-zip&typename=<%= name %>'><i class='icon-download-alt'></i></a>
           <% } %>
         <% } %>
         <a class='m-btn mini remove' rel='tooltip' data-original-title='Supprimer'><i class='icon-remove'></i></a>
@@ -119,8 +119,7 @@ class App.CartItemView extends Backbone.View
 
   showMetadata: (e) ->
     e.preventDefault()
-    metadata_url = @model.get("data_source").ogc + "/metadata.show.embedded?uuid=" + @model.get("metadata_identifier")
-    console.log metadata_url
+    metadata_url = @model.get("metadata_url")
     $("#metadata-modal")
       .find("h3").text(@model.get("title"))
       .end()
