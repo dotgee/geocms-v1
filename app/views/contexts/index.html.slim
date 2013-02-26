@@ -7,7 +7,7 @@
         = link_to t("context.new"), root_path, :class => "m-btn blue big"
     - @contexts.each do |context|
       li.span3
-        = link_to "/#{context.uuid}", :class => "thumbnail-link" do
+        = link_to "#{ENV["PREFIX"]}/#{context.uuid}", :class => "thumbnail-link" do
           .thumbnail.unbordered
             .placeholder
             .caption
