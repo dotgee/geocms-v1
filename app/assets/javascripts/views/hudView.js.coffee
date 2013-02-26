@@ -24,7 +24,7 @@ class App.HudView extends Backbone.View
 
   open: ->
     @$el.css("left", "0")
-    $("#map").css("left", "300px")
+    $("#map").css("left", "335px")
     @mapProvider.invalidateSize()
 
   close: ->

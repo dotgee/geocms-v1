@@ -7,7 +7,7 @@
   left: 0;
   top: 0px;
   bottom: 0px;
-  width: 300px;
+  width: 335px;
   background: #F8F8F8;
   border-right: 2px solid #DDD;
   transition: left 300ms;
@@ -36,7 +36,7 @@
 #hud-tab {
   li {
     margin-left: 0;
-    width: 149px;
+    width: 50%;
     a {
       border-right: none;
       border-left: 1px solid #ddd;
@@ -64,9 +64,9 @@
   z-index: 50;
   .m-btn {
     margin-top: 0;
-    padding: 14px 24px;
+    padding: 14px 28px;
     &:last-child {
-      padding: 14px 20px;
+      padding: 14px 22px 14px 21px;
     }
   }
 }
@@ -87,18 +87,18 @@
     height: 45px;
     width: 10px;
     vertical-align: top;
-    margin-right: 15px;
+    margin-right: 10px;
     cursor: move;
   }
   .right-infos {
     display: inline-block;
-    width: 250px;
+    width: 300px;
     .title {
       @include ellipsis;
     }
   }
   .control-buttons {
-    margin-left: 21px;
+    margin-left: -2px;
     a:hover {
       background: none;
     }
@@ -112,9 +112,8 @@
     }
   }
   .opacity-controler {
-    margin-left: 20px;
     margin-top: 5px;
-    width: 172px;
+    width: 297px;
     i {
       float: left;
       cursor: pointer;
