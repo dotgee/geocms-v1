@@ -91,7 +91,7 @@
         $("#share-modal").css("z-index", "9999");
       });
       $('a#copy-direct').zclip({
-          path: GEOCMS_PREFIX+'/ZeroClipboard.swf',
+          path: function() { return GEOCMS_PREFIX+'/ZeroClipboard.swf' },
           copy: function() { return $("p#direct-link").text(); }
       });
       $('a#copy-embed').zclip({
@@ -99,7 +99,7 @@
           copy: function() { return $("p#embed-link").text(); }
       });
       $('a#copy-geobretagne').zclip({
-          path:'/ZeroClipboard.swf',
+          path: function() { return GEOCMS_PREFIX+'/ZeroClipboard.swf' },
           copy: function() { return $("p#geobretagne-link").text(); }
       });
     });

@@ -18,7 +18,7 @@ class App.MapView extends Backbone.View
     watermark = L.control({position: "bottomright"})
     watermark.onAdd =  (map) ->
       @_div = L.DomUtil.create('div', 'watermark');
-      @_div.innerHTML = "<img src='/assets/dotgee.png'/>"
+      @_div.innerHTML = "<img src='"+GEOCMS_PREFIX+"/assets/dotgee.png'/>"
       @_div;
     watermark.addTo(@mapProvider.map)
 
