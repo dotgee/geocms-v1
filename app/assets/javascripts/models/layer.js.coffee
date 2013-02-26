@@ -44,7 +44,7 @@ App.Layer = Backbone.RelationalModel.extend
 
   toggleVisibility: (visible, value) ->
     @get("leaflet").setOpacity(value)
-    @set({visible: visible})
+    @set({opacity: value})
 
   playTimeline: ->
     count = @get("dimensions").length
