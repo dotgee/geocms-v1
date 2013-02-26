@@ -74,7 +74,7 @@ App.MapProviders.Leaflet = ->
       URL += '&TIME='+map.queryable_layer.currentTime
     $.ajax
       # Todo:  add proxy
-      url: '/proxy.php?url=' + encodeURIComponent(URL)
+      url: GEOCMS_PREFIX+'/proxy.php?url=' + encodeURIComponent(URL)
       dataType: "html"
       type: "GET"
       success: (data) ->
