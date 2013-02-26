@@ -12,6 +12,7 @@ App.Layer = Backbone.RelationalModel.extend
     controllingDimension: false
     currentTime: false
     model: "layer"
+    base: false
 
   toLeaflet: ( options = {} ) ->
     unless @get "base"

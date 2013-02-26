@@ -7,18 +7,12 @@ class App.CartItemView extends Backbone.View
         <a title='<%= title %>' class='unstyled'><%= title %></a>
       </label>
       <div class='m-btn-group control-buttons'>
-        <a class='m-btn mini first query' data-toggle='button' rel='tooltip' data-original-title='Informations sur la couche'><i class='icon-info-sign'></i></a>
+        <a class='m-btn mini first query' data-toggle='button' rel='tooltip' data-original-title='Informations'><i class='icon-info-sign'></i></a>
         <a class='m-btn mini opacity <% if(controllingOpacity) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Opacité'><i class='icon-adjust'></i></a>
         <a class='m-btn mini center' rel='tooltip' data-original-title='Centrer'><i class='icon-screenshot'></i></a>
-        <% if(dimension) { %>
-          <a class='m-btn mini toggle-dimension <% if(controllingDimension) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Dimension'><i class='icon-play-circle'></i></a>
-        <% } %>
-        <% if(metadata_url) { %>
-          <a class='m-btn mini metadata-iframe' rel='tooltip' data-original-title='Metadata' href='<%= metadata_url %>' target = 'geonetwork' ><i class='icon-list-alt'></i></a>
-          <% if(!data_source.external) { %>
-            <a class='m-btn mini' rel='tooltip' data-original-title='Metadata' href='<%= data_source.wms %>?REQUEST=getFeature&service=wfs&outputFormat=shape-zip&typename=<%= name %>'><i class='icon-download-alt'></i></a>
-          <% } %>
-        <% } %>
+        <a class='m-btn mini toggle-dimension <% if (!dimension) { %> disabled <% } %> <% if(controllingDimension) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Dimension'><i class='icon-play-circle'></i></a>
+        <a class='m-btn mini metadata-iframe <% if (!metadata_url) { %> disabled <% } %> ' rel='tooltip' data-original-title='Métadonnées' href='<%= metadata_url %>' target = 'geonetwork' ><i class='icon-list-alt'></i></a>
+        <a class='m-btn mini <% if (data_source.external || base) { %> disabled <% } %>' rel='tooltip' data-original-title='Télécharger' href='<%= data_source.wms %>?REQUEST=getFeature&service=wfs&outputFormat=shape-zip&typename=<%= name %>'><i class='icon-download-alt'></i></a>
         <a class='m-btn mini remove' rel='tooltip' data-original-title='Supprimer'><i class='icon-remove'></i></a>
       </div>      
       <% if(dimension) { %>
