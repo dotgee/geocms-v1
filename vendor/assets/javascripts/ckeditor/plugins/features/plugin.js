@@ -5,7 +5,7 @@ CKEDITOR.plugins.add( 'features',
     var items;
     var layer = $("#layer").data("id");
     if(layer) {
-      $.get("/backend/layers/"+layer+"/getfeatures.json",
+      $.get(GEOCMS_PREFIX+"/backend/layers/"+layer+"/getfeatures.json",
         function(data) {
           items = data;
       });
