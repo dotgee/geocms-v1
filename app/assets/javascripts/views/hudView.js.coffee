@@ -60,11 +60,16 @@ class App.HudView extends Backbone.View
     if unsaved
       @$el.find(".save").removeAttr("disabled").removeClass("disabled")
       @$el.find(".share").attr("disabled", "disabled").addClass("disabled")
+      $(".geovisu").addClass("disabled")
     else
       @$el.find(".share").removeAttr("disabled").removeClass("disabled")
       @$el.find(".save").attr("disabled", "disabled").addClass("disabled")
+      $(".geovisu").removeClass("disabled")
+      @updateShareLinks()
 
   updateShareLinks: ->
+    href = $(".geovisu").attr("href")
+    $(".geovisu").attr("href", href+@model.get("uuid")+".xml") unless href.indexOf("xml") > -1
 
   openSharePopup: (e) ->
     unless $("#direct-link").text().indexOf("share") > 0

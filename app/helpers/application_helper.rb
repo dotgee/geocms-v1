@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def geovisu_link
-    "#{request.protocol}#{request.host_with_port}/geovisu/?wmc=#{share_link}.xml"
+    "#{request.protocol}#{request.host_with_port}/geovisu/?wmc=#{share_link}/"
   end
 
   def breadcrumb_for_category(category = nil, admin = false)
