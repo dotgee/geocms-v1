@@ -45,9 +45,8 @@
         i.icon-list
       button.m-btn.icn-only.globe rel="tooltip" data-original-title=t("context.controls.position")
         i.icon-globe
-      = link_to geovisu_link, :class => "m-btn icn-only geovisu disabled", :rel => "tooltip", "data-original-title" => "GeoVisu" do
-        / i.icon-cog
-        |G
+      = link_to geovisu_link, :class => "m-btn icn-only geovisu disabled", :rel => "tooltip", "data-original-title" => "GeoVisu", :target => "geovisu" do
+        i.icon-geovisu
       button.m-btn.icn-only.fullscreen data-toggle="button" rel="tooltip" data-original-title=t("context.controls.fullscreen")
         i.icon-fullscreen
       button.m-btn.last.icn-only.togglehud rel="tooltip" data-original-title=t("context.controls.hud")
