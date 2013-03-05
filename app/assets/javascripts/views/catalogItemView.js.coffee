@@ -1,5 +1,5 @@
 #
-# Common view for categories and layers items
+# Shared view for categories and layers
 #
 ##############################################
 
