@@ -18,3 +18,9 @@ $( ".draggable" ).draggable({
   handle: '.modal-header'
 });
 
+$("a").click(function(e){
+  if($(this).hasClass("disabled")) {
+    e.preventDefault();
+  }
+})
+

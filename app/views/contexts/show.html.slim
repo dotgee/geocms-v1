@@ -45,8 +45,8 @@
         i.icon-list
       button.m-btn.icn-only.globe rel="tooltip" data-original-title=t("context.controls.position")
         i.icon-globe
-      button.m-btn.icn-only.tools rel="tooltip" data-original-title=t("context.controls.tools")
-        i.icon-cog
+      = link_to geovisu_link, :class => "m-btn icn-only geovisu disabled", :rel => "tooltip", "data-original-title" => "GeoVisu", :target => "geovisu" do
+        i.icon-geovisu
       button.m-btn.icn-only.fullscreen data-toggle="button" rel="tooltip" data-original-title=t("context.controls.fullscreen")
         i.icon-fullscreen
       button.m-btn.last.icn-only.togglehud rel="tooltip" data-original-title=t("context.controls.hud")
@@ -67,11 +67,11 @@
         span.copy-code
           p#embed-link.share-link= share_link(true)
           a.copy.m-btn.mini#copy-embed  = t "context.sharable.copy"
-      .geobretagne-code.sharable
-        h5= t "context.sharable.geovisu_show"
-        span.copy-code
-          p#geobretagne-link.share-link= geovisu_link
-          a.copy.m-btn.mini#copy-geobretagne  = t "context.sharable.copy"
+      / .geobretagne-code.sharable
+      /   h5= t "context.sharable.geovisu_show"
+      /   span.copy-code
+      /     p#geobretagne-link.share-link= geovisu_link
+      /     a.copy.m-btn.mini#copy-geobretagne  = t "context.sharable.copy"
   .modal#metadata-modal.hide
     .modal-header      
       button type="button" class="close" data-dismiss="modal" aria-hidden="true" ×
@@ -98,8 +98,8 @@
           path: GEOCMS_PREFIX+'/ZeroClipboard.swf',
           copy: function() { return $("p#embed-link").text(); }
       });
-      $('a#copy-geobretagne').zclip({
+      /* $('a#copy-geobretagne').zclip({
           path: GEOCMS_PREFIX+'/ZeroClipboard.swf',
           copy: function() { return $("p#geobretagne-link").text(); }
-      });
+      }); */
     });
