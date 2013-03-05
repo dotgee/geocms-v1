@@ -17,7 +17,8 @@ class App.CatalogView extends Backbone.View
 
   events: 
     "click .close" : "toggle"
-    "keyup .layers-search input": "search"
+    "click #search": "search"
+    "keypress .layers-search input": "searchOnEnter"
     "click .category-link" : "show"
     "click .icon-home" : "toRoot"
  
@@ -27,6 +28,7 @@ class App.CatalogView extends Backbone.View
     @mapProvider = @hud.mapProvider
     @layers = @options.layers
     @collection.on("reset", @render, this)
+    @initialCollection = @collection
     @$categories = @$el.find("#categories")
     @$query = $(".layers-search").find("input")
     @currentCategories = []
@@ -34,7 +36,10 @@ class App.CatalogView extends Backbone.View
   toggle: ->
     @$el.toggleClass("active")
     @render()
-
+  searchOnEnter: (e) ->
+    if (e.keyCode != 13)
+      return
+    @search()
   search: ->
     that = this
     $.ajax
@@ -58,8 +63,7 @@ class App.CatalogView extends Backbone.View
   
   toRoot: (e)-> 
     e.preventDefault()
-    return false unless @currentCategories.length
-    @collection = @currentCategories[0].collection 
+    @collection = @initialCollection
     @currentCategories = []
     @render()
 
