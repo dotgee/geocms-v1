@@ -38,7 +38,7 @@ class App.CatalogView extends Backbone.View
   search: ->
     that = this
     $.ajax
-      url: "/layers/search",
+      url: GEOCMS_PREFIX+"/layers/search",
       dataType: 'json',
       data: {query: that.$query.val()},
       success: (data) ->
