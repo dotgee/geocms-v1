@@ -7,7 +7,7 @@
   left: 0;
   top: 0px;
   bottom: 0px;
-  width: 335px;
+  width: $hudsize;
   background: #F8F8F8;
   border-right: 2px solid #DDD;
   transition: left 300ms;
@@ -92,7 +92,7 @@
   }
   .right-infos {
     display: inline-block;
-    width: 300px;
+    width: 290px;
     .title {
       @include ellipsis;
     }
