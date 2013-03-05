@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def share_link(iframe = false)
-    (iframe ? "<iframe src='" : "") + "#{request.protocol}#{request.host_with_port}"
+    (iframe ? "<iframe src='" : "") + "#{request.protocol}#{request.host_with_port}#{ENV["PREFIX"]}"
   end
 
   def geovisu_link
