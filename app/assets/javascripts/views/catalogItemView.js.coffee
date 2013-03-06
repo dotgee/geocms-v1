@@ -4,7 +4,7 @@
 ##############################################
 
 class App.CatalogItemView extends Backbone.View
-  className: "media"
+  className: "media layer"
   categoryTemplate: _.template("
   <div class='media-wrapper'>
     <div class='media-body'>
@@ -63,6 +63,5 @@ class App.CatalogItemView extends Backbone.View
     if @model.get("model") == "category"
       @$el.html(@categoryTemplate(attributes))
     else
-      @$el.addClass("layer")
       @$el.html(@layerTemplate(attributes))
     return this

@@ -106,3 +106,18 @@ textarea {
 select.cke_dialog_ui_input_select {
   height: auto !important;
 }
+
+.layers-search {
+  .m-wrap.search-input {
+    border: 1px solid #DADADA;
+    border-right: none;
+  }
+  .m-btn {
+    border: {
+      top: 1px solid #DADADA;
+      right:1px solid #DADADA;
+      bottom: 1px solid #DADADA;
+    }
+    padding: 9px 14px;
+  }
+}

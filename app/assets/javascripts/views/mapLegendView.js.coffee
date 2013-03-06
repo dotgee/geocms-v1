@@ -1,8 +1,10 @@
 class App.MapLegendView extends Backbone.View
   template: _.template("
-    <%= title %><br/>
-    <img src='<%=data_source.wms %>?request=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=<%= name %>'/></i>
-    <br/>
+    <% if(!base) { %>
+      <span><%= title %></span><br/>
+      <img src='<%=data_source.wms %>?request=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=<%= name %>'/></i>
+      <br/>
+    <% } %>
   ")
   events: 
     "click .close": "toggle"
