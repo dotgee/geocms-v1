@@ -1,7 +1,7 @@
 class App.MapLegendView extends Backbone.View
   template: _.template("
     <% if(!base) { %>
-      <p><%= title %></p>
+      <h6><%= title %></h6>
       <img src='<%=data_source.wms %>?request=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=<%= name %>'/></i>
     <% } %>
   ")
