@@ -19,24 +19,31 @@
     background: rgba(248, 248, 248, .85);
     opacity: 1;
   }
-  .close {
+  .btn-close {
     margin: 20px;
     position: fixed;
-    top: 69px;
-    right: 10px;
+    top: 63px;
+    right: 0px;
+    padding: 4px 9px 8px 11px;
+    .close {
+      color: white;
+      text-shadow: none;
+      @include opacity(100);
+    }
+  }
+  .page-header {
+    margin-bottom: 15px;
   }
   h3 {
-    margin-left: 75px;
-    float: left;
+    margin-left: 40px;
   }
-  .layers-search {
-    margin-top: 13px;
-    margin-right: 70px;
+  .breadcrumb {
+    border: 1px solid #DADADA;
   }
   .media {
     background: white;
     cursor: pointer;
-    border: 1px solid #EEE;
+    border: 1px solid #DADADA;
     @include not-selectable;
     h4 {
       cursor: pointer;

@@ -8,13 +8,6 @@
 @import "buttons";
 @import "icons";
 
-.close {
-  @include opacity(50);
-  &:hover {
-    @include opacity(70);
-  }
-}
-
 .pagination {
   li {
     &:first-child, &:last-child {

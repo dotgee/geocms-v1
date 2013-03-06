@@ -29,15 +29,16 @@
             i.icon-layer
         ul.nav.nav-list#layer-list
         #catalog.popup
-          button class="close" &times;
+          button.m-btn.icn-only.btn-close.blue
+            .close &times;
           .page-header
             h3 = t "layers_catalog"
+          .container-fluid
             .m-input-append.layers-search.pull-right
-              input.m-wrap size="16" type="text" placeholder=t("layer.search")
+              input.m-wrap.search-input size="16" type="text" placeholder=t("layer.search") name="search-layer"
               button.m-btn.icn-only#search href="#"
                 i.icon-search
             .clearfix
-          .container-fluid
             = breadcrumb_for_category(@category)
             #categories.row-fluid
     .m-btn-group#ctrls

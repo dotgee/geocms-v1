@@ -63,6 +63,8 @@ class App.CatalogView extends Backbone.View
   
   toRoot: (e)-> 
     e.preventDefault()
+    if !@currentCategories.length
+      @toggle()
     @collection = @initialCollection
     @currentCategories = []
     @render()

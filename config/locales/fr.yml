@@ -50,7 +50,7 @@ fr:
     wait: "Please wait while we find the layers. This shouldn't be too long."
   layers: "Couches"
   add_a_new_layer: "Ajouter une nouvelle couche"
-  layers_catalog: "Catalogue de couches"
+  layers_catalog: "Catalogue de données géoréférencées"
   legend: "Légende"
   maps: "Cartes"
   back: "Retour"
