@@ -51,14 +51,12 @@
   position: fixed;
   bottom: 20px;
   left: 400px;
-  width: 250px;
-  height: 250px;
   line-height: 20px;
-  resize: horizontal;
-  overflow: auto;
   .inner-legend {
     overflow: auto;
-    resize: none;
+    resize: both;
+    width: auto;
+    height: 250px;
   }
   .modal-header {
     cursor: pointer;
