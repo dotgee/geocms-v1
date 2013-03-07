@@ -54,7 +54,7 @@ class App.CatalogView extends Backbone.View
         layerCollection = new App.LayerCollection(layers)
         that.collection = layerCollection
         that.render()
-
+    @onSearch = true
   resetView: ->
     @$categories.html("")
 
@@ -63,8 +63,9 @@ class App.CatalogView extends Backbone.View
   
   toRoot: (e)-> 
     e.preventDefault()
-    if !@currentCategories.length
+    if !@currentCategories.length && !@onSearch
       @toggle()
+    @onSearch = false
     @collection = @initialCollection
     @currentCategories = []
     @render()
