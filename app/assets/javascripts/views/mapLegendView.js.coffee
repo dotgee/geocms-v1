@@ -2,7 +2,7 @@ class App.MapLegendView extends Backbone.View
   template: _.template("
     <% if(!base) { %>
       <h6><%= title %></h6>
-      <img src='<%=data_source.wms %>?request=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=<%= name %>'/></i>
+      <img src='<%=data_source.wms %>?request=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=<%= name %>' onerror='$(this).remove()'/>
     <% } %>
   ")
   events: 
@@ -10,7 +10,7 @@ class App.MapLegendView extends Backbone.View
   initialize: ->
     @parent = @options.parentView
     @collection = @parent.cartCollection
-    @collection.on("add", @render, this)
+    @collection.on("add", @addOne, this)
     @collection.on("remove", @render, this)
     @$legend = this.$(".inner-legend")
   addOne: (layer) ->

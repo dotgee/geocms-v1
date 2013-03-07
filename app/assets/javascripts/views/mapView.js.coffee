@@ -76,7 +76,7 @@ class App.MapView extends Backbone.View
 
   render: ->
     @mapProvider.createMap(@el.id)
-    @addWatermark()
+    # @addWatermark()
     @addLegend()
     @setInitialView()
     @addControls()
