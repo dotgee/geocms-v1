@@ -14,6 +14,7 @@ class Backend::LayersController < Backend::ApplicationController
   def getfeatures
     layer = Layer.find(params[:id])
     @features = WMS::Client.new(layer.data_source.wms, {:layer_name => layer.name}).features_list
+    @features = [layer.name[layer.name.index(":")+1, layer.name.length]] if @features.empty?
     respond_to do |format|
       format.json { render json: @features }
     end
