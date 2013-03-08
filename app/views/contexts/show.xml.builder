@@ -8,25 +8,28 @@ xml.ViewContext(:id => @context.uuid, :version => "1.1.0", "xmlns" => "http://ww
     end
   end
   xml.LayerList do
-    <Layer hidden="0" queryable="0">
-      <Server service="OGC:WMS" version="1.1.1">
-        <OnlineResource xlink:href="http://osm.geobretagne.fr/gwc01/service/wms" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink"/>
-      </Server>
-      <Name>imposm:google</Name>
-      <Title>OpenStreetMap</Title>
-      <Abstract>carte OpenStreetMap licence CreativeCommon by-SA</Abstract>
-      <MetadataURL>
-        <OnlineResource xlink:href="http://wiki.openstreetmap.org/wiki/FR:OpenStreetMap_License" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink"/>
-      </MetadataURL>
-      <FormatList>
-        <Format current="1">image/png</Format>
-      </FormatList>
-      <StyleList>
-        <Style>
-          <Name/>
-          <Title/>
-        </Style>
-      </StyleList>
+    xml.Layer( :hidden => "0", :queryable => "0" ) do
+      xml.Server(:service => "OGC:WMS", :version => "1.1.1") do
+        xml.OnlineResource("xlink:href" => "http://osm.geobretagne.fr/gwc01/service/wms", "xlink:type" => "simple", "xmlns:xlink" => "http://www.w3.org/1999/xlink")
+      end
+      xml.Name "imposm:google"
+      xml.Title "OpenStreetMap"
+      xml.Abstract "carte OpenStreetMap licence CreativeCommon by-SA"
+      xml.MetadataURL do
+        xml.OnlineResource("xlink:href" => "http://wiki.openstreetmap.org/wiki/FR:OpenStreetMap_License", "xlink:type" => "simple", "xmlns:xlink" => "http://www.w3.org/1999/xlink")
+      end
+      xml.FormatList do
+        xml.Format("image/png", :current => 1)
+      end
+      xml.Extension do
+        xml.tag!("ol:maxExtent", :maxx => "2146865.30590000004", :maxy => "8541697.23630000092", :minx => "-357823.236499999999", :miny => "6037008.69390000030", "xmlns:ol" => "http://openlayers.org/context")
+        xml.tag!("ol:numZoomLevels", 17, "xmlns:ol" => "http://openlayers.org/context")
+        xml.tag!("ol:tileSize", :height => "256", :width => "256", "xmlns:ol" => "http://openlayers.org/context")
+        xml.tag!("ol:units", "m", "xmlns:ol" => "http://openlayers.org/context")
+        xml.tag!("ol:isBaseLayer", "false", "xmlns:ol" => "http://openlayers.org/context")
+        xml.tag!("ol:displayInLayerSwitcher", "true", "xmlns:ol" => "http://openlayers.org/context")
+        xml.tag!("ol:singleTile", "true", "xmlns:ol" => "http://openlayers.org/context")
+      end
       <Extension>
         <ol:maxExtent maxx="2146865.30590000004" maxy="8541697.23630000092" minx="-357823.236499999999" miny="6037008.69390000030" xmlns:ol="http://openlayers.org/context"/>
         <ol:tileSize height="256" width="256" xmlns:ol="http://openlayers.org/context"/>
