@@ -2,13 +2,36 @@ class Layer < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
-  mapping do
-    indexes :id,           :index    => :not_analyzed
-    indexes :title,        :analyzer => 'keyword'
-    indexes :name,         :analyzer => 'keyword'
-    indexes :description,  :analyzer => 'snowball'
+  settings  :analysis => {
+              :analyzer => {
+                :french_analyzer => {
+                  "type"         => "custom",
+                  "tokenizer"    => "standard",
+                  "filter"       => ["lowercase", "asciifolding", "french_stem", "french_stop", "elision"]
+                }
+              },
+              :filter => {
+                :french_stop => {
+                  "type" => "stop",
+                  "stopwords" => ["_french_"]
+                },
+                :french_stem  => {
+                  "type"     => "stemmer",
+                  "name" => "french"
+                },
+                :elision => {
+                  "type" => "elision",
+                  "articles" => ["l", "m", "t", "qu", "n", "s", "j", "d"]
+                }
+              }
+            } do
+    mapping do
+      indexes :id,           :index    => :not_analyzed
+      indexes :title,        :analyzer => 'french_analyzer', :boost => 10
+      indexes :name,         :analyzer => 'french_analyzer'
+      indexes :description,  :analyzer => 'snowball'
+    end
   end
-
   acts_as_taggable_on :keywords
 
   has_and_belongs_to_many :categories
@@ -67,7 +90,7 @@ class Layer < ActiveRecord::Base
   def self.search(params)
     tire.search do
       # TODO: Scope by account
-      query { string params[:query] } if params[:query].present?
+      query { string "title:#{params[:query]}" } if params[:query].present?
     end
   end
 
