@@ -3,7 +3,7 @@ class App.MapToolbarView extends Backbone.View
     "click .legend" : "toggleLegend"
     "click .togglehud" : "toggleHud"
     "click .globe": "setInitialView"
-    # "click .geovisu": "geovisu"
+    "click .tools": "toggleTools"
     "click .fullscreen": "fullscreen"
   }
   initialize: ->
@@ -25,6 +25,8 @@ class App.MapToolbarView extends Backbone.View
     @$togglehud.removeClass("m-icon-swapright").addClass("m-icon-swapleft")
   toggleLegend: (e) ->
     @parent.legend.toggleShow()
+  toggleTools: (e) ->
+    $(".leaflet-control-draw").toggle()
   fullscreen: (e) ->
     $e = $(e.currentTarget)
     if $e.hasClass("active")
