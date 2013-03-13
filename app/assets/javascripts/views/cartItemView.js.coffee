@@ -22,11 +22,10 @@ class App.CartItemView extends Backbone.View
             <a class='m-btn mini play <% if(playing) { %> active <% } %>'><i class=<% if(playing) { %>'icon-pause' <% } else { %> 'icon-play' <% } %>></i></a>
             <a class='m-btn mini forward'><i class=' icon-step-forward'></i></a>
           </div>
-          <ul class='unstyled dimensions-list'>
-            <% _.each(dimensions, function(dim, i) { %>
-              <li class='dimension<% if (i == timelineCounter) { %> active <% } %>'><%= moment(dim.dimension.value).format('DD/MM/YYYY') %></li>
-            <% }) %>
-          </ul>
+          <div class='dimensions-list'>
+            <div class='dimensions-slider'></div>
+          </div>
+          <div id='dimension-value'><%= moment(currentTime).format('DD/MM/YYYY') %></div>
         </div>
       <% } %>
       <div class='opacity-controler <% if(!controllingOpacity) { %> hide <% } %>'>
@@ -41,7 +40,6 @@ class App.CartItemView extends Backbone.View
     "click  .backward"         : "backwardTimeline"
     "click  .forward"          : "forwardTimeline"
     "click  .play"             : "toggleTimeline"
-    "click  .dimension"        : "gotoTime"
     "change .layer-visibility" : "toggleVisibility"
     "click  .center"           : "panToLayer"
     "click  .opacity"          : "toggleOpacity"
@@ -49,7 +47,6 @@ class App.CartItemView extends Backbone.View
 
   removeLayer: ->
     @model.removeFromMap()
-
   toggleClicListener: (e) ->
     $self = $(e.currentTarget)
     $(".query").not($self).removeClass("active")
@@ -82,6 +79,7 @@ class App.CartItemView extends Backbone.View
     else
       @$el.find(".dimensionable").show()
       @model.set controllingDimension: true
+
   toggleTimeline: (e) ->
     $e = $(e.currentTarget)
     if $e.hasClass("active")
@@ -92,14 +90,14 @@ class App.CartItemView extends Backbone.View
       @model.playTimeline()
 
   backwardTimeline: (e) ->
-    @model.showtime(-1)
+    @model.checkTime(-1)
 
   forwardTimeline: (e) ->
-    @model.showtime(1)
+    @model.checkTime(1)
 
-  gotoTime: (e) ->
-    $e = $(e.currentTarget)
-    @model.showtime(0, $e.index())
+  # gotoTime: (e) ->
+  #   $e = $(e.currentTarget)
+  #   @model.showtime(0, $e.index())
 
   panToLayer: (e) ->
     if @model.get("bbox")["CRS:84"]
@@ -113,7 +111,7 @@ class App.CartItemView extends Backbone.View
   initialize: ->
     @changeOpacity()
     @model.on("change:playing", @render, this)
-    @model.on("change:timelineCounter", @render, this)
+    @model.on("redraw", @render, this)
     @model.on("change:opacity", @changeOpacity, this)
     @model.on("removeFromMap", @destroy, this)
     @mapProvider = @options.mapProvider
@@ -133,5 +131,14 @@ class App.CartItemView extends Backbone.View
       change: (e, ui) ->
         that.model.set opacity: ui.value
         true
-
+    if @model.get("dimensions")
+      @$el.find(".dimensions-slider").slider
+        value: that.model.get("timelineCounter")
+        step: 1
+        min: 1
+        max: that.model.get("dimensions").length-1
+        slide: (event, ui) ->
+          dim = that.model.get("dimensions")[ui.value].dimension.value
+          $("#dimension-value").text( moment(dim).format('DD/MM/YYYY') )
+          that.model.showTime(dim, ui.value)
     return this

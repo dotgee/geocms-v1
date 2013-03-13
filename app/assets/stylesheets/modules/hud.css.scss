@@ -112,12 +112,21 @@
     }
   }
   .dimensions-list {
-    @include column-count(3);
-    li.active {
-      font-weight: bold;
-      font-size: 13px;
-      color: #0072BB;
+    // @include column-count(3);
+    // li.active {
+    //   font-weight: bold;
+    //   font-size: 13px;
+    //   color: #0072BB;
+    // }
+    width: 200px;
+    float: left;
+    margin-right: 8px;
+    .ui-slider .ui-slider-handle {
+      width: 10px;
     }
+  }
+  #dimension-value {
+    margin-top: -4px;
   }
   .opacity-controler {
     margin-top: 5px;

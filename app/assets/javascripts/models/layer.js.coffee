@@ -5,7 +5,7 @@ App.Layer = Backbone.RelationalModel.extend
     leaflet: false
     onMap: false
     opacity: 90
-    timelineCounter: 0
+    timelineCounter: 1
     playing: false
     visible: true
     controllingOpacity: false
@@ -38,7 +38,9 @@ App.Layer = Backbone.RelationalModel.extend
   addToMap: ->
     options = {}
     if @get("dimensions") && @get("dimensions")[0]
-      options = {time: @get("dimensions")[0].dimension.value}
+      dim = @get("dimensions")[0].dimension.value
+      options = {time: dim}
+      @set currentTime: dim
     @toLeaflet(options)
     @set({onMap : true})
     @trigger('addOnMap')
@@ -48,30 +50,26 @@ App.Layer = Backbone.RelationalModel.extend
     @set({opacity: value})
 
   playTimeline: ->
-    count = @get("dimensions").length
     that = this
     @set({playing: true})
     @player = setInterval (->
-      timelineCounter = that.get("timelineCounter")
-      that.showtime(1)
-      if timelineCounter == count-1
-        that.pauseTimeline()
+      that.checkTime()
     ), 2000
 
   pauseTimeline:  ->
     clearInterval @player
     @set({playing: false})
 
-  showtime: (step, timelineCounter = @get("timelineCounter")) ->
-    if (timelineCounter + step) >= @get("dimensions").length || (timelineCounter + step) < 0
-      @set({playing: false})
-    else
-      @set(timelineCounter: timelineCounter + step)
-    dim = @get("dimensions")[timelineCounter]
-    if dim
-      time = moment(dim.dimension.value).format('YYYY-MM-DD')
-      @get("leaflet").setParams({time: time}).redraw()
-      @set currentTime: dim.dimension.value
+  checkTime: (step = 1) ->
+    i = @get("timelineCounter")+step
+    next = @get("dimensions")[i]
+    if next then @showTime(next.dimension.value, i) else @pauseTimeline()
+    @trigger("redraw")
+
+  showTime: (currentTime, timelineCounter) ->
+    @set timelineCounter: timelineCounter
+    @set currentTime: currentTime 
+    @get("leaflet").setParams({time: currentTime}).redraw()
 
   initialize: (opts)->
 
