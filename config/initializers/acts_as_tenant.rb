@@ -15,11 +15,12 @@ module ActsAsTenant
         helper_method :current_tenant
 
         private
-          def find_tenant_by_subdomain(fallback)
-            if fallback
-              ActsAsTenant.current_tenant = tenant_class.first
+          def find_tenant_by_subdomain
+            c = tenant_class.where(tenant_column => request.subdomains.first)
+            if c
+              ActsAsTenant.current_tenant = c.first
             else
-              ActsAsTenant.current_tenant = tenant_class.where(tenant_column => request.subdomains.first).first
+              ActsAsTenant.current_tenant = tenant_class.where(tenant_column => request.subdomains.first, default: true).first
             end
             @current_tenant_instance = ActsAsTenant.current_tenant
           end
