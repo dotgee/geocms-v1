@@ -17,10 +17,10 @@ module ActsAsTenant
         private
           def find_tenant_by_subdomain
             c = tenant_class.where(tenant_column => request.subdomains.first)
-            if c
-              ActsAsTenant.current_tenant = c.first
-            else
+            if c.empty?
               ActsAsTenant.current_tenant = tenant_class.where(default: true).first
+            else
+              ActsAsTenant.current_tenant = c.first
             end
             @current_tenant_instance = ActsAsTenant.current_tenant
           end
