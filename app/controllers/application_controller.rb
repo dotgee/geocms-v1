@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   respond_to :html, :json, :xml
   protect_from_forgery
 
-  set_current_tenant_by_subdomain(:account, :subdomain, ENV["MONO_ACCOUNT"].to_bool)
+  set_current_tenant_by_subdomain(:account, :subdomain)
 
   def current_account
     ActsAsTenant.current_tenant

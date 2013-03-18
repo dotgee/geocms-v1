@@ -17,6 +17,6 @@ class Account < ActiveRecord::Base
   validates_uniqueness_of :name
   validates :subdomain, presence: true, uniqueness: true, subdomain: { :reserved => %w(www test) }
 
-  attr_accessible :name, :subdomain, :users_attributes, :logo
+  attr_accessible :name, :subdomain, :users_attributes, :logo, :default
 
 end
