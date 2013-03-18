@@ -1,6 +1,6 @@
 Geocms2::Application.routes.draw do
 
-  constraints(lambda { |r| r.subdomain.present? && r.subdomain != ENV["SUBDOMAIN"]  || ENV["MONO_ACCOUNT"].to_bool }) do
+  # constraints(lambda { |r| ENV["MONO_ACCOUNT"].to_bool }) do
     # Authentication
     get "logout" => "sessions#destroy", :as => "logout"
     get "login" => "sessions#new", :as => "login"
@@ -59,11 +59,11 @@ Geocms2::Application.routes.draw do
     match "/:id", :to => "contexts#show"
 
     root :to => "contexts#new"
-  end
+  # end
 
-  get "signup" => "users#new", :as => "signup"
-  resources :users, :only => [:create]
-  resources :accounts, :only => [:new, :create]
-  root :to => "home#index"
+  # get "signup" => "users#new", :as => "signup"
+  # resources :users, :only => [:create]
+  # resources :accounts, :only => [:new, :create]
+  # root :to => "home#index"
 
 end
