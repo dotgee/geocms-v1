@@ -20,7 +20,7 @@ module ActsAsTenant
             if c
               ActsAsTenant.current_tenant = c.first
             else
-              ActsAsTenant.current_tenant = tenant_class.where(tenant_column => request.subdomains.first, default: true).first
+              ActsAsTenant.current_tenant = tenant_class.where(default: true).first
             end
             @current_tenant_instance = ActsAsTenant.current_tenant
           end
