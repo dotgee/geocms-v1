@@ -1,6 +1,6 @@
 module ActsAsTenant
   module ControllerExtensions
-    def set_current_tenant_by_subdomain(tenant = :account, column = :subdomain, fallback = false)
+    def set_current_tenant_by_subdomain(tenant = :account, column = :subdomain)
       self.class_eval do
         cattr_accessor :tenant_class, :tenant_column
         attr_accessor :current_tenant
@@ -10,7 +10,7 @@ module ActsAsTenant
       self.tenant_column = column.to_sym
 
       self.class_eval do
-        before_filter { |c| c.send(:find_tenant_by_subdomain, fallback) }
+        before_filter { |c| c.send(:find_tenant_by_subdomain) }
 
         helper_method :current_tenant
 
