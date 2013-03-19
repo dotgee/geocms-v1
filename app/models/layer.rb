@@ -38,7 +38,7 @@ class Layer < ActiveRecord::Base
   belongs_to :data_source
   has_many :contexts_layers, :dependent => :destroy, :uniq => true
   has_many :contexts, :through => :contexts_layers
-  has_many :dimensions
+  has_many :dimensions, :order => 'value ASC'
 
   store :bbox, accessors: [:minx, :maxx, :miny, :maxy]
 
@@ -47,8 +47,8 @@ class Layer < ActiveRecord::Base
 
   scope :for_frontend, select(["layers.name", "layers.title", "layers.id", "layers.description",
                        "layers.dimension", "layers.category_id", "data_sources.wms", "layers.metadata_url", "dimensions.value", "category_ids"])
-                       .includes(:data_source).includes(:categories)
-                       .order(:title)
+                       .includes(:data_source).includes(:categories).includes(:dimensions)
+                       .order(:title).order(:value)
 
 
   attr_accessible :description, :name, :title, :wms_url, :data_source_id, :category_ids, :category, :bbox,
