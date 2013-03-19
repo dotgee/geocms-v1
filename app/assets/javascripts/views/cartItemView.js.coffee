@@ -22,10 +22,13 @@ class App.CartItemView extends Backbone.View
             <a class='m-btn mini play <% if(playing) { %> active <% } %>'><i class=<% if(playing) { %>'icon-pause' <% } else { %> 'icon-play' <% } %>></i></a>
             <a class='m-btn mini forward'><i class=' icon-step-forward'></i></a>
           </div>
+          <div id='dimension-value'><%= moment(currentTime).format('DD/MM/YYYY') %></div>
+          <div class='clearfix'></div>
+          <div class='pull-left'><%= moment(dimensions[0].dimension.value).format('DD/MM/YYYY') %></div>
           <div class='dimensions-list'>
             <div class='dimensions-slider'></div>
           </div>
-          <div id='dimension-value'><%= moment(currentTime).format('DD/MM/YYYY') %></div>
+          <div class='pull-left'><%= moment(dimensions[dimensions.length-1].dimension.value).format('DD/MM/YYYY') %></div>
         </div>
       <% } %>
       <div class='opacity-controler <% if(!controllingOpacity) { %> hide <% } %>'>
