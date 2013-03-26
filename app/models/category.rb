@@ -20,7 +20,7 @@ class Category < ActiveRecord::Base
     end
 
     def leafs
-      all.reject! { |c| c.has_children? }
+      all.reject { |c| c.has_children? }
     end
   end
 
