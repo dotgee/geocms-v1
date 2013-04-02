@@ -82,6 +82,23 @@ class Layer < ActiveRecord::Base
     name.index(":") ? name[name.index(":")+1, name.length] : name
   end
 
+  def minx
+    bbox["EPSG:2154"]["table"]["bbox"][0] unless bbox["EPSG:2154"].nil?
+  end
+
+  def miny
+    bbox["EPSG:2154"]["table"]["bbox"][1] unless bbox["EPSG:2154"].nil?
+  end
+
+  def maxx
+    bbox["EPSG:2154"]["table"]["bbox"][2] unless bbox["EPSG:2154"].nil?
+  end
+
+  def maxy
+    bbox["EPSG:2154"]["table"]["bbox"][3] unless bbox["EPSG:2154"].nil?
+  end
+
+
   def self.as_layer(data_source, category, l)
     layer = Layer.find_or_initialize_by_name(name: l.name, title: l.title, crs: l.crs, minx: l.bbox[0], \
             miny: l.bbox[1], maxx: l.bbox[2], maxy: l.bbox[3], category: category, data_source_id: data_source.id, dimension: 'time') # l.dimension_type)
