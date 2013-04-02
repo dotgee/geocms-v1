@@ -36,7 +36,7 @@ xml.ViewContext(:id => @context.uuid, :version => "1.1.0", "xmlns" => "http://ww
         xml.Server(:service => "OGC:WMS", :version => "1.1.1") do
           xml.OnlineResource("xlink:href" => layer.data_source.wms , "xlink:type" => "simple", "xmlns:xlink" => "http://www.w3.org/1999/xlink")
         end
-        xml.Name layer.name[layer.name.index(":")+1, layer.name.length]
+        xml.Name layer.short_name
         xml.Title layer.title
         xml.Abstract layer.description
         xml.MetadataURL do
