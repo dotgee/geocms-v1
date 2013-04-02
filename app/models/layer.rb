@@ -78,6 +78,10 @@ class Layer < ActiveRecord::Base
     # self.save
   end
 
+  def short_name
+    name.index(":") ? name[name.index(":")+1, name.length] : name
+  end
+
   def self.as_layer(data_source, category, l)
     layer = Layer.find_or_initialize_by_name(name: l.name, title: l.title, crs: l.crs, minx: l.bbox[0], \
             miny: l.bbox[1], maxx: l.bbox[2], maxy: l.bbox[3], category: category, data_source_id: data_source.id, dimension: 'time') # l.dimension_type)
