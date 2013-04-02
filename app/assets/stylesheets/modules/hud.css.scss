@@ -111,6 +111,9 @@
       background: none;
     }
   }
+  .dimensionable {
+    height: 50px;
+  }
   .dimensions-list {
     // @include column-count(3);
     // li.active {
@@ -118,12 +121,15 @@
     //   font-size: 13px;
     //   color: #0072BB;
     // }
-    width: 120px;
+    width: 155px;
     float: left;
     margin: 5px 6px 0 9px;
     .ui-slider .ui-slider-handle {
       width: 10px;
     }
+  }
+  .wrap-dates {
+    font-size: 11px;
   }
   #dimension-value {
     display: inline-block;
@@ -131,7 +137,7 @@
   }
   .opacity-controler {
     margin-top: 5px;
-    width: 297px;
+    width: 285px;
     i {
       float: left;
       cursor: pointer;
