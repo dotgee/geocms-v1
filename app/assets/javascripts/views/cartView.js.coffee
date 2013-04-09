@@ -49,29 +49,15 @@ class App.CartView extends Backbone.View
       view.model.get("leaflet").setZIndex(zindex)
 
   addBaseLayer: ->
-    osm = L.tileLayer.wms("http://osm.geobretagne.fr/gwc01/service/wms", {
-      layers: "osm:google",
-      format: 'image/png',
-      transparent: true,
-      continuousWorld: true,
-      unloadInvisibleTiles: false,
-      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-        'Imagery © <a href="http://geobretagne.fr/accueil/">GeoBretagne</a>'
-    })
     base_layer = new App.Layer
-      leaflet: osm
-      title: "OpenStreetMap"
+      leaflet: window.App.base
+      title: window.App.base.title
       base: true
       dimension: false
       metadata_url: false
       data_source: false
       opacity: 100
-      bbox:
-        "EPSG:2154":
-          table:
-            bbox: [-357823.236499999999, 6037008.69390000030, 894521.034699999960, 7289352.96509999968]
-
+      bbox: window.App.base.bbox
     @collection.add(base_layer)
 
   render: ->

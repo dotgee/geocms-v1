@@ -108,7 +108,7 @@ class App.CartItemView extends Backbone.View
     else if @model.get("bbox")["EPSG:4326"]
       projBox = @mapProvider.arrayToLatLngBounds(@model.get("bbox")["EPSG:4326"].table.bbox, "EPSG:4236")
     else
-      projBox = @mapProvider.bboxTo4326(@model.get("bbox")["EPSG:2154"].table.bbox)
+      projBox = @mapProvider.bboxTo4326(@model.get("bbox")[CUR_PROJ].table.bbox)
     @mapProvider.fitBounds(projBox)
 
   initialize: ->
