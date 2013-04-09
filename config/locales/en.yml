@@ -18,9 +18,14 @@ en:
       fullscreen: Fullscreen
       hud: Hide
   account:
-    new: "Create a new account"
+    new: "Create a new account"  
+  datasource:
+    import: "Import"
+    new: "Create a new datasource"
   user:
     sign_up: "Sign up !"
+  category:
+    new_root: "Add a root category"
   session:
     invalid_credentials: "Wrong email or password !"
     logged_in: "Logged in !"

@@ -1,33 +1,31 @@
 .page-header
   h1= @category.name
 
-= back_link @category
 .clearfix
 - if !@layers.empty?
-  h5 Layers
   = paginate @layers
   table.table.table-striped.table-backend
     thead
       tr
-        th
+        th= t(:layers)
         th
         th
     tbody
       - @layers.page(params[:page]).each do |layer|
         == render layer
-  = link_to t([:actions, :layers, :new]), [:new, :backend, @category, :layer], :class => "m-btn"
+  = link_to t("layer.create"), [:new, :backend, @category, :layer], :class => "m-btn blue"
   = paginate @layers
 - elsif !@category.is_childless?
-  h5 Categories
-  table.table.table-striped.table-backend
+  table.table.table-striped.table-backend.categories-index
     thead
       tr
-        th
+        th= t(:categories)
         th
         th
     tbody
       - @category.children.each do |category|
         == render category
+  = link_to t(:add_child), new_backend_category_path(:parent_id => @category.id), :class => "m-btn blue"
 - else
-  = link_to t([:actions, :layers, :new]), [:new, :backend, @category, :layer], :class => "m-btn"
-= link_to t(:add_child), new_backend_category_path(:parent_id => @category.id), :class => "m-btn"
+  = link_to t("layer.create"), [:new, :backend, @category, :layer], :class => "m-btn blue"
+  = link_to t(:add_child), new_backend_category_path(:parent_id => @category.id), :class => "m-btn blue"
