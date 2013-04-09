@@ -29,18 +29,37 @@
 
 .navbar.backend {
   .container {
-    width: 1000px;
+    width: 1300px;
   }
   .nav {
-    > li > a {
-      color: #868686;
-      &:hover, &:focus {
-        color: #E6E6E6;
+    margin: 9px 10px 0 0;
+    > li {
+      margin: 5px;
+      > a {
+        font-family: 'Open Sans Condensed';
+        font-size: 13px;
+        color: #FFF;
+        display: inline-block;
+        background: #28353D;
+        margin: 0px;
+        padding: 0px 30px;
+        text-transform: uppercase;
+        border-radius: 4px;
+        height: 40px;
+        line-height: 40px;
+        font-weight: bolder;
+        &:hover, &:focus {
+          color: #E6E6E6;
+        }
+        &.brand {
+          background: none;
+        }
       }
     }
   }
   margin-bottom: 0px;
   .navbar-inner {
-    background: #222222;
+    background: #3c4e5a;
+    min-height: 70px;
   }
 }

@@ -1,6 +1,11 @@
 .table-backend {
+  th {
+    color: #CCC;
+    font-weight: bold;
+  }
   td {
     vertical-align: middle;
+    line-height: 23px;
     &.default {
       color: #666;
       font-style: italic;
@@ -14,7 +19,7 @@
   }
   &.categories-index {
     span.left-space {
-      padding: 0 17px;
+      padding: 0 24px;
     }
   }
 }

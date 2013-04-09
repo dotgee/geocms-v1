@@ -3,14 +3,15 @@ body, html {
 }
 
 body {
-  max-width: 1600px;
-  @include box-shadow(rgba(0, 0, 0, 0.1) 0px 0 20px 10px);
+  max-width: 1360px;
   margin: 0 auto;
+  @include box-shadow(rgba(0,0,0,0.1) 0px 0 20px 10px);
   position: relative;
 }
 
 body.backend{
-  background-color: #F4F4F4;
+  background-color: #e4e4e4;
+  font: normal 15px/25px "Open Sans", Arial, sans-serif;
 }
 // EXPLORE LAYOUT
 
@@ -106,9 +107,14 @@ body.fullscreen{
   height: 170px;
 }
 
+#wrap {
+  background: #eee url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAN1wAADdcBQiibeAAAAAd0SU1FB9wHFwcfBBm+GcAAAAAySURBVBjTY2RgYBB5+vTpGwYkIC0tjSHG+PTpUwZiABMDkYAGCqWlpUXQBbGJDQXPAAACQA3p/nxRSgAAAABJRU5ErkJggg==);
+}
+
 .main-container {
-  width: 1000px;
-  padding: 20px;
+  width: 1200px;
+  padding: 20px 40px;
+  margin: 40px;
   background: white;
   &.no-color {
     background: transparent;
