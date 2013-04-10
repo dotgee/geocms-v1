@@ -29,5 +29,5 @@ html(lang="en")
     = include_gon
     = javascript_include_tag :application
     
-    = javascript_include_tag "projs/#{current_tenant.crs.value.gsub!(':','-')}"
+    = javascript_include_tag "projs/#{current_tenant.crs.value.gsub(':','-')}"
     == yield :javascripts
