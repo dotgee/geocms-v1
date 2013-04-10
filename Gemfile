@@ -28,7 +28,7 @@ gem 'jquery-rails', "~> 2.1.4"
 
 # JSON Views
 gem 'oj'
-gem 'rabl'
+gem 'rabl', '0.7.9'
 #gem 'yajl-ruby'
 gem 'gon'
 
@@ -78,3 +78,9 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'carrierwave'
 gem "rmagick"
 gem "nokogiri", "1.4.7"
+
+#generation de thumbnail
+gem 'sidekiq'
+gem 'slim'
+gem 'sinatra'
+

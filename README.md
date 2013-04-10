@@ -48,13 +48,21 @@ The installation process should be rather straightforward once you make sure tha
       host: localhost
   ```
 
-3. Customize your installation
+3. Configure context thumbnails creation
+
+  ```bash
+  // install npm if necessary
+  $ npm install -g phantomjs
+  $ RAILS_ENV=production sidekiq -d -l log/sidekiq.log
+  ```
+
+4. Customize your installation
 
   You can edit 'config/application.yml' and define the two parameters : 
   - MONO_ACCOUNT (boolean) : Defines if you want to run only one instance or allow multiple accounts to be created on your DotGeoCMS.
   - SUBDOMAIN (string) : DotGeoCMS uses subdomain for every account. So, if you are running DotGeoCMS on a url with a subdomain, you have to write it here. (eg : I'm deploying to 'xxxxx.dotgeocms.com', if I want to run multiple accounts, I will mark 'xxxxx' as my subdomain). Note that you will have to configure your web server accordingly to accept any subdomains.
 
-4. Run it !
+5. Run it !
   
   We recommend using [pow](http://pow.cx/) if you're just testing it on your local machine as it provides an easy way to use subdomains on DotGeoCMS.
   Don't forget to run bundle install, open the website and you're done ! We hope you will enjoy our application !

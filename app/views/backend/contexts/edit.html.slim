@@ -4,6 +4,9 @@
 = simple_form_for([:backend, @context]) do |f|
   = f.input :name, :input_html => { :class => "input-xxlarge" }
   = f.input :description, :input_html => { :class => "input-xxlarge", :rows => "5" }
+  = f.input :preview
+  - if @context.preview?
+    = image_tag @context.preview	
   .form-actions
     .m-btn-group
       = f.submit :class => "m-btn blue"
