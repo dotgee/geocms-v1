@@ -2,8 +2,9 @@ fr:
   actions:
     layers: 
       new: "Ajouter couche"
-  browse: "Naviguer"
+  browse: "Parcourir"
   edit: "Modifier"
+  destroy: "Supprimer"
   add_child: Ajouter enfant
   context:
     refreshing: "Merci de patienter"
@@ -23,6 +24,9 @@ fr:
       tools: "Outils"
       fullscreen: "Plein écran"
       hud: "Masquer"
+  datasource:
+    import: "Importer"
+    new: "Créer une nouvelle source de données"
   account:
     new: "Créer un nouveau compte"
   user:
@@ -30,9 +34,11 @@ fr:
   session:
     invalid_credentials: "Mauvais email ou password"
     logged_in: "Authentification réussie"
+  category: 
+    new_root: "Ajouter une catégorie mère"
   menu:
     categories: "Catégories"
-    data_sources: "Sources de données"
+    data_sources: "Sources"
     users: "Utilisateurs"
     preferences: "Préferences"
     logout: "Déconnexion"
@@ -50,6 +56,7 @@ fr:
   data_source:
     wait: "Please wait while we find the layers. This shouldn't be too long."
   layers: "Couches"
+  categories: "Catégories"
   add_a_new_layer: "Ajouter une nouvelle couche"
   layers_catalog: "Catalogue de données géoréférencées"
   legend: "Légende"

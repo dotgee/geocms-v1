@@ -4,7 +4,7 @@ xml.ViewContext(:id => @context.uuid, :version => "1.1.0", "xmlns" => "http://ww
     xml.BoundingBox(:SRS => "EPSG:2154", :maxx => @context.maxx, :maxy => @context.maxy, :minx => @context.minx, :miny => @context.miny)
     xml.Title @context.name
     xml.Extension do
-      xml.tag!("ol:maxExtent", :maxx => @context.maxx, :maxy => @context.maxy, :minx => @context.minx, :miny => @context.miny, "xmlns:ol" => "http://openlayers.org/context")
+      xml.tag!("ol:maxExtent", :maxx => "2146865.30590000004", :maxy => "8541697.23630000092", :minx => "-357823.236499999999", :miny => "6037008.69390000030", "xmlns:ol" => "http://openlayers.org/context")
     end
   end
   xml.LayerList do
