@@ -32,8 +32,6 @@ html(lang="en")
               ul.nav.pull-right
                 li= link_to t("menu.logout"), logout_path
       #page
-        - if @category
-          = breadcrumb_for_category @category, true
         .container.main-container class=(content_for?(:container_class) ? yield(:container_class) : "")
           == render "layouts/messages"
           == yield

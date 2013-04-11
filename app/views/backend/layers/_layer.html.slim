@@ -1,6 +1,7 @@
 tr
   td = layer.title
   td
-    = link_to t("edit"), [:edit, :backend, @category, layer], :class => "m-btn  blue  mini"
+    = link_to [:edit, :backend, @category, layer], :class => "m-btn mini blue icn-only", :rel => "tooltip", "data-original-title" => t(:edit) do
+      i.icon-pencil.icon-white
     = link_to [:backend, @category, layer], :confirm => 'Are you sure?', :method => :delete, :class => "m-btn red icn-only mini" do
       i.icon-trash.icon-white

@@ -6,14 +6,20 @@ table.table.table-striped.table-backend
   thead
     tr
       th Name
-      th
+      th width="40px"
+      th width="40px"
+      th width="40px"
   tbody
     - @data_sources.each do |data_source|
       tr
         td = data_source.name
         td
-          = link_to t("datasource.import"), [:import, :backend, data_source], :class => "m-btn mini import-btn"
-          = link_to t(:edit), edit_backend_data_source_path(data_source), :class => "m-btn mini blue"
+          = link_to [:import, :backend, data_source], :class => "m-btn mini blue icn-only", :rel => "tooltip", "data-original-title" => t("datasource.import") do
+            i.icon-download.icon-white
+        td
+          = link_to edit_backend_data_source_path(data_source), :class => "m-btn mini blue icn-only", :rel => "tooltip", "data-original-title" => t(:edit) do
+            i.icon-pencil.icon-white
+        td
           = link_to [:backend, data_source], :confirm => 'Are you sure?', :method => :delete, :class => "m-btn mini red icn-only" do
             i.icon-trash.icon-white 
 br

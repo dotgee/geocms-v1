@@ -30,6 +30,7 @@ gem 'jquery-rails', "~> 2.1.4"
 # JSON Views
 gem "multi_json", "1.5.0"
 gem 'oj', "2.0.2"
+gem 'rabl', "0.7.9"
 #gem 'yajl-ruby'
 gem 'gon'
 
