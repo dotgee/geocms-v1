@@ -1,5 +1,5 @@
 .container-fluid.container-infos
-  h2= @current_tenant_instance.name
+  h2= current_tenant.name
 .row-fluid.row-thumbnails
   ul.thumbnails
     li.span3
@@ -10,6 +10,8 @@
         = link_to "#{ENV["PREFIX"]}/#{context.uuid}", :class => "thumbnail-link" do
           .thumbnail.unbordered
             .placeholder
+              - if context.preview?
+                = image_tag context.preview.url
             .caption
               h4 = context.name
               p= context.description

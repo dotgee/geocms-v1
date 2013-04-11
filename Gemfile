@@ -30,7 +30,6 @@ gem 'jquery-rails', "~> 2.1.4"
 # JSON Views
 gem "multi_json", "1.5.0"
 gem 'oj', "2.0.2"
-gem 'rabl', "0.7.9"
 #gem 'yajl-ruby'
 gem 'gon'
 
@@ -71,7 +70,7 @@ gem "kaminari"
 gem "tire"
 
 # WYSIWYG
-gem "ckeditor"#, :git => "git://github.com/galetahub/ckeditor.git"
+gem "ckeditor"
 
 #
 # tag layer (manage keywords)
@@ -80,3 +79,9 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'carrierwave'
 gem "rmagick"
 gem "nokogiri", "1.4.7"
+
+#generation de thumbnail
+gem 'sidekiq'
+gem 'slim'
+gem 'sinatra'
+

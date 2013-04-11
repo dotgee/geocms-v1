@@ -1,5 +1,6 @@
 class App.Router extends Backbone.Router
   routes:
+    "contexts": "listing"
     "" : "index"
     ":id" : "show"
     ":id/share": "show"
@@ -44,3 +45,5 @@ class App.Router extends Backbone.Router
             position: l.layer.position
             visible: l.layer.visibility
           that.cartCollection.add(layer)
+  listing: () ->
+    #do nothing

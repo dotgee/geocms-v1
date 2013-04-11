@@ -1,7 +1,7 @@
 class LayersController < ApplicationController
 
   def index
-    @layers = @current_tenant_instance.layers.for_frontend
+    @layers = current_tenant.layers.for_frontend
     respond_with @layers
   end
 
@@ -11,7 +11,7 @@ class LayersController < ApplicationController
   end
 
   def show
-    @layer = @current_tenant_instance.layers.find(params[:id])
+    @layer = current_tenant.layers.find(params[:id])
     respond_with(@layer)
   end
 end
