@@ -22,7 +22,7 @@ module ActsAsTenant
             else
               ActsAsTenant.current_tenant = c.first
             end
-            @current_tenant_instance = ActsAsTenant.current_tenant
+            #@current_tenant_instance = ActsAsTenant.current_tenant
           end
 
           # helper method to have the current_tenant available in the controller
