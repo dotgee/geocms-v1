@@ -3,7 +3,7 @@ class ContextPreviewWorker
   include Rails.application.routes.url_helpers
 
   def perform(context, url)
-    puts context
+
     t = Tempfile.new([context["uuid"], ".png"])
     t.binmode
     #TODO
