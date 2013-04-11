@@ -8,7 +8,7 @@ class Context < ActiveRecord::Base
   accepts_nested_attributes_for :contexts_layers
   before_create :generate_uuid
 
-  after_create :generate_preview
+  after_save :generate_preview
   
   def contexts_layers_attributes=(attrs)
     layers = []
@@ -38,7 +38,10 @@ class Context < ActiveRecord::Base
   end
 
   private
-    def generate_preview(url)
+    def generate_preview(url = nil, force = false)
+      url ||= ENV["HOST_URL"]
+      return true if url.nil?
+      return true if preview? and !force
       ContextPreviewWorker.perform_async(self, url)
     end
 end
