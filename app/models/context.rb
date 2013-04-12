@@ -41,7 +41,7 @@ class Context < ActiveRecord::Base
     def generate_preview(url = nil, force = false)
       url ||= ENV["HOST_URL"]
       return true if url.nil?
-      return true if preview? and !force
+      #return true if preview? and !force
       ContextPreviewWorker.perform_async(self, url)
     end
 end

@@ -8,11 +8,15 @@ class ContextPreviewWorker
     t.binmode
     #TODO
     #catch errors
-    `phantomjs #{Rails.root}/script/thumbnail.js #{url_for_context(context, url)} #{t.path}` 
+    cmd = "phantomjs #{Rails.root}/script/thumbnail.js #{url_for_context(context, url)} #{t.path}"
+    puts cmd
+    `#{cmd}`
+
     t.rewind
     ctx = Context.find(context["id"])
     ctx.preview = t
-    ctx.save 
+    Context.skip_callback(:save, :after, :generate_preview)
+    ctx.save
   end
   
   private
