@@ -4,10 +4,10 @@
   .hud
     .map-controls
       .m-btn-group
-        button.save.m-btn.blue-stripe
-          = t "context.save"
+        button.save.m-btn.blue
+          span= t "context.save"
         button.share.m-btn.disabled disabled="disabled"
-          = t "context.share"
+          span= t "context.share"
           '
           i.m-icon-swapright
         = link_to geovisu_link, :class => "m-btn geovisu disabled", :target => "geovisu" do
@@ -36,7 +36,7 @@
           button.m-btn.icn-only.btn-close.blue
             .close &times;
           .page-header
-            h3 = t "layers_catalog"
+            h1 = t "layers_catalog"
           .container-fluid
             .m-input-append.layers-search
               input.m-wrap.search-input size="16" type="text" placeholder=t("layer.search") name="search-layer"

@@ -7,11 +7,12 @@ body {
   margin: 0 auto;
   @include box-shadow(rgba(0,0,0,0.1) 0px 0 20px 10px);
   position: relative;
+  font: normal 13px/25px "Open Sans", Arial, sans-serif;
+  font-weight: 300;
 }
 
 body.backend{
-  background-color: #e4e4e4;
-  font: normal 15px/25px "Open Sans", Arial, sans-serif;
+  background-color: $mercury;
 }
 // EXPLORE LAYOUT
 
@@ -109,7 +110,7 @@ body.fullscreen{
 
 .placeholder {
   width: 100%;
-  background: #E3E3E3;
+  background: $clouds;
   height: 170px;
 }
 

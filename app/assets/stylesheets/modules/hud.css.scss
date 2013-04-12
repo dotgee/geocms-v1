@@ -1,7 +1,7 @@
 // LEFT NAVBAR
 
 .hud {
-  color: #3C4E5A;
+  color: $oxford_blue;
   z-index: 1000;
   position: absolute;
   left: 0;
@@ -153,6 +153,9 @@
 }
 
 #layer-list {
+  label {
+    font-size: 13px;
+  }
   padding: {
     left: 0;
     right: 0;
@@ -194,7 +197,7 @@
       margin-top: 4px;
     }
     &:hover {
-      background: #3C4E5A;
+      background: $oxford_blue;
     }
   }
 }
