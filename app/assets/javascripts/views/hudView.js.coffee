@@ -25,12 +25,18 @@ class App.HudView extends Backbone.View
   open: ->
     @$el.css("left", "0")
     $("#map").css("left", "335px")
-    @mapProvider.invalidateSize()
+    @invalidateMap()
 
   close: ->
     @$el.css("left", -@$el.width())
     $("#map").css("left", "0")
-    @mapProvider.invalidateSize()
+    @invalidateMap()
+
+  invalidateMap: ->
+    that = this
+    setTimeout( ->
+      that.mapProvider.invalidateSize()
+    ,1000);
 
   saveContext: (e) ->
     e.preventDefault()
