@@ -5,7 +5,7 @@ fr:
   browse: "Parcourir"
   edit: "Modifier"
   destroy: "Supprimer"
-  add_child: Ajouter enfant
+  add_child: "Créer une catégorie enfant"
   context:
     refreshing: "Merci de patienter"
     save: "Sauvegarder"

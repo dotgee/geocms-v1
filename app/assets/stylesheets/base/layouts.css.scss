@@ -59,6 +59,12 @@ body.fullscreen{
   }
 }
 
+.backend {
+  .row-thumbnails {
+    margin: 0 -20px;
+  }
+}
+
 .thumbnail.unbordered {
   border: none;
   @include border-radius(0);
