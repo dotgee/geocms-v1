@@ -10,6 +10,8 @@ class Context < ActiveRecord::Base
 
   after_save :generate_preview
   
+  default_scope order("created_at DESC")
+
   def contexts_layers_attributes=(attrs)
     layers = []
     unless attrs.nil?
