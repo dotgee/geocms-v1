@@ -2,11 +2,16 @@ class Context < ActiveRecord::Base
   acts_as_tenant(:account)
   has_many :contexts_layers, :dependent => :destroy
   has_many :layers, :through => :contexts_layers, :uniq => true
+  mount_uploader :preview, ContextPictureUploader
 
   attr_accessible :maxx, :maxy, :minx, :miny, :name, :zoom, :description, :center_lng, :center_lat, :layer_ids, :uuid, :contexts_layers_attributes
   accepts_nested_attributes_for :contexts_layers
   before_create :generate_uuid
+
+  after_save :generate_preview
   
+  default_scope order("created_at DESC")
+
   def contexts_layers_attributes=(attrs)
     layers = []
     unless attrs.nil?
@@ -33,4 +38,12 @@ class Context < ActiveRecord::Base
   def bbox
     [minx, miny, maxx, maxy].join(",")
   end
+
+  private
+    def generate_preview(url = nil, force = false)
+      url ||= ENV["HOST_URL"]
+      return true if url.nil?
+      #return true if preview? and !force
+      ContextPreviewWorker.perform_async(self, url)
+    end
 end

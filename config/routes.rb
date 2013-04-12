@@ -1,5 +1,6 @@
 Geocms2::Application.routes.draw do
-
+   require 'sidekiq/web'
+   mount Sidekiq::Web => '/sidekiq'
   # constraints(lambda { |r| ENV["MONO_ACCOUNT"].to_bool }) do
     # Authentication
     get "logout" => "sessions#destroy", :as => "logout"
@@ -40,7 +41,11 @@ Geocms2::Application.routes.draw do
       end
 
       resources :users
-      resources :contexts
+      resources :contexts do
+	member do
+	  get 'refresh_preview'
+	end
+      end
 
     end
 
@@ -55,7 +60,7 @@ Geocms2::Application.routes.draw do
     resources :contexts
 
     # Explore
-    match "/:id/share", :to => "contexts#share"
+    match "/:id/share", :to => "contexts#share", :as => :share_context
     match "/:id", :to => "contexts#show"
 
     root :to => "contexts#new"

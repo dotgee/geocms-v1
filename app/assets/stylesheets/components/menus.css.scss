@@ -5,6 +5,8 @@
   top: 0;
   a {
     @include unstyled-link;
+    font: "Open Sans Condensed", Arial, sans-serif;
+    font-weight: bolder;
     float: left;
     text-align: center;
     overflow: hidden;
@@ -12,9 +14,10 @@
     line-height: 28px;
     padding: 0 10px 0 5px;
     height: 30px;
-    background: #f8f8f8;
-    color: #3c4e5a;
-    border-right: #3c4e5a 1px solid;
+    background: $clouds;
+    color: $midnight_blue;
+    border-right: $concrete 1px solid;
+    text-transform: uppercase;
     &:first-child {
       border-radius: 0 0 0 4px;
     }

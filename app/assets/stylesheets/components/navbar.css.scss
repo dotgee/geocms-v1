@@ -40,7 +40,7 @@
         font-size: 13px;
         color: #FFF;
         display: inline-block;
-        background: #28353D;
+        background: $outer_space;
         margin: 0px;
         padding: 0px 30px;
         text-transform: uppercase;
@@ -59,7 +59,7 @@
   }
   margin-bottom: 0px;
   .navbar-inner {
-    background: #3c4e5a;
+    background: $oxford_blue;
     min-height: 70px;
   }
 }

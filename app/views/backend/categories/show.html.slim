@@ -1,5 +1,5 @@
-.page-header
-  h1= @category.name
+h1= @category.name
+= breadcrumb_for_category @category, true
 
 .clearfix
 - if !@layers.empty?
@@ -16,12 +16,14 @@
   = link_to t("layer.create"), [:new, :backend, @category, :layer], :class => "m-btn blue"
   = paginate @layers
 - elsif !@category.is_childless?
-  table.table.table-striped.table-backend.categories-index
+  table.table.table-striped.table-backend
     thead
       tr
         th= t(:categories)
-        th
-        th
+        th width="40px"
+        th width="40px"
+        th width="40px"
+        th width="40px"
     tbody
       - @category.children.each do |category|
         == render category

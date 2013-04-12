@@ -22,6 +22,7 @@ group :development do
   gem "bullet"
   gem 'newrelic_rpm'
   gem 'meta_request', '0.2.0'
+  gem 'coffee-rails-source-maps'
 end
 
 gem 'jquery-rails', "~> 2.1.4"
@@ -70,7 +71,7 @@ gem "kaminari"
 gem "tire"
 
 # WYSIWYG
-gem "ckeditor"#, :git => "git://github.com/galetahub/ckeditor.git"
+gem "ckeditor"
 
 #
 # tag layer (manage keywords)
@@ -79,3 +80,9 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'carrierwave'
 gem "rmagick"
 gem "nokogiri", "1.4.7"
+
+#generation de thumbnail
+gem 'sidekiq'
+gem 'slim'
+gem 'sinatra'
+

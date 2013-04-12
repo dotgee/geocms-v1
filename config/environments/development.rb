@@ -40,6 +40,5 @@ Geocms2::Application.configure do
     Bullet.enable                = false
     Bullet.bullet_logger         = true
     Bullet.rails_logger          = true
-    Bullet.disable_browser_cache = true
   end
 end

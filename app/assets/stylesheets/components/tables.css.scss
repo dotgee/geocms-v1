@@ -16,6 +16,9 @@
     .m-btn {
       margin-top: 0;
     }
+    .m-btn-group .m-btn {
+      float: none;
+    }
   }
   &.categories-index {
     span.left-space {
