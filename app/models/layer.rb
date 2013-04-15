@@ -112,6 +112,7 @@ class Layer < ActiveRecord::Base
     tire.search do
       # TODO: Scope by account
       query { string "title:#{params[:query]}" } if params[:query].present?
+      size 50
     end
   end
 
