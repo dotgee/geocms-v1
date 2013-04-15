@@ -15,7 +15,7 @@
 //= require mustache
 
 //= require backbone/lodash.underscore.min
-//= require backbone/backbone
+//= require backbone/backbone.min
 //= require backbone/backbone-relational
 //= require backbone/backbone-forms.min
 //= require backbone/backbone-forms-bootstrap
