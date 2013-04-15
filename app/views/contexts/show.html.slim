@@ -1,5 +1,5 @@
 = content_for :body_class, "fullscreen"
-= content_for :context_name, @context.name
+= content_for :context_name, @context.name.html_safe
 .wrapper
   .hud
     .map-controls
