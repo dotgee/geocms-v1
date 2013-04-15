@@ -19,9 +19,9 @@ html(lang="en")
           ul.nav.nav-branding
             li= link_to root_path, :class => "brand" do
               = logo_for_tenant
-            - if content_for?(:context_name)
               li= link_to "#", :class => "brand brand-context" do
-                = "| #{yield(:context_name)}"
+                = "#{current_tenant.name}"
+                = " | #{yield(:context_name)}" if content_for?(:context_name)
           .top-menu
             = link_to (t "maps"), contexts_path
             - if logged_in?
