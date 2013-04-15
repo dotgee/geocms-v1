@@ -49,7 +49,7 @@ class App.CatalogView extends Backbone.View
       success: (data) ->
         layers = []
         layer_ids = _.each(data, (layer) ->
-          layers.push(that.layers.get(layer.name))
+          layers.push(that.layers.get(layer.id))
         )
         layerCollection = new App.LayerCollection(layers)
         that.collection = layerCollection

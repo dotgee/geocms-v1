@@ -1,6 +1,5 @@
 App.Layer = Backbone.RelationalModel.extend
   urlRoot: GEOCMS_PREFIX+"/layers"
-  idAttribute: "name"
   defaults: 
     leaflet: false
     onMap: false
