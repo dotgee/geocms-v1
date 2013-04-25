@@ -18,10 +18,6 @@ node :srs do |o|
   o.respond_to?(:srs) ? o.srs : o.crs
 end
 
-node :title do |t|
-  t.title.humanize
-end
-
 node :default_style, :if => lambda { |o| o.respond_to?(:default_style) } do |l|
   l.default_style
 end
