@@ -9,7 +9,7 @@ html(lang="en")
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:400,300,600"
     = stylesheet_link_tag :application
-    /[if lt IE 9] 
+    /[if lt IE 9]
       = stylesheet_link_tag "leaflet/leaflet.ie"
     = csrf_meta_tags
   body class=(yield :body_class)
@@ -28,7 +28,9 @@ html(lang="en")
               = link_to "Admin", backend_root_path
     == yield
     javascript:
-      var GEOCMS_PREFIX = "#{ENV["PREFIX"]}"
+      var GEOCMS_PREFIX = "#{ENV["PREFIX"]}",
+          CUR_PROJ      = "#{current_tenant.crs.value}";
     = include_gon
     = javascript_include_tag :application unless content_for?(:no_js)
+    = javascript_include_tag "projs/#{current_tenant.crs.value.gsub(':','-')}"
     == yield :javascripts

@@ -3,15 +3,19 @@ class Dimension < ActiveRecord::Base
 
   attr_accessible :layer_id, :value
 
+  default_scope order("value ASC")
+
   validates :layer_id, presence: true
   validates :value, uniqueness: { scope: :layer_id }
 
-  def self.create_dimensions(layer, values)
-    values = values.split(",") unless values.is_a?(Array)
+  class << self
+    def create_dimension_values(layer, values)
+      values = values.split(',') unless values.is_a?(Array)
 
-    values.each do |v|
-      Dimension.create!(layer_id: layer.id, value: v)
+      values.each do |val|
+        layer.dimensions.create(value: val)
+      end
+      # self.save
     end
   end
-
 end

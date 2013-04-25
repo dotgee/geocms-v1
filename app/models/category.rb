@@ -8,16 +8,12 @@ class Category < ActiveRecord::Base
   has_ancestry :cache_depth => true
   acts_as_list scope: [:account_id, :ancestry]
 
-  scope :receiver, where(:default => true)
   scope :ordered, select([:name, :id, :slug, :ancestry]).ordered_by_ancestry.order("position asc")
   attr_accessible :name, :position, :parent_id
-      
+
   before_save :cache_ancestry
 
   class << self
-    def for_select
-      Category.sort_by_ancestry(Category.all)
-    end
 
     def leafs
       all.reject { |c| c.has_children? }

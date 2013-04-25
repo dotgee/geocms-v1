@@ -1,6 +1,6 @@
 App.Layer = Backbone.RelationalModel.extend
   urlRoot: GEOCMS_PREFIX+"/layers"
-  defaults: 
+  defaults:
     leaflet: false
     onMap: false
     opacity: 90
@@ -25,6 +25,18 @@ App.Layer = Backbone.RelationalModel.extend
       })
       tileLayer.setParams(options)
       @set leaflet: tileLayer
+
+  getBBOX: ->
+    that = @
+    unless _.isArray(@get("bbox"))
+      url = GEOCMS_PREFIX+"/layers/"+@get("id")+"/bbox"
+      $.ajax
+        dataType: "json"
+        url: url
+        async: false
+        success: (data) ->
+          that.set bbox: data
+    return @get("bbox")
 
   changeOpacity: (opacity) ->
     @set opacity: opacity
@@ -67,7 +79,7 @@ App.Layer = Backbone.RelationalModel.extend
 
   showTime: (currentTime, timelineCounter) ->
     @set timelineCounter: timelineCounter
-    @set currentTime: currentTime 
+    @set currentTime: currentTime
     @get("leaflet").setParams({time: currentTime}).redraw()
 
   initialize: (opts)->

@@ -1,6 +1,6 @@
 object @layer
 
-attributes :id, :name, :description, :category_ids, :template, :metadata_url, :metadata_identifier
+attributes :id, :name, :description, :category_ids, :template, :metadata_url, :metadata_identifier, :crs
 
 node :dimension do |o|
   o.respond_to?(:dimension) ? o.dimension : ( o.respond_to?(:time_dimension) && o.time_dimension ? 'time' :  nil )
@@ -11,7 +11,11 @@ node :dimension_values do |o|
 end
 
 node :bbox do |o|
-  o.bbox
+  o.bbox if o.respond_to?(:bbox)
+end
+
+node :srs do |o|
+  o.respond_to?(:srs) ? o.srs : o.crs
 end
 
 node :title do |t|

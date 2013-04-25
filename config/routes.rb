@@ -5,8 +5,8 @@ Geocms2::Application.routes.draw do
     # Authentication
     get "logout" => "sessions#destroy", :as => "logout"
     get "login" => "sessions#new", :as => "login"
-    resources :users
-    resources :sessions
+    resources :users, :only => [:new, :create]
+    resources :sessions, :only => [:new, :create, :destroy]
 
 
     # Backend
@@ -40,11 +40,11 @@ Geocms2::Application.routes.draw do
         end
       end
 
-      resources :users
+      resources :users, :only => :index
       resources :contexts do
-	member do
-	  get 'refresh_preview'
-	end
+      	member do
+      	  get 'refresh_preview'
+      	end
       end
 
     end
@@ -53,6 +53,9 @@ Geocms2::Application.routes.draw do
     resources :layers, :only => [:index, :show] do
       collection do
         get "search"
+      end
+      member do
+        get "bbox"
       end
     end
     match "/categories/:category_id/layers/", :to => "categories#layers"

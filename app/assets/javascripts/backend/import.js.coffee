@@ -58,10 +58,10 @@ class LayerModalView extends Backbone.View
           that.$el.modal("hide")
           that.model.set({imported: true})
           $("#layer-import").show()
-          that.undelegateEvents()
         error: (model, response) ->
           alert("Il y a eu une erreur lors de l'import. Merci de verifier si la couche a été créée.")
           that.$el.modal("hide")
+      @undelegateEvents()
   render: ->
     @$el.modal()
     @$el.find(".modal-body").html(@form.el)
@@ -113,6 +113,7 @@ class LayerView extends Backbone.View
 data_source_id = $("#data-source-id").data("id");
 imported = new ImportCollection()
 imported.reset(gon.layers)
+console.log gon.layers
 view = new LayerView({collection: imported})
 view.render()
 

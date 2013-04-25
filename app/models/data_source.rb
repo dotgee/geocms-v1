@@ -13,17 +13,5 @@ class DataSource < ActiveRecord::Base
       ROGC::LayerPresenter.new(layer)
     end
     @layers
-    ### geoserver = WmsGetcapabilities::Geoserver.new(self.wms)
-    ### geoserver.get_capabilities
-    ### geoserver.layers
-    
-    # category = Category.receiver.first
-
-    # ActiveRecord::Base.transaction do
-    #   layers.each do |l|
-    #     layer = Layer.as_layer(self, category, l)
-    #   end
-    # end
-    #layers
   end
 end

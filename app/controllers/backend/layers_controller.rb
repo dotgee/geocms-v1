@@ -13,8 +13,7 @@ class Backend::LayersController < Backend::ApplicationController
 
   def getfeatures
     layer = Layer.find(params[:id])
-    @features = WMS::Client.new(layer.data_source.wms, {:layer_name => layer.name}).features_list
-    @features = [layer.name[layer.name.index(":")+1, layer.name.length]] if @features.empty?
+    @features = WMS::Client.new(layer.data_source_wms, {:layer_name => layer.name}).features_list
     respond_to do |format|
       format.json { render json: @features }
     end
@@ -33,13 +32,17 @@ class Backend::LayersController < Backend::ApplicationController
 
   def create
     dimension_values = params.delete(:dimension_values)
-
+    bbox = params.delete(:bbox)
     @layer = Layer.new(params[:layer].reject{ |p| p == "category_id" })
-
+    @layer.crs = params.delete(:srs).first.to_s
     if @layer.save
       if dimension_values && dimension_values.any?
-        @layer.create_dimension_values(dimension_values)
+        Dimension.create_dimension_values(@layer, dimension_values)
       end
+      if bbox && bbox.any?
+        BoundingBox.create_bounding_boxes(@layer, bbox)
+      end
+      @layer.do_thumbnail
     end
 
     respond_with(@layer) do |format|

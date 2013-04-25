@@ -44,7 +44,7 @@ class Backend::CategoriesController < Backend::ApplicationController
     @category = Category.find(params[:id])
     if(params[:direction] == "up")
       @category.move_higher
-    else 
+    else
       @category.move_lower
     end
     redirect_to [:backend, :categories]
