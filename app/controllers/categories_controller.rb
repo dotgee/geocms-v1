@@ -11,10 +11,7 @@ class CategoriesController < ApplicationController
     @category = Category.find_by_slug(params[:id])
     @category ||= Category.find_by_id(params[:id])
     @context = Context.new
-    render :template => "contexts/show"
-    #respond_with(@category) do |format|
-    #  format.html { render :partial => @category}
-    #end
+    render "contexts/show"
   end
 
   def layers

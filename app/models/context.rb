@@ -9,7 +9,7 @@ class Context < ActiveRecord::Base
   before_create :generate_uuid
 
   after_save :generate_preview
-  
+
   default_scope order("created_at DESC")
 
   def contexts_layers_attributes=(attrs)
@@ -19,7 +19,7 @@ class Context < ActiveRecord::Base
         layers << attr["layer_id"]
         context_layer = contexts_layers.detect{|cl| cl.layer_id == attr["layer_id"]}
         context_layer ||= contexts_layers.build
-        context_layer.update_attributes(attr)
+        context_layer.update_attributes!(attr)
       end
     end
     to_delete = (contexts_layers.map{ |l| l.layer_id } - layers)

@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/dotgee/ruby-ogc.git
-  revision: 1b788c918f787d9d94b773ca70d8c6dc68a18e61
+  revision: 684da7078f8e7d5b756c58983b01a7dd4478658f
   specs:
     ruby-ogc (0.0.1)
       libxml-ruby
@@ -123,7 +123,7 @@ GEM
     mime-types (1.22)
     multi_json (1.5.0)
     multipart-post (1.2.0)
-    newrelic_rpm (3.5.8.72)
+    newrelic_rpm (3.6.0.83)
     nokogiri (1.4.7)
     oauth (0.4.7)
     oauth2 (0.8.1)
@@ -291,8 +291,9 @@ DEPENDENCIES
   rabl (= 0.7.9)
   rails (= 3.2.12)
   responders
+  rgeo
   rgeoserver
-  rmagick
+  rmagick (~> 2.13.2)
   ruby-ogc!
   sass-rails (~> 3.2.5)
   sidekiq

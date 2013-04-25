@@ -1,4 +1,4 @@
-tr  
+tr
   td
     - category.depth.times do |hey|
       span.left-space
@@ -11,7 +11,7 @@ tr
       = link_to new_backend_category_path(:parent_id => category.id), :class => "m-btn icn-only mini blue", :rel => "tooltip", "data-original-title" => t(:add_child) do
         i.icon-plus.icon-white
   td
-    = link_to [:backend, category], :class => "m-btn mini blue icn-only", :rel => "tooltip", "data-original-title" => t(:browse) do 
+    = link_to [:backend, category], :class => "m-btn mini blue icn-only", :rel => "tooltip", "data-original-title" => t(:browse) do
       i.icon-folder-open.icon-white
   td
     = link_to edit_backend_category_path(category) , :class => "m-btn blue mini icn-only", :rel => "tooltip", "data-original-title" => t(:edit) do

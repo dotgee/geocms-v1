@@ -20,7 +20,6 @@ gem 'therubyracer'
 
 group :development do
   gem "bullet"
-  gem 'newrelic_rpm'
   gem 'meta_request', '0.2.0'
   gem 'coffee-rails-source-maps'
 end
@@ -63,6 +62,7 @@ gem "friendly_id"
 # gem "wms_getcapabilities", '~> 0.1.0.6'
 
 gem 'ruby-ogc', :git => 'git://github.com/dotgee/ruby-ogc.git'
+gem "rgeo"
 
 # Pagination
 gem "kaminari"
@@ -73,16 +73,18 @@ gem "tire"
 # WYSIWYG
 gem "ckeditor"
 
-#
-# tag layer (manage keywords)
-#
+# Monitoring
+gem 'newrelic_rpm'
+
+# Tags
 gem 'acts-as-taggable-on', '~> 2.3.1'
+
+# Images
 gem 'carrierwave'
-gem "rmagick"
+gem "rmagick", '~> 2.13.2'
 gem "nokogiri", "1.4.7"
 
-#generation de thumbnail
+# Thumbnails
 gem 'sidekiq'
 gem 'slim'
 gem 'sinatra'
-

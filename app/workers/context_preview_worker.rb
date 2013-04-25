@@ -18,7 +18,7 @@ class ContextPreviewWorker
     Context.skip_callback(:save, :after, :generate_preview)
     ctx.save
   end
-  
+
   private
     def url_for_context(context, url)
       #mettre en place une configuration d'url
