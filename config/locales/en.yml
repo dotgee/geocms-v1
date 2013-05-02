@@ -18,7 +18,9 @@ en:
       fullscreen: Fullscreen
       hud: Hide
   account:
-    new: "Create a new account"  
+    new: "Create a new account"
+  users:
+    new: "Add a new user"
   datasource:
     import: "Import"
     new: "Create a new datasource"

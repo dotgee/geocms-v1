@@ -1,6 +1,6 @@
 fr:
   actions:
-    layers: 
+    layers:
       new: "Ajouter couche"
   browse: "Parcourir"
   edit: "Modifier"
@@ -29,12 +29,14 @@ fr:
     new: "Créer une nouvelle source de données"
   account:
     new: "Créer un nouveau compte"
+  users:
+    new: "Ajouter un utilisateur"
   user:
     sign_up: "Inscription"
   session:
     invalid_credentials: "Mauvais email ou password"
     logged_in: "Authentification réussie"
-  category: 
+  category:
     new_root: "Ajouter une catégorie mère"
   menu:
     categories: "Catégories"
