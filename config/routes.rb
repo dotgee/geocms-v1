@@ -40,7 +40,7 @@ Geocms2::Application.routes.draw do
         end
       end
 
-      resources :users, :only => :index
+      resources :users, :only => [:index, :new, :create]
       resources :contexts do
       	member do
       	  get 'refresh_preview'
