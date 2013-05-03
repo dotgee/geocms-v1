@@ -34,7 +34,7 @@ gem 'rabl', "0.7.9"
 gem 'gon'
 
 # Templating engine
-gem "slim-rails"
+gem "slim-rails", git: "git://github.com/slim-template/slim-rails.git"
 
 # Utilities
 gem 'bootstrap-sass', '~> 2.2.2.0'
@@ -86,5 +86,4 @@ gem "nokogiri", "1.4.7"
 
 # Thumbnails
 gem 'sidekiq'
-gem 'slim'
 gem 'sinatra'
