@@ -6,7 +6,7 @@ class App.CartItemView extends Backbone.View
         <input type='checkbox' class='layer-visibility' <% if(opacity > 0) { %> checked <% } %> id='<%=name %>'>
         <a title='<%= title %>' class='unstyled'><%= title %></a>
       </label>
-      <% if(typeof source !== '') { %><p class='source'>Source : <%= source %></p> <% } %>
+      <% if(source !== '') { %><p class='source'>Source : <%= source %></p> <% } %>
       <div class='m-btn-group control-buttons'>
         <a class='m-btn mini first query' data-toggle='button' rel='tooltip' data-original-title='Interroger'><i class='icon-info-sign'></i></a>
         <a class='m-btn mini opacity <% if(controllingOpacity) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Opacité'><i class='icon-adjust'></i></a>
