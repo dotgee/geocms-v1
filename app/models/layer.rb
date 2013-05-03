@@ -1,3 +1,5 @@
+require "curb"
+
 class Layer < ActiveRecord::Base
   include Concerns::Searchable
 
@@ -61,10 +63,22 @@ class Layer < ActiveRecord::Base
     ROGC::WMSClient.get_map(data_source.wms, name, box, width, height, bbox.crs)
   end
 
-  def do_thumbnail
-    if self.thumbnail.url.nil?
-      self.remote_thumbnail_url = self.thumb_url(64, 64, self.crs)
-      self.save!
+  def do_thumbnail(force=false)
+    if force || self.thumbnail.url.nil?
+      tempfile = Tempfile.new([ self.id.to_s, '.png' ])
+      tempfile.binmode
+      begin
+       tempfile << Curl.get(self.thumb_url(64, 64, self.crs)).body_str
+       tempfile.rewind
+       self.thumbnail = tempfile
+       # self.remote_thumbnail_url = self.thumb_url(64, 64, self.crs)
+       self.save!
+      rescue => e
+        logger.error e.message
+      ensure
+       tempfile.close
+       tempfile.unlink
+      end
     end
   end
 
