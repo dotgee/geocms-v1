@@ -23,14 +23,15 @@ class App.CatalogItemView extends Backbone.View
     <div class='media-body'>
 
       <h4 class='media-heading layer-heading'><%= title %></h4>
+      <p class='source'>Source : <%= source %></p>
       <% if(description) { %><div class='description'> <%= description %> </div><% } %>
     </div>
   </div>")
 
-  events: 
+  events:
     "click .media-layer": "toggleOnMap"
     "click .category" : "displayChildren"
-  
+
   initialize: ->
     @parentView = @options.parentView
     @layers = @parentView.layers
