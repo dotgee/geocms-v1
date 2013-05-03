@@ -7,14 +7,14 @@ class Layer extends Backbone.Model
     title:
       type: "Text"
       validators: ['required']
-      editorClass: "m-wrap input-block-level" 
+      editorClass: "m-wrap input-block-level"
 
-    name:  
+    name:
       type: "Text"
       validators: ['required']
       editorClass: "m-wrap input-block-level"
 
-    description: 
+    description:
       type: "TextArea"
       editorClass: "m-wrap input-block-level"
 
@@ -22,12 +22,17 @@ class Layer extends Backbone.Model
       type: "Text"
       editorClass: "m-wrap input-block-level"
 
-    category_ids: 
+    source:
+      type: "Text"
+      editorClass: "m-wrap input-block-level"
+
+    category_ids:
       type: "Select"
-      options:  gon.categories 
-      validators: ['required'] 
+      title: "Categories"
+      options:  gon.categories
+      validators: ['required']
       editorAttrs: { multiple: "multiple" }
-      editorClass: "m-wrap input-block-level" 
+      editorClass: "m-wrap input-block-level"
   defaults:
     imported: false
   initialize: ->
@@ -46,7 +51,7 @@ class LayerModalView extends Backbone.View
     @form = new Backbone.Form({ model: @model }).render()
     @$save = @$el.find("#save")
     @$save.removeClass("disabled")
-  save: (e)-> 
+  save: (e)->
     e.preventDefault()
     errors = @form.commit()
     unless errors && !@$save.hasClass("disabled")
@@ -82,7 +87,7 @@ class LayerItemView extends Backbone.View
       </a>
     </td>
   ")
-  events: 
+  events:
     "click .import-btn": "openModal"
   initialize: ->
     @model.on("change:imported", @render, this)
@@ -120,7 +125,7 @@ view.render()
 $("#import-layers").closest('table').dataTable
   "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
   "aoClumns": [
-     "asSorting": [ "asc" ] 
+     "asSorting": [ "asc" ]
      null
   ]
   "sPaginationType": "bootstrap"
