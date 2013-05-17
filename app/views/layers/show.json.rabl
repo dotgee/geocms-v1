@@ -1,6 +1,6 @@
 object @layer
 
-attributes :id, :title, :name, :description, :category_ids, :template, :metadata_url, :metadata_identifier, :crs, :source
+attributes :id, :title, :name, :description, :category_ids, :template, :metadata_url, :metadata_identifier, :crs
 
 node :dimension do |o|
   o.respond_to?(:dimension) ? o.dimension : ( o.respond_to?(:time_dimension) && o.time_dimension ? 'time' :  nil )
@@ -31,7 +31,7 @@ node :metadata_url, :if => lambda { |l| l.respond_to?(:metadata_urls) } do |l|
 end
 
 child :data_source, :if => lambda { |l| l.respond_to?(:data_source) && l.data_source } do
-  attributes :wms, :wms_version, :ogc, :external
+  attributes :wms, :wms_version, :ogc, :external, :name
 end
 
 child :dimensions, :if => lambda { |l| l.respond_to?(:dimension) && l.dimension?  } do
