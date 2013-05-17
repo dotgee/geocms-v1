@@ -41,7 +41,7 @@ class Layer < ActiveRecord::Base
 
   attr_accessible :description, :name, :title, :wms_url, :data_source_id, :category_ids, :category,
                   :crs, :minx, :miny, :maxx, :maxy, :dimension, :template, :remote_thumbnail_url, :metadata_url,
-                  :metadata_identifier, :source
+		  :metadata_identifier
 
   mount_uploader :thumbnail, LayerUploader
   acts_as_taggable_on :keywords

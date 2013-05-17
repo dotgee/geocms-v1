@@ -1,13 +1,13 @@
 class App.CatalogView extends Backbone.View
   breadcrumbCategoryTemplate: _.template("
-   <li> <a href='/'><i class='icon-home'></i></a> 
+   <li> <a href='/'><i class='icon-home'></i></a>
       <% if(categories.length) {%><span class='divider'>/</span> <% } %>
    </li>
    <% _.each( categories, function( cat, i ){ %>
         <% if(categories.length != i +1 ) {%>
         <li>
           <a class='category-link' href='/category/<%= cat.attributes.id %>'><%= cat.attributes.name %></a>
-          <span class='divider'>/</span> 
+	  <span class='divider'>/</span>
         </li>
         <% }else { %>
           <li class='active'><%= cat.attributes.name %></li>
@@ -15,13 +15,13 @@ class App.CatalogView extends Backbone.View
    <%}) %>
   ")
 
-  events: 
+  events:
     "click .close" : "toggle"
     "click #search": "search"
     "keypress .layers-search input": "searchOnEnter"
     "click .category-link" : "show"
     "click .icon-home" : "toRoot"
- 
+
 
   initialize: ->
     @hud = @options.parentView
@@ -32,7 +32,8 @@ class App.CatalogView extends Backbone.View
     @$categories = @$el.find("#categories")
     @$query = $(".layers-search").find("input")
     @currentCategories = []
-
+    $("#categories").masonry
+      itemSelector: ".media.layer"
   toggle: ->
     @$el.toggleClass("active")
     @render()
@@ -60,8 +61,8 @@ class App.CatalogView extends Backbone.View
 
   addOne: (model) ->
     @$categories.append new App.CatalogItemView({ model: model, parentView: this }).render().el
-  
-  toRoot: (e)-> 
+
+  toRoot: (e)->
     e.preventDefault()
     if !@currentCategories.length && !@onSearch
       @toggle()
@@ -70,7 +71,7 @@ class App.CatalogView extends Backbone.View
     @currentCategories = []
     @render()
 
-  appendCategory: (category) -> 
+  appendCategory: (category) ->
     @currentCategories.push(category)
     @render()
 
@@ -82,7 +83,7 @@ class App.CatalogView extends Backbone.View
       @collection = @currentCategories[idx].get("children")
       @currentCategories = @currentCategories.slice(0, idx + 1)
       @render()
-    true 
+    true
 
   render: ->
     @resetView()
@@ -90,3 +91,4 @@ class App.CatalogView extends Backbone.View
                                       categories: @currentCategories
                                   )
     @collection.forEach(@addOne, this)
+    $("#categories").masonry( 'reload' )

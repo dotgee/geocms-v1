@@ -28,6 +28,7 @@
 //= require jquery/jquery-ui-1.10.0.custom.min
 //= require jquery/jquery.sortable.min
 //= require jquery/jquery.zclip
+//= require jquery/jquery.masonry.min
 
 //= require select2.min
 
