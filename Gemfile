@@ -1,45 +1,43 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '4.0.0.rc1'
 
 gem "unicorn", ">= 4.3.1"
 gem "pg", ">= 0.14.0"
 
-group :assets do
-  gem 'sass-rails',   '~> 3.2.5'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem "compass-rails", "~> 1.0.3"
-  gem "compass", "~> 0.12.2"
-  gem 'haml_coffee_assets'
-  gem 'execjs'
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'sass-rails',   '~> 4.0.0.rc1'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'compass-rails', github: "milgner/compass-rails", branch: "rails4"
+gem "compass", "~> 0.12.2"
+gem 'haml_coffee_assets'
+gem 'execjs'
+gem 'uglifier', '>= 1.3.0'
 
-gem 'libv8', "~> 3.11.8.0"
+#gem 'libv8', "~> 3.16.14.1"
 gem 'therubyracer'
 
-group :development do
-  gem "bullet"
-  gem 'meta_request', '0.2.0'
-  gem 'coffee-rails-source-maps'
-end
+# group :development do
+#   gem "bullet"
+#   gem 'meta_request', '0.2.5'
+#   gem 'coffee-rails-source-maps'
+# end
 
-gem 'jquery-rails', "~> 2.1.4"
+gem 'jquery-rails', "~> 2.2.1"
 
 # JSON Views
-gem "multi_json", "1.5.0"
-gem 'oj', "2.0.2"
-gem 'rabl', "0.7.9"
+gem "multi_json", "1.7.3"
+gem 'oj', "2.0.12"
+gem 'rabl', "0.8.4"
 #gem 'yajl-ruby'
 gem 'gon'
 
 # Templating engine
-gem "slim-rails", git: "git://github.com/slim-template/slim-rails.git"
+gem "slim-rails", '~> 1.1.0'
 
 # Utilities
-gem 'bootstrap-sass', '~> 2.2.2.0'
-gem "simple_form"
-gem "responders"
+gem 'bootstrap-sass', '~> 2.3.1.0'
+gem "simple_form", '3.0.0.rc'
+gem "responders", '~> 1.0.0.rc'
 gem 'turbo-sprockets-rails3'
 
 # Authentication
@@ -56,7 +54,7 @@ gem "rgeoserver"
 gem "acts_as_tenant"
 
 # Slugging
-gem "friendly_id"
+gem "friendly_id", github: 'FriendlyId/friendly_id', branch: 'rails4'
 
 # Import layers
 # gem "wms_getcapabilities", '~> 0.1.0.6'
@@ -77,7 +75,7 @@ gem "ckeditor"
 gem 'newrelic_rpm'
 
 # Tags
-gem 'acts-as-taggable-on', '~> 2.3.1'
+gem 'acts-as-taggable-on', :git => "git://github.com/mbleigh/acts-as-taggable-on.git"
 
 # Images
 gem 'carrierwave'
@@ -87,3 +85,6 @@ gem "nokogiri", "1.4.7"
 # Thumbnails
 gem 'sidekiq'
 gem 'sinatra'
+
+# Legacy gems rails 3
+gem 'protected_attributes'

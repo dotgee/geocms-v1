@@ -24,14 +24,17 @@ class Layer < ActiveRecord::Base
 
   # SCOPES
 
-  scope :for_frontend, select(
-                          ["layers.name", "layers.title", "layers.id", "layers.description",
-                            "layers.dimension", "layers.category_id", "data_sources.wms", "layers.metadata_url",
-                            "dimensions.value", "category_ids"
-                          ]
-                        )
-                       .includes(:data_source).includes(:categories).includes(:dimensions)
-                       .order(:title).order(:value)
+  scope :for_frontend, -> {
+    select(
+        [
+          "layers.name", "layers.title", "layers.id", "layers.description",
+          "layers.dimension", "layers.category_id", "data_sources.wms", "layers.metadata_url",
+          "dimensions.value", "category_ids"
+        ]
+    )
+    .includes(:data_source).includes(:categories).includes(:dimensions)
+    .order(:title).order("dimensions.value")
+  }
 
 
   delegate :wms, to: :data_source, prefix: true
@@ -81,6 +84,5 @@ class Layer < ActiveRecord::Base
       end
     end
   end
-
 
 end
