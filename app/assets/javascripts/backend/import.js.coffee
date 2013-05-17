@@ -22,10 +22,6 @@ class Layer extends Backbone.Model
       type: "Text"
       editorClass: "m-wrap input-block-level"
 
-    source:
-      type: "Text"
-      editorClass: "m-wrap input-block-level"
-
     category_ids:
       type: "Select"
       title: "Categories"
