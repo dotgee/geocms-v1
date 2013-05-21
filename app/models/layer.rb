@@ -2,6 +2,8 @@ require "curb"
 
 class Layer < ActiveRecord::Base
   include Concerns::Searchable
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 
   # ELASTICSEARCH MAPPING
 
@@ -23,7 +25,7 @@ class Layer < ActiveRecord::Base
   has_and_belongs_to_many :categories
 
   # SCOPES
-
+  default_scope order(:title)
   scope :for_frontend, select(
                           ["layers.name", "layers.title", "layers.id", "layers.description",
                             "layers.dimension", "layers.category_id", "data_sources.wms", "layers.metadata_url",
@@ -31,7 +33,7 @@ class Layer < ActiveRecord::Base
                           ]
                         )
                        .includes(:data_source).includes(:categories).includes(:dimensions)
-                       .order(:title).order(:value)
+		       .order(:value)
 
 
   delegate :wms, to: :data_source, prefix: true
