@@ -8,3 +8,7 @@ end
 child :children => :children do
   extends "categories/index"
 end
+
+node :type do
+  "category"
+end

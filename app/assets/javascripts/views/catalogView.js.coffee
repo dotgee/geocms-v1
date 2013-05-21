@@ -29,11 +29,15 @@ class App.CatalogView extends Backbone.View
     @layers = @options.layers
     @collection.on("reset", @render, this)
     @initialCollection = @collection
-    @$categories = @$el.find("#categories")
+    @$categories = @$el.find("#catalog-categories")
+    @$layers = @$el.find("#catalog-layers")
     @$query = $(".layers-search").find("input")
     @currentCategories = []
-    $("#categories").masonry
+    @$layers.masonry
       itemSelector: ".media.layer"
+      isAnimated: true
+      columnWidth: ( containerWidth ) ->
+        containerWidth / 2
   toggle: ->
     @$el.toggleClass("active")
     @render()
@@ -58,10 +62,13 @@ class App.CatalogView extends Backbone.View
     @onSearch = true
   resetView: ->
     @$categories.html("")
-
+    @$layers.html("")
   addOne: (model) ->
-    @$categories.append new App.CatalogItemView({ model: model, parentView: this }).render().el
-
+    item = new App.CatalogItemView({ model: model, parentView: this }).render().el
+    console.log @$categories, @$layers
+    console.log model.get("type")
+    @$categories.append item if model.get("type") == "category"
+    @$layers.append item if model.get("type") == "layer"
   toRoot: (e)->
     e.preventDefault()
     if !@currentCategories.length && !@onSearch
@@ -80,7 +87,13 @@ class App.CatalogView extends Backbone.View
     idx = @$el.find('.breadcrumb a.category-link').index(e.currentTarget)
 
     if idx > -1
-      @collection = @currentCategories[idx].get("children")
+      children = @currentCategories[idx].get("children").models
+      that = this
+      layers = @layers.filter( (layer) ->
+        _.contains(layer.get("category_ids"), that.currentCategories[idx].get("id"))
+      )
+      resources = _.union(layers, children)
+      @collection = new App.CatalogCollection(resources)
       @currentCategories = @currentCategories.slice(0, idx + 1)
       @render()
     true
@@ -91,4 +104,4 @@ class App.CatalogView extends Backbone.View
                                       categories: @currentCategories
                                   )
     @collection.forEach(@addOne, this)
-    $("#categories").masonry( 'reload' )
+    @$layers.masonry( 'reload' )
