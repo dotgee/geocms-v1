@@ -1,5 +1,5 @@
 class Backend::LayersController < Backend::ApplicationController
-  before_filter :require_category, :except => [:create, :getfeatures]
+  #before_filter :require_category, :except => [:create, :getfeatures, :edit, :update]
 
   def index
     redirect_to [:backend, @category]
@@ -20,12 +20,12 @@ class Backend::LayersController < Backend::ApplicationController
   end
 
   def new
-    @layer = @category.layers.new
-    respond_with([:backend, @category, @layer])
+    @layer = Layer.new
+    respond_with([:backend, @layer])
   end
 
   def edit
-    @layer = @category.layers.find(params[:id])
+    @layer = Layer.find(params[:id])
     @categories = Category.leafs
     respond_with([:backend, @category, @layer])
   end
@@ -52,7 +52,7 @@ class Backend::LayersController < Backend::ApplicationController
   end
 
   def update
-    @layer = @category.layers.find(params[:id])
+    @layer = Layer.find(params[:id])
     @layer.update_attributes(params[:layer])
     respond_with [:backend, @category]
   end
