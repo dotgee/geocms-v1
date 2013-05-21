@@ -46,17 +46,15 @@ class App.CatalogItemView extends Backbone.View
       @cartCollection.add(@model)
 
   displayChildren: (e) ->
-    if @model.get("children").length == 0
-      that = this
-      layers = @layers.filter( (layer) ->
-        _.contains(layer.get("category_ids"), that.model.get("id"))
-      )
-      layerCollection = new App.LayerCollection(layers)
-      layerCollection.parent = {}
-      layerCollection.parent.collection = @model.collection
-      @parentView.collection = layerCollection
-    else
-      @parentView.collection = @model.get("children")
+    that = this
+    layers = @layers.filter( (layer) ->
+      _.contains(layer.get("category_ids"), that.model.get("id"))
+    )
+    resources = _.union @model.get("children").models, layers
+    layerCollection = new App.CatalogCollection(resources)
+    layerCollection.parent = {}
+    layerCollection.parent.collection = @model.collection
+    @parentView.collection = layerCollection
     @parentView.appendCategory(@model)
     @parentView.render()
   render: ->

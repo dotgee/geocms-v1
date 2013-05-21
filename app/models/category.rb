@@ -15,6 +15,10 @@ class Category < ActiveRecord::Base
 
   class << self
 
+    def for_select
+      Category.order(:names_depth_cache).map { |c| [c.id, "- " * c.depth + c.name] }
+    end
+
     def leafs
       all.reject { |c| c.has_children? }
     end
@@ -24,10 +28,12 @@ class Category < ActiveRecord::Base
     self.names_depth_cache = path.map(&:name).join('/')
   end
 
+
   def self.json_tree(nodes)
     nodes.map do |node, sub_nodes|
       { "name" => node.name,
         "id" => node.id,
+        "type" => "category",
         "slug" => node.slug,
         "children" => json_tree(sub_nodes).compact
       }
@@ -37,4 +43,5 @@ class Category < ActiveRecord::Base
   def depth_name
     ("-" * depth) + name
   end
+
 end
