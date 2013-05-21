@@ -19,6 +19,17 @@
     .m-btn-group .m-btn {
       float: none;
     }
+    .icon-layer-blue {
+      margin-top: 5px;
+      margin-right: 5px;
+    }
+    .icon-folder {
+      margin-top: 4px;
+      margin-right: 5px;
+    }
+    a {
+      @include link-colors(#3788C0, #3C4E5A)
+    }
   }
   &.categories-index {
     span.left-space {

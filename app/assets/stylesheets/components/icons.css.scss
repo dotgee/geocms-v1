@@ -10,6 +10,16 @@
       background-position: top;
     }
   }
+  &.icon-layer-blue {
+    background: url("icon-layer.png") no-repeat;
+    width: 14px;
+    height: 10px;
+  }
+  &.icon-folder {
+    background: url("icon-folder.png") no-repeat;
+    width: 14px;
+    height: 13px;
+  }
   &.icon-throbber {
     background: url("throbber.svg") no-repeat;
     width: 16px;
