@@ -13,7 +13,7 @@ h1= @category.name
     tbody
       - @layers.page(params[:page]).each do |layer|
         == render layer
-  = link_to t("layer.create"), [:new, :backend, @category, :layer], :class => "m-btn blue"
+  = link_to t("layer.create"), [:new, :backend, :layer], :class => "m-btn blue"
   = paginate @layers
 - elsif !@category.is_childless?
   table.table.table-striped.table-backend

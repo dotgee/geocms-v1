@@ -11,15 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225151735) do
+ActiveRecord::Schema.define(:version => 20130521122204) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
     t.string   "subdomain"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.string   "logo"
+    t.boolean  "default",    :default => false
+  end
+
+  create_table "bounding_boxes", :force => true do |t|
+    t.string   "crs"
+    t.float    "minx"
+    t.float    "miny"
+    t.float    "maxx"
+    t.float    "maxy"
+    t.integer  "layer_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "logo"
   end
+
+  add_index "bounding_boxes", ["layer_id"], :name => "index_bounding_boxes_on_layer_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -44,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20130225151735) do
   add_index "categories_layers", ["layer_id", "category_id"], :name => "index_categories_layers_on_layer_id_and_category_id"
 
   create_table "contexts", :force => true do |t|
-    t.string   "name",        :default => "Untitled map"
+    t.string   "name",        :default => ""
     t.text     "description"
     t.boolean  "public",      :default => false
     t.integer  "zoom",        :default => 10
@@ -55,11 +69,13 @@ ActiveRecord::Schema.define(:version => 20130225151735) do
     t.string   "uuid"
     t.float    "center_lng",  :default => -1.676235
     t.float    "center_lat",  :default => 48.118454
-    t.integer  "account_id",                              :null => false
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.integer  "account_id",                         :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.string   "preview"
   end
 
+  add_index "contexts", ["account_id"], :name => "index_contexts_on_account_id"
   add_index "contexts", ["uuid"], :name => "index_contexts_on_uuid", :unique => true
 
   create_table "contexts_layers", :force => true do |t|
@@ -92,6 +108,8 @@ ActiveRecord::Schema.define(:version => 20130225151735) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "dimensions", ["layer_id"], :name => "index_dimensions_on_layer_id"
+
   create_table "layers", :force => true do |t|
     t.string   "name"
     t.string   "title"
@@ -107,7 +125,11 @@ ActiveRecord::Schema.define(:version => 20130225151735) do
     t.string   "thumbnail"
     t.string   "metadata_url"
     t.string   "metadata_identifier"
+    t.string   "slug"
   end
+
+  add_index "layers", ["data_source_id"], :name => "index_layers_on_data_source_id"
+  add_index "layers", ["slug"], :name => "index_layers_on_slug", :unique => true
 
   create_table "preferences", :force => true do |t|
     t.integer  "account_id"
@@ -116,6 +138,8 @@ ActiveRecord::Schema.define(:version => 20130225151735) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "preferences", ["account_id"], :name => "index_preferences_on_account_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
@@ -129,6 +153,7 @@ ActiveRecord::Schema.define(:version => 20130225151735) do
 
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
   add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tagger_id", "tagger_type"], :name => "index_taggings_on_tagger_id_and_tagger_type"
 
   create_table "tags", :force => true do |t|
     t.string "name"
@@ -143,5 +168,7 @@ ActiveRecord::Schema.define(:version => 20130225151735) do
     t.datetime "updated_at",       :null => false
     t.integer  "account_id"
   end
+
+  add_index "users", ["account_id"], :name => "index_users_on_account_id"
 
 end

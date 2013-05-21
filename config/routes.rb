@@ -14,6 +14,8 @@ Geocms2::Application.routes.draw do
 
       root :to => "categories#index"
 
+      get "search", :to => "search#search"
+
       resources :categories do
         member do
           get "move", :to => "categories#move"
@@ -21,7 +23,7 @@ Geocms2::Application.routes.draw do
         resources :layers
       end
 
-      resources :layers, :only => [:create] do
+      resources :layers, :only => [:create, :edit, :update, :new] do
         member do
           get "getfeatures", :to => "layers#getfeatures"
         end
