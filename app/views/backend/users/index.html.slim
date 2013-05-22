@@ -13,5 +13,4 @@ table.table.table-striped
         td= u.username
         td= u.email
         td= u.created_at.strftime("%d/%m/%Y")
-
-= link_to t("users.new"), [:new, :backend, :user], class: "m-btn blue"
+= link_to t("users.new"), [:new, :backend, :user], class: "m-btn blue" if can? :create, User

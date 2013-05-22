@@ -87,3 +87,8 @@ gem "nokogiri", "1.4.7"
 # Thumbnails
 gem 'sidekiq'
 gem 'sinatra'
+
+
+# Roles and authorization
+gem "cancan"
+gem "rolify"

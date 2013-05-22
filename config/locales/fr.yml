@@ -44,6 +44,7 @@ fr:
     users: "Utilisateurs"
     preferences: "Préferences"
     logout: "Déconnexion"
+    accounts: "Instances"
   backend:
     import: "Importer"
     layers_imported_from: "Couches récupérées depuis"
@@ -64,6 +65,7 @@ fr:
   legend: "Légende"
   maps: "Cartes"
   back: "Retour"
+  access_denied: "Vous n'êtes pas autorisé à effectuer cette action."
   #####
   # Rails i18n
   #####

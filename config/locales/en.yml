@@ -37,6 +37,7 @@ en:
     users: "Users"
     preferences: "Preferences"
     logout: "Logout"
+    accounts: "Accounts"
   backend:
     import: " Import"
     layers_imported_from: "Layers imported from"
@@ -57,3 +58,4 @@ en:
   maps: "Maps"
   back: "Back"
   edit: "Edit"
+  access_denied: "Access denied. You don't have the required credentials to perform this action."

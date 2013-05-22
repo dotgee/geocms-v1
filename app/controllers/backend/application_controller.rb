@@ -1,6 +1,7 @@
 require "application_responder"
 
 class Backend::ApplicationController < ActionController::Base
+  load_and_authorize_resource
   before_filter :set_locale
   self.responder = ApplicationResponder
   respond_to :html, :json
@@ -23,4 +24,11 @@ class Backend::ApplicationController < ActionController::Base
       I18n.locale = session[:locale]
   end
 
+  def current_ability
+    @current_ability ||= Ability.new(current_user, current_tenant)
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to backend_root_url, :alert => t("access_denied")
+  end
 end
