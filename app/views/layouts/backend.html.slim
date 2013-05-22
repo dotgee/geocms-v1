@@ -28,6 +28,7 @@ html(lang="en")
                 li= link_to t("menu.data_sources"), backend_data_sources_path
                 li= link_to t("menu.users"), backend_users_path
                 li= link_to t("menu.preferences"), edit_backend_preferences_path
+		li= link_to t("menu.accounts"), backend_accounts_path
             - if logged_in?
               ul.nav.pull-right
                 li= link_to t("menu.logout"), logout_path

@@ -62,6 +62,7 @@ GEM
     builder (3.0.4)
     bullet (4.6.0)
       uniform_notifier
+    cancan (1.6.10)
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -202,6 +203,7 @@ GEM
       rgeo-shapefile
       rubyzip
     rmagick (2.13.2)
+    rolify (3.2.0)
     rubyzip (0.9.9)
     sass (3.2.8)
     sass-rails (3.2.6)
@@ -274,6 +276,7 @@ DEPENDENCIES
   ancestry
   bootstrap-sass (~> 2.2.2.0)
   bullet
+  cancan
   carrierwave
   ckeditor
   coffee-rails (~> 3.2.1)
@@ -299,6 +302,7 @@ DEPENDENCIES
   rgeo
   rgeoserver
   rmagick (~> 2.13.2)
+  rolify
   ruby-ogc!
   sass-rails (~> 3.2.5)
   sidekiq
