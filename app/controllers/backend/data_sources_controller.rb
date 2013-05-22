@@ -39,7 +39,7 @@ class Backend::DataSourcesController < Backend::ApplicationController
   def import
     @data_source = DataSource.find(params[:id])
     @layers = @data_source.import
-    gon.categories = Category.for_select.map { |c| { val: c[0], label: c[1] } }
+    gon.categories = Category.for_select.map { |c| { val: c[1], label: c[0] } }
     gon.rabl "app/views/layers/index.json", :as => :layers, :handler => :rabl
     respond_with([:backend, @data_source])
   end

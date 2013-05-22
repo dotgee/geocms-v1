@@ -16,7 +16,7 @@ class Category < ActiveRecord::Base
   class << self
 
     def for_select
-      Category.order(:names_depth_cache).map { |c| [c.id, "- " * c.depth + c.name] }
+      Category.order(:names_depth_cache).map { |c| ["- " * c.depth + c.name, c.id] }
     end
 
     def leafs
