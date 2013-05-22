@@ -1,0 +1,17 @@
+.page-header
+  h1 Listing accounts
+
+table.table.table-striped
+  thead
+    tr
+      th Name
+      th Domain
+      th Created at
+  tbody
+    - @accounts.each do |a|
+      tr
+        td= a.name
+        td= a.subdomain
+        td= a.created_at.strftime("%d/%m/%Y")
+
+= link_to t("accounts.new"), [:new, :backend, :account], class: "m-btn blue"

@@ -1,4 +1,5 @@
 Geocms2::Application.routes.draw do
+
    require 'sidekiq/web'
    mount Sidekiq::Web => '/sidekiq'
   # constraints(lambda { |r| ENV["MONO_ACCOUNT"].to_bool }) do
@@ -43,6 +44,9 @@ Geocms2::Application.routes.draw do
       end
 
       resources :users, :only => [:index, :new, :create]
+
+      resources :accounts, :only => [:index, :new, :create]
+
       resources :contexts do
       	member do
       	  get 'refresh_preview'
