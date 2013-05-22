@@ -15,6 +15,7 @@ class Ability
       cannot :manage, Account
     else
       can :read, :all
+      can :create, Session
     end
 
     # Global admin can do everything
