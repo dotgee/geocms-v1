@@ -14,4 +14,12 @@ class ApplicationController < ActionController::Base
     def not_authenticated
       redirect_to login_url, :alert => "First log in to view this page."
     end
+
+    def current_ability
+      @current_ability ||= Ability.new(current_user, current_tenant)
+    end
+
+    rescue_from CanCan::AccessDenied do |exception|
+      redirect_to backend_root_url, :alert => t("access_denied")
+    end
 end

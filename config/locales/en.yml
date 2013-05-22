@@ -59,3 +59,4 @@ en:
   back: "Back"
   edit: "Edit"
   access_denied: "Access denied. You don't have the required credentials to perform this action."
+  button_login: "Login"
