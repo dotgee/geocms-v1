@@ -66,6 +66,7 @@ fr:
   maps: "Cartes"
   back: "Retour"
   access_denied: "Vous n'êtes pas autorisé à effectuer cette action."
+  button_login: "Connexion (accès restreint)"
   #####
   # Rails i18n
   #####

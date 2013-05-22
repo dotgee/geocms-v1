@@ -3,17 +3,21 @@
 .wrapper
   .hud
     .map-controls
-      .m-btn-group
-        button.save.m-btn.blue
-          span= t "context.save"
-        button.share.m-btn.disabled disabled="disabled"
-          span= t "context.share"
-          '
-          i.m-icon-swapright
-        = link_to geovisu_link, :class => "m-btn geovisu disabled", :target => "geovisu" do
-          |Geovisu
-          '
-          i.icon-geovisu
+      - if can? :create, Context
+        .m-btn-group
+          button.save.m-btn.blue
+            span= t "context.save"
+          button.share.m-btn.disabled disabled="disabled"
+            span= t "context.share"
+            '
+            i.m-icon-swapright
+          = link_to geovisu_link, :class => "m-btn geovisu disabled", :target => "geovisu" do
+            |Geovisu
+            '
+            i.icon-geovisu
+      - else
+        .m-btn-group
+          = link_to t("button_login"), login_path, class: "m-btn blue"
     ul.nav.nav-tabs.row-fluid id="hud-tab"
       li.active
         = link_to "#layers", "data-toggle" => "tab" do
