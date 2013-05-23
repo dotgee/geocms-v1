@@ -1,4 +1,6 @@
 class Backend::UsersController < Backend::ApplicationController
+  load_and_authorize_resource
+
   def index
     @users = User.all
     respond_with([:backend, @users])

@@ -1,7 +1,6 @@
 require "application_responder"
 
 class Backend::ApplicationController < ActionController::Base
-  load_and_authorize_resource
   before_filter :set_locale
   self.responder = ApplicationResponder
   respond_to :html, :json
