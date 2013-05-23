@@ -1,5 +1,5 @@
 class Backend::LayersController < Backend::ApplicationController
-  #before_filter :require_category, :except => [:create, :getfeatures, :edit, :update]
+  #before_filter :require_category, :only => [:destroy]
 
   def index
     redirect_to [:backend, @category]
@@ -47,7 +47,7 @@ class Backend::LayersController < Backend::ApplicationController
 
     respond_with(@layer) do |format|
       format.json if request.xhr?
-      format.html { redirect_to [:backend, @category] }
+      format.html { redirect_to [:edit, :backend, @layer] }
     end
   end
 
@@ -58,15 +58,22 @@ class Backend::LayersController < Backend::ApplicationController
   end
 
   def destroy
-    @layer = @category.layers.find(params[:id])
-    @layer.categories.delete(@category)
-    # Destroy the relationship between category and layer, if layer doesn't have any categories left, destroy the layer
-    if @layer.categories.empty?
-      @layer.destroy
+    if params[:category_id].present?
+      @category = Category.find(params[:category_id])
+      @layer = @category.layers.find(params[:id])
+      @layer.categories.delete(@category)
+      # Destroy the relationship between category and layer, if layer doesn't have any categories left, destroy the layer
+      if @layer.categories.empty?
+        @layer.destroy
+      else
+        @layer.save
+      end
+      respond_with([:backend, @category])
     else
-      @layer.save
+      @layer = Layer.find(params[:id])
+      @layer.destroy
+      respond_with([:backend])
     end
-    respond_with([:backend, @category])
   end
 
   private
