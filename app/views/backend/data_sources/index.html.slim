@@ -10,18 +10,25 @@ table.table.table-striped.table-backend
       th width="40px"
       th width="40px"
   tbody
-    - @data_sources.each do |data_source|
+    - @data_sources.each do |external, data_sources|
       tr
-        td = data_source.name
         td
-          = link_to [:import, :backend, data_source], :class => "m-btn mini blue icn-only", :rel => "tooltip", "data-original-title" => t("datasource.import") do
-            i.icon-download.icon-white
+	  b= external ? "Sources externes" : "Sources internes"
         td
-          = link_to edit_backend_data_source_path(data_source), :class => "m-btn mini blue icn-only", :rel => "tooltip", "data-original-title" => t(:edit) do
-            i.icon-pencil.icon-white
         td
-          = link_to [:backend, data_source], :confirm => 'Are you sure?', :method => :delete, :class => "m-btn mini red icn-only" do
-            i.icon-trash.icon-white
+	td
+      - data_sources.each do |data_source|
+	tr
+	  td = data_source.name
+	  td
+	    = link_to [:import, :backend, data_source], :class => "m-btn mini blue icn-only", :rel => "tooltip", "data-original-title" => t("datasource.import") do
+	      i.icon-download.icon-white
+	  td
+	    = link_to edit_backend_data_source_path(data_source), :class => "m-btn mini blue icn-only", :rel => "tooltip", "data-original-title" => t(:edit) do
+	      i.icon-pencil.icon-white
+	  td
+	    = link_to [:backend, data_source], :confirm => 'Are you sure?', :method => :delete, :class => "m-btn mini red icn-only" do
+	      i.icon-trash.icon-white
 br
 = link_to t("datasource.new"), new_backend_data_source_path, :class => "m-btn blue"
 
