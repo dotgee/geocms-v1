@@ -46,7 +46,7 @@ Geocms2::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( backend.js backend/import.js backend.css ckeditor/init.js ckeditor/plugins/features/plugin.js projs/EPSG-4326.js projs/EPSG-2154.js leaflet/leaflet.ie.css)
+  config.assets.precompile += %w( backend.js backend/import.js backend.css ckeditor/init.js ckeditor/plugins/features/plugin.js ckeditor/plugins/iframe/plugin.js ckeditor/plugins/iframe/dialogs/iframe.js projs/EPSG-4326.js projs/EPSG-2154.js leaflet/leaflet.ie.css)
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false

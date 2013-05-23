@@ -54,7 +54,7 @@ class Backend::LayersController < Backend::ApplicationController
   def update
     @layer = Layer.find(params[:id])
     @layer.update_attributes(params[:layer])
-    respond_with [:backend, @category]
+    respond_with [:edit, :backend, @layer]
   end
 
   def destroy
