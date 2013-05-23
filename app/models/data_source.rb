@@ -1,6 +1,5 @@
 class DataSource < ActiveRecord::Base
   has_many :layers
-  attr_accessible :csw, :name, :ogc, :wfs, :wms, :rest, :external
 
   default_scope order("name ASC")
 
@@ -14,4 +13,7 @@ class DataSource < ActiveRecord::Base
     end
     layers
   end
+
+  attr_accessible :csw, :name, :ogc, :wfs, :wms, :rest, :external
+  validates_presence_of :name, :ogc, :wms, :external
 end
