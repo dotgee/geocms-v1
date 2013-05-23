@@ -38,15 +38,6 @@ class Layer < ActiveRecord::Base
 
   delegate :wms, to: :data_source, prefix: true
 
-  # ATTRIBUTES
-  store :bbox, accessors: [:minx, :maxx, :miny, :maxy]
-
-  attr_accessible :description, :name, :title, :wms_url, :data_source_id, :category_ids, :category,
-                  :crs, :minx, :miny, :maxx, :maxy, :dimension, :template, :remote_thumbnail_url, :metadata_url,
-		  :metadata_identifier
-
-  mount_uploader :thumbnail, LayerUploader
-  acts_as_taggable_on :keywords
 
   # INSTANCE METHODS
 
@@ -84,5 +75,16 @@ class Layer < ActiveRecord::Base
     end
   end
 
+  # ATTRIBUTES
+  store :bbox, accessors: [:minx, :maxx, :miny, :maxy]
+
+  attr_accessible :description, :name, :title, :wms_url, :data_source_id, :category_ids, :category,
+		  :crs, :minx, :miny, :maxx, :maxy, :dimension, :template, :remote_thumbnail_url, :metadata_url,
+		  :metadata_identifier
+
+  mount_uploader :thumbnail, LayerUploader
+  acts_as_taggable_on :keywords
+
+  validates_presence_of :data_source_id, :name, :title
 
 end
