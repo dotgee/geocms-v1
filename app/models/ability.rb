@@ -15,6 +15,7 @@ class Ability
       cannot :manage, Account
     else
       can :read, :all
+      can :new, Context
     end
 
     # Global admin can do everything

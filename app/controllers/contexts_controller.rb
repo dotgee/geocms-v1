@@ -1,4 +1,5 @@
 class ContextsController < ApplicationController
+  load_and_authorize_resource
   before_filter :send_layers_to_front, :only => [:new, :show, :share]
 
   def index

@@ -24,7 +24,7 @@ Geocms2::Application.routes.draw do
         resources :layers
       end
 
-      resources :layers, :only => [:create, :edit, :update, :new] do
+      resources :layers, :only => [:create, :edit, :update, :new, :destroy] do
         member do
           get "getfeatures", :to => "layers#getfeatures"
         end

@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
     end
 
     rescue_from CanCan::AccessDenied do |exception|
-      redirect_to backend_root_url, :alert => t("access_denied")
+      Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}"
+      #redirect_to root_url, :alert => t("access_denied")
     end
 end
