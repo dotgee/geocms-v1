@@ -7,10 +7,18 @@ table.table.table-striped
       th Username
       th Email
       th Joined on
+      th width="40px"
+      th width="40px"
   tbody
     - @users.each do |u|
       tr
         td= u.username
         td= u.email
         td= u.created_at.strftime("%d/%m/%Y")
+        td
+          = link_to [:edit, :backend, u], :class => "m-btn mini blue icn-only", :rel => "tooltip", "data-original-title" => t(:edit) do
+            i.icon-pencil.icon-white
+        td
+          = link_to [:backend, u], :confirm => 'Are you sure?', :method => :delete, :class => "m-btn red icn-only mini" do
+            i.icon-trash.icon-white
 = link_to t("users.new"), [:new, :backend, :user], class: "m-btn blue" if can? :create, User

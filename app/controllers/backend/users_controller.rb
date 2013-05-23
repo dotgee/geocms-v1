@@ -16,4 +16,20 @@ class Backend::UsersController < Backend::ApplicationController
     @user.save
     respond_with [:backend, :users]
   end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update_attributes(params[:user])
+    respond_with [:edit, :backend, @user]
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    respond_with [:backend, :users]
+  end
 end
