@@ -25,6 +25,8 @@ App.Layer = Backbone.RelationalModel.extend
         continuousWorld: true
       })
       tileLayer.setParams(options)
+      tileLayer.on("loading", startProgress)
+      tileLayer.on("load", stopProgress)
       @set leaflet: tileLayer
 
   getBBOX: ->
