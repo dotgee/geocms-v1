@@ -24,3 +24,24 @@ $("a").click(function(e){
   }
 })
 
+$(document).ajaxStart(function() {
+    startProgress()
+});
+
+function startProgress() {
+  if ($("#progress").length === 0) {
+    $("body").append($("<div><dt/><dd/></div>").attr("id", "progress"));
+    $("#progress").width((50 + Math.random() * 30) + "%");
+  }
+};
+
+$(document).ajaxComplete(function() {
+    stopProgress();
+});
+
+function stopProgress () {
+  //End loading animation
+  $("#progress").width("101%").delay(200).fadeOut(400, function() {
+    $(this).remove();
+  });
+}

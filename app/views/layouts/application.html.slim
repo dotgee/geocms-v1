@@ -13,6 +13,9 @@ html(lang="en")
       = stylesheet_link_tag "leaflet/leaflet.ie"
     = csrf_meta_tags
   body class=(yield :body_class)
+    #progress
+      dt
+      dd
     .navbar
       .navbar-inner
         .container
