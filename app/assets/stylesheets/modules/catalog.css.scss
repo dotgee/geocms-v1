@@ -25,7 +25,7 @@
     top: 63px;
     right: 0px;
     padding: 3px 9px 3px 10px;
-    .close {
+    &.close {
       color: white;
       text-shadow: none;
       @include opacity(100);
