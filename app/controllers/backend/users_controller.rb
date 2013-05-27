@@ -2,8 +2,21 @@ class Backend::UsersController < Backend::ApplicationController
   load_and_authorize_resource
 
   def index
-    @users = User.all
+    @users = current_tenant.users
     respond_with([:backend, @users])
+  end
+
+  def network
+    respond_to do |format|
+      format.json { render json: User.network_json }
+    end
+  end
+
+  def add
+    @user = User.where(username: params[:username]).first
+    current_tenant.users << @user
+    current_tenant.save
+    render "_user", locals: { user: @user }, layout: false
   end
 
   def new
@@ -29,7 +42,7 @@ class Backend::UsersController < Backend::ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
+    current_tenant.users.delete(@user)
     respond_with [:backend, :users]
   end
 end

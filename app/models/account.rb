@@ -1,7 +1,8 @@
 class Account < ActiveRecord::Base
   include Preferences
 
-  has_many :users, dependent: :destroy
+  has_many :memberships, dependent: :destroy
+  has_many :users, through: :memberships
   accepts_nested_attributes_for :users
 
   has_many :categories, dependent: :destroy

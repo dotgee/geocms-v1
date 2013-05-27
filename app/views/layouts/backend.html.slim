@@ -32,12 +32,13 @@ html(lang="en")
             - if logged_in?
               ul.nav.pull-right
                 li= link_to t("menu.logout"), logout_path
-      .search-container
-        form class="form-search navbar-form-search" action="#{backend_search_path}" method="get"
-          .input-append
-            input.span6 type="text" class="input-medium search-query" placeholder="Rechercher une couche" name="query" value="#{params[:query]}" autocomplete="off"
-            button.m-btn
-              i.icon-search
+      - if logged_in?
+        .search-container
+          form class="form-search navbar-form-search" action="#{backend_search_path}" method="get"
+            .input-append
+              input.span6 type="text" class="input-medium search-query" placeholder="Rechercher une couche" name="query" value="#{params[:query]}" autocomplete="off"
+              button.m-btn
+                i.icon-search
       #page
         .container.main-container class=(content_for?(:container_class) ? yield(:container_class) : "")
           == render "layouts/messages"

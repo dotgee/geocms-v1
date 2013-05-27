@@ -55,7 +55,6 @@ class LayerModalView extends Backbone.View
       @$save.addClass("disabled")
       @model.save @model.toJSON(),
         success: (model, response) ->
-          console.log model, response
           that.$el.modal("hide")
           that.model.set({imported: true})
           $("#layer-import").show()
@@ -114,7 +113,6 @@ class LayerView extends Backbone.View
 data_source_id = $("#data-source-id").data("id");
 imported = new ImportCollection()
 imported.reset(gon.layers)
-console.log gon.layers
 view = new LayerView({collection: imported})
 view.render()
 

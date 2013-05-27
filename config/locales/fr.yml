@@ -4,6 +4,7 @@ fr:
       new: "Ajouter couche"
   browse: "Parcourir"
   edit: "Modifier"
+  add: "Ajouter"
   destroy: "Supprimer"
   add_child: "Créer une sous-catégorie"
   context:
@@ -30,7 +31,8 @@ fr:
   account:
     new: "Créer un nouveau compte"
   users:
-    new: "Ajouter un utilisateur"
+    new: "Créer un compte utilisateur"
+    index: "Liste des collaborateurs"
   user:
     sign_up: "Inscription"
   session:
