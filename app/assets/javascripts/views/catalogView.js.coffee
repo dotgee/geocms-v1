@@ -65,8 +65,6 @@ class App.CatalogView extends Backbone.View
     @$layers.html("")
   addOne: (model) ->
     item = new App.CatalogItemView({ model: model, parentView: this }).render().el
-    console.log @$categories, @$layers
-    console.log model.get("type")
     @$categories.append item if model.get("type") == "category"
     @$layers.append item if model.get("type") == "layer"
   toRoot: (e)->

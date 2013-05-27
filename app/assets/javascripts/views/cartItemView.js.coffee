@@ -101,9 +101,7 @@ class App.CartItemView extends Backbone.View
 
   panToLayer: (e) ->
     box = @model.getBBOX()
-    console.log box
     bbox = new L.LatLngBounds(new L.LatLng(box[0], box[1]) , new L.LatLng(box[2], box[3]))
-    console.log bbox
     @mapProvider.fitBounds(bbox)
 
   initialize: ->
