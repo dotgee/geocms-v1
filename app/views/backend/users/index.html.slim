@@ -1,7 +1,7 @@
 .page-header
-  h1 Listing Users
+  h1 = t("users.index")
 
-table.table.table-striped
+table.table.table-striped.table-users
   thead
     tr
       th Username
@@ -11,14 +11,14 @@ table.table.table-striped
       th width="40px"
   tbody
     - @users.each do |u|
-      tr
-        td= u.username
-        td= u.email
-        td= u.created_at.strftime("%d/%m/%Y")
-        td
-          = link_to [:edit, :backend, u], :class => "m-btn mini blue icn-only", :rel => "tooltip", "data-original-title" => t(:edit) do
-            i.icon-pencil.icon-white
-        td
-          = link_to [:backend, u], :confirm => 'Are you sure?', :method => :delete, :class => "m-btn red icn-only mini" do
-            i.icon-trash.icon-white
-= link_to t("users.new"), [:new, :backend, :user], class: "m-btn blue" if can? :create, User
+      == render u
+br
+.row-fluid
+  .span6
+    = text_field_tag :user, nil, :placeholder => "Choisir un collaborateur", :class => "input-add-colaborator", :style => "width: 400px;"
+    button.m-btn.btn-add-colaborator.blue= t("add")
+  / .span6
+  /   = link_to t("users.new"), [:new, :backend, :user], class: "m-btn blue" if can? :create, User
+
+= content_for :javascripts do
+  = javascript_include_tag "backend/typeahead"

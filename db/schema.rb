@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522084329) do
+ActiveRecord::Schema.define(:version => 20130527085023) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20130522084329) do
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.integer  "position"
+    t.boolean  "visible"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.string   "ancestry"
@@ -110,6 +111,16 @@ ActiveRecord::Schema.define(:version => 20130522084329) do
 
   add_index "dimensions", ["layer_id"], :name => "index_dimensions_on_layer_id"
 
+  create_table "geometry_columns", :id => false, :force => true do |t|
+    t.string  "f_table_catalog",   :limit => 256, :null => false
+    t.string  "f_table_schema",    :limit => 256, :null => false
+    t.string  "f_table_name",      :limit => 256, :null => false
+    t.string  "f_geometry_column", :limit => 256, :null => false
+    t.integer "coord_dimension",                  :null => false
+    t.integer "srid",                             :null => false
+    t.string  "type",              :limit => 30,  :null => false
+  end
+
   create_table "layers", :force => true do |t|
     t.string   "name"
     t.string   "title"
@@ -131,6 +142,13 @@ ActiveRecord::Schema.define(:version => 20130522084329) do
   add_index "layers", ["data_source_id"], :name => "index_layers_on_data_source_id"
   add_index "layers", ["slug"], :name => "index_layers_on_slug", :unique => true
 
+  create_table "memberships", :force => true do |t|
+    t.integer "account_id"
+    t.integer "user_id"
+  end
+
+  add_index "memberships", ["account_id", "user_id"], :name => "index_memberships_on_account_id_and_user_id"
+
   create_table "preferences", :force => true do |t|
     t.integer  "account_id"
     t.string   "name"
@@ -151,6 +169,14 @@ ActiveRecord::Schema.define(:version => 20130522084329) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "spatial_ref_sys", :id => false, :force => true do |t|
+    t.integer "srid",                      :null => false
+    t.string  "auth_name", :limit => 256
+    t.integer "auth_srid"
+    t.string  "srtext",    :limit => 2048
+    t.string  "proj4text", :limit => 2048
+  end
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
@@ -177,10 +203,10 @@ ActiveRecord::Schema.define(:version => 20130522084329) do
     t.string   "salt"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
-    t.integer  "account_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email_md5"
   end
-
-  add_index "users", ["account_id"], :name => "index_users_on_account_id"
 
   create_table "users_roles", :id => false, :force => true do |t|
     t.integer "user_id"
