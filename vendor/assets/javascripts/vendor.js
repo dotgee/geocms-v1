@@ -29,6 +29,7 @@
 //= require jquery/jquery.sortable.min
 //= require jquery/jquery.zclip
 //= require jquery/jquery.masonry.min
+//= require jquery/typeahead.min
 
 //= require select2.min
 
