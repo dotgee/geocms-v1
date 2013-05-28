@@ -61,7 +61,7 @@ App.MapProviders.Leaflet = ->
 
     URL = map.queryable_layer.data_source.wms+'?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&LAYERS='+map.queryable_layer.name+'&QUERY_LAYERS='+map.queryable_layer.name+'&STYLES=&'+
           'BBOX='+BBOX+'&HEIGHT='+HEIGHT+'&WIDTH='+WIDTH+'&FORMAT=image/png&INFO_FORMAT=text/html&'+
-          'SRS='+EPSG+'&X='+x+'&Y='+y
+          'SRS='+EPSG+'&X='+x+'&Y='+y+"&FEATURE_COUNT=500"
     if map.queryable_layer.currentTime
       URL += '&TIME='+map.queryable_layer.currentTime
 
