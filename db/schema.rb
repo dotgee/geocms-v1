@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130527085023) do
+ActiveRecord::Schema.define(:version => 20130530114438) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20130527085023) do
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
     t.string   "preview"
+    t.integer  "user_id"
   end
 
   add_index "contexts", ["account_id"], :name => "index_contexts_on_account_id"
@@ -142,6 +143,12 @@ ActiveRecord::Schema.define(:version => 20130527085023) do
   add_index "layers", ["data_source_id"], :name => "index_layers_on_data_source_id"
   add_index "layers", ["slug"], :name => "index_layers_on_slug", :unique => true
 
+  create_table "leads", :force => true do |t|
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "memberships", :force => true do |t|
     t.integer "account_id"
     t.integer "user_id"
@@ -206,7 +213,10 @@ ActiveRecord::Schema.define(:version => 20130527085023) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email_md5"
+    t.string   "slug"
   end
+
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
   create_table "users_roles", :id => false, :force => true do |t|
     t.integer "user_id"

@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @account = Account.new
+    #@account = Account.new
+    @lead = Lead.new
   end
 end

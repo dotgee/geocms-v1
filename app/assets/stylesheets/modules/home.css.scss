@@ -1,0 +1,203 @@
+.home {
+  background-color: #28353d;
+  .navbar-inner {
+    background-color: white;
+  }
+  .navbar {
+    margin-bottom: 0;
+  }
+  #wrap {
+    background: none;
+  }
+  .main-container {
+    margin: auto;
+  }
+  .container-fluid {
+    padding: {
+      left: 0;
+      right: 0;
+    }
+  }
+  h4 {
+    font-size: 12px;
+    line-height: 1.666em;
+    margin: 0 0 10px;
+  }
+  footer {
+    padding-top: 30px;
+    background: #3c4e5a;
+  }
+}
+
+
+.cartographr-visual {
+  background-color: #1087bf;
+  height: 700px;
+}
+
+@media only screen and (max-width: 770px) {
+  .computer-container {
+    margin-left: 16.6666%;
+  }
+}
+
+.computer-container {
+  position: relative;
+  max-width: 800px;
+  min-width: 700px;
+  margin: auto;
+  float: none;
+}
+ .computer-dot {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 11px;
+  height: 10px;
+  width: 10px;
+  background: #12161A;
+  border-radius: 50%;
+}
+.cartographr-illustration {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  right: 30px;
+  height: 450px;
+  border: 1px solid #12161A;
+  background: url("geocms-showcase.png");
+}
+.computer-bottom {
+  content: "";
+  position: absolute;
+  display: block;
+  background: #CDE0EB;
+  left: -40px;
+  right: -40px;
+  border-radius: 0 0 10px 10px;
+  height: 25px;
+  bottom: -20px;
+  box-shadow: inset 0 15px 0 0 white;
+}
+.frame {
+  overflow: hidden;
+  position: absolute;
+  height: 540px;
+  margin-top: 40px;
+  box-shadow: 0 0 30px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 4px 4px 0 0;
+  float: none;
+}
+.frame.computer {
+  position: relative;
+  height: 520px;
+  border-radius: 20px;
+  background: #28353d;
+  overflow: hidden;
+  z-index: 0;
+}
+.frame.computer:after {
+content: "";
+background-color: #12161a;
+position: absolute;
+display: block;
+top: 50%;
+bottom: 0;
+left: 0;
+right: 0;
+z-index: -1;
+}
+
+.section {
+  position: relative;
+}
+.section.bigarrow {
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    margin: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    width: 0;
+    border-left: 30px solid rgba(0, 0, 0, 0);
+    border-right: 30px solid rgba(0, 0, 0, 0);
+  }
+  &.blue::after {
+    border-bottom: 30px solid white;
+  }
+  &.white::after {
+    border-bottom: 30px solid #1087bf;
+  }
+}
+
+.feature-list {
+  .feature {
+    border: 1px solid #dfdfdf;
+    border-top-width: 0;
+    padding: 20px;
+    &:first-child {
+      border-top-width: 1px;
+    }
+  }
+  small {
+    margin-left: 80px;
+    color: #384e5a;
+    display: block;
+    letter-spacing: 0px;
+    font-weight: 200;
+    font: normal 12px/1.6667em "Open Sans",Arial,sans-serif;
+  }
+}
+
+.illustration {
+  float: left;
+  height: 60px;
+  width: 60px;
+  margin-right: 20px;
+  &.custom {
+    background: url("icon-custom.png");
+  }
+  &.compatible {
+    background: url("icon-compatible.png");
+  }
+  &.happy {
+    background: url("icon-happy.png");
+  }
+}
+
+.cartographr-features {
+  background-color: white;
+  height: 600px;
+  .container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+.cartographr-subscribe {
+  background: #1087bf;
+  height: 300px;
+  color: white;
+  .container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+.subscribe {
+  .add-on {
+    height: 30px;
+    width: 30px;
+    background: #3c4e5a;
+  }
+  .add-on i {
+    margin-top: 9px;
+  }
+  #lead {
+    height: 30px;
+  }
+}

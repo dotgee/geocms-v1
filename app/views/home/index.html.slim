@@ -1,21 +1,64 @@
-.container-narrow
-  .jumbotron
-    h1 Super awesome marketing speak!
-    p.lead Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-    =link_to "SIGN UP NOW !", signup_path, :class => "m-btn big blue"
-  hr
-    .row-fluid.marketing
-      .span6
-        h4 Subheading
-        p Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
-        h4 Subheading
-        p Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
-        h4 Subheading
-        p Maecenas sed diam eget risus varius blandit sit amet non magna.
-      .span6
-        h4 Subheading
-        p Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
-        h4 Subheading
-        p Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
-        h4 Subheading
-        p Maecenas sed diam eget risus varius blandit sit amet non magna.
+.container-fluid
+  .section.bigarrow.row-fluid.cartographr-visual.blue
+    .computer-container.cell10
+      .frame.computer.fillW
+        .cartographr-illustration.background
+      .computer-dot
+      .computer-bottom
+
+  .section.cartographr-features.bigarrow.white
+    .container
+      .row
+        .span6
+          h2 Cartographr
+          p
+            |Cartographr est une plateforme de création de portails thématiques sur l'information spatiale.
+            br
+            |
+            |Cartographr rend la visualisation, l'exploration et la création d'information facile et accessible à tous.
+        .span5.offset1
+          .feature-list
+            .feature
+              .illustration.happy
+              h4 Accessible
+              small Créez ou explorez l'information géographique en toute facilité, quel que soit votre niveau de connaissance.
+
+            .feature
+              .illustration.compatible
+              h4 Compatible
+              small Cartographr étant une surcouche des serveurs spatiaux habituels, l'import de vos données n'en est que facilité.
+
+            .feature
+              .illustration.custom
+              h4 Personnalisable
+              small Utilisez votre nom de domaine, votre thème et vos outils.
+
+  .section.cartographr-subscribe
+    .container
+      .row
+        .span10
+          h2 Soyez l'un des premiers à tester Cartographr
+          p Cartographr n'est pas encore disponible à tous, demandez une invitation !
+          br
+      .row
+        .span6
+          .input-prepend.subscribe
+            span.add-on
+              i.icon-envelope.icon-white
+            = email_field_tag "lead", nil, placeholder: "Adresse email", class: "span6"
+          p#thanks
+= content_for :javascripts do
+  javascript:
+    $("#lead").keypress(function(e) {
+      if(e.keyCode == 13) {
+        submitLead();
+      }
+    });
+    $(".subscribe .add-on").click(function(e) {
+      submitLead();
+    });
+    submitLead = function() {
+      $.post("/leads", {email: $("#lead").val() });
+      $("#lead").attr("disabled", "disabled").addClass("disabled");
+      $("#thanks").text("Merci de votre inscription.");
+    }

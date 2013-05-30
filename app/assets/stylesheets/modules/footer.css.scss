@@ -17,4 +17,10 @@ footer {
   img {
     margin-bottom: 20px;
   }
+  a {
+    @include link-colors(#9EA7B1, #9EA7B1, #9EA7B1, #9EA7B1, #9EA7B1);
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }

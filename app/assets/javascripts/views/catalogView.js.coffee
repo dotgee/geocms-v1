@@ -56,7 +56,8 @@ class App.CatalogView extends Backbone.View
         layer_ids = _.each(data, (layer) ->
           layers.push(that.layers.get(layer.id))
         )
-        layerCollection = new App.LayerCollection(layers)
+        console.log layers
+        layerCollection = new App.CatalogCollection(layers)
         that.collection = layerCollection
         that.render()
     @onSearch = true
