@@ -46,7 +46,7 @@
             span.add-on
               i.icon-envelope.icon-white
             = email_field_tag "lead", nil, placeholder: "Adresse email", class: "span6"
-          p#thanks
+          p.hide#thanks Merci de votre inscription.
 = content_for :javascripts do
   javascript:
     $("#lead").keypress(function(e) {
@@ -59,6 +59,7 @@
     });
     submitLead = function() {
       $.post("/leads", {email: $("#lead").val() });
-      $("#lead").attr("disabled", "disabled").addClass("disabled");
-      $("#thanks").text("Merci de votre inscription.");
+      $(".subscribe").fadeOut("slow", function() {
+        $("#thanks").fadeIn();
+      });
     }
