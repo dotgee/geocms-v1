@@ -7,33 +7,35 @@ class App.CartItemView extends Backbone.View
         <a title='<%= title %>' class='unstyled'><%= title %></a>
       </label>
       <% if(data_source) { %><p class='source'>Source : <a href='<%= data_source.ogc %>' target='_blank'><%= data_source.name %></a></p> <% } %>
-      <div class='m-btn-group control-buttons'>
-        <a class='m-btn mini first query' data-toggle='button' rel='tooltip' data-original-title='Interroger'><i class='icon-info-sign'></i></a>
-        <a class='m-btn mini opacity <% if(controllingOpacity) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Opacité'><i class='icon-adjust'></i></a>
-        <a class='m-btn mini center' rel='tooltip' data-original-title='Centrer'><i class='icon-screenshot'></i></a>
-        <a class='m-btn mini toggle-dimension <% if (!dimension) { %> disabled <% } %> <% if(controllingDimension) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Temporalité'><i class='icon-clock'></i></a>
-        <a class='m-btn mini metadata-iframe <% if (!metadata_url) { %> disabled <% } %> ' rel='tooltip' data-original-title='Métadonnées' href='<% if(metadata_url) { %> <%= metadata_url %> <% } else { %> # <% } %>' <% if(metadata_url) { %> target='geonetwork' <% } %> ><i class='icon-list-alt'></i></a>
-        <a class='m-btn mini <% if (data_source.external || base) { %> disabled <% } %>' rel='tooltip' data-original-title='Télécharger' href='<% if (!(data_source.external || base)) { %> <%= data_source.wms %>?REQUEST=getFeature&service=wfs&outputFormat=shape-zip&typename=<%= name %> <% } else { %> # <% } %>'><i class='icon-download-alt'></i></a>
-        <a class='m-btn mini remove' rel='tooltip' data-original-title='Supprimer'><i class='icon-remove'></i></a>
-      </div>
-      <% if(dimension) { %>
-        <div class='dimensionable <% if(!controllingDimension) { %> hide <% } %>'>
-          <div class='m-btn-group control-buttons'>
-            <a class='m-btn first mini backward' ><i class='icon-step-backward'></i></a>
-            <a class='m-btn mini play <% if(playing) { %> active <% } %>'><i class=<% if(playing) { %>'icon-pause' <% } else { %> 'icon-play' <% } %>></i></a>
-            <a class='m-btn mini forward'><i class=' icon-step-forward'></i></a>
-          </div>
-          <div id='dimension-value'><%= moment(currentTime).format('DD/MM/YYYY') %></div>
-          <div class='clearfix'></div>
-          <div class='pull-left wrap-dates'><%= moment(dimensions[0].dimension.value).format('DD/MM/YYYY') %></div>
-          <div class='dimensions-list'>
-            <div class='dimensions-slider'></div>
-          </div>
-          <div class='pull-left wrap-dates'><%= moment(dimensions[dimensions.length-1].dimension.value).format('DD/MM/YYYY') %></div>
+      <div class='cart-item-controls'>
+        <div class='m-btn-group control-buttons'>
+          <a class='m-btn mini first query' data-toggle='button' rel='tooltip' data-original-title='Interroger'><i class='icon-info-sign'></i></a>
+          <a class='m-btn mini opacity <% if(controllingOpacity) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Opacité'><i class='icon-adjust'></i></a>
+          <a class='m-btn mini center' rel='tooltip' data-original-title='Centrer'><i class='icon-screenshot'></i></a>
+          <a class='m-btn mini toggle-dimension <% if (!dimension) { %> disabled <% } %> <% if(controllingDimension) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Temporalité'><i class='icon-clock'></i></a>
+          <a class='m-btn mini metadata-iframe <% if (!metadata_url) { %> disabled <% } %> ' rel='tooltip' data-original-title='Métadonnées' href='<% if(metadata_url) { %> <%= metadata_url %> <% } else { %> # <% } %>' <% if(metadata_url) { %> target='geonetwork' <% } %> ><i class='icon-list-alt'></i></a>
+          <a class='m-btn mini <% if (data_source.external || base) { %> disabled <% } %>' rel='tooltip' data-original-title='Télécharger' target='_blank' href='<% if (!(data_source.external || base)) { %> <%= data_source.wms %>?REQUEST=getFeature&service=wfs&outputFormat=shape-zip&typename=<%= name %> <% } else { %> # <% } %>'><i class='icon-download-alt'></i></a>
+          <a class='m-btn mini remove' rel='tooltip' data-original-title='Supprimer'><i class='icon-remove'></i></a>
         </div>
-      <% } %>
-      <div class='opacity-controler <% if(!controllingOpacity) { %> hide <% } %>'>
-        <div class='opacity-slider'></div>
+        <% if(dimension) { %>
+          <div class='dimensionable <% if(!controllingDimension) { %> hide <% } %>'>
+            <div class='m-btn-group control-buttons'>
+              <a class='m-btn first mini backward' ><i class='icon-step-backward'></i></a>
+              <a class='m-btn mini play <% if(playing) { %> active <% } %>'><i class=<% if(playing) { %>'icon-pause' <% } else { %> 'icon-play' <% } %>></i></a>
+              <a class='m-btn mini forward'><i class=' icon-step-forward'></i></a>
+            </div>
+            <div id='dimension-value'><%= moment(currentTime).format('DD/MM/YYYY') %></div>
+            <div class='clearfix'></div>
+            <div class='pull-left wrap-dates'><%= moment(dimensions[0].dimension.value).format('DD/MM/YYYY') %></div>
+            <div class='dimensions-list'>
+              <div class='dimensions-slider'></div>
+            </div>
+            <div class='pull-left wrap-dates'><%= moment(dimensions[dimensions.length-1].dimension.value).format('DD/MM/YYYY') %></div>
+          </div>
+        <% } %>
+        <div class='opacity-controler <% if(!controllingOpacity) { %> hide <% } %>'>
+          <div class='opacity-slider'></div>
+        </div>
       </div>
     </div>"
   )
@@ -48,6 +50,8 @@ class App.CartItemView extends Backbone.View
     "click  .center"           : "panToLayer"
     "click  .opacity"          : "toggleOpacity"
     "click  .toggle-dimension" : "toggleDimension"
+    "mouseenter .title" : "showControls"
+    "mouseleave" : "hideControls"
 
   removeLayer: ->
     @model.removeFromMap()
@@ -103,6 +107,12 @@ class App.CartItemView extends Backbone.View
     box = @model.getBBOX()
     bbox = new L.LatLngBounds(new L.LatLng(box[0], box[1]) , new L.LatLng(box[2], box[3]))
     @mapProvider.fitBounds(bbox)
+
+  showControls: (e) ->
+    @$el.find(".cart-item-controls").css("visibility", "visible")
+
+  hideControls: (e) ->
+    @$el.find(".cart-item-controls").css("visibility", "hidden")
 
   initialize: ->
     @changeOpacity()
