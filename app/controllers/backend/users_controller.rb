@@ -27,6 +27,8 @@ class Backend::UsersController < Backend::ApplicationController
   def create
     @user = User.new(params[:user])
     @user.save
+    current_tenant.users << @user
+    current_tenant.save
     respond_with [:backend, :users]
   end
 
