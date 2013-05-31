@@ -85,6 +85,9 @@
 // LEFT NAVBAR - TABS - LAYERS
 
 #layers {
+  .cart-item-controls {
+    visibility: hidden;
+  }
   label {
     margin-bottom: 2px;
   }
