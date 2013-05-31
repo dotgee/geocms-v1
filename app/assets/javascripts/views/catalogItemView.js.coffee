@@ -23,7 +23,6 @@ class App.CatalogItemView extends Backbone.View
     <div class='media-body'>
 
       <h4 class='media-heading layer-heading'><%= title %></h4>
-      <p class='source'>Source : <a href='<%= data_source.ogc %>' target='_blank'><%= data_source.name %></a></p>
       <% if(description) { %><div class='description'> <%= description %> </div><% } %>
     </div>
   </div>")
