@@ -75,9 +75,9 @@
   z-index: 50;
   .m-btn {
     margin-top: 0;
-    padding: 14px 27px;
+    padding: 14px 23px;
     &:last-child {
-      padding: 14px 25px 14px 26px;
+      padding: 14px 23px 14px 24px;
     }
   }
 }
@@ -86,7 +86,7 @@
 
 #layers {
   .cart-item-controls {
-    visibility: hidden;
+    // visibility: hidden;
   }
   label {
     margin-bottom: 2px;
