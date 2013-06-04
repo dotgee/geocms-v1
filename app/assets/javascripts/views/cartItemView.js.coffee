@@ -9,13 +9,13 @@ class App.CartItemView extends Backbone.View
       <% if(data_source) { %><p class='source'>Source : <a href='<%= data_source.ogc %>' target='_blank'><%= data_source.name %></a></p> <% } %>
       <div class='cart-item-controls'>
         <div class='m-btn-group control-buttons'>
-          <a class='m-btn mini first query' data-toggle='button' rel='tooltip' data-original-title='Interroger'><i class='icon-info-sign'></i></a>
-          <a class='m-btn mini opacity <% if(controllingOpacity) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Opacité'><i class='icon-adjust'></i></a>
-          <a class='m-btn mini center' rel='tooltip' data-original-title='Centrer'><i class='icon-screenshot'></i></a>
-          <a class='m-btn mini toggle-dimension <% if (!dimension) { %> disabled <% } %> <% if(controllingDimension) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Temporalité'><i class='icon-clock'></i></a>
-          <a class='m-btn mini metadata-iframe <% if (!metadata_url) { %> disabled <% } %> ' rel='tooltip' data-original-title='Métadonnées' href='<% if(metadata_url) { %> <%= metadata_url %> <% } else { %> # <% } %>' <% if(metadata_url) { %> target='geonetwork' <% } %> ><i class='icon-list-alt'></i></a>
-          <a class='m-btn mini <% if (data_source.external || base) { %> disabled <% } %>' rel='tooltip' data-original-title='Télécharger' target='_blank' href='<% if (!(data_source.external || base)) { %> <%= data_source.wms %>?REQUEST=getFeature&service=wfs&outputFormat=shape-zip&typename=<%= name %> <% } else { %> # <% } %>'><i class='icon-download-alt'></i></a>
-          <a class='m-btn mini remove' rel='tooltip' data-original-title='Supprimer'><i class='icon-remove'></i></a>
+          <a class='m-btn mini first query' data-toggle='button' rel='tooltip' data-original-title='Interroger'><i class='carticon-info'></i></a>
+          <a class='m-btn mini opacity <% if(controllingOpacity) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Opacité'><i class='carticon-adjust'></i></a>
+          <a class='m-btn mini center' rel='tooltip' data-original-title='Centrer'><i class='carticon-target'></i></a>
+          <a class='m-btn mini toggle-dimension <% if (!dimension) { %> disabled <% } %> <% if(controllingDimension) { %> active <% } %>' data-toggle='button' rel='tooltip' data-original-title='Temporalité'><i class='carticon-clock'></i></a>
+          <a class='m-btn mini metadata-iframe <% if (!metadata_url) { %> disabled <% } %> ' rel='tooltip' data-original-title='Métadonnées' href='<% if(metadata_url) { %> <%= metadata_url %> <% } else { %> # <% } %>' <% if(metadata_url) { %> target='geonetwork' <% } %> ><i class='carticon-vcard'></i></a>
+          <a class='m-btn mini <% if (data_source.external || base) { %> disabled <% } %>' rel='tooltip' data-original-title='Télécharger' target='_blank' href='<% if (!(data_source.external || base)) { %> <%= data_source.wms %>?REQUEST=getFeature&service=wfs&outputFormat=shape-zip&typename=<%= name %> <% } else { %> # <% } %>'><i class='carticon-download'></i></a>
+          <a class='m-btn mini remove' rel='tooltip' data-original-title='Supprimer'><i class='carticon-trash'></i></a>
         </div>
         <% if(dimension) { %>
           <div class='dimensionable <% if(!controllingDimension) { %> hide <% } %>'>
@@ -50,8 +50,8 @@ class App.CartItemView extends Backbone.View
     "click  .center"           : "panToLayer"
     "click  .opacity"          : "toggleOpacity"
     "click  .toggle-dimension" : "toggleDimension"
-    "mouseenter .title" : "showControls"
-    "mouseleave" : "hideControls"
+    # "mouseenter .title" : "showControls"
+    # "mouseleave" : "hideControls"
 
   removeLayer: ->
     @model.removeFromMap()
