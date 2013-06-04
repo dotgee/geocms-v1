@@ -1,5 +1,5 @@
 var  system = require('system'),
-    webpage = require('webpage')
+    webpage = require('webpage'),
     page = webpage.create();
 
 var url = system.args[1],
@@ -12,7 +12,7 @@ function getMapPic(url){
     console.log(response.contentType)
   }
   page.onError = function(msg, trace){
-
+    console.log(msg, trace);
   }
   page.viewportSize = { width: 1000, height: 630 };
   page.open(url, generatePic)
@@ -21,8 +21,12 @@ function getMapPic(url){
 
 function generatePic(status){
   page.evaluate(function(){
-    $('.navbar, .leaflet-control').hide();
-
+    //$('.navbar, .leaflet-control').hide();
+    console.log("evaluate");
+    divs = document.querySelectorAll(".navbar", ".leaflet-control");
+    for(var i = 0, cpt = divs.length; i < cpt; i++) {
+	divs[i].style.display = 'none';
+    }
   });
   console.log(new Date() - time / 1000)
   window.setTimeout(function(){
