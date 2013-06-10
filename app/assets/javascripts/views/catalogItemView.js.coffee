@@ -23,6 +23,7 @@ class App.CatalogItemView extends Backbone.View
     <div class='media-body'>
 
       <h4 class='media-heading layer-heading'><%= title %></h4>
+      <% if(data_source) { %><p class='source'>Source : <%= data_source.name %></p> <% } %>
       <% if(description) { %><div class='description'> <%= description %> </div><% } %>
     </div>
   </div>")
