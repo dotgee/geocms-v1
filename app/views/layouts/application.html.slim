@@ -32,7 +32,9 @@ html(lang="en")
     == yield
     javascript:
       var GEOCMS_PREFIX = "#{ENV["PREFIX"]}",
-          CUR_PROJ      = "#{current_tenant.crs.value}";
+          CUR_PROJ      = "#{current_tenant.crs.value}",
+          LOGGED_IN     = "#{logged_in? ? true : false}";
+      LOGGED_IN = (LOGGED_IN == "true") ? true : false;
     = include_gon
     = javascript_include_tag :application unless content_for?(:no_js)
     = javascript_include_tag "projs/#{current_tenant.crs.value.gsub(':','-')}"
