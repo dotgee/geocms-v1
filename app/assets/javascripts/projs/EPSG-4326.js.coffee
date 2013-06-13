@@ -1,9 +1,10 @@
 app = window.App
 
 app.dest_string = "EPSG:4326"
-app.base = L.tileLayer("http://{s}.tiles.mapbox.com/v3/impeyal.map-el9s7flv/{z}/{x}/{y}.png", {
+
+app.base = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-    '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://www.mapbox.com">MapBox</a>'
+    '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
 })
 
 app.base.title = "OpenStreetMap"
