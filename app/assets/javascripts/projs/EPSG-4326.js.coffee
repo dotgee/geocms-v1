@@ -9,7 +9,7 @@ app.base = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 app.base.title = "OpenStreetMap"
 
-app.crs = L.CRS.EPSG4326
+# app.crs = L.CRS.EPSG4326
 
 app.base.bbox =
   "EPSG:4326":
