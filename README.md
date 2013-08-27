@@ -67,6 +67,10 @@ The installation process should be rather straightforward once you make sure tha
   We recommend using [pow](http://pow.cx/) if you're just testing it on your local machine as it provides an easy way to use subdomains on DotGeoCMS.
   Don't forget to run bundle install, open the website and you're done ! We hope you will enjoy our application !
 
+# Licence #
+
+DotGeoCMS is under CeCill licence, for more information, read [CeCill.txt](CeCill.txt)
+
 # DotGeoCMS - Contact #
 
 DotGeoCMS is developped by Dotgee (@dotgee). If you have any questions or if you want us to build a custom implementation of DotGeoCMS to better fit your needs, send us an email at [contact@dotgee.fr](mailto:contact@dotgee.fr) !
