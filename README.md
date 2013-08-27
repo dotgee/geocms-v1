@@ -4,7 +4,7 @@ DotGeoCMS is an open source tool that allows for the vizualisation of geospatial
 
 It was built to make it easier for people to vizualize, combine and share layers from various [Geoservers](http://geoserver.org/display/GEOS/Welcome).
 
-You can see a live demo at [dotgee.fr](http://open-data.iuem.dotgee.fr/), check it out !
+You can see multiples demos at [indigeo.fr](http://indigeo.fr/visualiseur), check it out !
 
 <img src="http://i.imgur.com/U5gHI.jpg?1" alt="dotgeocms preview" title="dotgeocms preview" width="900"/>
 
