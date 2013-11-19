@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.15'
 
 gem "unicorn", ">= 4.3.1"
 gem "pg", ">= 0.14.0"
@@ -34,7 +34,7 @@ gem 'rabl', "0.7.9"
 gem 'gon'
 
 # Templating engine
-gem "slim-rails", git: "git://github.com/slim-template/slim-rails.git"
+gem "slim-rails"
 
 # Utilities
 gem 'bootstrap-sass', '~> 2.2.2.0'
