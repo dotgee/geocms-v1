@@ -33,11 +33,10 @@ class Layer < ActiveRecord::Base
                           ]
                         )
                        .includes(:data_source).includes(:categories).includes(:dimensions)
-                       .order(:value)
+		       .order(:value)
 
 
   delegate :wms, to: :data_source, prefix: true
-
 
   # INSTANCE METHODS
 
@@ -79,8 +78,8 @@ class Layer < ActiveRecord::Base
   store :bbox, accessors: [:minx, :maxx, :miny, :maxy]
 
   attr_accessible :description, :name, :title, :wms_url, :data_source_id, :category_ids, :category,
-                  :crs, :minx, :miny, :maxx, :maxy, :dimension, :template, :remote_thumbnail_url, :metadata_url,
-                  :metadata_identifier
+		  :crs, :minx, :miny, :maxx, :maxy, :dimension, :template, :remote_thumbnail_url, :metadata_url,
+		  :metadata_identifier, :tiled
 
   mount_uploader :thumbnail, LayerUploader
   acts_as_taggable_on :keywords

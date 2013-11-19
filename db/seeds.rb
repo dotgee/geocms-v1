@@ -7,5 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 dotgee = Account.find_or_create_by_subdomain!(name: "Dotgee", subdomain: "dotgee", default: true)
-User.destroy_all
-User.create!(username: "jerome.chapron", email: "jchapron@dotgee.fr", password: "helloworld", account: dotgee )
+u = User.new(username: "jerome.chapron", email: "jchapron@dotgee.fr", password: "helloworld")
+u.accounts << dotgee
+u.save

@@ -89,7 +89,7 @@ class App.CatalogView extends Backbone.View
       children = @currentCategories[idx].get("children").models
       that = this
       layers = @layers.filter( (layer) ->
-        _.contains(layer.get("category_ids"), that.currentCategories[idx].get("id"))
+         _.contains(layer.get("category_ids"), that.currentCategories[idx].get("id"))
       )
       resources = _.union(layers, children)
       @collection = new App.CatalogCollection(resources)
@@ -100,7 +100,7 @@ class App.CatalogView extends Backbone.View
   render: ->
     @resetView()
     @$el.find('.breadcrumb').html(@breadcrumbCategoryTemplate
-                                      categories: @currentCategories
+                                  categories: @currentCategories
                                   )
     @collection.forEach(@addOne, this)
     @$layers.masonry( 'reload' )

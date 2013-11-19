@@ -98,9 +98,9 @@ CKEDITOR.editorConfig = function( config )
     [
         ['Source','-','PasteFromWord'],
         ['Undo','Redo'], ['Link','Unlink'],
-        ['Bold','Italic','Underline','Strike', 'RemoveFormat'],
+	['Bold','Italic','Underline','Strike', 'RemoveFormat'],
         ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
-        ['Styles','Format'], ['Features', 'Iframe']
+	['Styles','Format'], ['Features', 'Iframe']
     ];
 };
 

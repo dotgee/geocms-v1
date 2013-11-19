@@ -5,7 +5,7 @@ class Context < ActiveRecord::Base
   mount_uploader :preview, ContextPictureUploader
 
   attr_accessible :maxx, :maxy, :minx, :miny, :name, :zoom, :description, :center_lng,
-                  :center_lat, :layer_ids, :uuid, :contexts_layers_attributes
+		  :center_lat, :layer_ids, :uuid, :contexts_layers_attributes
   accepts_nested_attributes_for :contexts_layers
   before_create :generate_uuid
 

@@ -33,7 +33,7 @@ class Category < ActiveRecord::Base
     nodes.map do |node, sub_nodes|
       { "name" => node.name,
         "id" => node.id,
-        "type" => "category",
+	"type" => "category",
         "slug" => node.slug,
         "children" => json_tree(sub_nodes).compact
       }

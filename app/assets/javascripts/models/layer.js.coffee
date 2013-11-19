@@ -22,7 +22,8 @@ App.Layer = Backbone.RelationalModel.extend
         transparent: true,
         version: @get("data_source").wms_version,
         styles: @get("default_style") || '',
-        continuousWorld: true
+        continuousWorld: true,
+        tiled: @get("tiled")
       })
       tileLayer.setParams(options)
       tileLayer.on("loading", startProgress)

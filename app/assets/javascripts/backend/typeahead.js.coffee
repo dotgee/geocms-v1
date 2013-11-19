@@ -15,4 +15,4 @@ if $("input.input-add-colaborator").length > 0
       url: GEOCMS_PREFIX+"/backend/users/add"
       data: {username: $("input.input-add-colaborator").val() }
       success: (data) ->
-        $(".table-users").append(data)
+	$(".table-users").append(data)

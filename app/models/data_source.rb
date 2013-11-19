@@ -14,6 +14,6 @@ class DataSource < ActiveRecord::Base
     layers
   end
 
-  attr_accessible :csw, :name, :ogc, :wfs, :wms, :rest, :external
-  validates_presence_of :name, :ogc, :wms, :external
+  attr_accessible :csw, :name, :ogc, :wfs, :wms, :rest, :not_internal
+  validates_presence_of :name, :ogc, :wms
 end

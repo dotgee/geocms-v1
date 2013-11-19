@@ -25,7 +25,7 @@ function generatePic(status){
     console.log("evaluate");
     divs = document.querySelectorAll(".navbar", ".leaflet-control");
     for(var i = 0, cpt = divs.length; i < cpt; i++) {
-        divs[i].style.display = 'none';
+	divs[i].style.display = 'none';
     }
   });
   console.log(new Date() - time / 1000)

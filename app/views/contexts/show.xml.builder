@@ -22,11 +22,11 @@ xml.ViewContext(:id => @context.uuid, :version => "1.1.0", "xmlns" => "http://ww
         xml.Format("image/png", :current => 1)
       end
       xml.Extension do
-        if current_tenant.crs.value == "EPSG:2154"
-          xml.tag!("ol:maxExtent", :maxx => "2146865.30590000004", :maxy => "8541697.23630000092", :minx => "-357823.236499999999", :miny => "6037008.69390000030", "xmlns:ol" => "http://openlayers.org/context")
-        else
-          xml.tag!("ol:maxExtent", :maxx => "1", :maxy => "1", :minx => "-1", :miny => "-1", "xmlns:ol" => "http://openlayers.org/context")
-        end
+	if current_tenant.crs.value == "EPSG:2154"
+	  xml.tag!("ol:maxExtent", :maxx => "2146865.30590000004", :maxy => "8541697.23630000092", :minx => "-357823.236499999999", :miny => "6037008.69390000030", "xmlns:ol" => "http://openlayers.org/context")
+	else
+	  xml.tag!("ol:maxExtent", :maxx => "1", :maxy => "1", :minx => "-1", :miny => "-1", "xmlns:ol" => "http://openlayers.org/context")
+	end
         xml.tag!("ol:numZoomLevels", 17, "xmlns:ol" => "http://openlayers.org/context")
         xml.tag!("ol:tileSize", :height => "256", :width => "256", "xmlns:ol" => "http://openlayers.org/context")
         xml.tag!("ol:units", "m", "xmlns:ol" => "http://openlayers.org/context")
