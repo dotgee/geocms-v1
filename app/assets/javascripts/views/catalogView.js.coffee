@@ -7,7 +7,7 @@ class App.CatalogView extends Backbone.View
         <% if(categories.length != i +1 ) {%>
         <li>
           <a class='category-link' href='/category/<%= cat.attributes.id %>'><%= cat.attributes.name %></a>
-	  <span class='divider'>/</span>
+          <span class='divider'>/</span>
         </li>
         <% }else { %>
           <li class='active'><%= cat.attributes.name %></li>
@@ -37,7 +37,7 @@ class App.CatalogView extends Backbone.View
       itemSelector: ".media.layer"
       isAnimated: true
       columnWidth: ( containerWidth ) ->
-	containerWidth / 2
+        containerWidth / 2
   toggle: ->
     @$el.toggleClass("active")
     @render()
@@ -54,8 +54,8 @@ class App.CatalogView extends Backbone.View
       success: (data) ->
         layers = []
         layer_ids = _.each(data, (layer) ->
-	  l = that.layers.get(layer.id)
-	  layers.push(l) if l?
+          l = that.layers.get(layer.id)
+          layers.push(l) if l?
         )
         layerCollection = new App.LayerCollection(layers)
         that.collection = layerCollection
@@ -89,7 +89,7 @@ class App.CatalogView extends Backbone.View
       children = @currentCategories[idx].get("children").models
       that = this
       layers = @layers.filter( (layer) ->
-	_.contains(layer.get("category_ids"), that.currentCategories[idx].get("id"))
+         _.contains(layer.get("category_ids"), that.currentCategories[idx].get("id"))
       )
       resources = _.union(layers, children)
       @collection = new App.CatalogCollection(resources)
@@ -100,7 +100,7 @@ class App.CatalogView extends Backbone.View
   render: ->
     @resetView()
     @$el.find('.breadcrumb').html(@breadcrumbCategoryTemplate
-                                      categories: @currentCategories
+                                  categories: @currentCategories
                                   )
     @collection.forEach(@addOne, this)
     @$layers.masonry( 'reload' )

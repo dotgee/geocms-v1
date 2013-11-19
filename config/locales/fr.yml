@@ -69,6 +69,10 @@ fr:
   back: "Retour"
   access_denied: "Vous n'êtes pas autorisé à effectuer cette action."
   button_login: "Connexion (accès restreint)"
+  simple_form:
+    labels:
+      data_source:
+        not_internal: "Source externe" 
   #####
   # Rails i18n
   #####

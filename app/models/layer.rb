@@ -38,7 +38,6 @@ class Layer < ActiveRecord::Base
 
   delegate :wms, to: :data_source, prefix: true
 
-
   # INSTANCE METHODS
 
   def boundingbox(tenant)
@@ -80,7 +79,7 @@ class Layer < ActiveRecord::Base
 
   attr_accessible :description, :name, :title, :wms_url, :data_source_id, :category_ids, :category,
 		  :crs, :minx, :miny, :maxx, :maxy, :dimension, :template, :remote_thumbnail_url, :metadata_url,
-		  :metadata_identifier
+		  :metadata_identifier, :tiled
 
   mount_uploader :thumbnail, LayerUploader
   acts_as_taggable_on :keywords

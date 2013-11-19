@@ -44,18 +44,18 @@ Geocms2::Application.routes.draw do
       end
 
       resources :users, :only => [:index, :new, :create, :edit, :update, :destroy] do
-	collection do
-	  get "network"
-	  post "add"
-	end
+        collection do
+          get "network"
+          post "add"
+        end
       end
 
       resources :accounts, :only => [:index, :new, :create]
 
       resources :contexts do
-      	member do
-      	  get 'refresh_preview'
-      	end
+        member do
+          get 'refresh_preview'
+        end
       end
 
     end

@@ -1,6 +1,6 @@
 class Backend::DataSourcesController < Backend::ApplicationController
   def index
-    @data_sources = DataSource.all.group_by(&:external)
+    @data_sources = DataSource.all.group_by(&:not_internal)
     respond_with([:backend, @data_sources])
   end
 

@@ -34,7 +34,7 @@ class Backend::LayersController < Backend::ApplicationController
     dimension_values = params.delete(:dimension_values)
     bbox = params.delete(:bbox)
     @layer = Layer.new(params[:layer].reject{ |p| p == "category_id" })
-    @layer.crs = params.delete(:srs).first.to_s
+    @layer.crs = params.delete(:srs).first.to_s if params[:srs].present?
     if @layer.save
       if dimension_values && dimension_values.any?
         Dimension.create_dimension_values(@layer, dimension_values)

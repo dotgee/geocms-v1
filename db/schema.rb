@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130527085023) do
+ActiveRecord::Schema.define(:version => 20131119112712) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -95,11 +95,11 @@ ActiveRecord::Schema.define(:version => 20130527085023) do
     t.string   "wfs"
     t.string   "csw"
     t.string   "ogc"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.string   "rest"
-    t.string   "wms_version", :default => "1.1.1"
-    t.boolean  "external",    :default => true
+    t.string   "wms_version",  :default => "1.1.1"
+    t.boolean  "not_internal", :default => true
   end
 
   create_table "dimensions", :force => true do |t|
@@ -111,22 +111,12 @@ ActiveRecord::Schema.define(:version => 20130527085023) do
 
   add_index "dimensions", ["layer_id"], :name => "index_dimensions_on_layer_id"
 
-  create_table "geometry_columns", :id => false, :force => true do |t|
-    t.string  "f_table_catalog",   :limit => 256, :null => false
-    t.string  "f_table_schema",    :limit => 256, :null => false
-    t.string  "f_table_name",      :limit => 256, :null => false
-    t.string  "f_geometry_column", :limit => 256, :null => false
-    t.integer "coord_dimension",                  :null => false
-    t.integer "srid",                             :null => false
-    t.string  "type",              :limit => 30,  :null => false
-  end
-
   create_table "layers", :force => true do |t|
     t.string   "name"
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.integer  "data_source_id"
     t.text     "bbox"
     t.string   "crs"
@@ -137,6 +127,7 @@ ActiveRecord::Schema.define(:version => 20130527085023) do
     t.string   "metadata_url"
     t.string   "metadata_identifier"
     t.string   "slug"
+    t.boolean  "tiled",               :default => false
   end
 
   add_index "layers", ["data_source_id"], :name => "index_layers_on_data_source_id"
@@ -169,14 +160,6 @@ ActiveRecord::Schema.define(:version => 20130527085023) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
-
-  create_table "spatial_ref_sys", :id => false, :force => true do |t|
-    t.integer "srid",                      :null => false
-    t.string  "auth_name", :limit => 256
-    t.integer "auth_srid"
-    t.string  "srtext",    :limit => 2048
-    t.string  "proj4text", :limit => 2048
-  end
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

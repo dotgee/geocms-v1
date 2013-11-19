@@ -4,20 +4,20 @@
   .hud
     .map-controls
       - if can? :create, Context
-	.m-btn-group
-	  button.save.m-btn.blue
-	    span= t "context.save"
-	  button.share.m-btn.disabled disabled="disabled"
-	    span= t "context.share"
-	    '
-	    i.m-icon-swapright
-	  = link_to geovisu_link, :class => "m-btn geovisu disabled", :target => "geovisu" do
-	    |Geovisu
-	    '
-	    i.icon-geovisu
+        .m-btn-group
+          button.save.m-btn.blue
+            span= t "context.save"
+          button.share.m-btn.disabled disabled="disabled"
+            span= t "context.share"
+            '
+            i.m-icon-swapright
+          = link_to geovisu_link, :class => "m-btn geovisu disabled", :target => "geovisu" do
+            |Geovisu
+            '
+            i.icon-geovisu
       - else
-	.m-btn-group
-	  = link_to t("button_login"), login_path, class: "m-btn blue"
+        .m-btn-group
+          = link_to t("button_login"), login_path, class: "m-btn blue"
     ul.nav.nav-tabs.row-fluid id="hud-tab"
       li.active
         = link_to "#layers", "data-toggle" => "tab" do
@@ -37,7 +37,7 @@
             i.icon-layer
         ul.nav.nav-list#layer-list
         #catalog.popup
-	  button.m-btn.icn-only.btn-close.blue.close &times;
+          button.m-btn.icn-only.btn-close.blue.close &times;
           .page-header
             h1 = t "layers_catalog"
           .container-fluid
@@ -47,19 +47,19 @@
                 i.icon-search
             .clearfix
             = breadcrumb_for_category(@category)
-	    #catalog-categories.row-fluid
-	    #catalog-layers.row-fluid
+            #catalog-categories.row-fluid
+            #catalog-layers.row-fluid
     .m-btn-group#ctrls
       button.m-btn.first.icn-only.legend data-toggle="button" rel="tooltip" data-original-title=t("context.controls.legend")
-	i.carticon-list
+        i.carticon-list
       button.m-btn.icn-only.globe rel="tooltip" data-original-title=t("context.controls.position")
-	i.carticon-globe
+        i.carticon-globe
       button.m-btn.icn-only.tools  data-toggle="button" rel="tooltip" data-original-title=t("context.controls.tools")
-	i.carticon-tools
+        i.carticon-tools
       button.m-btn.icn-only.fullscreen data-toggle="button" rel="tooltip" data-original-title=t("context.controls.fullscreen")
-	i.carticon-resize-full
+        i.carticon-resize-full
       button.m-btn.last.icn-only.togglehud rel="tooltip" data-original-title=t("context.controls.hud")
-	i.carticon-left-circled
+        i.carticon-left-circled
   #map data-latitude=current_tenant.latitude.value data-longitude=current_tenant.longitude.value data-zoom=current_tenant.zoom.value
   .modal#share-modal.hide style="position: absolute;display:block;z-index:-1"
     .modal-header
