@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.2.15'
 
@@ -27,7 +27,7 @@ end
 gem 'jquery-rails', "~> 2.1.4"
 
 # JSON Views
-gem "multi_json", "1.5.0"
+gem "multi_json", "~> 1.5.0"
 gem 'oj', "2.0.2"
 gem 'rabl', "0.7.9"
 #gem 'yajl-ruby'
@@ -85,7 +85,7 @@ gem "rmagick", '~> 2.13.2'
 gem "nokogiri", "1.4.7"
 
 # Thumbnails
-gem 'sidekiq'
+gem 'sidekiq', '~> 2.11.2'
 gem 'sinatra'
 
 
