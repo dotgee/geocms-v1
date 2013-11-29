@@ -24,7 +24,7 @@ class App.CartItemView extends Backbone.View
 	      <a class='m-btn mini play <% if(playing) { %> active <% } %>'><i class=<% if(playing) { %>'icon-pause' <% } else { %> 'icon-play' <% } %>></i></a>
 	      <a class='m-btn mini forward'><i class=' icon-step-forward'></i></a>
 	    </div>
-	    <div id='dimension-value'><%= moment(currentTime).format('DD/MM/YYYY') %></div>
+	    <div class='dimension-value'><%= moment(currentTime).format('DD/MM/YYYY') %></div>
 	    <div class='clearfix'></div>
 	    <div class='pull-left wrap-dates'><%= moment(dimensions[0].dimension.value).format('DD/MM/YYYY') %></div>
 	    <div class='dimensions-list'>
@@ -145,6 +145,6 @@ class App.CartItemView extends Backbone.View
         max: that.model.get("dimensions").length-1
         slide: (event, ui) ->
           dim = that.model.get("dimensions")[ui.value].dimension.value
-          $("#dimension-value").text( moment(dim).format('DD/MM/YYYY') )
+          that.$el.find(".dimension-value").text( moment(dim).format('DD/MM/YYYY') )
           that.model.showTime(dim, ui.value)
     return this
