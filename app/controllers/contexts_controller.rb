@@ -15,7 +15,8 @@ class ContextsController < ApplicationController
   end
 
   def show
-    @context = Context.includes(:layers).find_by_uuid(params[:id])
+    uuid= params[:id].gsub("#", "")
+    @context = Context.includes(:layers).find_by_uuid(uuid)
     respond_with(@context)
   end
 

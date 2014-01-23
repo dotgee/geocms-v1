@@ -16,6 +16,7 @@ class Ability
     else
       can :read, :all
       can :new, Context
+      can :share, Context
     end
 
     # Global admin can do everything
