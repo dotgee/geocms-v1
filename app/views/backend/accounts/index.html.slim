@@ -8,10 +8,10 @@ table.table.table-striped
       th Domain
       th Created at
   tbody
-    - @accounts.each do |a|
+    - @accounts.each do |account| 
       tr
-	td= a.name
-	td= a.subdomain
-	td= a.created_at.strftime("%d/%m/%Y")
+        td= account.name
+        td= account.subdomain
+        td= account.created_at.strftime("%d/%m/%Y")
 
 = link_to t("accounts.new"), [:new, :backend, :account], class: "m-btn blue"

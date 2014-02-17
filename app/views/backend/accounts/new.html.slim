@@ -5,16 +5,16 @@
   .row
     .span6
       legend
-	h4 Compte
+        h4 Compte
       = f.input :name
       = f.input :subdomain
     .span6.offset2
       legend
-	h4 Utilisateur
+        h4 Utilisateur
       = f.simple_fields_for :users do |p|
-	= p.input :username
-	= p.input :email
-	= p.input :password
+        = p.input :username
+        = p.input :email
+        = p.input :password
   .form-actions
     .m-btn-group
       = f.button :submit, :class => "m-btn blue"
