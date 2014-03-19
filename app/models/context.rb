@@ -5,7 +5,7 @@ class Context < ActiveRecord::Base
   mount_uploader :preview, ContextPictureUploader
 
   attr_accessible :maxx, :maxy, :minx, :miny, :name, :zoom, :description, :center_lng,
-		  :center_lat, :layer_ids, :uuid, :contexts_layers_attributes
+		  :center_lat, :layer_ids, :uuid, :contexts_layers_attributes, :preview
   accepts_nested_attributes_for :contexts_layers
   before_create :generate_uuid
 
@@ -42,9 +42,11 @@ class Context < ActiveRecord::Base
 
   private
     def generate_preview(url = nil, force = false)
-      url ||= ENV["HOST_URL"]
-      return true if url.nil?
-      #return true if preview? and !force
-      ContextPreviewWorker.perform_async(self, url)
+      unless preview_changed?
+        url ||= ENV["HOST_URL"]
+        return true if url.nil?
+        #return true if preview? and !force
+        ContextPreviewWorker.perform_async(self, url)
+      end
     end
 end

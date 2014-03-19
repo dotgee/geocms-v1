@@ -61,7 +61,7 @@ gem "friendly_id"
 # Import layers
 # gem "wms_getcapabilities", '~> 0.1.0.6'
 
-gem 'ruby-ogc', :git => 'git://github.com/dotgee/ruby-ogc.git'
+gem 'ruby-ogc', :git => 'https://github.com/dotgee/ruby-ogc.git'
 gem "rgeo"
 
 # Pagination
