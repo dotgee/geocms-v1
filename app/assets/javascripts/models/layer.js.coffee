@@ -23,7 +23,9 @@ App.Layer = Backbone.RelationalModel.extend
         version: @get("data_source").wms_version,
         styles: @get("default_style") || '',
         continuousWorld: true,
-        tiled: @get("tiled")
+        tiled: @get("tiled"),
+        maxZoom: 24,
+        minZoom: 3
       })
       tileLayer.setParams(options)
       tileLayer.on("loading", startProgress)

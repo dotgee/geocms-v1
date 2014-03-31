@@ -20,9 +20,9 @@ tableToJSON = (data) ->
 App.MapProviders.Leaflet = ->
 
   createMap: (elementId) ->
-    @map = if app.crs? then new L.Map(elementId, {crs: app.crs, continuousWorld: true}) else new L.Map(elementId)
+    @map = if app.crs? then new L.Map(elementId, {crs: app.crs, continuousWorld: true, maxZoom: 24}) else new L.Map(elementId, {maxZoom: 24})
     @map.attributionControl.addAttribution("Developed by <a href='http://www.dotgee.fr' target='_blank'>Dotgee</a>")
-    map = @map
+    window.map = @map
 
   addLayerToMap: (layer) ->
     @map.addLayer(layer)
