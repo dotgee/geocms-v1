@@ -8,7 +8,10 @@ class ContextPreviewWorker
     t.binmode
     #TODO
     #catch errors
+    old_proxy=ENV['http_proxy']
+    ENV['http_proxy'] = nil
     cmd = "phantomjs #{Rails.root}/script/thumbnail.js #{url_for_context(context, url)} #{t.path}"
+    ENV['http_proxy'] = old_proxy
     puts cmd
     `#{cmd}`
 

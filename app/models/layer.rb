@@ -60,10 +60,15 @@ class Layer < ActiveRecord::Base
       tempfile = Tempfile.new([ self.id.to_s, '.png' ])
       tempfile.binmode
       begin
+       url = self.thumb_url(64, 64, self.crs)
+       proxy = ENV["http_proxy"]
+       if url.include? "osuris"
+        ENV["http_proxy"] = nil 
+       end
        tempfile << Curl.get(self.thumb_url(64, 64, self.crs)).body_str
        tempfile.rewind
        self.thumbnail = tempfile
-       # self.remote_thumbnail_url = self.thumb_url(64, 64, self.crs)
+       ENV["http_proxy"] = proxy
        self.save!
       rescue => e
         logger.error e.message

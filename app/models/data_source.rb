@@ -4,7 +4,8 @@ class DataSource < ActiveRecord::Base
   default_scope order("name ASC")
 
   def import
-    wms_client = ROGC::WMSClient.new(self.wms)
+    proxy = wms.include?("osuris") ? nil : ENV['http_proxy']
+    wms_client = ROGC::WMSClient.new(self.wms, proxy)
     capabilities = wms_client.capabilities
     layers = capabilities.capability.layers
 
