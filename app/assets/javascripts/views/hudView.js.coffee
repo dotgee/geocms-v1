@@ -84,6 +84,6 @@ class App.HudView extends Backbone.View
         .append("/"+@model.get("uuid")+"/share")
         .end()
         .find("#embed-link")
-        .append(_.escape("/"+@model.get("uuid")+"/share'</iframe>"))
+        .append(_.escape("/"+@model.get("uuid")+"/share'></iframe>"))
 
     $("#share-modal").modal()
