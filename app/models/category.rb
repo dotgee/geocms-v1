@@ -8,7 +8,7 @@ class Category < ActiveRecord::Base
   has_ancestry :cache_depth => true
   acts_as_list scope: [:account_id, :ancestry]
 
-  scope :ordered, select([:name, :id, :slug, :ancestry]).ordered_by_ancestry.order("position asc")
+  scope :ordered, -> { select([:name, :id, :slug, :ancestry]).ordered_by_ancestry.order("position asc") }
   attr_accessible :name, :position, :parent_id
 
   before_save :cache_ancestry
@@ -39,6 +39,19 @@ class Category < ActiveRecord::Base
       }
     end
   end
+
+  def type
+    "category"
+  end
+
+  def serializable_hash(options={})
+    options = {
+      methods: [:type],
+      only: [:name, :id, :slug]
+    }.update(options)
+    super(options)
+  end
+
 
   def depth_name
     ("-" * depth) + name

@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
     @categories = Category.includes(:layers).all
     #respond_with(@categories)
     respond_to do |format|
-      format.json { render json: Oj.dump(Category.json_tree(Category.arrange_nodes(Category.ordered))) }
+      format.json { render json: Oj.dump(Category.arrange_serializable(order: :position)) }
     end
   end
 
