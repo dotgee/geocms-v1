@@ -69,13 +69,13 @@ Geocms2::Application.routes.draw do
         get "bbox"
       end
     end
-    match "/categories/:category_id/layers/", :to => "categories#layers"
+    get "/categories/:category_id/layers/", :to => "categories#layers"
     resources :categories, :only => [:index, :show]
     resources :contexts
 
     # Explore
-    match "/:id/share", :to => "contexts#share", :as => :share_context
-    match "/:id", :to => "contexts#show"
+    get "/:id/share", :to => "contexts#share", :as => :share_context
+    get "/:id", :to => "contexts#show"
 
     root :to => "contexts#new"
   # end

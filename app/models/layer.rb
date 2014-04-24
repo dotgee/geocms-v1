@@ -3,7 +3,7 @@ require "curb"
 class Layer < ActiveRecord::Base
   include Concerns::Searchable
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [:slugged, :finders]
 
   # ELASTICSEARCH MAPPING
 
@@ -19,7 +19,7 @@ class Layer < ActiveRecord::Base
   belongs_to :data_source
   has_many :contexts_layers,  dependent: :destroy, uniq: true
   has_many :contexts,         through: :contexts_layers
-  has_many :dimensions,       order: 'value ASC'
+  has_many :dimensions#,       order: 'dimensions.value ASC'
   has_many :bounding_boxes,   dependent: :destroy
 
   has_and_belongs_to_many :categories
@@ -33,7 +33,7 @@ class Layer < ActiveRecord::Base
                           ]
                         )
                        .includes(:data_source).includes(:categories).includes(:dimensions)
-		       .order(:value)
+		       .order("dimensions.value")
 
 
   delegate :wms, to: :data_source, prefix: true
