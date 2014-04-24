@@ -8,6 +8,7 @@ class Ability
     elsif user.has_role? :admin, current_tenant
       can :manage, :all
       cannot :create, Account
+      cannot :destroy, Account
     elsif user.has_role? :editor, current_tenant
       can :manage, :all
       cannot :destroy, :all

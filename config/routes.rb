@@ -50,7 +50,7 @@ Geocms2::Application.routes.draw do
         end
       end
 
-      resources :accounts, :only => [:index, :new, :create]
+      resources :accounts, :only => [:index, :new, :create, :destroy]
 
       resources :contexts do
         member do

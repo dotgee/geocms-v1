@@ -16,4 +16,10 @@ class Backend::AccountsController < Backend::ApplicationController
     @account.save
     respond_with [:backend, :accounts]
   end
+
+  def destroy
+    @account = Account.find(params[:id])
+    @account.destroy
+    respond_with [:backend, :accounts]
+  end
 end
