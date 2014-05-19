@@ -3,7 +3,7 @@ class Dimension < ActiveRecord::Base
 
   attr_accessible :layer_id, :value
 
-  default_scope order("value ASC")
+  default_scope { order("value ASC") }
 
   validates :layer_id, presence: true
   validates :value, uniqueness: { scope: :layer_id }

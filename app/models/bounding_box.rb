@@ -3,8 +3,8 @@ class BoundingBox < ActiveRecord::Base
 
   belongs_to :layer
 
-  scope :current, lambda { |tenant| where(crs: tenant.crs.value) }
-  scope :leafletable, where(["crs in (?)", ['EPSG:4326', 'CRS:84']])
+  scope :current, -> (tenant) { where(crs: tenant.crs.value) }
+  scope :leafletable, -> { where(["crs in (?)", ['EPSG:4326', 'CRS:84']]) }
 
   attr_accessible :crs, :maxx, :maxy, :minx, :miny
 

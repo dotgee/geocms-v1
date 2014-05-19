@@ -25,21 +25,24 @@ class Layer < ActiveRecord::Base
   has_and_belongs_to_many :categories
 
   # SCOPES
-  default_scope order(:title)
-  scope :for_frontend, select(
-                          ["layers.name", "layers.title", "layers.id", "layers.description",
-                            "layers.dimension", "layers.category_id", "data_sources.wms", "layers.metadata_url",
-                            "dimensions.value", "category_ids"
-                          ]
-                        )
-                       .includes(:data_source).includes(:categories).includes(:dimensions)
-		       .order("dimensions.value")
+  default_scope { order(:title) }
+  scope :for_frontend, -> { select(
+                            ["layers.name", "layers.title", "layers.id", "layers.description",
+                              "layers.dimension", "layers.category_id", "data_sources.wms", "layers.metadata_url",
+                              "dimensions.value", "category_ids"
+                            ]
+                          )
+                          .includes(:data_source).includes(:categories).includes(:dimensions)
+		                      .order("dimensions.value") }
 
 
   delegate :wms, to: :data_source, prefix: true
 
   # INSTANCE METHODS
 
+  # Finds the relevant bbox among all the bboxes stored
+  # First check if there is a bounding box in CRS:84 (leaflet default)
+  # Otherwise fallback on another and convert it to CRS:84
   def boundingbox(tenant)
     bbox = bounding_boxes.leafletable.any?      ? bounding_boxes.leafletable.first      :
            bounding_boxes.current(tenant).any?  ? bounding_boxes.current(tenant).first  :
@@ -75,7 +78,7 @@ class Layer < ActiveRecord::Base
   end
 
   # ATTRIBUTES
-  store :bbox, accessors: [:minx, :maxx, :miny, :maxy]
+  # store :bbox, accessors: [:minx, :maxx, :miny, :maxy]
 
   attr_accessible :description, :name, :title, :wms_url, :data_source_id, :category_ids, :category,
 		  :crs, :minx, :miny, :maxx, :maxy, :dimension, :template, :remote_thumbnail_url, :metadata_url,
