@@ -8,8 +8,6 @@
 //= require bootstrap-tab
 //= require bootstrap-tooltip
 
-//= require ckeditor/init
-
 //= require moment.min
 
 //= require mustache

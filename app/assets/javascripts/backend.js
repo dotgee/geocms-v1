@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require vendor
+//= require ckeditor/init
 //= require backbone-form-hacks
 
 $(document).ready(function(){
